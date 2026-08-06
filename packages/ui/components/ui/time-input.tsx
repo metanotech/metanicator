@@ -44,12 +44,12 @@ function splitTime(value: string, hourMin: number): { hh: string; mm: string } {
 interface SegmentInputProps {
   value: string;
   /** The segment's own range. Arrow keys wrap inside it, and typed digits are
-   *  clamped to it, so a segment whose range is narrowed by its neighbour — a
-   *  window's end hour, which can never precede its start — can neither be
+   *  clamped to it, so a segment whose range is narrowed by its neighbour, a
+   *  window's end hour, which can never precede its start, can neither be
    *  arrowed nor typed out of bounds. */
   min: number;
   max: number;
-  /** What Backspace clears the segment to. Defaults to `min` — the neutral value
+  /** What Backspace clears the segment to. Defaults to `min`, the neutral value
    *  for a segment whose range starts at the field's own floor. A window's end
    *  hour is not such a segment: its `min` is wherever the start currently sits,
    *  so clearing it to `min` would collapse the window onto the start instead of
@@ -160,15 +160,15 @@ export interface TimeInputProps {
    *  the bounds of an hour-granular window. */
   hourOnly?: boolean;
   /** Earliest hour this field may hold. The hour segment wraps and clamps within
-   *  [hourMin, 23] instead of [0, 23] — a window's end, which cannot precede its
+   *  [hourMin, 23] instead of [0, 23], a window's end, which cannot precede its
    *  start, arrows round to 23 rather than sticking at the start hour. */
   hourMin?: number;
   /** What Backspace clears the hour to, when that is not `hourMin` (see
    *  SegmentInput's clearTo). */
   hourClearTo?: number;
   /** Accessible names for the two segments. This package holds no translations,
-   *  so callers that render several time fields side by side — a window's start
-   *  and end, say — pass localized names that tell them apart. */
+   *  so callers that render several time fields side by side, a window's start
+   *  and end, say, pass localized names that tell them apart. */
   hourLabel?: string;
   minuteLabel?: string;
   /** `data-slot` for the hour and minute segments, for a container that styles
@@ -238,13 +238,12 @@ export function TimeInput({
       {/* hourOnly drops the minute segment and its colon entirely, rather than
           keeping an inert one for stable geometry: where the bounds are whole
           hours, a greyed-out :00 is only wasted width. The field narrows on the
-          unit switch that sets this — the honest signal that minute-granular
+          unit switch that sets this, the honest signal that minute-granular
           bounds are gone. */}
       {!hourOnly && (
         <>
           {/* -translate-y-[1.5px]: the digits are cap-height figures whose
-              optical centre sits above the colon's two dots, so `items-center` —
-              which lines up the boxes, not the ink — leaves the colon reading
+              optical centre sits above the colon's two dots, so `items-center`, which lines up the boxes, not the ink, leaves the colon reading
               low. Nudge it up to the digits' centre. Transform, not margin, so
               it shifts nothing else. */}
           <span className="pointer-events-none -translate-y-[1.5px] select-none text-muted-foreground">

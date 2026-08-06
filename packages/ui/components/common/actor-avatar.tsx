@@ -40,7 +40,7 @@ function ActorAvatar({
     setImgError(false);
   }, [avatarUrl]);
 
-  // Every actor — member, agent, squad, or system — renders as a circle. This
+  // Every actor, member, agent, squad, or system, renders as a circle. This
   // is the single source of truth for avatar shape; the upload editors mirror
   // it (packages/views/common/avatar-upload-control.tsx).
   return (
@@ -51,7 +51,7 @@ function ActorAvatar({
         (!avatarUrl || emoji || imgError) && "bg-muted text-muted-foreground",
         className,
         // rounded-full stays last so a call-site `className` can never override
-        // the circle — avatar shape is a hard invariant, not a per-site choice.
+        // the circle, avatar shape is a hard invariant, not a per-site choice.
         "rounded-full"
       )}
       style={{ width: px, height: px, fontSize: px * 0.45 }}

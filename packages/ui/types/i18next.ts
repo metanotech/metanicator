@@ -13,7 +13,7 @@ import "i18next";
 //
 // The resource shape is mirrored from packages/views/locales/{en,zh-Hans,ko,ja}/ui.json.
 // Drift between the JSON and these types is not caught by the locale parity
-// test — if you add a key to ui.json, mirror it here.
+// test, if you add a key to ui.json, mirror it here.
 declare global {
   interface I18nResources {
     ui: {

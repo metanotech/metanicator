@@ -27,7 +27,7 @@
   "status": {
     "active": "Active",
     "paused": "Paused",
-    "paused_runtime_required": "Paused — the assignee needs a runtime",
+    "paused_runtime_required": "Paused, the assignee needs a runtime",
     "archived": "Archived"
   },
   "execution_mode": {
@@ -77,13 +77,13 @@
     "running": "Running...",
     "toast_triggered": "Autopilot triggered",
     "toast_trigger_failed": "Failed to trigger autopilot",
-    "run_blocked_invocation_not_allowed": "Not triggered — you don't have permission to use this autopilot's agent",
-    "run_blocked_runtime_offline": "Not triggered — the agent's runtime is offline",
-    "run_blocked_agent_runtime_required": "Not triggered — the agent has no runtime; bind one to run it",
-    "run_blocked_target_unavailable": "Not triggered — the agent is unavailable",
-    "run_blocked_attribution": "Not triggered — the run couldn't be attributed to a responsible member",
-    "run_blocked_already_active": "Not triggered — a recent run already covers this",
-    "run_blocked_generic": "Not triggered — the run was blocked",
+    "run_blocked_invocation_not_allowed": "Not triggered, you don't have permission to use this autopilot's agent",
+    "run_blocked_runtime_offline": "Not triggered, the agent's runtime is offline",
+    "run_blocked_agent_runtime_required": "Not triggered, the agent has no runtime; bind one to run it",
+    "run_blocked_target_unavailable": "Not triggered, the agent is unavailable",
+    "run_blocked_attribution": "Not triggered, the run couldn't be attributed to a responsible member",
+    "run_blocked_already_active": "Not triggered, a recent run already covers this",
+    "run_blocked_generic": "Not triggered, the run was blocked",
     "section_properties": "Properties",
     "section_triggers": "Triggers",
     "section_run_history": "Run History",
@@ -155,7 +155,7 @@
     "copied": "Webhook payload copied",
     "copied_short": "Copied",
     "copy_failed": "Failed to copy",
-    "truncated_marker": "[truncated — click Copy to get the full payload]"
+    "truncated_marker": "[truncated, click Copy to get the full payload]"
   },
   "trigger_kind": {
     "schedule": "Schedule",
@@ -169,7 +169,7 @@
     "webhook_url_label": "Webhook URL",
     "show_url": "Show URL",
     "hide_url": "Hide URL",
-    "hidden_url_aria": "Webhook URL hidden — click to show",
+    "hidden_url_aria": "Webhook URL hidden, click to show",
     "copy_url": "Copy URL",
     "url_copied": "Webhook URL copied",
     "url_copy_failed": "Failed to copy",
@@ -233,9 +233,9 @@
       "in_progress": "Replaying...",
       "toast_success": "Delivery replayed",
       "toast_failed": "Replay failed",
-      "disabled_invalid_signature": "Can't replay — signature was invalid",
+      "disabled_invalid_signature": "Can't replay, signature was invalid",
       "disabled_rejected": "Can't replay a rejected delivery",
-      "disabled_queued": "Still queued — replay once it settles"
+      "disabled_queued": "Still queued, replay once it settles"
     }
   },
   "add_trigger_dialog": {
@@ -288,7 +288,7 @@
     "section_output_mode": "Output mode",
     "section_subscribers": "Subscribers",
     "subscribers_hint": "Auto-subscribed to every issue this autopilot creates",
-    "subscribers_empty": "No subscribers — add a teammate to notify them on every run",
+    "subscribers_empty": "No subscribers, add a teammate to notify them on every run",
     "subscribers_add": "Add subscriber",
     "subscribers_search_placeholder": "Search members by name…",
     "subscribers_no_results": "No matching members",
@@ -301,7 +301,7 @@
     "webhook_help_create": "Metanicator will generate a webhook URL after this autopilot is created. POST any JSON to that URL to fire it.",
     "webhook_help_edit": "This autopilot is fired by webhook. Manage the URL (copy / rotate) on the autopilot's detail page.",
     "webhook_created_title": "Webhook autopilot ready",
-    "webhook_created_description": "POST any JSON to the URL below and the autopilot will fire. Copy it now — you can also find and rotate it on the autopilot's detail page.",
+    "webhook_created_description": "POST any JSON to the URL below and the autopilot will fire. Copy it now, you can also find and rotate it on the autopilot's detail page.",
     "webhook_created_warning": "Treat this URL like a password. Anyone who has it can trigger the autopilot.",
     "webhook_created_done": "Done",
     "event_filter_label": "Event filters",
@@ -309,8 +309,8 @@
     "event_filter_event_placeholder": "e.g. workflow_run",
     "event_filter_actions_placeholder": "completed, failed",
     "event_filter_hint": "Only process webhooks matching these events. Leave empty to accept all.",
-    "schedule_disabled_reason": "This autopilot has multiple schedules — edit them in the detail page.",
-    "schedule_empty": "No schedule — this autopilot only runs when triggered manually.",
+    "schedule_disabled_reason": "This autopilot has multiple schedules, edit them in the detail page.",
+    "schedule_empty": "No schedule, this autopilot only runs when triggered manually.",
     "schedule_add": "Add schedule",
     "error_title_required": "Enter a name for this autopilot.",
     "error_assignee_required": "Choose the agent or squad that will run this autopilot.",

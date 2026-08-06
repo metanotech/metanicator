@@ -87,7 +87,7 @@ describe("CallbackPage", () => {
         window.localStorage.removeItem(k);
       }
     }
-    // Snapshot keys before deleting — forEach + delete skips entries because
+    // Snapshot keys before deleting, forEach + delete skips entries because
     // the iteration index advances while the underlying list shrinks.
     Array.from(mockSearchParams.keys()).forEach((k) =>
       mockSearchParams.delete(k),
@@ -105,7 +105,7 @@ describe("CallbackPage", () => {
       expect(mockPush).toHaveBeenCalledWith("/invite/abc123");
     });
     expect(mockPush).not.toHaveBeenCalledWith(paths.onboarding());
-    // nextUrl is a fast path — listMyInvitations should not be queried.
+    // nextUrl is a fast path, listMyInvitations should not be queried.
     expect(mockListMyInvitations).not.toHaveBeenCalled();
   });
 
@@ -256,7 +256,7 @@ describe("CallbackPage", () => {
   });
 
   it("redirects to CLI callback even when state also contains platform:desktop", async () => {
-    // cli_callback takes precedence over platform:desktop — the CLI flow
+    // cli_callback takes precedence over platform:desktop, the CLI flow
     // is a specific user intent that should not be derailed by desktop flag.
     const { api: mockedApi } = await import("@multica/core/api");
     const mockGoogleLogin = mockedApi.googleLogin as ReturnType<typeof vi.fn>;
@@ -296,7 +296,7 @@ describe("CallbackPage", () => {
   });
 
   it("onboarded users with missing source land in the workspace; the source-backfill modal is mounted there", async () => {
-    // Source attribution backfill is now an in-workspace modal — see
+    // Source attribution backfill is now an in-workspace modal, see
     // `<SourceBackfillModal />` mounted inside `DashboardLayout`. The
     // callback page is intentionally agnostic about it.
     mockLoginWithGoogle.mockResolvedValue(

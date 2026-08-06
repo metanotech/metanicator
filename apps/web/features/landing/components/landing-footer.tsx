@@ -26,7 +26,7 @@ export function LandingFooter() {
       <div className="mx-auto max-w-[1320px] px-4 sm:px-6 lg:px-8">
         {/* Top: CTA + link columns */}
         <div className="flex flex-col gap-12 border-b border-white/10 py-16 sm:py-20 lg:flex-row lg:gap-20">
-          {/* Left — newsletter / CTA */}
+          {/* Left, newsletter / CTA */}
           <div className="lg:w-[340px] lg:shrink-0">
             <Link href="#product" className="flex items-center gap-3">
               <MetanicatorIcon className="size-5 text-white" noSpin />
@@ -74,7 +74,7 @@ export function LandingFooter() {
             </div>
           </div>
 
-          {/* Right — link columns */}
+          {/* Right, link columns */}
           <div className="grid flex-1 grid-cols-2 gap-8 sm:grid-cols-4">
             {groups.map((group) => (
               <div key={group.label}>

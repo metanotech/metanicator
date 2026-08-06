@@ -147,7 +147,7 @@ function InputGroupInput({
  *
  *  The group lights its border from `[data-slot=input-group-control]:focus-visible`,
  *  and a trigger that kept its own slot would leave the box dark while the select
- *  it contains is the very thing focused — so the trigger takes that slot. Its
+ *  it contains is the very thing focused, so the trigger takes that slot. Its
  *  border, ring and background are the group's now; what it keeps is its own
  *  content width, so the control ends where its longest option does. */
 function InputGroupSelectTrigger({

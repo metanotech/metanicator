@@ -5,7 +5,7 @@ import { captureException } from "@multica/core/analytics";
 
 /**
  * Route-level error boundary for the web app. Next.js renders this (replacing
- * the root layout) when an error escapes everything below it — the full-page
+ * the root layout) when an error escapes everything below it, the full-page
  * white-screen case. React catches these before they reach window.onerror, so
  * posthog-js's automatic exception capture never sees them; we report them
  * explicitly here. Section-level failures are handled in place by

@@ -11,7 +11,7 @@ export default function InvitationsRoutePage() {
   const user = useAuthStore((s) => s.user);
   const isLoading = useAuthStore((s) => s.isLoading);
 
-  // Unauthenticated users have nowhere meaningful to land here — kick them
+  // Unauthenticated users have nowhere meaningful to land here, kick them
   // through login and bring them back. The login page will eventually run
   // its own listMyInvitations() check and route them here again.
   useEffect(() => {

@@ -35,13 +35,13 @@ const RESIZE_DRAG_THRESHOLD = 4;
 interface DataTableProps<TData> extends React.ComponentProps<"div"> {
   table: TanstackTable<TData>;
   // Optional bar shown below the table when ≥1 row is selected. We
-  // don't currently use selection — kept on the API surface for parity
+  // don't currently use selection, kept on the API surface for parity
   // with Dice UI's component so future row-select features just work.
   actionBar?: React.ReactNode;
   // Override for the empty-state cell text.
   emptyMessage?: React.ReactNode;
   // Called when the user clicks a row (anywhere outside an interactive
-  // descendant — buttons / dropdowns inside cells should call
+  // descendant, buttons / dropdowns inside cells should call
   // event.stopPropagation in their own handlers). Used to navigate to
   // a detail page on row click without nesting an <a> around <tr>,
   // which is invalid HTML.
@@ -59,7 +59,7 @@ interface DataTableProps<TData> extends React.ComponentProps<"div"> {
   virtualOverscan?: number;
 }
 
-// Headless data-table shell — adapted from Dice UI's data-table
+// Headless data-table shell, adapted from Dice UI's data-table
 // registry (https://diceui.com/r/data-table). Renders a TanStack Table
 // instance using shadcn/ui's table primitives.
 //
@@ -72,7 +72,7 @@ interface DataTableProps<TData> extends React.ComponentProps<"div"> {
 //     resizes them. Once resized, the explicit width is applied.
 //   - The table's `min-width` is the sum of every column's TanStack
 //     size (`table.getTotalSize()`). That gives grow columns a real
-//     floor — fixed mode ignores cell-level min-width, but it does
+//     floor, fixed mode ignores cell-level min-width, but it does
 //     respect `min-width` on the table itself. When the container is
 //     wider than min-width the table tracks it; when narrower, the
 //     table pins to min-width and the outer overflow-auto scrolls.
@@ -147,13 +147,13 @@ export function DataTable<TData>({
   // Double-click on the resize handle sizes the column to its content, the
   // convention every spreadsheet and grid shares. It replaces column.resetSize,
   // which cleared the stored width and let TanStack fall back to its generic
-  // 150 — a number unrelated to any of this table's designed widths, so
+  // 150, a number unrelated to any of this table's designed widths, so
   // "reset" widened some columns and collapsed others.
   //
   // Fixed table-layout ignores content, and cells truncate their own text, so
   // nothing on screen reports the width the content actually wants. The
   // measurement lifts both constraints on the column's cells, reads them, and
-  // puts everything back within the same task — the browser paints once, after
+  // puts everything back within the same task, the browser paints once, after
   // the restore, so the intermediate layout is never seen.
   const autoFitColumn = React.useCallback(
     (header: TanstackHeader<TData, unknown>) => {
@@ -225,7 +225,7 @@ export function DataTable<TData>({
         // Nothing is committed below the threshold, so a press on its own can
         // no longer pin a column at the width the stretch happened to give it.
         if (!frozen && Math.abs(delta) < RESIZE_DRAG_THRESHOLD) return;
-        // Measured once, on the frame the drag starts — every later frame
+        // Measured once, on the frame the drag starts, every later frame
         // reuses it, so the baseline can't drift as widths change underneath.
         frozen ??= freezeRenderedWidths(handleEl.closest("tr"));
 
@@ -244,7 +244,7 @@ export function DataTable<TData>({
         window.removeEventListener("pointerup", stopResize);
         window.removeEventListener("pointercancel", stopResize);
         window.removeEventListener("blur", stopResize);
-        // Detached before releasing capture — releasing fires this same event.
+        // Detached before releasing capture, releasing fires this same event.
         handleEl.removeEventListener("lostpointercapture", stopResize);
         if (handleEl.hasPointerCapture?.(pointerId)) {
           handleEl.releasePointerCapture?.(pointerId);
@@ -351,7 +351,7 @@ export function DataTable<TData>({
     overscan: virtualOverscan,
     // Rows are not all one height. Callers use renderRow for group headers and
     // end-of-column footers, which are shorter than a data row, so a single
-    // estimate drifts from the real layout as those accumulate — the window
+    // estimate drifts from the real layout as those accumulate, the window
     // lands off the rows it should be showing and the scrollbar overshoots the
     // bottom. Each mounted row reports its own height instead, and the
     // estimate only covers rows that have never been on screen.
@@ -398,8 +398,7 @@ export function DataTable<TData>({
         >
           {/* Opaque rather than translucent-and-blurred. A backdrop-filter on
             * a sticky element with content scrolling beneath it is a known
-            * Chromium compositing fault (electron#12906, chromium#339841685) —
-            * the blur layer has to recompute its backdrop every frame while
+            * Chromium compositing fault (electron#12906, chromium#339841685), * the blur layer has to recompute its backdrop every frame while
             * virtualisation adds and removes the rows underneath it, and the
             * strip flickers black. The mix resolves to the same colour
             * bg-muted/30 composited to, and a header that scrolled content
@@ -477,8 +476,7 @@ export function DataTable<TData>({
                               // and recolours it. Three states have to stay
                               // apart on one hairline: at rest it is the faint
                               // grid rule, hovered it goes translucent brand,
-                              // and for the whole drag it holds at full brand —
-                              // brightening rather than fading, so the edge
+                              // and for the whole drag it holds at full brand, // brightening rather than fading, so the edge
                               // being moved stays the most definite thing on
                               // screen even once the pointer leaves the handle.
                               // right-0, never a negative offset: the <th> is
@@ -527,7 +525,7 @@ export function DataTable<TData>({
         * between the frozen columns and the rest is permanent and says where
         * the boundary is; this says something is currently passing underneath,
         * so it appears only while scrolled. An inset box-shadow on the pinned
-        * cell could only darken that cell's own edge — the depth belongs on
+        * cell could only darken that cell's own edge, the depth belongs on
         * the content sliding beneath it. */}
       {isScrolledHorizontally && pinnedEdge !== null && (
         <div

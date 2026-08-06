@@ -1,7 +1,7 @@
 /**
  * Parses the GitHub Releases API asset array into a structured
  * download asset map. Skips auxiliary files (blockmaps, update
- * manifests, checksums) and the CLI tarballs — only desktop
+ * manifests, checksums) and the CLI tarballs, only desktop
  * installer artifacts are relevant on the /download page.
  *
  * Desktop artifact naming (see apps/desktop/electron-builder.yml):

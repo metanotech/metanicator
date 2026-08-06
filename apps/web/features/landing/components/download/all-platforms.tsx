@@ -12,7 +12,7 @@ interface Props {
 
 /**
  * Full matrix of platform + arch + format links. Always visible
- * regardless of which platform the Hero resolved to — lets power
+ * regardless of which platform the Hero resolved to, lets power
  * users grab any build directly.
  */
 export function AllPlatforms({

@@ -10,8 +10,8 @@ import { CliInstallInstructions, OnboardingFlow } from "@multica/views/onboardin
 
 /**
  * Creating a workspace runs the onboarding flow, entered at the workspace
- * step. A second workspace needs everything the first one needed — a runtime
- * connected to it, and its own Mika — so the only honest difference is that
+ * step. A second workspace needs everything the first one needed, a runtime
+ * connected to it, and its own Mika, so the only honest difference is that
  * this member has already met the product. Running one flow is what keeps the
  * two paths from drifting apart.
  *
@@ -34,7 +34,7 @@ export default function Page() {
 
   if (isLoading || !user) return null;
 
-  // Cancel goes to the root path — the workspace layout redirects from there
+  // Cancel goes to the root path, the workspace layout redirects from there
   // to the user's default workspace. Only offered when there is somewhere to
   // return to; a user with no workspaces at all has to finish.
   const onCancel =

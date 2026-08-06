@@ -34,7 +34,7 @@ import { useT } from "@multica/views/i18n";
  * Pick where a logged-in user with no explicit `?next=` should land.
  * Un-onboarded users with pending invitations on their email get routed to
  * the batch /invitations page; everyone else falls through to the standard
- * resolver. A network blip on listMyInvitations is non-fatal — we fall
+ * resolver. A network blip on listMyInvitations is non-fatal, we fall
  * through rather than trap the user on an error screen.
  */
 async function resolveLoggedInDestination(
@@ -71,7 +71,7 @@ function LoginPageContent() {
   const isDesktopHandoff = platform === "desktop" && !cliCallbackRaw;
   // `next` carries a protected URL the user was originally headed to
   // (e.g. /invite/{id}). With URL-driven workspaces there is no legacy
-  // "/issues" default — if `next` is absent we decide after login based on
+  // "/issues" default, if `next` is absent we decide after login based on
   // the user's workspace list. Sanitize first so a crafted `?next=https://evil`
   // cannot bounce the user off-origin after a successful login.
   const nextUrl = sanitizeNextUrl(searchParams.get("next"));
@@ -82,10 +82,10 @@ function LoginPageContent() {
 
   // Latched once auth has been observed settled as logged-out on this page.
   // Any `user` that appears afterwards came from the login form in this
-  // session — not from an existing session found on arrival.
+  // session, not from an existing session found on arrival.
   const settledLoggedOutRef = useRef(false);
 
-  // Already authenticated ON ARRIVAL — honor ?next= or fall back to first
+  // Already authenticated ON ARRIVAL, honor ?next= or fall back to first
   // workspace (or /onboarding if the user has none). Skip this entire path
   // when the user arrived to authorize the CLI.
   useEffect(() => {
@@ -97,7 +97,7 @@ function LoginPageContent() {
     if (cliCallbackRaw) return;
     if (isDesktopHandoff) {
       // Desktop opened the browser for login but the web session is already
-      // authenticated — mint a bearer token from the cookie session and hand
+      // authenticated, mint a bearer token from the cookie session and hand
       // it off via deep link instead of silently redirecting to the workspace.
       api
         .issueCliToken()
@@ -126,8 +126,7 @@ function LoginPageContent() {
     }
     // Fetch instead of reading the cache: on a fresh page load the cache is
     // cold, and `getQueryData() ?? []` would misroute a user who does have
-    // workspaces to /workspaces/new. On fetch failure fall back to [] —
-    // same destination the cold-cache read produced, rather than trapping
+    // workspaces to /workspaces/new. On fetch failure fall back to [], // same destination the cold-cache read produced, rather than trapping
     // the user on the login page.
     void qc
       .ensureQueryData(workspaceListOptions())
@@ -137,7 +136,7 @@ function LoginPageContent() {
   }, [isLoading, user, router, nextUrl, cliCallbackRaw, isDesktopHandoff, hasOnboarded, qc]);
 
   const handleSuccess = async () => {
-    // Read the latest user snapshot directly — the closure's `hasOnboarded`
+    // Read the latest user snapshot directly, the closure's `hasOnboarded`
     // was captured before login completed and would be stale here.
     const currentUser = useAuthStore.getState().user;
     const onboarded = currentUser?.onboarded_at != null;

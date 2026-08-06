@@ -28,7 +28,7 @@ import { PRIORITY_CONFIG } from "@multica/core/issues/config/priority";
 import type { IssueStatus, IssuePriority } from "@multica/core/types";
 
 /* ------------------------------------------------------------------ */
-/*  Mock ActorAvatar — mirrors the real ActorAvatar styling exactly     */
+/*  Mock ActorAvatar, mirrors the real ActorAvatar styling exactly     */
 /*  but uses hardcoded data instead of the workspace store             */
 /* ------------------------------------------------------------------ */
 
@@ -56,7 +56,7 @@ function MockAvatar({
 }
 
 /* ------------------------------------------------------------------ */
-/*  Mock PropRow — mirrors the real PropRow from issue-detail           */
+/*  Mock PropRow, mirrors the real PropRow from issue-detail           */
 /* ------------------------------------------------------------------ */
 
 function PropRow({ label, children }: { label: string; children: React.ReactNode }) {
@@ -100,7 +100,7 @@ const mockTimeline = [
     name: "Alex Rivera",
     time: "10 min",
     content:
-      "The current error responses are inconsistent across handlers — need a unified format with error codes.",
+      "The current error responses are inconsistent across handlers, need a unified format with error codes.",
   },
   {
     type: "comment" as const,
@@ -118,7 +118,7 @@ const mockTimeline = [
     name: "Alex Rivera",
     time: "3 min",
     content:
-      "Looking good. Make sure to preserve the existing HTTP status codes — some of our frontend relies on specific codes like 409.",
+      "Looking good. Make sure to preserve the existing HTTP status codes, some of our frontend relies on specific codes like 409.",
   },
 ];
 
@@ -234,7 +234,7 @@ function TeammatesVisual() {
                 Properties
               </div>
               <div className="space-y-0.5 pl-2">
-                {/* Status — clickable with dropdown */}
+                {/* Status, clickable with dropdown */}
                 <div className="relative">
                   <PropRow label="Status">
                     <button
@@ -267,7 +267,7 @@ function TeammatesVisual() {
                   )}
                 </div>
 
-                {/* Priority — clickable with dropdown */}
+                {/* Priority, clickable with dropdown */}
                 <div className="relative">
                   <PropRow label="Priority">
                     <button
@@ -300,7 +300,7 @@ function TeammatesVisual() {
                   )}
                 </div>
 
-                {/* Assignee — clickable to toggle picker */}
+                {/* Assignee, clickable to toggle picker */}
                 <PropRow label="Assignee">
                   <button
                     type="button"
@@ -320,7 +320,7 @@ function TeammatesVisual() {
               </div>
             </div>
 
-            {/* Assignee picker — togglable */}
+            {/* Assignee picker, togglable */}
             {pickerOpen && (
               <div className="overflow-hidden rounded-md border bg-popover shadow-md">
                 <div className="border-b px-3 py-1.5 text-caption text-muted-foreground">
@@ -392,14 +392,14 @@ function TeammatesVisual() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  Autonomous feature visual — agent live execution card               */
+/*  Autonomous feature visual, agent live execution card               */
 /* ------------------------------------------------------------------ */
 
 const mockToolCalls = [
   { type: "thinking" as const, content: "Analyzing the error handling patterns across all 14 handler files…" },
   { type: "tool_use" as const, tool: "Read", summary: "server/internal/handler/issue.go" },
   { type: "tool_result" as const, preview: "func (h *IssueHandler) Create(w http.ResponseWriter, r *http.Request) { …" },
-  { type: "tool_use" as const, tool: "Edit", summary: "server/internal/handler/issue.go — replace writeJSON error calls" },
+  { type: "tool_use" as const, tool: "Edit", summary: "server/internal/handler/issue.go, replace writeJSON error calls" },
   { type: "tool_result" as const, preview: "Updated 3 error responses to use writeError() helper" },
   { type: "thinking" as const, content: "Now checking handler/comment.go for the same inconsistent patterns…" },
   { type: "tool_use" as const, tool: "Read", summary: "server/internal/handler/comment.go" },
@@ -523,7 +523,7 @@ function AutonomousVisual() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  Skills feature visual — skill library + file browser               */
+/*  Skills feature visual, skill library + file browser               */
 /* ------------------------------------------------------------------ */
 
 const mockSkills = [
@@ -676,7 +676,7 @@ function SkillsVisual() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  Runtimes feature visual — agent dashboard with runtime status      */
+/*  Runtimes feature visual, agent dashboard with runtime status      */
 /* ------------------------------------------------------------------ */
 
 const runtimeStatusConfig = {
@@ -692,7 +692,7 @@ const mockRuntimeList = [
   { name: "Linux Server", mode: "local" as const, status: "offline" as const, device: "x86_64 / Ubuntu 24.04", lastSeen: "3h ago" },
 ];
 
-/* Mock usage data — deterministic seed values to avoid SSR/hydration mismatch */
+/* Mock usage data, deterministic seed values to avoid SSR/hydration mismatch */
 const USAGE_SEEDS = [
   [72, 38, 54, 12], [45, 22, 41, 8], [88, 44, 63, 15], [61, 31, 48, 10],
   [93, 47, 58, 14], [55, 28, 39, 9], [79, 40, 52, 13], [67, 34, 46, 11],
@@ -712,14 +712,14 @@ const mockUsageData = USAGE_SEEDS.map((s, i) => ({
 }));
 
 
-/* Heatmap color helper — same as real ActivityHeatmap */
+/* Heatmap color helper, same as real ActivityHeatmap */
 function getHeatmapColor(level: number): string {
   if (level === 0) return "var(--color-muted)";
   const opacities = ["25%", "45%", "68%", "90%"];
   return `color-mix(in oklch, var(--color-foreground) ${opacities[level - 1]}, transparent)`;
 }
 
-/* Generate heatmap cells — simplified version of real ActivityHeatmap */
+/* Generate heatmap cells, simplified version of real ActivityHeatmap */
 function buildHeatmapCells() {
   const WEEKS = 13;
   const cells: { week: number; day: number; level: number; date: string }[] = [];
@@ -890,7 +890,7 @@ function RuntimesVisual() {
               </div>
             </div>
 
-            {/* Token summary cards — same as real TokenCard */}
+            {/* Token summary cards, same as real TokenCard */}
             <div className="grid grid-cols-4 gap-2">
               {[
                 { label: "Input", value: formatTokens(totals.input) },
@@ -905,9 +905,9 @@ function RuntimesVisual() {
               ))}
             </div>
 
-            {/* Charts row — Heatmap + Hourly bar */}
+            {/* Charts row, Heatmap + Hourly bar */}
             <div className="grid grid-cols-2 gap-3">
-              {/* Activity Heatmap — mirrors real ActivityHeatmap */}
+              {/* Activity Heatmap, mirrors real ActivityHeatmap */}
               <div className="rounded-lg border p-3">
                 <h4 className="text-micro font-medium text-muted-foreground mb-2">Activity</h4>
                 <div className="overflow-x-auto">
@@ -941,7 +941,7 @@ function RuntimesVisual() {
                 </div>
               </div>
 
-              {/* Daily Cost — SVG bar chart mirroring real DailyCostChart */}
+              {/* Daily Cost, SVG bar chart mirroring real DailyCostChart */}
               <div className="rounded-lg border p-3">
                 <h4 className="text-micro font-medium text-muted-foreground mb-2">Daily Cost</h4>
                 <DailyCostBars data={mockUsageData.slice(-14)} />

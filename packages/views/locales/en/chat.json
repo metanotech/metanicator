@@ -21,8 +21,8 @@
     "queue_send_tooltip": "Queue message",
     "stop_tooltip": "Stop",
     "send_failed_toast": "Failed to send message",
-    "send_blocked_toast": "Message not sent — you no longer have permission to use this agent",
-    "runtime_required_toast": "Message not sent — bind a runtime to this agent first",
+    "send_blocked_toast": "Message not sent, you no longer have permission to use this agent",
+    "runtime_required_toast": "Message not sent, bind a runtime to this agent first",
     "attachment_bind_failed_toast": "Message sent, but files were not attached. Please try again in a moment.",
     "add_tooltip": "Add",
     "upload_file": "Image or files",
@@ -30,7 +30,7 @@
     "change_project_context": "Change project context",
     "remove_project_context": "Remove project context",
     "no_projects": "No projects yet",
-    "project_context_unsupported": "Project description won't apply — this agent's daemon needs an upgrade"
+    "project_context_unsupported": "Project description won't apply, this agent's daemon needs an upgrade"
   },
   "queue": {
     "title_one": "{{count}} queued message",
@@ -58,7 +58,7 @@
       "runtime_offline": "The agent is offline right now, so it couldn't reply. Please try again once it's back online.",
       "runtime_recovery": "The agent restarted before it could finish. Please try again.",
       "manual": "This reply was cancelled.",
-      "skill_bundle_unavailable": "The agent's skills couldn't be downloaded, so it never got started. This is usually a connection problem — please try again.",
+      "skill_bundle_unavailable": "The agent's skills couldn't be downloaded, so it never got started. This is usually a connection problem, please try again.",
       "provider_network": "The connection to the model provider dropped before the reply finished. Check your network and try again.",
       "provider_auth_or_access": "The agent's model account isn't signed in any more. Sign in again, then retry.",
       "provider_quota_limit": "The agent's model account has run out of credit. Top it up or switch accounts, then retry.",
@@ -137,7 +137,7 @@
   },
   "empty_state": {
     "first_time_title": "Chat with your agents",
-    "first_time_intro": "✨ They know your workspace —",
+    "first_time_intro": "✨ They know your workspace , ",
     "first_time_pillars": "issues, projects, skills",
     "first_time_pillars_suffix": ".",
     "first_time_actions": "Ask for a summary, plan your day, or hand off a quick task.",
@@ -156,12 +156,12 @@
     "cta": "Start",
     "board": {
       "title": "Get a board up in minutes",
-      "desc": "Tell me the goal — I'll create the project, split the issues, and set priorities.",
+      "desc": "Tell me the goal, I'll create the project, split the issues, and set priorities.",
       "prompt": "Turn our current goals into a project board"
     },
     "delegate": {
       "title": "Hand me one thing first",
-      "desc": "A quick piece of research, say — results come back as an issue and a report.",
+      "desc": "A quick piece of research, say, results come back as an issue and a report.",
       "prompt": "Take one thing off my plate: run a quick piece of research and send the results back as a report"
     },
     "digest": {
@@ -172,7 +172,7 @@
     "digest_badge": "Daily 9:00"
   },
   "no_agent_banner": "You need an agent to start chatting.",
-  "archived_agent_banner": "{{name}} has been archived — this conversation is read-only.",
+  "archived_agent_banner": "{{name}} has been archived, this conversation is read-only.",
   "runtime_required_banner": {
     "fallback_name": "The agent",
     "message": "{{name}} needs a runtime before it can reply.",
@@ -180,8 +180,8 @@
   },
   "offline_banner": {
     "fallback_name": "the agent",
-    "unstable": "{{name}}'s connection is unstable — replies may be delayed.",
-    "offline": "{{name}} is offline — your message will be delivered when they're back."
+    "unstable": "{{name}}'s connection is unstable, replies may be delayed.",
+    "offline": "{{name}} is offline, your message will be delivered when they're back."
   },
   "status_pill": {
     "stages": {

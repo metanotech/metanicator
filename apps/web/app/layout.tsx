@@ -15,8 +15,7 @@ import {
 import "./globals.css";
 
 // Inter is the Latin UI face. next/font produces a hashed family (`__Inter_xxx`)
-// plus a synthetic size-adjusted fallback face to prevent FOUT layout shift —
-// both are exposed under the `--font-inter` CSS variable.
+// plus a synthetic size-adjusted fallback face to prevent FOUT layout shift, // both are exposed under the `--font-inter` CSS variable.
 //
 // The full `--font-sans` stack (Inter + the per-locale CJK fallback chain) is
 // assembled in static CSS in ./globals.css, not here: it must be overridable per
@@ -74,7 +73,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.multica.ai"),
   title: {
-    default: "Metanicator — Project Management for Human + Agent Teams",
+    default: "Metanicator, Project Management for Human + Agent Teams",
     template: "%s | Metanicator",
   },
   description:
@@ -143,7 +142,7 @@ export default async function RootLayout({
           react-grab: dev-only element inspector. Hold ⌘C (Mac) / Ctrl+C and click
           any element to copy its source path + line + component stack for pasting
           to an AI. Opt-in per developer: only loads when VITE_REACT_GRAB is set in
-          a local, gitignored apps/web/.env.local — it never activates for anyone
+          a local, gitignored apps/web/.env.local, it never activates for anyone
           else. Both guards are read server-side, so the <Script> is omitted from
           the HTML entirely unless you opted in. The VITE_ prefix is shared with the
           desktop renderer (apps/desktop/src/renderer/src/main.tsx), where Vite only

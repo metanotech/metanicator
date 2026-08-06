@@ -47,7 +47,7 @@
     "empty": "取引履歴はまだありません。",
     "credits_value": "{{value}} credits",
     "row_meta": "{{date}} · balance after: {{balance}} credits · ref: {{ref}}",
-    "ref_empty": "—"
+    "ref_empty": ", "
   },
   "batches": {
     "title": "クレジット batch",
@@ -64,12 +64,12 @@
     "amount_to_credits": "{{money}} → {{credits}} credits",
     "amount_to_credits_with_bonus": "{{money}} → {{credits}} credits + ボーナス {{bonus}}",
     "row_meta": "{{date}} · stripe: {{checkout}}",
-    "stripe_empty": "—"
+    "stripe_empty": ", "
   },
   "shared": {
     "request_failed": "リクエストに失敗しました",
     "refresh": "更新",
     "paging": "{{page}} / {{totalPages}} ページ · 合計 {{total}}件",
-    "date_dash": "—"
+    "date_dash": ", "
   }
 }

@@ -50,7 +50,7 @@ export function useScrollFade(
     ro.observe(el);
     // ResizeObserver only fires on the container's own box. When children
     // grow inside a flex/auto-sized parent, the scroll extent can change while
-    // the viewport does not — the mask would stay "none" until the user scrolls.
+    // the viewport does not, the mask would stay "none" until the user scrolls.
     // MutationObserver on childList catches those content insertions.
     const mo = new MutationObserver(update);
     mo.observe(el, { childList: true, subtree: true });

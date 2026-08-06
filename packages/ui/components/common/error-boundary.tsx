@@ -42,7 +42,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
   override componentDidCatch(error: Error, info: ErrorInfo): void {
     this.props.onError?.(error, info);
     // Log unconditionally so a missing onError doesn't swallow the trace.
-    // Console is fine here — the platform logger isn't bound to UI yet.
+    // Console is fine here, the platform logger isn't bound to UI yet.
     console.error("ErrorBoundary caught:", error, info.componentStack);
   }
 

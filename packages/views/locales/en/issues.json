@@ -127,7 +127,7 @@
     "search_clear": "Clear search",
     "load_failed": "Failed to load issues.",
     "load_failed_retry": "Retry",
-    "load_more_failed_retry": "Loading more failed — Retry",
+    "load_more_failed_retry": "Loading more failed, Retry",
     "load_more": "Load more",
     "loading_branch": "Loading…",
     "no_more": "No more",
@@ -181,8 +181,8 @@
     "zoom_week": "Week",
     "zoom_month": "Month",
     "show_completed": "Show completed",
-    "empty": "No scheduled issues yet — set a start or due date on any issue to see it on the timeline.",
-    "inverted_dates_warning": "Start date is after due date — bar shown from min to max."
+    "empty": "No scheduled issues yet, set a start or due date on any issue to see it on the timeline.",
+    "inverted_dates_warning": "Start date is after due date, bar shown from min to max."
   },
   "actor_issues": {
     "scope": {
@@ -252,7 +252,7 @@
     "quick_action_target_fallback": "the agent",
     "quick_action_queued": "{{name}} started working",
     "quick_action_coalesced": "Added to {{name}}’s current run",
-    "quick_action_deferred": "{{name}} is offline — it will start once back online",
+    "quick_action_deferred": "{{name}} is offline, it will start once back online",
     "quick_action_blocked": "{{name}} could not be triggered",
     "quick_action_posted": "Comment posted",
     "quick_action_blocked_title": "You can’t run this quick action",
@@ -349,7 +349,7 @@
     "link_copy_failed": "Failed to copy link",
     "workdir_path_copied": "Workdir path copied",
     "workdir_path_copy_failed": "Failed to copy workdir path",
-    "workdir_path_unavailable": "No local workdir yet — issue has not been run by a local agent"
+    "workdir_path_unavailable": "No local workdir yet, issue has not been run by a local agent"
   },
   "timeline": {
     "loading": "Loading..."
@@ -402,11 +402,11 @@
     "posted_partial_trigger_one": "Comment posted, but {{count}} mention wasn't triggered",
     "posted_partial_trigger_other": "Comment posted, but {{count}} mentions weren't triggered",
     "posted_partial_trigger_named": "Comment posted, but {{name}} wasn't triggered ({{reason}})",
-    "trigger_blocked_chip_aria": "{{name}} won't be triggered — {{reason}}",
+    "trigger_blocked_chip_aria": "{{name}} won't be triggered, {{reason}}",
     "trigger_blocked_invocation_not_allowed": "This target can't be found, or you don't have permission to use it",
     "trigger_blocked_target_unavailable": "This target is unavailable",
     "trigger_blocked_runtime_offline": "This target's runtime is offline",
-    "trigger_blocked_agent_runtime_required": "This target has no runtime — bind one to run it",
+    "trigger_blocked_agent_runtime_required": "This target has no runtime, bind one to run it",
     "trigger_blocked_generic": "This target won't be triggered",
     "trigger_blocked_short_invocation_not_allowed": "Not found or no permission",
     "trigger_blocked_short_target_unavailable": "Unavailable",
@@ -432,7 +432,7 @@
     "trigger_will_start_count_one": "{{count}} agent will start when sent",
     "trigger_will_start_count_other": "{{count}} agents will start when sent",
     "trigger_starts_now": "Starts right away.",
-    "trigger_starts_when_online": "Offline now — starts once online.",
+    "trigger_starts_when_online": "Offline now, starts once online.",
     "trigger_click_to_skip": "Click to skip this time.",
     "trigger_click_to_manage": "Click to choose who runs this time.",
     "trigger_click_to_restore": "Won't start this time. Click to restore.",
@@ -477,7 +477,7 @@
     "chip_agents_working_other": "{{count}} agents working",
     "issues_count_one": "{{count}} issue",
     "issues_count_other": "{{count}} issues",
-    "chip_agents_working_unknown": "Agents working: —"
+    "chip_agents_working_unknown": "Agents working: , "
   },
   "filtered_empty": {
     "title": "No issues match these filters",
@@ -506,7 +506,7 @@
     "retry_task_tooltip": "Retry task",
     "retry_task_aria": "Retry task",
     "retry_failed": "Failed to retry task",
-    "retry_blocked": "Not retried — you don't have permission to use this agent",
+    "retry_blocked": "Not retried, you don't have permission to use this agent",
     "transcript_tooltip": "View transcript",
     "cancel_failed": "Failed to cancel task",
     "trigger_retry": "Retry",
@@ -534,11 +534,11 @@
       "source_comment_source": "From a comment thread",
       "source_trigger_owner": "Autopilot trigger creator",
       "source_rule_owner": "Autopilot rule publisher",
-      "source_owner_fallback": "No precise owner — attributed to the agent owner",
+      "source_owner_fallback": "No precise owner, attributed to the agent owner",
       "source_backfill": "Backfilled attribution",
       "source_unattributed": "No responsible member resolved"
     },
-    "usage_total_tooltip": "Token usage for this issue — click for the per-run breakdown"
+    "usage_total_tooltip": "Token usage for this issue, click for the per-run breakdown"
   },
   "usage_detail": {
     "title": "Usage breakdown",
@@ -637,7 +637,7 @@
       "url_placeholder": "https://…",
       "number_placeholder": "0",
       "open_link": "Open link",
-      "archived_hint": "Archived property — value is read-only"
+      "archived_hint": "Archived property, value is read-only"
     },
     "filter_options_aria": "Filter options",
     "no_results": "No results",

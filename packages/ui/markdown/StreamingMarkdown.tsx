@@ -26,7 +26,7 @@ interface Block {
  * - ^ charCode: XOR variant, favored by Bernstein over additive version
  * - >>> 0: convert to unsigned 32-bit integer
  *
- * Not cryptographic — just fast with good distribution for short strings.
+ * Not cryptographic, just fast with good distribution for short strings.
  * @see http://www.cse.yorku.ca/~oz/hash.html
  */
 function simpleHash(str: string): string {

@@ -16,11 +16,11 @@ const buttonVariants = cva(
         // Brand-filled state for a control that is currently ON (an active
         // filter, a selected toggle). Self-contained on purpose: passing
         // brand classes through `className` on top of `outline` does NOT
-        // work — `outline` ships `dark:bg-input/30`, `hover:bg-muted` and
+        // work, `outline` ships `dark:bg-input/30`, `hover:bg-muted` and
         // `aria-expanded:bg-muted`, and those win the cascade (the `dark:`
         // ones by specificity, since `dark` compiles to `&:is(.dark *)`),
         // repainting the chip neutral. That is what silently killed the
-        // brand colour in dark mode — see MUL-4884.
+        // brand colour in dark mode, see MUL-4884.
         //
         // `brand` needs no `dark:` of its own: the --brand token already
         // flips per theme, so one set of rules is correct in both.
@@ -28,7 +28,7 @@ const buttonVariants = cva(
         // reads as hover rather than as a colour change.
         brand:
           "border-brand bg-brand text-brand-foreground hover:bg-brand/90 hover:text-brand-foreground active:bg-brand/85 aria-expanded:bg-brand/90 aria-expanded:text-brand-foreground",
-        // Brand tint for "there is activity here" — present, but not
+        // Brand tint for "there is activity here", present, but not
         // claiming the loud filled state. Light and dark take their own
         // opacity notches: the same alpha does not read equally against a
         // white and a near-black surface, so dark runs one notch hotter.

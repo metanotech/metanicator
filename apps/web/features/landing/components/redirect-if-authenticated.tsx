@@ -14,8 +14,8 @@ import { isOfficialMarketingHost } from "@/lib/public-host";
  * The primary path for logged-in users hitting an app host's `/` is a
  * server-side redirect in the Next.js proxy/middleware, driven by the
  * `last_workspace_slug` cookie. That cookie is set by the workspace layout on
- * every visit. But on *first login* — before the user has ever visited a
- * workspace — the cookie is absent, so the proxy falls through to the landing
+ * every visit. But on *first login*, before the user has ever visited a
+ * workspace, the cookie is absent, so the proxy falls through to the landing
  * page. This component covers that gap on app/self-host origins.
  *
  * On the official marketing origins, `/` must remain public even for logged-in

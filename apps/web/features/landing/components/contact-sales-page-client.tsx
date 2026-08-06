@@ -39,7 +39,7 @@ const EMPTY_FORM: FormState = {
 };
 
 // Free providers we reject client-side, so users get instant feedback. The
-// server enforces a longer list independently — this is purely a UX guard
+// server enforces a longer list independently, this is purely a UX guard
 // and is not a security boundary.
 const CLIENT_FREE_EMAIL_DOMAINS = new Set([
   "gmail.com",
@@ -70,7 +70,7 @@ export function ContactSalesPageClient() {
 
   // After a successful submit, the tall form collapses into the much shorter
   // success card. The browser keeps the scroll offset, which lands the user
-  // on the footer — they have to scroll up to see the confirmation. Pull the
+  // on the footer, they have to scroll up to see the confirmation. Pull the
   // page back so the thank-you message is in view.
   useEffect(() => {
     if (state.status !== "success") return;
@@ -137,7 +137,7 @@ export function ContactSalesPageClient() {
         const body = (await res.json()) as { error?: unknown };
         if (typeof body?.error === "string") serverMsg = body.error;
       } catch {
-        // ignore — body wasn't JSON.
+        // ignore, body wasn't JSON.
       }
       if (/business email/i.test(serverMsg)) {
         setState({ status: "error", message: c.errors.freeEmail });

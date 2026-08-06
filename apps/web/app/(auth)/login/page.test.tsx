@@ -50,7 +50,7 @@ const {
   },
 }));
 
-// Mock next/navigation — router spies are hoisted so tests can assert
+// Mock next/navigation, router spies are hoisted so tests can assert
 // which navigation (if any) the page issued.
 vi.mock("next/navigation", () => ({
   useRouter: () => ({ push: mockPush, replace: mockReplace }),
@@ -58,7 +58,7 @@ vi.mock("next/navigation", () => ({
   useSearchParams: () => searchParamsState.params,
 }));
 
-// Mock auth store — shared LoginPage uses getState().sendCode/verifyCode,
+// Mock auth store, shared LoginPage uses getState().sendCode/verifyCode,
 // web wrapper uses useAuthStore((s) => s.user/isLoading). Keep the real
 // sanitizeNextUrl so the redirect-sanitization rules are exercised rather
 // than silently drifting behind a mock reimplementation.
@@ -177,7 +177,7 @@ describe("LoginPage", () => {
     });
   });
 
-  // Regression: MUL-1080 — if the user is already authenticated on the web
+  // Regression: MUL-1080, if the user is already authenticated on the web
   // and the Desktop app redirects them to /login?platform=desktop, the web
   // must exchange the cookie session for a bearer token and hand it off via
   // the multica:// deep link, not silently redirect to the workspace page.
@@ -217,7 +217,7 @@ describe("LoginPage", () => {
     }
   });
 
-  // Regression: #5009 — the "already authenticated on arrival" effect used to
+  // Regression: #5009, the "already authenticated on arrival" effect used to
   // fire for fresh form logins too. verifyCode writes `user` while handleVerify
   // is still fetching the workspace list, so the effect read an empty cache and
   // raced handleSuccess with replace("/workspaces/new"); depending on the
@@ -231,12 +231,12 @@ describe("LoginPage", () => {
     };
 
     it("does not redirect from the arrival effect when the user logs in via the form", async () => {
-      // Auth settles as logged-out first — the page latches "any user from
+      // Auth settles as logged-out first, the page latches "any user from
       // now on came from the form".
       const wrapper = createWrapper();
       const { rerender } = render(<LoginPage />, { wrapper });
       // verifyCode set the user; the workspace list fetch is still in flight
-      // (cache cold). The arrival effect must stay silent — handleSuccess
+      // (cache cold). The arrival effect must stay silent, handleSuccess
       // owns this navigation.
       authStateRef.state.user = onboardedUser;
       rerender(<LoginPage />);

@@ -47,7 +47,7 @@
     "empty": "아직 거래 내역이 없습니다.",
     "credits_value": "{{value}} credits",
     "row_meta": "{{date}} · balance after: {{balance}} credits · ref: {{ref}}",
-    "ref_empty": "—"
+    "ref_empty": ", "
   },
   "batches": {
     "title": "크레딧 batch",
@@ -64,12 +64,12 @@
     "amount_to_credits": "{{money}} → {{credits}} credits",
     "amount_to_credits_with_bonus": "{{money}} → {{credits}} credits + 보너스 {{bonus}}",
     "row_meta": "{{date}} · stripe: {{checkout}}",
-    "stripe_empty": "—"
+    "stripe_empty": ", "
   },
   "shared": {
     "request_failed": "요청 실패",
     "refresh": "새로고침",
     "paging": "{{page}} / {{totalPages}} 페이지 · 총 {{total}}개",
-    "date_dash": "—"
+    "date_dash": ", "
   }
 }

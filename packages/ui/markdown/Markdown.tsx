@@ -80,7 +80,7 @@ export interface MarkdownProps {
   /**
    * When true, bare issue identifiers (e.g. `MUL-123`, `TES-1`) are rewritten
    * to `mention://issue/<identifier>` links so `renderMention` can resolve them
-   * to a navigable issue chip. Off by default — enable only on surfaces whose
+   * to a navigable issue chip. Off by default, enable only on surfaces whose
    * `renderMention` knows how to resolve an identifier (see the app wrapper in
    * packages/views/common/markdown.tsx). Detection is markdown-aware: code,
    * existing links, URLs, and file/path tokens are skipped.
@@ -159,7 +159,7 @@ function createComponents(
 
           if (renderMention) {
             // Let the custom renderer opt out for types it doesn't handle
-            // by returning null/undefined — we then fall through to the
+            // by returning null/undefined, we then fall through to the
             // default styled span so nothing ever disappears silently.
             const rendered = renderMention({ type, id })
             if (rendered) return <>{rendered}</>

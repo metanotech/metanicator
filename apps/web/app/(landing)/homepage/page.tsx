@@ -4,9 +4,9 @@ import { MetanicatorLanding } from "@/features/landing/components/multica-landin
 export const metadata: Metadata = {
   title: "Homepage",
   description:
-    "Metanicator — open-source platform that turns coding agents into real teammates. Assign tasks, track progress, compound skills.",
+    "Metanicator, open-source platform that turns coding agents into real teammates. Assign tasks, track progress, compound skills.",
   openGraph: {
-    title: "Metanicator — Project Management for Human + Agent Teams",
+    title: "Metanicator, Project Management for Human + Agent Teams",
     description:
       "Manage your human + agent workforce in one place.",
     url: "/homepage",

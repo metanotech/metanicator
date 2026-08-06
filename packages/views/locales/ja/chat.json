@@ -20,8 +20,8 @@
     "queue_send_tooltip": "キューに追加",
     "stop_tooltip": "停止",
     "send_failed_toast": "メッセージを送信できませんでした",
-    "send_blocked_toast": "メッセージは送信されませんでした — このエージェントを使用する権限がありません",
-    "runtime_required_toast": "メッセージは送信されませんでした — 先にこのエージェントのランタイムを設定してください",
+    "send_blocked_toast": "メッセージは送信されませんでした, このエージェントを使用する権限がありません",
+    "runtime_required_toast": "メッセージは送信されませんでした, 先にこのエージェントのランタイムを設定してください",
     "attachment_bind_failed_toast": "メッセージは送信されましたが、ファイルを添付できませんでした。しばらくしてからもう一度お試しください。",
     "add_tooltip": "追加",
     "upload_file": "画像・ファイル",
@@ -29,7 +29,7 @@
     "change_project_context": "プロジェクトコンテキストを変更",
     "remove_project_context": "プロジェクトコンテキストを削除",
     "no_projects": "プロジェクトがまだありません",
-    "project_context_unsupported": "プロジェクトの説明は適用されません——このエージェントのデーモンのアップグレードが必要です"
+    "project_context_unsupported": "プロジェクトの説明は適用されません, , このエージェントのデーモンのアップグレードが必要です"
   },
   "queue": {
     "title_other": "キュー内のメッセージ {{count}} 件",
@@ -133,7 +133,7 @@
   },
   "empty_state": {
     "first_time_title": "エージェントとチャット",
-    "first_time_intro": "✨ エージェントはあなたのワークスペースを把握しています —",
+    "first_time_intro": "✨ エージェントはあなたのワークスペースを把握しています , ",
     "first_time_pillars": "タスク、プロジェクト、スキル",
     "first_time_pillars_suffix": "。",
     "first_time_actions": "要約を頼んだり、今日の予定を立てたり、簡単なタスクを任せたりしてみましょう。",

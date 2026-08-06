@@ -1,6 +1,6 @@
 {
   "title": "Billing (test page)",
-  "subtitle": "Direct passthrough to multica-cloud's /api/v1/billing/*. Not a finished UI — just every endpoint stuffed onto one page so we can verify the proxy + Stripe flow.",
+  "subtitle": "Direct passthrough to multica-cloud's /api/v1/billing/*. Not a finished UI, just every endpoint stuffed onto one page so we can verify the proxy + Stripe flow.",
   "endpoints": {
     "balance": "GET /api/cloud-billing/balance",
     "transactions": "GET /api/cloud-billing/transactions",
@@ -15,7 +15,7 @@
   },
   "buy": {
     "title": "Buy credits / Manage billing",
-    "no_tiers": "No price tiers configured. Cloud probably has no Stripe key set — checkout will return 503.",
+    "no_tiers": "No price tiers configured. Cloud probably has no Stripe key set, checkout will return 503.",
     "tier_money_to_credits": "{{money}} → {{credits}} credits",
     "tier_bonus": " + {{credits}} bonus",
     "tier_bonus_with_expiry": " + {{credits}} bonus ({{expiry}})",
@@ -47,7 +47,7 @@
     "empty": "No transactions yet.",
     "credits_value": "{{value}} credits",
     "row_meta": "{{date}} · balance after: {{balance}} credits · ref: {{ref}}",
-    "ref_empty": "—"
+    "ref_empty": ", "
   },
   "batches": {
     "title": "Credit batches",
@@ -64,12 +64,12 @@
     "amount_to_credits": "{{money}} → {{credits}} credits",
     "amount_to_credits_with_bonus": "{{money}} → {{credits}} credits + {{bonus}} bonus",
     "row_meta": "{{date}} · stripe: {{checkout}}",
-    "stripe_empty": "—"
+    "stripe_empty": ", "
   },
   "shared": {
     "request_failed": "Request failed",
     "refresh": "Refresh",
     "paging": "page {{page}} / {{totalPages}} · {{total}} total",
-    "date_dash": "—"
+    "date_dash": ", "
   }
 }

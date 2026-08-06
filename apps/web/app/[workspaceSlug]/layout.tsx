@@ -35,7 +35,7 @@ export default function WorkspaceLayout({
   // Hard onboarding gate. Authenticated user but onboarded_at NULL means
   // they bypassed /onboarding (typed the URL, deeplink, etc.). Redirect
   // back so the questionnaire + Step 3 finish. The reverse gate lives in
-  // `apps/web/app/(auth)/onboarding/page.tsx` — onboarded users hitting
+  // `apps/web/app/(auth)/onboarding/page.tsx`, onboarded users hitting
   // /onboarding bounce out to their workspace. Together those two effects
   // make `onboarded_at` the single source of truth for "may access /<slug>/*".
   useEffect(() => {
@@ -45,7 +45,7 @@ export default function WorkspaceLayout({
   }, [user, router]);
 
   // Resolve workspace by slug from the React Query list cache.
-  // Enabled only when user is authenticated — otherwise the list query isn't seeded.
+  // Enabled only when user is authenticated, otherwise the list query isn't seeded.
   const { data: workspace, isFetched: listFetched } = useQuery({
     ...workspaceBySlugOptions(workspaceSlug),
     enabled: !!user,
@@ -59,7 +59,7 @@ export default function WorkspaceLayout({
     setCurrentWorkspace(workspaceSlug, workspace.id);
   }
 
-  // Cookie write (last_workspace_slug) — proxy reads it on next page load
+  // Cookie write (last_workspace_slug), proxy reads it on next page load
   // to redirect unauthenticated-URL hits to the user's last workspace.
   useEffect(() => {
     if (!workspace || typeof document === "undefined") return;
@@ -70,7 +70,7 @@ export default function WorkspaceLayout({
 
   // Remember whether this slug has resolved before. Used below to avoid
   // flashing NoAccessPage during active workspace removal (delete, leave,
-  // or realtime eviction) — in those cases the caller is navigating away
+  // or realtime eviction), in those cases the caller is navigating away
   // and we just need to hold null briefly.
   const hasBeenSeen = useWorkspaceSeen(workspaceSlug, !!workspace);
 
@@ -82,13 +82,13 @@ export default function WorkspaceLayout({
 
   if (isAuthLoading) return loadingIndicator;
   // Don't render children until workspace is resolved. useWorkspaceId()
-  // throws when the list hasn't populated or the slug is unknown — gating
+  // throws when the list hasn't populated or the slug is unknown, gating
   // here makes that invariant hold for every descendant.
   if (!listFetched) return loadingIndicator;
   if (!workspace) {
     // If we've resolved this slug before in this session, it was just
     // removed from our list (deleted/left/evicted). A navigate is almost
-    // certainly in flight — render null to avoid a NoAccessPage flash.
+    // certainly in flight, render null to avoid a NoAccessPage flash.
     if (hasBeenSeen) return null;
     // Otherwise: the URL points at a workspace the user never had access
     // to. Show explicit feedback instead of silently redirecting. Doesn't

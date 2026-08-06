@@ -33,7 +33,7 @@ function DropdownMenuContent({
   >) {
   // Stop click events from bubbling out of the menu. Base UI portals the
   // popup so DOM is detached, but React's synthetic event system still
-  // bubbles through the React component tree — without this, clicking a
+  // bubbles through the React component tree, without this, clicking a
   // menu item inside a row that's wrapped in <a> (agent / runtime list
   // rows) would ALSO fire the row's onClick → unintended navigation.
   return (

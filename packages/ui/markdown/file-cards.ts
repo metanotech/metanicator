@@ -5,12 +5,12 @@
  * react-markdown with a custom `div` component.
  *
  * Two syntaxes are supported:
- * 1. `!file[name](url)` — new unambiguous syntax (no hostname check needed)
- * 2. `[name](cdnUrl)` — legacy syntax, matched by CDN hostname on own line
+ * 1. `!file[name](url)`, new unambiguous syntax (no hostname check needed)
+ * 2. `[name](cdnUrl)`, legacy syntax, matched by CDN hostname on own line
  *
  * Output: `<div data-type="fileCard" data-href="url" data-filename="name"></div>`
  *
- * All functions are pure — no global state, no imports from core/ or views/.
+ * All functions are pure, no global state, no imports from core/ or views/.
  */
 
 const IMAGE_EXTS = /\.(png|jpe?g|gif|webp|svg|ico|bmp|tiff?)$/i
@@ -31,8 +31,8 @@ const ATTACHMENT_DOWNLOAD_URL_RE = new RegExp(
  * - `/api/attachments/<UUID>/download` site-relative attachment downloads
  * - `http(s)://...` absolute URLs (S3 / CloudFront / hosted)
  *
- * Anything else — `javascript:`, `data:`, protocol-relative `//host/x`, other
- * APIs `/api/…`, path-traversal `/../…` — is rejected so a stored file-card
+ * Anything else, `javascript:`, `data:`, protocol-relative `//host/x`, other
+ * APIs `/api/…`, path-traversal `/../…`, is rejected so a stored file-card
  * cannot be turned into an out-of-band navigation.
  */
 export const FILE_CARD_URL_PATTERN = new RegExp(
@@ -48,16 +48,16 @@ export function isAllowedFileCardHref(href: string): boolean {
 }
 
 /**
- * New syntax: !file[name](url) — unambiguous, no hostname matching needed.
+ * New syntax: !file[name](url), unambiguous, no hostname matching needed.
  * Backslash is excluded from the label char class so "\x" runs can only be
- * consumed by \\. — overlapping alternatives backtrack in 2^n ways (ReDoS,
+ * consumed by \\., overlapping alternatives backtrack in 2^n ways (ReDoS,
  * GitHub #4881). This runs on every comment/description render.
  */
 const NEW_FILE_CARD_RE = new RegExp(
   `^!file\\[((?:\\\\.|[^\\]\\\\])*)\\]\\((${FILE_CARD_URL_PATTERN.source})\\)$`,
 )
 
-/** Legacy syntax: [name](cdnUrl) on its own line — matched by CDN hostname. */
+/** Legacy syntax: [name](cdnUrl) on its own line, matched by CDN hostname. */
 const FILE_LINK_LINE = /^\[([^\]]+)\]\((https?:\/\/[^)]+)\)$/
 
 function escapeAttr(s: string): string {
@@ -85,7 +85,7 @@ export function isCdnUrl(url: string, cdnDomain: string): boolean {
 
 /**
  * Check if a CDN URL is a non-image file that should render as a file card.
- * Image URLs (png, jpg, etc.) are excluded — they render as inline images.
+ * Image URLs (png, jpg, etc.) are excluded, they render as inline images.
  */
 export function isFileCardUrl(url: string, cdnDomain: string): boolean {
   try {
@@ -99,7 +99,7 @@ export function isFileCardUrl(url: string, cdnDomain: string): boolean {
  * Preprocess markdown to convert file-card syntax into HTML divs.
  *
  * Handles both `!file[name](url)` (new syntax) and legacy `[name](cdnUrl)`
- * lines. Only standalone lines are matched — inline links are left untouched.
+ * lines. Only standalone lines are matched, inline links are left untouched.
  *
  * @param markdown  Raw markdown string
  * @param cdnDomain CDN hostname for legacy link detection (e.g. "multica-static.copilothub.ai")
@@ -110,14 +110,14 @@ export function preprocessFileCards(markdown: string, cdnDomain: string): string
     .map((line) => {
       const trimmed = line.trim()
 
-      // New syntax: !file[name](url) — always a file card, no hostname check needed.
+      // New syntax: !file[name](url), always a file card, no hostname check needed.
       const newMatch = trimmed.match(NEW_FILE_CARD_RE)
       if (newMatch) {
         const filename = newMatch[1]!.replace(/\\([[\]\\()])/g, '$1')
         return toFileCardHtml(filename, newMatch[2]!)
       }
 
-      // Legacy: [name](cdnUrl) on its own line — CDN hostname matching.
+      // Legacy: [name](cdnUrl) on its own line, CDN hostname matching.
       const match = trimmed.match(FILE_LINK_LINE)
       if (!match) return line
       const filename = match[1]!

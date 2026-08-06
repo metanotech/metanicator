@@ -35,7 +35,7 @@ const CJK_URL_TERMINATOR_REGEX =
 // but which, at the very end of a bare URL, are almost always the author closing
 // an emphasis / strikethrough span (`**url**`, `*url*`, `~~url~~`) rather than
 // part of the URL. We drop a trailing run of them so the surrounding markdown
-// still parses — mirroring GFM's own autolink trailing-punctuation trim. A URL
+// still parses, mirroring GFM's own autolink trailing-punctuation trim. A URL
 // that genuinely ends in `*` / `~` loses that character from the link, exactly
 // as it does on GitHub (MUL-4242).
 const TRAILING_MD_DELIMITER = /[*~]+$/
@@ -257,7 +257,7 @@ function collectLinkifyMatches(text: string, offset: number, out: DetectedLink[]
 
   for (const match of matches) {
     const cjkIdx = match.text.search(CJK_URL_TERMINATOR_REGEX)
-    if (cjkIdx === 0) continue // match starts with CJK punct — skip
+    if (cjkIdx === 0) continue // match starts with CJK punct, skip
 
     const truncate = cjkIdx > 0
     // URL text up to the first CJK terminator, then minus a trailing markdown
@@ -291,7 +291,7 @@ function collectLinkifyMatches(text: string, offset: number, out: DetectedLink[]
     }
 
     if (truncate) {
-      // Rescan the tail after the CJK punct — linkify-it had greedily swallowed
+      // Rescan the tail after the CJK punct, linkify-it had greedily swallowed
       // it, so any additional URLs after the punct were never emitted.
       const tailStart = match.index + cjkIdx + 1
       collectLinkifyMatches(text.slice(tailStart), offset + tailStart, out)

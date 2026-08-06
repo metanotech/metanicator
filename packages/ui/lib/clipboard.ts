@@ -2,7 +2,7 @@
  * Copy text to the clipboard, with a fallback for insecure contexts (plain http://).
  *
  * The async Clipboard API (`navigator.clipboard`) is only exposed in a secure
- * context — `https://` or `localhost`. On a plain `http://` origin it is
+ * context, `https://` or `localhost`. On a plain `http://` origin it is
  * `undefined`, so `navigator.clipboard.writeText` throws and the copy silently
  * fails (the symptom behind self-hosted-over-http bug reports). When the secure
  * API is unavailable we fall back to a hidden `<textarea>` + the legacy
@@ -19,7 +19,7 @@ export async function copyText(text: string): Promise<boolean> {
       await navigator.clipboard.writeText(text);
       return true;
     } catch {
-      // Permission denied / document not focused / blocked — fall through to
+      // Permission denied / document not focused / blocked, fall through to
       // the legacy path below rather than failing outright.
     }
   }

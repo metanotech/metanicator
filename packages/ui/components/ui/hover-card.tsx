@@ -32,12 +32,12 @@ function HoverCardContent({
   >) {
   // Stop interaction events from bubbling out of the popup. Base UI portals
   // the popup to <body> so the DOM is detached, but React's synthetic event
-  // system still bubbles through the React component tree — without this,
+  // system still bubbles through the React component tree, without this,
   // events on the popup would also fire on any ancestor of the trigger
   // (e.g. a clickable issue list row, a wrapping <a>).
   //
   // We stop the safe set: click / contextmenu / auxclick / dblclick.
-  // We deliberately do NOT stop pointerdown / mousedown — Base UI's
+  // We deliberately do NOT stop pointerdown / mousedown, Base UI's
   // outside-click dismiss listens to pointerdown on document and uses an
   // "inside React tree" check to decide whether to close. Stopping
   // pointerdown inside the popup would make the dismiss handler wrongly

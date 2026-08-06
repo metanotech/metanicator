@@ -7,7 +7,7 @@
  * Known limitation: Safari on macOS always reports `Intel Mac OS X`
  * in the UA string even on Apple Silicon, and Safari does not
  * implement userAgentData. This function therefore returns `arm64`
- * as the best default for any Mac — UI surfaces a small hint that
+ * as the best default for any Mac, UI surfaces a small hint that
  * points Intel users to the architecture-specific download below.
  */
 
@@ -19,7 +19,7 @@ export interface DetectResult {
   arch: Arch;
   /** True when arch came from userAgentData high-entropy values
    *  (i.e. we can trust the Intel vs arm distinction). False when
-   *  we defaulted — UI should show the Intel Mac disclaimer. */
+   *  we defaulted, UI should show the Intel Mac disclaimer. */
   archConfident: boolean;
 }
 

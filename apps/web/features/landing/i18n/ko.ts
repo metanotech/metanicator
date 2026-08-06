@@ -55,7 +55,7 @@ export function createKoDict(allowSignup: boolean): LandingDict {
       },
       autonomous: {
         label: "자율 실행",
-        title: "맡겨 두기만 하세요 — 에이전트가 알아서 끝까지 해냅니다",
+        title: "맡겨 두기만 하세요, 에이전트가 알아서 끝까지 해냅니다",
         description:
           "한 번 답하고 끝나는 프롬프트 도구가 아닙니다. 작업을 대기열에 넣고, 가져오고, 실행하고, 완료 또는 실패까지 보고하는 흐름 전체를 Metanicator가 관리합니다. 막힌 부분은 에이전트가 먼저 알려 주고, 진행 상황은 실시간으로 올라옵니다.",
         cards: [
@@ -2248,7 +2248,7 @@ export function createKoDict(allowSignup: boolean): LandingDict {
     about: {
       title: "Metanicator 소개",
       nameLine: {
-        prefix: "Metanicator — ",
+        prefix: "Metanicator, ",
         mul: "Mul",
         tiplexed: "tiplexed ",
         i: "I",

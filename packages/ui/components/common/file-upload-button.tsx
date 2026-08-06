@@ -7,7 +7,7 @@ import { Button } from "@multica/ui/components/ui/button";
 import { cn } from "@multica/ui/lib/utils";
 
 interface FileUploadButtonProps {
-  /** Called with the selected File — caller handles upload. */
+  /** Called with the selected File, caller handles upload. */
   onSelect: (file: File) => void;
   disabled?: boolean;
   className?: string;

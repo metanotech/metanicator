@@ -11,7 +11,7 @@ export const revalidate = 300;
 export const metadata: Metadata = {
   title: "Download Metanicator",
   description:
-    "Download Metanicator for macOS, Windows, or Linux — or install the CLI for servers and remote dev boxes.",
+    "Download Metanicator for macOS, Windows, or Linux, or install the CLI for servers and remote dev boxes.",
   openGraph: {
     title: "Download Metanicator",
     description:

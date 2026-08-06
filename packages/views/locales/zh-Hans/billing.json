@@ -1,6 +1,6 @@
 {
   "title": "账单（测试页）",
-  "subtitle": "直接透传 multica-cloud 的 /api/v1/billing/*。不是正式 UI——只是把所有端点塞到一个页面方便验证 Stripe 流程。",
+  "subtitle": "直接透传 multica-cloud 的 /api/v1/billing/*。不是正式 UI, , 只是把所有端点塞到一个页面方便验证 Stripe 流程。",
   "endpoints": {
     "balance": "GET /api/cloud-billing/balance",
     "transactions": "GET /api/cloud-billing/transactions",
@@ -15,7 +15,7 @@
   },
   "buy": {
     "title": "购买 credits / 管理账单",
-    "no_tiers": "未配置任何价格档位。Cloud 那边应该没有配 Stripe key——checkout 会返回 503。",
+    "no_tiers": "未配置任何价格档位。Cloud 那边应该没有配 Stripe key, , checkout 会返回 503。",
     "tier_money_to_credits": "{{money}} → {{credits}} credits",
     "tier_bonus": " + 赠送 {{credits}}",
     "tier_bonus_with_expiry": " + 赠送 {{credits}}（{{expiry}}）",
@@ -47,7 +47,7 @@
     "empty": "暂无流水。",
     "credits_value": "{{value}} credits",
     "row_meta": "{{date}} · balance after: {{balance}} credits · ref: {{ref}}",
-    "ref_empty": "—"
+    "ref_empty": ", "
   },
   "batches": {
     "title": "Credit 批次",
@@ -64,12 +64,12 @@
     "amount_to_credits": "{{money}} → {{credits}} credits",
     "amount_to_credits_with_bonus": "{{money}} → {{credits}} credits + {{bonus}} 赠送",
     "row_meta": "{{date}} · stripe: {{checkout}}",
-    "stripe_empty": "—"
+    "stripe_empty": ", "
   },
   "shared": {
     "request_failed": "请求失败",
     "refresh": "刷新",
     "paging": "第 {{page}} / {{totalPages}} 页 · 共 {{total}} 条",
-    "date_dash": "—"
+    "date_dash": ", "
   }
 }

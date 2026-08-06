@@ -90,7 +90,7 @@ function MDXCTA({
 // Marker patterns accept both half-width (`:`) and full-width (`：`) colons so
 // content authors can type either without breaking the placeholder rendering.
 // `副 ` is the Chinese marker for the secondary CTA and `Secondary ` is the
-// English equivalent — either works in either language's mdx file.
+// English equivalent, either works in either language's mdx file.
 const PLACEHOLDER_IMAGE_PREFIX = /^\[占位图[::]\s*/;
 const CTA_SECONDARY_PREFIX = "(?:副 |Secondary )";
 const CTA_BLOCK_TRIGGER = new RegExp(`^\\[${CTA_SECONDARY_PREFIX}?CTA[::]`);

@@ -11,7 +11,7 @@ import { beforeAll, describe, expect, it } from "vitest";
  *
  * This lives in apps/web because it tests the COMPILED STYLESHEET, not React
  * behaviour: `globals.css` is the app's artifact, and the `dark` variant is
- * defined there (`@custom-variant dark (&:is(.dark *))`) — that definition is
+ * defined there (`@custom-variant dark (&:is(.dark *))`), that definition is
  * what decides the outcome below. It follows the same pattern as
  * font-fallback-order.test.ts, which also asserts on the app's CSS.
  *
@@ -21,7 +21,7 @@ import { beforeAll, describe, expect, it } from "vitest";
  *
  *   1. Brand classes layered over the `outline` variant. tailwind-merge keeps
  *      `dark:bg-input/30` (different modifier group, no conflict to resolve),
- *      and `dark:` compiles to `&:is(.dark *)` — specificity (0,2,0) against
+ *      and `dark:` compiles to `&:is(.dark *)`, specificity (0,2,0) against
  *      a bare `.bg-brand`'s (0,1,0). The chip was grey in dark mode while
  *      every string assertion passed.
  *   2. A colour class appended via `className` beat the variant that was
@@ -57,7 +57,7 @@ async function compileStylesheet(entry: string): Promise<FlatRule[]> {
   // Flatten Tailwind's nested output. Declarations sit under a rule OR inside
   // an at-rule (`hover:` is wrapped in `@media (hover:hover)`, opacity
   // modifiers in `@supports`), so collect at both levels and keep document
-  // order — it is the tie-breaker when specificity ties.
+  // order, it is the tie-breaker when specificity ties.
   const rules: FlatRule[] = [];
   let order = 0;
   const walk = (container: postcss.Container, prefix: string) => {
@@ -80,7 +80,7 @@ async function compileStylesheet(entry: string): Promise<FlatRule[]> {
   return rules;
 }
 
-/** Selector specificity's `b` column — classes, attributes, pseudo-classes.
+/** Selector specificity's `b` column, classes, attributes, pseudo-classes.
  *  `:is()` contributes its most specific argument. Nothing here reaches for
  *  ids or elements, so the other two columns are always 0. */
 function specificity(selector: string): number {
@@ -95,7 +95,7 @@ function specificity(selector: string): number {
 }
 
 // Tailwind escapes `/` and `:` in class selectors (`.bg-brand\/7`), so split
-// on the matched (escaped) prefix and unescape only for comparison — slicing
+// on the matched (escaped) prefix and unescape only for comparison, slicing
 // by the unescaped length silently mis-parses every opacity utility.
 const CLASS_PREFIX = /^\.((?:[^.\s:[\\]|\\.)+)/;
 
@@ -162,7 +162,7 @@ describe("brand Button variants resolve to brand colour in the real stylesheet",
   const text = (classes: string, state: ElementState) =>
     winning(rules, classes.split(/\s+/), state, "color");
 
-  describe("brand (filter ON — the loud filled tier)", () => {
+  describe("brand (filter ON, the loud filled tier)", () => {
     // --brand flips per theme, so one set of rules must serve both. If a
     // `dark:` rule from another variant ever creeps in, these diverge.
     for (const dark of [false, true]) {
@@ -191,7 +191,7 @@ describe("brand Button variants resolve to brand colour in the real stylesheet",
     }
   });
 
-  describe("brandSubtle (activity, filter OFF — the tint tier)", () => {
+  describe("brandSubtle (activity, filter OFF, the tint tier)", () => {
     // Dark runs one notch hotter: the same alpha reads weaker on a near-black
     // surface than on white.
     it("uses the light notches in light mode", () => {
@@ -227,7 +227,7 @@ describe("brand Button variants resolve to brand colour in the real stylesheet",
         "border-brand bg-brand text-brand-foreground",
       );
 
-      // tailwind-merge cannot drop outline's dark: rules — different modifier
+      // tailwind-merge cannot drop outline's dark: rules, different modifier
       // group, so there is no conflict for it to resolve...
       expect(layered).toContain("dark:bg-input/30");
       // ...and `:is(.dark *)` then outranks the bare .bg-brand.

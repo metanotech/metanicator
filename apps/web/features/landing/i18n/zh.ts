@@ -130,13 +130,13 @@ export function createZhDict(allowSignup: boolean): LandingDict {
       {
         title: allowSignup ? "注册并创建您的工作空间" : "登录到您的工作空间",
         description: allowSignup
-          ? "输入您的邮箱，验证代码后即可使用。工作空间会自动创建——无需设置向导或配置表单。"
-          : "输入您的邮箱，验证代码后即可登录到您的工作空间——无需设置向导或配置表单。",
+          ? "输入您的邮箱，验证代码后即可使用。工作空间会自动创建, , 无需设置向导或配置表单。"
+          : "输入您的邮箱，验证代码后即可登录到您的工作空间, , 无需设置向导或配置表单。",
       },
       {
         title: "\u5b89\u88c5 CLI \u5e76\u8fde\u63a5\u4f60\u7684\u673a\u5668",
         description:
-          "运行 metanicator setup——它会引导你完成 OAuth 登录、启动守护进程、并扫描 15 款支持的 AI 编程工具（Antigravity、Claude Code、CodeBuddy、Codex、Cursor、Copilot、Hermes、Kimi、Reasonix、Kiro CLI、OpenCode、OpenClaw、Pi、Qoder、Trae CLI）。本机已安装的工具会被自动注册成运行时。",
+          "运行 metanicator setup, , 它会引导你完成 OAuth 登录、启动守护进程、并扫描 15 款支持的 AI 编程工具（Antigravity、Claude Code、CodeBuddy、Codex、Cursor、Copilot、Hermes、Kimi、Reasonix、Kiro CLI、OpenCode、OpenClaw、Pi、Qoder、Trae CLI）。本机已安装的工具会被自动注册成运行时。",
       },
       {
         title: "\u521b\u5efa\u4f60\u7684\u7b2c\u4e00\u4e2a 智能体",
@@ -146,7 +146,7 @@ export function createZhDict(allowSignup: boolean): LandingDict {
       {
         title: "\u6307\u6d3e\u4e00\u4e2a\u4efb\u52a1\u5e76\u89c2\u5bdf\u5b83\u5de5\u4f5c",
         description:
-          "从指派人下拉菜单中选择你的 智能体——就像指派给同事一样。task 自动入队、领取、执行。实时观看进度。",
+          "从指派人下拉菜单中选择你的 智能体, , 就像指派给同事一样。task 自动入队、领取、执行。实时观看进度。",
       },
     ],
     cta: "\u5f00\u59cb\u4f7f\u7528",
@@ -883,7 +883,7 @@ export function createZhDict(allowSignup: boolean): LandingDict {
         title: "全新 Codex 模型、任务编号自动链接与头像裁剪",
         changes: [],
         features: [
-          "你现在可以让智能体运行在全新的 Codex gpt-5.6 模型上——Sol、Terra 和 Luna。",
+          "你现在可以让智能体运行在全新的 Codex gpt-5.6 模型上, , Sol、Terra 和 Luna。",
           "输入或粘贴像 MUL-123 这样的任务编号，它会自动变成可点击的任务链接。",
           "上传头像时，你现在可以先裁剪、缩放和旋转，再保存。",
           "当智能体最终没有文字回复时，聊天里会显示清晰的“无回复”提示，而不是一条空消息。",
@@ -997,7 +997,7 @@ export function createZhDict(allowSignup: boolean): LandingDict {
           "自动化不再在单次运行超时的时候重复派发同一个任务。",
           "任务的 PR 列表只显示真正关联到本任务的 PR，仅在描述里顺带提到「Related to MUL-…」的 PR 不再露出。",
           "任务操作菜单里嵌套的「More」项改名为「Relations」，你不用点开也知道里面装的是关系类操作。",
-          "所有附件上传按钮——对话输入、任务创建、任务描述、反馈——都支持在系统对话框里一次选多个文件。",
+          "所有附件上传按钮, , 对话输入、任务创建、任务描述、反馈, , 都支持在系统对话框里一次选多个文件。",
         ],
       },
       {
@@ -1021,7 +1021,7 @@ export function createZhDict(allowSignup: boolean): LandingDict {
           "`/squads/…` 与 `/usage` 老路径不再 404，会重定向到当前对应页面。",
           "桌面端「保存」对话框展示真实的附件文件名，不再默认成 `download.txt`。（社区贡献）",
           "小队协作：Leader 通过 mention 派发的工作者智能体，在通过 HTTP API 发布完成评论时，能正确唤醒私有小队 Leader；Leader → Worker → Leader 协作链不再在第一跳后卡住。",
-          "如果宿主机 Claude CLI 版本早于 `--effort` 参数，task 不再硬失败——守护进程会丢弃 effort 标志并打印告警，回落到普通模式运行。",
+          "如果宿主机 Claude CLI 版本早于 `--effort` 参数，task 不再硬失败, , 守护进程会丢弃 effort 标志并打印告警，回落到普通模式运行。",
         ],
       },
       {
@@ -1166,7 +1166,7 @@ export function createZhDict(allowSignup: boolean): LandingDict {
         improvements: [
           "前端持续集成会自动跳过没有改动前端代码的 PR，把构建时间留给真正需要的改动",
           "命令行子命令的自动化测试覆盖更广，让日常工作流在每次发版后依然稳定",
-          "为每个服务商默认的智能体启动参数补齐说明文档，并下线了一次性的飞书切换开关——统一协作通道已经在生产环境完全接管",
+          "为每个服务商默认的智能体启动参数补齐说明文档，并下线了一次性的飞书切换开关, , 统一协作通道已经在生产环境完全接管",
         ],
         fixes: [
           "OpenClaw 对配置文件差异更宽容，并且支持新版 2026.6.x 的 agents 配置格式，已有的 OpenClaw 运行时不会因此掉线",
@@ -2073,7 +2073,7 @@ export function createZhDict(allowSignup: boolean): LandingDict {
         ],
         improvements: [
           "Settings 的 Appearance Tab 改名为 Preferences，并把当前激活的 Tab 反映到 URL，深链可分享",
-          "长任务打开秒开 —— Timeline 改为基于游标的 keyset 分页，重复的 `task_completed` / `task_failed` 活动条目合并展示",
+          "长任务打开秒开 , ,  Timeline 改为基于游标的 keyset 分页，重复的 `task_completed` / `task_failed` 活动条目合并展示",
           "Runtime poll 与 heartbeat 调度按 runtime 隔离，单个忙碌 runtime 不再拖慢其他",
           "CLI 更新请求落 Redis，server 重启也不丢",
           "Runtime 用量统计窗口由 180 天收窄到 14 天，降低查询压力",
@@ -2109,13 +2109,13 @@ export function createZhDict(allowSignup: boolean): LandingDict {
           "Inbox 中已完成 task 新增 archive 按钮，移除冗余的 mark-as-done 悬浮按钮",
         ],
         improvements: [
-          "长 timeline 的任务从 Inbox 打开不再卡顿 —— Markdown 渲染管线已 memoize，无关的 WS 事件不会再重渲染数千条评论",
-          "Model Picker 在多副本部署下可用 —— pending 请求改走 Redis 持久化，Daemon 上报失败也会自动重试",
+          "长 timeline 的任务从 Inbox 打开不再卡顿 , ,  Markdown 渲染管线已 memoize，无关的 WS 事件不会再重渲染数千条评论",
+          "Model Picker 在多副本部署下可用 , ,  pending 请求改走 Redis 持久化，Daemon 上报失败也会自动重试",
           "Daemon 空认领缓存 TTL 调高，空闲态 DB 压力进一步下降",
         ],
         fixes: [
-          "新创建的 Agent 立刻在各处可见 —— 创建时即 hydrate Agent 缓存",
-          "Hermes 在新一轮对话开始时不再重放上一轮答案 —— 历史 chunk 受单轮门禁限制",
+          "新创建的 Agent 立刻在各处可见 , ,  创建时即 hydrate Agent 缓存",
+          "Hermes 在新一轮对话开始时不再重放上一轮答案 , ,  历史 chunk 受单轮门禁限制",
           "Codex runtime 模型选择器开放 GPT-5.5 系列",
           "`metanicator login --token <PAT>` 正确接收 PAT 作为参数值",
           "CLI update 完成状态上报更可靠",
@@ -2133,7 +2133,7 @@ export function createZhDict(allowSignup: boolean): LandingDict {
         title: "Quick Capture 全面升级、Mermaid 图表与 Typed Project Resources",
         changes: [],
         features: [
-          "Quick Capture 取代旧的新建任务弹窗 —— 支持连续创建、文件上传，并能根据粘贴的 URL 自动丰富标题与描述",
+          "Quick Capture 取代旧的新建任务弹窗 , ,  支持连续创建、文件上传，并能根据粘贴的 URL 自动丰富标题与描述",
           "Markdown 内联渲染 Mermaid 图表，复杂图支持全屏 lightbox",
           "Project 支持单独绑定 repo，无需依赖 workspace 默认配置",
           "Agent / 评论 / Runtime / Skill 全面接入权限感知 UI，没有权限的操作不再展示",
@@ -2156,8 +2156,8 @@ export function createZhDict(allowSignup: boolean): LandingDict {
         title: "Create Issue by Agent、Agent Presence v3 与 Daemon WebSocket 心跳",
         changes: [],
         features: [
-          "Create Issue by Agent —— 按 `c` 输入一句话并选 Agent，任务异步创建，结果回执送达 Inbox",
-          "Agent Presence v3 —— 可用性与最近 task 拆成两条更清晰的信号；任务详情右侧新增 Execution Log，可看到当前 active run 与历史 run",
+          "Create Issue by Agent , ,  按 `c` 输入一句话并选 Agent，任务异步创建，结果回执送达 Inbox",
+          "Agent Presence v3 , ,  可用性与最近 task 拆成两条更清晰的信号；任务详情右侧新增 Execution Log，可看到当前 active run 与历史 run",
           "Daemon ↔ Server 心跳改走 WebSocket，HTTP 自动 fallback，task 起跑延迟更低",
           "Mention 选择器按本机最近使用排序",
         ],
@@ -2203,7 +2203,7 @@ export function createZhDict(allowSignup: boolean): LandingDict {
         title: "任务标签、Labs 设置页与邀请红点",
         changes: [],
         features: [
-          "任务标签——给任务上色、分类，列表、看板和详情页都能用",
+          "任务标签, , 给任务上色、分类，列表、看板和详情页都能用",
           "新增 Labs 设置页，集中放实验性开关",
           "有未读工作区邀请时，侧边栏会出现红点提示",
         ],
@@ -2245,12 +2245,12 @@ export function createZhDict(allowSignup: boolean): LandingDict {
         title: "Chat V2、任务右键菜单与应用内反馈",
         changes: [],
         features: [
-          "Chat V2——侧边栏新增 Chat 入口，主区域提供完整的 AI 对话页面",
+          "Chat V2, , 侧边栏新增 Chat 入口，主区域提供完整的 AI 对话页面",
           "任务支持右键菜单，列表、看板和详情的操作入口统一收敛",
           "应用内反馈流程及全新的 Help 启动器，集中托管文档、支持和反馈入口",
-          "Autopilot 弹窗重设计——更简的字段配置，创建与编辑共享一致的排期界面",
-          "Skills 页面重设计——列表+详情、卡片化布局、滚动渐隐和共享 PageHeader / 移动端导航",
-          "文档站重写为双语扁平内容树——中英文章节共用一棵目录",
+          "Autopilot 弹窗重设计, , 更简的字段配置，创建与编辑共享一致的排期界面",
+          "Skills 页面重设计, , 列表+详情、卡片化布局、滚动渐隐和共享 PageHeader / 移动端导航",
+          "文档站重写为双语扁平内容树, , 中英文章节共用一棵目录",
         ],
         improvements: [
           "悬停 Agent 头像即可弹出资料卡，快速了解上下文",
@@ -2278,9 +2278,9 @@ export function createZhDict(allowSignup: boolean): LandingDict {
         changes: [],
         features: [
           "支持将 Runtime 本地 Skills 导入工作区,成为一等工作区资产",
-          "孤儿 task 自动恢复——意外中断的 Agent 执行会自动重试,必要时可手动重跑",
+          "孤儿 task 自动恢复, , 意外中断的 Agent 执行会自动重试,必要时可手动重跑",
           "任务、评论与 Chat 支持 LaTeX 渲染",
-          "Chat Focus 模式——将当前页面作为上下文分享给对话",
+          "Chat Focus 模式, , 将当前页面作为上下文分享给对话",
         ],
         improvements: [
           "子任务的 `status_changed` 事件不再向父任务订阅者刷屏",
@@ -2302,16 +2302,16 @@ export function createZhDict(allowSignup: boolean): LandingDict {
         title: "桌面应用跨平台打包、CLI 自更新与看板分页",
         changes: [],
         features: [
-          "桌面应用跨平台打包——同一条发布流水线产出 macOS、Windows 和 Linux 安装包",
-          "新增 `metanicator update` 自更新命令——无需重装即可升级 CLI 和本地 Daemon",
+          "桌面应用跨平台打包, , 同一条发布流水线产出 macOS、Windows 和 Linux 安装包",
+          "新增 `metanicator update` 自更新命令, , 无需重装即可升级 CLI 和本地 Daemon",
           "任务看板所有状态列都支持分页（不再只是 Done 列），大积压下依然流畅",
         ],
         fixes: [
           "本地 Daemon 对 Agent 执行强制端到端工作区隔离（安全）",
           "Windows 下 Daemon 终端关闭后继续常驻，后台 Agent 不再被意外终止",
-          "看板卡片重新显示描述预览——列表查询不再丢掉 description 字段",
+          "看板卡片重新显示描述预览, , 列表查询不再丢掉 description 字段",
           "OpenClaw Agent 改为从 Agent 元数据读取真实模型，不再回退到默认值",
-          "评论 Markdown 全链路保留——移除会误伤格式的 HTML sanitizer",
+          "评论 Markdown 全链路保留, , 移除会误伤格式的 HTML sanitizer",
         ],
       },
       {
@@ -2320,14 +2320,14 @@ export function createZhDict(allowSignup: boolean): LandingDict {
         title: "Agent 模型选择、Kimi Runtime 与自部署登录",
         changes: [],
         features: [
-          "Agent 新增 `model` 字段及按 Provider 聚合的模型下拉框——可在界面或通过 `metanicator agent create/update --model` 为每个 Agent 选择 LLM 模型，并从各 Runtime CLI 实时发现可用模型",
+          "Agent 新增 `model` 字段及按 Provider 聚合的模型下拉框, , 可在界面或通过 `metanicator agent create/update --model` 为每个 Agent 选择 LLM 模型，并从各 Runtime CLI 实时发现可用模型",
           "新增 Kimi CLI Agent Runtime（Moonshot AI 的 `kimi-cli`，基于 ACP），支持模型选择、自动授权工具权限以及流式工具调用渲染",
           "评论和回复编辑器新增放大按钮，便于撰写长文本",
         ],
         fixes: [
           "Agent 工作流将“发布结果评论”提升为独立的显式步骤，确保最终回复送达任务而不是只留在终端输出",
           "通过 Cmd+K 切换任务时不再出现其他任务的 Agent 实时状态残留",
-          "自部署会话 Cookie 的 Secure 标志改由 `FRONTEND_ORIGIN` 协议决定——HTTP 部署不再因浏览器丢弃 Cookie 导致登录失败；`COOKIE_DOMAIN=<ip>` 会自动回退到 host-only 并输出警告",
+          "自部署会话 Cookie 的 Secure 标志改由 `FRONTEND_ORIGIN` 协议决定, , HTTP 部署不再因浏览器丢弃 Cookie 导致登录失败；`COOKIE_DOMAIN=<ip>` 会自动回退到 host-only 并输出警告",
         ],
       },
       {
@@ -2337,7 +2337,7 @@ export function createZhDict(allowSignup: boolean): LandingDict {
         changes: [],
         features: [
           "直接从编辑器气泡菜单将选中文本创建为子任务",
-          "自部署实例账户门禁——`ALLOW_SIGNUP` 和 `ALLOWED_EMAIL_*` 环境变量限制注册",
+          "自部署实例账户门禁, , `ALLOW_SIGNUP` 和 `ALLOWED_EMAIL_*` 环境变量限制注册",
           "Agent 新增 `mcp_config` 字段恢复 MCP 支持",
           "桌面应用每小时检查更新，设置中新增手动检查按钮",
         ],
@@ -2355,9 +2355,9 @@ export function createZhDict(allowSignup: boolean): LandingDict {
         features: [
           "CLI `autopilot` 命令，管理定时和触发式自动化",
           "CLI `issue subscriber` 订阅管理命令",
-          "Cmd+K 命令面板扩展——主题切换、快速创建任务/项目、复制链接、切换工作区",
+          "Cmd+K 命令面板扩展, , 主题切换、快速创建任务/项目、复制链接、切换工作区",
           "任务列表卡片可选显示项目和子任务进度",
-          "Daemon 持久化 UUID 身份——CLI 和桌面应用共用同一个 daemon，跨重启和机器迁移保持一致",
+          "Daemon 持久化 UUID 身份, , CLI 和桌面应用共用同一个 daemon，跨重启和机器迁移保持一致",
           "唯一所有者退出工作区的前置检查",
           "评论折叠状态跨会话持久化",
         ],
@@ -2381,7 +2381,7 @@ export function createZhDict(allowSignup: boolean): LandingDict {
           "支持 GitHub Copilot CLI 运行时",
           "支持 Cursor Agent CLI 运行时",
           "支持 Pi Agent 运行时",
-          "工作区 URL 改造——slug 优先路由（`/{slug}/issues`），旧链接自动重定向",
+          "工作区 URL 改造, , slug 优先路由（`/{slug}/issues`），旧链接自动重定向",
         ],
         fixes: [
           "Codex 同一任务下跨 task 恢复会话线程",
@@ -2399,8 +2399,8 @@ export function createZhDict(allowSignup: boolean): LandingDict {
         title: "桌面应用、Autopilot 与邀请",
         changes: [],
         features: [
-          "macOS 桌面应用——原生 Electron 应用，支持标签页系统、内置 Daemon 管理、沉浸模式和自动更新",
-          "Autopilot——Agent 定时和触发式自动化任务",
+          "macOS 桌面应用, , 原生 Electron 应用，支持标签页系统、内置 Daemon 管理、沉浸模式和自动更新",
+          "Autopilot, , Agent 定时和触发式自动化任务",
           "工作区邀请，支持邮件通知和专用接受页面",
           "Agent 自定义 CLI 参数，支持高级运行时配置",
           "聊天界面重设计，新增未读追踪和会话管理优化",
@@ -2450,7 +2450,7 @@ export function createZhDict(allowSignup: boolean): LandingDict {
         title: "Windows 支持、认证与引导",
         changes: [],
         features: [
-          "Windows 支持——CLI 安装、Daemon 运行和发布构建",
+          "Windows 支持, , CLI 安装、Daemon 运行和发布构建",
           "认证迁移至 HttpOnly Cookie，WebSocket 新增 Origin 白名单",
           "新工作区全屏引导向导",
           "Master Agent 聊天窗口可调整大小，会话历史体验优化",
@@ -2468,8 +2468,8 @@ export function createZhDict(allowSignup: boolean): LandingDict {
         title: "一键安装、自部署与稳定性",
         changes: [],
         features: [
-          "一键安装与配置——`curl | bash` 安装 CLI，`--with-server` 完整自部署，`metanicator setup` 配置连接环境",
-          "自部署存储——无 S3 时本地文件存储回退，支持自定义 S3 端点（MinIO）",
+          "一键安装与配置, , `curl | bash` 安装 CLI，`--with-server` 完整自部署，`metanicator setup` 配置连接环境",
+          "自部署存储, , 无 S3 时本地文件存储回退，支持自定义 S3 端点（MinIO）",
           "项目列表页支持行内编辑属性（优先级、状态、负责人）",
         ],
         improvements: [
@@ -2511,7 +2511,7 @@ export function createZhDict(allowSignup: boolean): LandingDict {
         changes: [],
         features: [
           "任务和项目置顶到侧边栏，支持拖拽排序",
-          "Cmd+K 命令面板——最近访问的任务、页面导航、项目搜索",
+          "Cmd+K 命令面板, , 最近访问的任务、页面导航、项目搜索",
           "项目详情侧边栏属性面板（替代原概览标签页）",
           "任务列表新增项目筛选",
           "项目列表显示完成进度",
@@ -2519,7 +2519,7 @@ export function createZhDict(allowSignup: boolean): LandingDict {
           "指派人下拉按用户分配频率排序",
         ],
         fixes: [
-          "Markdown XSS 漏洞——评论渲染增加 rehype-sanitize 和服务端 bluemonday 清洗",
+          "Markdown XSS 漏洞, , 评论渲染增加 rehype-sanitize 和服务端 bluemonday 清洗",
           "项目看板任务计数不正确",
           "自部署 Docker 构建缺少 tsconfig 依赖",
           "Cmd+K 需要按两次 ESC 才能关闭",
@@ -2544,8 +2544,8 @@ export function createZhDict(allowSignup: boolean): LandingDict {
           "`make dev` 一键本地开发环境搭建",
         ],
         improvements: [
-          "侧边栏重新设计——个人/工作区分组、用户档案底栏、⌘K 搜索入口",
-          "搜索排序优化——大小写无关匹配、标识符搜索（MUL-123）、多词匹配",
+          "侧边栏重新设计, , 个人/工作区分组、用户档案底栏、⌘K 搜索入口",
+          "搜索排序优化, , 大小写无关匹配、标识符搜索（MUL-123）、多词匹配",
           "搜索结果关键词高亮",
           "每日 Token 用量图表优化，Y 轴标签更清晰，新增分类 Tooltip",
           "Master Agent 支持多行输入",
@@ -2571,10 +2571,10 @@ export function createZhDict(allowSignup: boolean): LandingDict {
         date: "2026-04-09",
         title: "项目、搜索与 Monorepo",
         changes: [
-          "项目实体全栈 CRUD——创建、编辑项目并按项目组织任务",
+          "项目实体全栈 CRUD, , 创建、编辑项目并按项目组织任务",
           "创建任务弹窗新增项目选择器，CLI 新增项目命令",
           "基于 pg_bigm 的任务全文搜索",
-          "Monorepo 拆包——共享 core、UI、views 三个包（Turborepo）",
+          "Monorepo 拆包, , 共享 core、UI、views 三个包（Turborepo）",
           "全屏 Agent 执行日志视图",
           "编辑器支持拖拽上传文件并展示文件卡片",
           "任务新增附件区域，支持图片网格和文件卡片展示",
@@ -2590,7 +2590,7 @@ export function createZhDict(allowSignup: boolean): LandingDict {
         date: "2026-04-08",
         title: "子任务、TanStack Query 与用量追踪",
         changes: [
-          "子任务支持——在任意任务内创建、查看和管理子任务",
+          "子任务支持, , 在任意任务内创建、查看和管理子任务",
           "全面迁移至 TanStack Query 管理服务端状态（任务、收件箱、工作区、运行时）",
           "按 task 维度追踪所有 Agent 提供商的 token 用量",
           "同一任务支持多个 Agent 并发执行",
@@ -2610,7 +2610,7 @@ export function createZhDict(allowSignup: boolean): LandingDict {
         changes: [
           "支持 Google OAuth 登录",
           "新增 OpenClaw 运行时，支持在 OpenClaw 基础设施上运行 Agent",
-          "Agent 实时卡片重新设计——始终吸顶，支持手动展开/收起",
+          "Agent 实时卡片重新设计, , 始终吸顶，支持手动展开/收起",
           "打开的任务不再分页限制全量加载，已关闭的任务滚动分页",
           "JWT 和 CloudFront Cookie 有效期从 72 小时延长至 30 天",
           "重新登录后记住上次选择的工作区",
@@ -2639,7 +2639,7 @@ export function createZhDict(allowSignup: boolean): LandingDict {
         changes: [
           "统一 Tiptap 编辑器，编辑和展示共用单一 Markdown 渲染管线",
           "Markdown 粘贴、行内代码间距和链接样式修复",
-          "Agent 支持归档和恢复——软删除替代硬删除",
+          "Agent 支持归档和恢复, , 软删除替代硬删除",
           "默认列表隐藏已归档的 Agent",
           "全应用新增骨架屏加载态、错误提示和确认对话框",
           "新增 OpenCode 作为支持的 Agent 提供商",
@@ -2659,7 +2659,7 @@ export function createZhDict(allowSignup: boolean): LandingDict {
           "仓库管理独立为设置页单独标签页",
           "支持从网页端运行时页面更新 CLI，非 Homebrew 安装支持直接下载更新",
           "新增 CLI 命令查看任务执行记录和运行消息",
-          "Agent 权限模型优化——所有者和管理员管理 Agent，成员可管理自己 Agent 的技能",
+          "Agent 权限模型优化, , 所有者和管理员管理 Agent，成员可管理自己 Agent 的技能",
           "每个任务串行执行，防止并发 task 冲突",
           "文件上传支持所有文件类型",
           "README 重新设计，新增快速入门指南",
@@ -2804,13 +2804,13 @@ export function createZhDict(allowSignup: boolean): LandingDict {
     },
     cloud: {
       title: "Cloud runtime（等待名单）",
-      sub: "我们将为你托管 runtime，目前尚未上线——留下邮箱，上线后通知你。",
+      sub: "我们将为你托管 runtime，目前尚未上线, , 留下邮箱，上线后通知你。",
     },
     footer: {
       releaseNotes: "v{version} 更新内容",
       allReleases: "查看所有版本",
       currentVersion: "当前版本：{version}",
-      versionUnavailable: "版本获取失败——请前往 GitHub 查看",
+      versionUnavailable: "版本获取失败, , 请前往 GitHub 查看",
     },
   },
   contactSales: {
@@ -2842,11 +2842,11 @@ export function createZhDict(allowSignup: boolean): LandingDict {
       submitting: "正在提交…",
     },
     companySizes: [
-      { value: "1-10", label: "1 – 10 人" },
-      { value: "11-50", label: "11 – 50 人" },
-      { value: "51-200", label: "51 – 200 人" },
-      { value: "201-500", label: "201 – 500 人" },
-      { value: "501-1000", label: "501 – 1,000 人" },
+      { value: "1-10", label: "1, 10 人" },
+      { value: "11-50", label: "11, 50 人" },
+      { value: "51-200", label: "51, 200 人" },
+      { value: "201-500", label: "201, 500 人" },
+      { value: "501-1000", label: "501, 1,000 人" },
       { value: "1000+", label: "1,000 人以上" },
     ],
     useCases: [
@@ -2924,7 +2924,7 @@ export function createZhDict(allowSignup: boolean): LandingDict {
       generic: "提交失败，请稍后再试。",
       rateLimit: "该邮箱近期已提交多次，请稍后再试。",
       freeEmail:
-        "请使用企业邮箱——免费邮箱（gmail、outlook 等）暂不接受。",
+        "请使用企业邮箱, , 免费邮箱（gmail、outlook 等）暂不接受。",
       invalidEmail: "邮箱地址格式不正确。",
     },
   },

@@ -24,14 +24,14 @@ export function columnSizeVar(columnId: string) {
 // Combined sizing + pinning style for a `<th>` / `<td>` cell. Width is
 // emitted unless the column is flagged `meta.grow` (those rely on
 // fixed-layout's leftover-space distribution). Pinned columns get
-// sticky positioning — see notes below.
+// sticky positioning, see notes below.
 //
 // The width is a reference to a custom property published once on the <table>
 // rather than a number read per cell. During a resize that lets the browser
 // apply every new width from a single declaration change, with no React work
 // in the hundreds of cells that would otherwise each re-read column.getSize().
 //
-// Background is intentionally NOT set inline — the upstream Dice UI
+// Background is intentionally NOT set inline, the upstream Dice UI
 // version writes `background: var(--background)` here, which can't
 // react to `:hover`. Consumers set bg via Tailwind classes paired with
 // `group-hover:`.
@@ -51,7 +51,7 @@ export function getCellStyle<TData>(
   }
 
   // No edge marker here. Where the frozen columns end is drawn by the scroll
-  // container's mask instead — a shadow inside the pinned cell can only darken
+  // container's mask instead, a shadow inside the pinned cell can only darken
   // the frozen column's own edge, while the mask fades the content that is
   // actually sliding underneath, which is the thing being described.
   return {
@@ -67,7 +67,7 @@ export function getCellStyle<TData>(
 // columns fades in over `fade` px instead of appearing at a hard edge.
 //
 // The stops are anchored to the frozen block's width, never to the scroll
-// offset — a mask on a scroll container is positioned against its padding box,
+// offset, a mask on a scroll container is positioned against its padding box,
 // which does not scroll, so the fade stays welded to the boundary. Anchoring
 // is also what keeps the frozen columns themselves at full opacity: the
 // generic "fade both ends of a scroller" treatment would dissolve exactly the

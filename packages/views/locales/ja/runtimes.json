@@ -13,7 +13,7 @@
     "filter_all_description": "このビューのすべてのランタイム",
     "empty": {
       "title": "まだランタイムがありません",
-      "hint": "デスクトップ版はこのコンピュータを自動でスキャンします。別のマシン — サーバー、開発用マシン、ターミナルのあるコンピュータ — を使うには、ここに追加してください。"
+      "hint": "デスクトップ版はこのコンピュータを自動でスキャンします。別のマシン, サーバー、開発用マシン、ターミナルのあるコンピュータ, を使うには、ここに追加してください。"
     },
     "no_matches": {
       "title": "一致する結果なし",
@@ -161,9 +161,9 @@
           "header_visibility": "公開範囲",
           "header_model": "モデル",
           "owner_self": "あなた",
-          "owner_unassigned": "—",
-          "model_unset": "—",
-          "presence_unknown": "—",
+          "owner_unassigned": ", ",
+          "model_unset": ", ",
+          "presence_unknown": ", ",
           "workload_idle": "アイドル",
           "workload_working": "作業中",
           "workload_queued": "キュー待ち",
@@ -190,7 +190,7 @@
     "step2_label": "デーモンを起動",
     "step2_hint": "サインインのためにブラウザを開き、その後デーモンをバックグラウンドで実行し続けます。",
     "live_listening": "あなたのコンピュータを待っています",
-    "live_listening_hint": "デーモンが起動するとすぐに検出します — 通常は 1 分以内です。",
+    "live_listening_hint": "デーモンが起動するとすぐに検出します, 通常は 1 分以内です。",
     "troubleshooting": "そのコンピュータでブラウザを開けませんか?",
     "trouble_intro": "ブラウザでのサインインの代わりにトークンを使ってください。手順 2 を置き換え、ターミナルがある場所ならどこでも動作します。",
     "trouble_token_hint_prefix": "トークンは ",

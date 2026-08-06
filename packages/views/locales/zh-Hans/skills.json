@@ -25,7 +25,7 @@
     },
     "empty": {
       "title": "还没有 skill",
-      "description": "创建第一个 skill、从 URL 导入、或从已连接的运行时复制——之后工作区里每个智能体都能用它。"
+      "description": "创建第一个 skill、从 URL 导入、或从已连接的运行时复制, , 之后工作区里每个智能体都能用它。"
     },
     "no_matches": {
       "title": "无匹配",
@@ -36,7 +36,7 @@
     },
     "intro_banner": {
       "title": "在工作区内共享。",
-      "body": "任何成员都可以创建 skill、从 URL 导入、或从本地运行时复制——之后所有智能体都能用它。",
+      "body": "任何成员都可以创建 skill、从 URL 导入、或从本地运行时复制, , 之后所有智能体都能用它。",
       "highlight": "本地运行时里的 skill 在你复制过来之前是私有的。"
     },
     "list_error": {
@@ -53,8 +53,8 @@
     "source": "来源",
     "updated": "更新时间",
     "created": "创建时间",
-    "lock_tooltip": "只读——只有创建者或管理员能编辑",
-    "unused": "— 未使用",
+    "lock_tooltip": "只读, , 只有创建者或管理员能编辑",
+    "unused": ",  未使用",
     "by_creator": "由 {{name}} 创建",
     "source_manual": "手动创建",
     "source_runtime_named": "来自 {{name}}",
@@ -250,7 +250,7 @@
       "importing_clawhub": "正在从 ClawHub 导入...",
       "importing_skills_sh": "正在从 Skills.sh 导入...",
       "importing_github": "正在从 GitHub 导入...",
-      "name_conflict_hint": "导入的 skill 名称已存在——请先删除已有的再重试。",
+      "name_conflict_hint": "导入的 skill 名称已存在, , 请先删除已有的再重试。",
       "fallback_error": "导入失败",
       "cancel": "取消",
       "toast_imported": "已导入 skill"
@@ -279,7 +279,7 @@
     "skill_files_other": "{{count}} 个文件",
     "skill_name_label": "工作区里的 skill 名称",
     "skill_description_label": "描述",
-    "skill_description_placeholder": "可选——描述智能体什么时候应该使用这个 skill。",
+    "skill_description_placeholder": "可选, , 描述智能体什么时候应该使用这个 skill。",
     "toast_imported": "已导入 skill",
     "toast_import_failed": "导入 skill 失败",
     "select_all": "全选 ({{count}})",

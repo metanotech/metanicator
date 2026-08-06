@@ -133,7 +133,7 @@ export function ChangelogPageClient() {
           else visible.delete(v);
         });
         // Ignore observer updates while we're programmatically scrolling
-        // to a clicked target — otherwise the active indicator flickers
+        // to a clicked target, otherwise the active indicator flickers
         // through each passing entry.
         if (navLockRef.current !== null) return;
 

@@ -10,7 +10,7 @@ import { describe, expect, it } from "vitest";
  * desktop, 370 written as arbitrary pixel values, six of those at half a pixel
  * (10.5 / 11.5 / 12.5 / 13.5 / 14.5 / 15.5px). A scale only holds if going off
  * it is harder than staying on it, and nothing in a Tailwind build makes an
- * off-scale arbitrary size look wrong — it compiles exactly like a token does.
+ * off-scale arbitrary size look wrong, it compiles exactly like a token does.
  *
  * So the guard lives here. This asserts on source text rather than on rendered
  * components because the failure mode is authorial, not behavioural: a
@@ -19,7 +19,7 @@ import { describe, expect, it } from "vitest";
  *
  * Any unit counts, not just px. The first sweep of this migration only looked
  * for `px` and so walked straight past four `0.8rem` call sites in
- * packages/ui — an off-scale size is off-scale however it is spelled.
+ * packages/ui, an off-scale size is off-scale however it is spelled.
  *
  * Scope is product UI. `apps/mobile` builds through its own NativeWind config
  * and `apps/docs` rides fumadocs' type system; both keep Tailwind's default
@@ -48,7 +48,7 @@ const sourceExtensions = [".ts", ".tsx", ".css"];
 
 /**
  * Landing pages run a marketing display ramp (rem/clamp, 2.2-6.4rem) that is
- * deliberately not this scale — a hero headline does not belong on the same
+ * deliberately not this scale, a hero headline does not belong on the same
  * steps as a table cell. They still may not use pixel sizes, so only the
  * relative-unit rule is lifted for them.
  */
@@ -86,7 +86,7 @@ const bannedPatterns = [
    * is where the worst of the old drift survived longest: the transcript kept
    * a 12.5px body long after every Tailwind call site was on the scale, so the
    * "no half-pixel sizes" claim was true of the classes and false of the
-   * product. A literal length here is off-scale by definition — the steps are
+   * product. A literal length here is off-scale by definition, the steps are
    * reachable as `var(--text-*)`.
    */
   {
@@ -110,7 +110,7 @@ const rawCssExemptions = [/font-size:\s*16px\s*!important/];
 
 /**
  * Tailwind scans this file like any other source, so a banned class written out
- * in full here would compile into the bundle as dead CSS — the exact thing the
+ * in full here would compile into the bundle as dead CSS, the exact thing the
  * test exists to prevent. Hints and prose above therefore name the steps
  * without the `text-` prefix, and the patterns build it at runtime.
  */
@@ -191,7 +191,7 @@ describe("type scale", () => {
             for (const match of line.matchAll(regex)) {
               if (rawCssExemptions.some((exempt) => exempt.test(match[0]))) continue;
               violations.push(
-                `${rel}:${index + 1}  ${match[0].trim()}  (${label} — ${hint})`,
+                `${rel}:${index + 1}  ${match[0].trim()}  (${label}, ${hint})`,
               );
             }
           }

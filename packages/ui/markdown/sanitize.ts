@@ -7,7 +7,7 @@ import { defaultSchema, type Options } from 'rehype-sanitize'
  * views/editor/readonly-content.tsx).
  *
  * This is the ONLY copy. Both renderers previously carried a verbatim fork of
- * this schema, which had already drifted — the readonly fork whitelisted <mark>
+ * this schema, which had already drifted, the readonly fork whitelisted <mark>
  * for `==highlight==` and the chat fork did not. A security-relevant allow-list
  * maintained in two places means any future XSS fix has to land twice, and
  * missing one is a hole. Adding a surface means importing this, never copying
@@ -19,7 +19,7 @@ import { defaultSchema, type Options } from 'rehype-sanitize'
  */
 export const markdownSanitizeSchema: Options = {
   ...defaultSchema,
-  // Allow <mark> (text highlight) — emitted by highlightToHtml from `==text==`.
+  // Allow <mark> (text highlight), emitted by highlightToHtml from `==text==`.
   // It carries no attributes, so only the tag name needs whitelisting.
   tagNames: [...(defaultSchema.tagNames ?? []), 'mark'],
   protocols: {
@@ -46,7 +46,7 @@ export const markdownSanitizeSchema: Options = {
     ],
     img: [
       // Drop the default plain `src` entry so the value allow-list below is the
-      // one findDefinition resolves — it returns the first match by name, so a
+      // one findDefinition resolves, it returns the first match by name, so a
       // bare `src` string would otherwise shadow (and disable) the allow-list.
       ...(defaultSchema.attributes?.img ?? []).filter(
         (attr) => (typeof attr === 'string' ? attr : attr[0]) !== 'src',

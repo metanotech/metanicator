@@ -12,7 +12,7 @@ export function useAutoScroll(ref: RefObject<HTMLElement | null>) {
   const lockRef = useRef(false)
   // Re-running the initial scroll-to-bottom on every effect mount would
   // overwrite the scroll position any time React tears the effect down and
-  // brings it back — e.g. when the host tab cycles through `<Activity
+  // brings it back, e.g. when the host tab cycles through `<Activity
   // mode="hidden">` and back. We want the jump only on a real first mount.
   const didInitialScrollRef = useRef(false)
 

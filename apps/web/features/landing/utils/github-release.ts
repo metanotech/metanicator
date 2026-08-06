@@ -19,7 +19,7 @@ import {
  * ~20 min; 1 h gives 3x buffer for commonly-variable manual steps.
  *
  * On any failure (network, rate limit, malformed payload) returns a
- * `null`-shaped result and logs — the page degrades to a "version
+ * `null`-shaped result and logs, the page degrades to a "version
  * unavailable" view rather than 500ing.
  */
 
@@ -54,7 +54,7 @@ export async function fetchLatestRelease(): Promise<LatestRelease> {
   // Optional PAT for local development and self-hosted deploys where
   // the shared outbound IP keeps hitting the 60-requests/hour
   // unauthenticated limit. Vercel's fetch cache is shared across all
-  // regions so production rarely needs this — but the env var lets
+  // regions so production rarely needs this, but the env var lets
   // anyone running the site locally avoid the rate-limit dance. Never
   // prefix this with `NEXT_PUBLIC_`; the token must stay server-side.
   const token = process.env.GITHUB_TOKEN;
@@ -72,7 +72,7 @@ export async function fetchLatestRelease(): Promise<LatestRelease> {
     }
     const data = (await res.json()) as GitHubReleasePayload[];
 
-    // Defensive filter — Metanicator doesn't publish prereleases or drafts
+    // Defensive filter, Metanicator doesn't publish prereleases or drafts
     // today, but the endpoint returns them if that ever changes. A
     // prerelease shadowing a stable version on /download would be a
     // regression.

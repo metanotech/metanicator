@@ -17,12 +17,12 @@ import { cn } from "../../lib/utils";
 // - Responsiveness is TWO-ZONE and CONTAINER-query driven (wrap the ListGrid
 //   in a `@container` element; `@<bp>:` variants, never viewport `sm:`/`lg:`,
 //   so sidebars and split panes are accounted for):
-//   - ≥ @2xl: WYSIWYG — every user-enabled column renders. The grid carries
+//   - ≥ @2xl: WYSIWYG, every user-enabled column renders. The grid carries
 //     `@2xl:min-w-[var(--…-minw)]` (Σ enabled tracks + gaps, computed from
 //     the page's column-width constants) and the wrapper has
 //     `overflow-x-auto`, so an over-provisioned column set scrolls instead
 //     of clipping. An enabled column must NEVER be silently hidden behind a
-//     width tier — that "dead toggle" bug shipped twice.
+//     width tier, that "dead toggle" bug shipped twice.
 //   - < @2xl: a static core template (name + one key column), no horizontal
 //     scroll, column toggles don't apply. Non-core cells carry
 //     `hidden @2xl:flex`; display:none cells drop out of subgrid
@@ -121,7 +121,7 @@ function ListGridHeaderCell({
         className={cn(
           "group/sort flex h-6 items-center gap-0.5 rounded-md text-caption transition-colors",
           // Active sort column: emphasis via weight + full foreground color
-          // only — no background, so the header row stays quiet.
+          // only, no background, so the header row stays quiet.
           sorted
             ? "font-medium text-foreground"
             : "text-muted-foreground hover:bg-accent hover:text-accent-foreground",
@@ -140,7 +140,7 @@ function ListGridHeaderCell({
   );
 }
 
-// Rows area — a plain subgrid passthrough that groups the rows and carries
+// Rows area, a plain subgrid passthrough that groups the rows and carries
 // the virtualization padding. It does NOT scroll: both scroll axes live on
 // the single outer wrapper (`overflow-auto @container`), with the sticky
 // header pinning inside that scroller. Splitting horizontal scrolling
@@ -170,7 +170,7 @@ function ListGridBody({
 // extra runway keeps both off the final row's kebab.
 export const LIST_GRID_BOTTOM_CLEARANCE = 64;
 
-// A row is a plain `<div>`, never an `<a>` — so interactive cells (checkbox,
+// A row is a plain `<div>`, never an `<a>`, so interactive cells (checkbox,
 // kebab, inline editors) are valid siblings, not interactive content nested
 // inside an anchor (which is invalid HTML and made native navigation fire on
 // every child click). Whole-row navigation is a MOUSE convenience layered on

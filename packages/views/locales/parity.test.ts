@@ -18,7 +18,7 @@ import { RESOURCES } from "./index";
 // file ships without a matching RESOURCES entry. Without this guard the test
 // would still pass when EN and a non-English bundle skip a namespace (e.g. issues +
 // agents both unregistered), since the iteration happens over RESOURCES.en
-// itself — that's a tautology, not parity.
+// itself, that's a tautology, not parity.
 const LOCALES_DIR = dirname(fileURLToPath(import.meta.url));
 
 function jsonNamespacesIn(locale: string): string[] {
@@ -89,7 +89,7 @@ describe("locale bundle parity", () => {
 // Dead plural-key guard: a locale whose CLDR plural rules have no `one`
 // category (e.g. ja/ko/zh-Hans) resolves only `_other`, so any `_one` key in
 // it is dead weight i18next never renders. Left unchecked these accumulate and
-// hide bugs — a missing `_other` silently falls back while the orphan `_one`
+// hide bugs, a missing `_other` silently falls back while the orphan `_one`
 // looks like coverage. i18next resolves plurals via Intl.PluralRules, so we
 // gate on the same source of truth.
 describe("dead plural-key guard", () => {

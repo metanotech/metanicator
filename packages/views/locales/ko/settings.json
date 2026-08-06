@@ -146,7 +146,7 @@
   "chat": {
     "floating_title": "플로팅 창",
     "floating_label": "플로팅 채팅 창",
-    "floating_hint": "모든 페이지 모서리에 플로팅 채팅 버튼을 표시합니다. 기본값은 꺼짐 — 켜면 어디서나 채팅을 불러올 수 있고, 꺼면 채팅은 이 탭에서만 사용할 수 있습니다."
+    "floating_hint": "모든 페이지 모서리에 플로팅 채팅 버튼을 표시합니다. 기본값은 꺼짐, 켜면 어디서나 채팅을 불러올 수 있고, 꺼면 채팅은 이 탭에서만 사용할 수 있습니다."
   },
   "issue": {
     "description": "각 생성 방식의 툴바에 항상 표시할 필드를 선택합니다. 숨긴 필드는 ⋯ 메뉴에서 계속 사용할 수 있으며, 값이 있는 동안에는 자동으로 표시됩니다.",
@@ -699,7 +699,7 @@
     "install_starting": "QR 코드를 준비하는 중…",
     "install_scan_hint": "Lark → 스캔 → 새 PersonalAgent를 승인하세요.",
     "install_open_link_fallback": "또는 여기를 눌러 Lark에서 열기",
-    "install_success": "설치 완료 — 봇이 온라인 상태입니다.",
+    "install_success": "설치 완료, 봇이 온라인 상태입니다.",
     "install_success_toast": "Lark 봇이 설치되었어요",
     "install_scan_hint_feishu": "Feishu → 스캔 → 새 PersonalAgent를 승인하세요.",
     "install_scan_hint_lark": "Lark → 스캔 → 새 PersonalAgent를 승인하세요.",
@@ -709,10 +709,10 @@
     "install_success_toast_lark": "Lark 봇이 설치되었어요",
     "install_close": "닫기",
     "install_retry": "다시 스캔",
-    "install_poll_retry": "설치 상태를 확인하는 중 네트워크가 일시적으로 끊겼어요 — 다시 시도합니다.",
+    "install_poll_retry": "설치 상태를 확인하는 중 네트워크가 일시적으로 끊겼어요, 다시 시도합니다.",
     "install_error_expired": "승인 전에 QR이 만료되었어요. 다시 스캔하세요.",
     "install_error_access_denied": "Lark에서 설치가 취소되었어요.",
-    "install_error_protocol": "Lark가 설치를 거부했어요 — 다시 시도하세요.",
+    "install_error_protocol": "Lark가 설치를 거부했어요, 다시 시도하세요.",
     "install_error_bot_info": "승인되었지만 Metanicator가 봇의 식별자를 가져오지 못했어요. 다시 시도하세요.",
     "install_error_conflict": "설치를 저장하지 못했어요. 다른 봇이 이미 이 에이전트에 연결되어 있을 수 있어요.",
     "install_error_installer_bind": "봇은 설치되었지만 Lark 신원을 연결하지 못했어요. 다시 시도하거나 지원팀에 문의하세요.",

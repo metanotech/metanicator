@@ -79,7 +79,7 @@ export function DownloadHero({
 }
 
 // ------------------------------------------------------------
-// Content resolver — maps (detect, assets) → CTA props
+// Content resolver, maps (detect, assets) → CTA props
 // ------------------------------------------------------------
 
 interface HeroContent {
@@ -183,7 +183,7 @@ export function resolveContent(
     };
   }
 
-  // Linux — same principle: trust the arm64 signal, surface a hint
+  // Linux, same principle: trust the arm64 signal, surface a hint
   // when we're not confident. Linux ARM has no binary emulation so
   // the hint matters more here than on Windows.
   const isArmLinux = detected.arch === "arm64";

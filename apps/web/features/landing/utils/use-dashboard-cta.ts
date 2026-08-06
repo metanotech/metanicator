@@ -41,7 +41,7 @@ export function resolveDashboardCtaHref({
  * These CTAs used to point at `/` and lean on the proxy bouncing logged-in
  * visitors from the root path to their workspace. Once `/` stayed public on the
  * official marketing host, that bounce stopped and the CTA resolved to the page
- * the visitor was already on — a click with no visible effect. Resolve the real
+ * the visitor was already on, a click with no visible effect. Resolve the real
  * destination here instead, through the same resolver
  * `RedirectIfAuthenticated` uses, so "where the dashboard lives" has one source
  * of truth.

@@ -159,7 +159,7 @@ export function LandingHeader({
   );
 }
 
-/** Star-count segment appended to the header's GitHub button — a faint
+/** Star-count segment appended to the header's GitHub button, a faint
  *  divider and the compact count (e.g. "37.6k"). No star glyph: in the GitHub
  *  button context the number reads as the star count on its own. Inherits the
  *  button's text color so it adapts to both the dark and light header

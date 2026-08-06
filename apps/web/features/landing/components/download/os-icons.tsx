@@ -38,7 +38,7 @@ export function WindowsIcon({ size = 18, ...props }: IconProps) {
 }
 
 export function LinuxIcon({ size = 18, ...props }: IconProps) {
-  // Simplified Tux silhouette — round head + body.
+  // Simplified Tux silhouette, round head + body.
   return (
     <svg
       viewBox="0 0 24 24"

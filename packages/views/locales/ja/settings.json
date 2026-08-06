@@ -146,7 +146,7 @@
   "chat": {
     "floating_title": "フローティングウィンドウ",
     "floating_label": "フローティングチャット",
-    "floating_hint": "すべてのページの隅にフローティングチャットボタンを表示します。デフォルトはオフ——オンにするとどこからでもチャットを呼び出せます。オフのときは専用タブでのみ利用できます。"
+    "floating_hint": "すべてのページの隅にフローティングチャットボタンを表示します。デフォルトはオフ, , オンにするとどこからでもチャットを呼び出せます。オフのときは専用タブでのみ利用できます。"
   },
   "issue": {
     "description": "各作成ダイアログのツールバーに常時表示するフィールドを選択します。非表示のフィールドは ⋯ メニューから引き続き使用でき、値がある間は自動的に表示されます。",
@@ -594,7 +594,7 @@
     "install_starting": "QR コードを準備しています…",
     "install_scan_hint": "Lark → スキャン → 新しい PersonalAgent を承認してください。",
     "install_open_link_fallback": "ここをタップして Lark で開く",
-    "install_success": "設置が完了しました — ボットはオンラインです。",
+    "install_success": "設置が完了しました, ボットはオンラインです。",
     "install_success_toast": "Lark ボットを設置しました",
     "install_scan_hint_feishu": "Feishu → スキャン → 新しい PersonalAgent を承認してください。",
     "install_scan_hint_lark": "Lark → スキャン → 新しい PersonalAgent を承認してください。",
@@ -604,10 +604,10 @@
     "install_success_toast_lark": "Lark ボットを設置しました",
     "install_close": "閉じる",
     "install_retry": "もう一度スキャン",
-    "install_poll_retry": "設置状況の確認中に一時的にネットワークが途切れました — 再試行します。",
+    "install_poll_retry": "設置状況の確認中に一時的にネットワークが途切れました, 再試行します。",
     "install_error_expired": "承認前に QR が期限切れになりました。もう一度スキャンしてください。",
     "install_error_access_denied": "Lark で設置がキャンセルされました。",
-    "install_error_protocol": "Lark が設置を拒否しました — もう一度お試しください。",
+    "install_error_protocol": "Lark が設置を拒否しました, もう一度お試しください。",
     "install_error_bot_info": "承認はされましたが、Metanicator がボットの識別子を取得できませんでした。もう一度お試しください。",
     "install_error_conflict": "設置を保存できませんでした。別のボットがすでにこのエージェントに接続されている可能性があります。",
     "install_error_installer_bind": "ボットは設置されましたが、Lark の身元情報を連携できませんでした。もう一度お試しいただくか、サポートにお問い合わせください。",

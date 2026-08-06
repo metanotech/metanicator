@@ -55,7 +55,7 @@ export function createJaDict(allowSignup: boolean): LandingDict {
       },
       autonomous: {
         label: "自律実行",
-        title: "任せておくだけ — あなたが眠っている間もエージェントが働きます",
+        title: "任せておくだけ, あなたが眠っている間もエージェントが働きます",
         description:
           "一往復で終わる指示ではありません。作業をキューに入れ、受け取り、開始し、完了または失敗まで報告する。このライフサイクル全体を Metanicator が管理します。詰まったところはエージェントが先に知らせ、進捗は WebSocket でリアルタイムに届きます。",
         cards: [
@@ -2223,7 +2223,7 @@ export function createJaDict(allowSignup: boolean): LandingDict {
     about: {
       title: "Metanicator について",
       nameLine: {
-        prefix: "Metanicator — ",
+        prefix: "Metanicator, ",
         mul: "Mul",
         tiplexed: "tiplexed ",
         i: "I",

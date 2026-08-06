@@ -25,7 +25,7 @@
     },
     "empty": {
       "title": "No skills yet",
-      "description": "Create your first skill, import one from a URL, or copy one from a connected runtime — and every agent in the workspace can use it."
+      "description": "Create your first skill, import one from a URL, or copy one from a connected runtime, and every agent in the workspace can use it."
     },
     "no_matches": {
       "title": "No matches",
@@ -36,7 +36,7 @@
     },
     "intro_banner": {
       "title": "Shared with your workspace.",
-      "body": "Anyone can create a skill, import one from a URL, or copy one from their local runtime — and every agent can use it.",
+      "body": "Anyone can create a skill, import one from a URL, or copy one from their local runtime, and every agent can use it.",
       "highlight": "Local runtime skills stay private until you copy one here."
     },
     "list_error": {
@@ -53,8 +53,8 @@
     "source": "Source",
     "updated": "Updated",
     "created": "Created",
-    "lock_tooltip": "Read-only — only creator or admin can edit",
-    "unused": "— unused",
+    "lock_tooltip": "Read-only, only creator or admin can edit",
+    "unused": ",  unused",
     "by_creator": "by {{name}}",
     "source_manual": "Created manually",
     "source_runtime_named": "From {{name}}",
@@ -262,7 +262,7 @@
       "importing_clawhub": "Importing from ClawHub…",
       "importing_skills_sh": "Importing from Skills.sh…",
       "importing_github": "Importing from GitHub…",
-      "name_conflict_hint": " The imported skill's name already exists — delete the existing one before retrying.",
+      "name_conflict_hint": " The imported skill's name already exists, delete the existing one before retrying.",
       "fallback_error": "Import failed",
       "cancel": "Cancel",
       "toast_imported": "Skill imported"
@@ -292,7 +292,7 @@
     "skill_files_other": "{{count}} files",
     "skill_name_label": "Workspace skill name",
     "skill_description_label": "Description",
-    "skill_description_placeholder": "Optional — describe when an agent should use this skill.",
+    "skill_description_placeholder": "Optional, describe when an agent should use this skill.",
     "toast_imported": "Skill imported",
     "toast_import_failed": "Failed to import skill",
     "select_all": "Select all ({{count}})",

@@ -37,8 +37,7 @@ export function DownloadClient({ release }: { release: LatestRelease }) {
 
   return (
     <>
-      {/* Positioning context for the dark-variant LandingHeader —
-          mirrors multica-landing.tsx. The header is `absolute top-0
+      {/* Positioning context for the dark-variant LandingHeader, mirrors multica-landing.tsx. The header is `absolute top-0
           inset-x-0`, so it anchors to this `relative` wrapper and
           scrolls off together with the dark hero below. Without the
           wrapper, `absolute` would escape to the initial containing

@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     "Talk to the Metanicator team about rolling out human + agent workflows at your company.",
   openGraph: {
-    title: "Contact Sales — Metanicator",
+    title: "Contact Sales, Metanicator",
     description:
       "Tell us about your team. We’ll respond within three business days.",
     url: "/contact-sales",

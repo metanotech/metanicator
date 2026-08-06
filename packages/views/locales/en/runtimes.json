@@ -13,7 +13,7 @@
     "filter_all_description": "All runtimes in this view",
     "empty": {
       "title": "No runtimes yet",
-      "hint": "Desktop auto-scans this computer. To use another machine — a server, dev box, or any computer with a terminal — add it here."
+      "hint": "Desktop auto-scans this computer. To use another machine, a server, dev box, or any computer with a terminal, add it here."
     },
     "no_matches": {
       "title": "No matches",
@@ -98,7 +98,7 @@
     },
     "recently_lost": {
       "label": "Recently lost",
-      "description": "Lost contact under 5 minutes ago — often a brief network blip."
+      "description": "Lost contact under 5 minutes ago, often a brief network blip."
     },
     "offline": {
       "label": "Offline",
@@ -139,7 +139,7 @@
     "visibility_toast_updated": "Visibility set to {{visibility}}",
     "visibility_toast_failed": "Failed to update visibility",
     "delete_dialog": {
-      "self_heal_notice": "This runtime is managed by a running local daemon. Deleting it will succeed, but the daemon will re-register a fresh runtime within seconds — stop the daemon process first to remove it permanently.",
+      "self_heal_notice": "This runtime is managed by a running local daemon. Deleting it will succeed, but the daemon will re-register a fresh runtime within seconds, stop the daemon process first to remove it permanently.",
       "profile_backed_notice": "This runtime was registered from a custom runtime profile. Deleting it removes only the current runtime instance; a running daemon can register it again while the profile remains. Delete the custom runtime profile from Custom runtimes to remove it permanently.",
       "light": {
         "title": "Delete Runtime?",
@@ -151,7 +151,7 @@
       "cascade": {
         "title_one": "Unbind {{count}} agent and delete this Runtime?",
         "title_other": "Unbind {{count}} agents and delete this Runtime?",
-        "description": "Delete \"{{name}}\". The agents below are kept — their instructions, chats and task history stay intact — but they will be unbound and cannot run until you bind them to another runtime. Their queued or running tasks will be cancelled, and then the Runtime will be deleted.",
+        "description": "Delete \"{{name}}\". The agents below are kept, their instructions, chats and task history stay intact, but they will be unbound and cannot run until you bind them to another runtime. Their queued or running tasks will be cancelled, and then the Runtime will be deleted.",
         "warning": "Queued and running tasks will be cancelled, and these agents cannot be assigned new work until they are bound to a runtime.",
         "notice_runtime_has_active_agents": "Active agents were added since you opened this dialog. Review the new plan and confirm.",
         "notice_runtime_delete_plan_changed": "The active agent set changed while this dialog was open. Review the new plan and confirm.",
@@ -169,9 +169,9 @@
           "header_visibility": "Visibility",
           "header_model": "Model",
           "owner_self": "You",
-          "owner_unassigned": "—",
-          "model_unset": "—",
-          "presence_unknown": "—",
+          "owner_unassigned": ", ",
+          "model_unset": ", ",
+          "presence_unknown": ", ",
           "workload_idle": "Idle",
           "workload_working": "Working",
           "workload_queued": "Queued",
@@ -202,12 +202,12 @@
     "step2_label": "Start the daemon",
     "step2_hint": "Opens a browser to sign in, then keeps the daemon running in the background.",
     "live_listening": "Waiting for your computer",
-    "live_listening_hint": "We'll detect it as soon as the daemon starts — usually under a minute.",
+    "live_listening_hint": "We'll detect it as soon as the daemon starts, usually under a minute.",
     "troubleshooting": "Can't open a browser on that computer?",
     "trouble_intro": "Use a token instead of the browser sign-in. This replaces step 2 and works anywhere you have a terminal.",
     "trouble_token_hint_prefix": "Create a token in ",
     "trouble_token_hint_destination": "Settings → Tokens",
-    "trouble_token_hint_suffix": ". The daemon only makes outbound connections — no inbound ports required.",
+    "trouble_token_hint_suffix": ". The daemon only makes outbound connections, no inbound ports required.",
     "trouble_check_status": "Check status",
     "trouble_view_logs": "View logs",
     "copy_aria": "Copy",
@@ -261,7 +261,7 @@
     "cli_version_label": "CLI Version:",
     "version_unknown": "unknown",
     "managed_by_desktop": "Managed by Desktop",
-    "managed_by_desktop_title": "The CLI binary is managed by Metanicator Desktop — update Desktop to upgrade the CLI.",
+    "managed_by_desktop_title": "The CLI binary is managed by Metanicator Desktop, update Desktop to upgrade the CLI.",
     "read_only": "Read-only",
     "read_only_title": "Only runtime owners and workspace admins can update the CLI.",
     "local_build": "Local build",
@@ -420,8 +420,8 @@
     "empty_pricing_missing": "Tokens recorded but pricing missing for:",
     "empty_pricing_hint": "Set a custom rate to include them in cost totals.",
     "empty_zero_cost": "Tokens recorded but cost calculation returned $0.",
-    "unmapped_notice_one": "{{count}} model has no maintained price — its tokens are excluded from cost totals.",
-    "unmapped_notice_other": "{{count}} models have no maintained price — their tokens are excluded from cost totals.",
+    "unmapped_notice_one": "{{count}} model has no maintained price, its tokens are excluded from cost totals.",
+    "unmapped_notice_other": "{{count}} models have no maintained price, their tokens are excluded from cost totals.",
     "custom_pricing": {
       "open_button": "Set custom prices",
       "edit_button": "Edit custom prices",

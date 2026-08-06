@@ -6,8 +6,7 @@ import { extendTailwindMerge } from "tailwind-merge"
  * tailwind-merge cannot tell them apart from a colour utility: `text-<x>` is
  * ambiguous, and its built-in table only lists Tailwind's default sizes. Left
  * unconfigured it files every role step under text-colour, and then drops
- * whichever of `text-body` / `text-muted-foreground` came first as a conflict —
- * silently, so an element renders at the inherited 16px or in the wrong colour
+ * whichever of `text-body` / `text-muted-foreground` came first as a conflict, * silently, so an element renders at the inherited 16px or in the wrong colour
  * with nothing in the source to explain it.
  *
  * Registering the steps as font-size restores the real conflict groups: size

@@ -227,7 +227,7 @@
     "label": "モデル",
     "select_runtime_first": "先にランタイムを選択してください",
     "default_provider": "デフォルト（プロバイダー）",
-    "runtime_offline_manual": "ランタイムがオフライン — 手動で入力",
+    "runtime_offline_manual": "ランタイムがオフライン, 手動で入力",
     "managed_by_runtime_title": "このランタイムがモデル選択を管理します。",
     "managed_by_runtime_hint": "ランタイムホストでモデルを設定してください（例: Hermes は自身の設定ファイルから読み込みます）。",
     "discovery_failed": "検出に失敗しました",
@@ -306,7 +306,7 @@
     "skills_section": {
       "label": "スキル",
       "placeholder": "ワークスペースからスキルを追加",
-      "selected_other": "{{count}} 件選択中 — クリックして編集",
+      "selected_other": "{{count}} 件選択中, クリックして編集",
       "collapse": "折りたたむ",
       "list_empty_multi": "このワークスペースにはまだスキルがありません。まず作成またはインポートしてください。",
       "list_loading": "読み込み中...",
@@ -331,7 +331,7 @@
     "instructions": {
       "intro": "すべての作業で使用する System Prompt を設定します。Markdown に対応しています。",
       "system_prompt_label": "System Prompt",
-      "placeholder": "このエージェントの役割、専門分野、作業スタイルを定義してください。\n\n# 例\nあなたは React と TypeScript を専門とするフロントエンドエンジニアです。\n\n## 作業スタイル\n- 小さく焦点を絞った PR を作成する — 論理的な変更ごとに1コミット\n- 継承よりコンポジションを優先する\n- 新しいコンポーネントには必ずユニットテストを追加する\n\n## 制約\n- 明示的な承認なしに shared/ の型を変更しない\n- features/ の既存のコンポーネントパターンに従う",
+      "placeholder": "このエージェントの役割、専門分野、作業スタイルを定義してください。\n\n# 例\nあなたは React と TypeScript を専門とするフロントエンドエンジニアです。\n\n## 作業スタイル\n- 小さく焦点を絞った PR を作成する, 論理的な変更ごとに1コミット\n- 継承よりコンポジションを優先する\n- 新しいコンポーネントには必ずユニットテストを追加する\n\n## 制約\n- 明示的な承認なしに shared/ の型を変更しない\n- features/ の既存のコンポーネントパターンに従う",
       "system_layer_label": "Metanicator が管理",
       "system_layer_hint": "Metanicator のリリースごとに更新されます。編集はできず、下に書いた内容が上書きされることもありません。",
       "system_layer_show": "表示",
@@ -445,7 +445,7 @@
       "delete_action": "Server を削除",
       "invalid_json": "無効な JSON: {{error}}",
       "save_failed_toast": "MCP config を保存できませんでした",
-      "redacted_title": "設定済み — あなたには非表示",
+      "redacted_title": "設定済み, あなたには非表示",
       "redacted_hint": "この config を読み取れるのは、エージェントのオーナーまたはワークスペースの admin のみです。"
     },
     "composio_mcp": {
@@ -459,13 +459,13 @@
       "toggle_aria": "この agent に {{toolkit}} を許可",
       "saving": "保存中…",
       "save_failed_toast": "保存できませんでした。もう一度お試しください",
-      "redacted_title": "設定済み — あなたには非表示",
+      "redacted_title": "設定済み, あなたには非表示",
       "redacted_hint": "この agent が使用できるアプリを閲覧・変更できるのは作成者のみです。",
       "shared_warning": "このエージェントは共有されています。このエージェントを実行できる人は、ここで有効化した Composio アプリを利用できます。これらのアプリが機微なデータを扱う場合は、Private にするかアクセス範囲を絞ってください。",
       "workspace_warning": "ワークスペースに公開：ワークスペースの全メンバーがこのエージェントを通じてこれらの Composio アプリを利用できます。"
     },
     "runtime_config": {
-      "intro": "OpenClaw ランタイムがこのエージェントの各ターンをどのように実行するかを選択します。Local モードはエージェントを daemon プロセス内で実行します。Gateway モードは各ターンを OpenClaw Gateway に転送します — daemon のホストが軽量な調整役で、エージェントの実作業はより強力なマシンで動かしたい場合に有用です。",
+      "intro": "OpenClaw ランタイムがこのエージェントの各ターンをどのように実行するかを選択します。Local モードはエージェントを daemon プロセス内で実行します。Gateway モードは各ターンを OpenClaw Gateway に転送します, daemon のホストが軽量な調整役で、エージェントの実作業はより強力なマシンで動かしたい場合に有用です。",
       "mode_label": "ルーティングモード",
       "mode_local": "Local",
       "mode_gateway": "Gateway",
@@ -478,7 +478,7 @@
       "port_invalid": "ポートは正の整数である必要があります。",
       "token_label": "認証トークン",
       "token_placeholder": "Gateway が発行する bearer トークン",
-      "token_masked_placeholder": "保存済み — ローテーションするには新しい値を入力。空欄のままだと保持されます",
+      "token_masked_placeholder": "保存済み, ローテーションするには新しい値を入力。空欄のままだと保持されます",
       "tls_label": "TLS を使用",
       "tls_hint": "http:// の代わりに https:// でダイヤル",
       "saved_toast": "ルーティング設定を保存しました",
@@ -630,7 +630,7 @@
     "public_group": "公開アクセス",
     "owner_only_readonly": "このエージェントを実行できる相手は、オーナーのみが変更できます。",
     "members_empty": "選択できるワークスペースメンバーがいません",
-    "composio_switch_hint": "ご注意 — このエージェントは Composio アプリが有効です。共有すると、アクセス権を持つ全員がこのエージェントを通じてこれらのアプリを利用できます。"
+    "composio_switch_hint": "ご注意, このエージェントは Composio アプリが有効です。共有すると、アクセス権を持つ全員がこのエージェントを通じてこれらのアプリを利用できます。"
   },
   "profile_card": {
     "unavailable": "エージェントを利用できません",

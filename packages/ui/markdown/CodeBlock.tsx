@@ -56,7 +56,7 @@ function isValidLanguage(lang: string): lang is BundledLanguage {
  * CodeBlock - Syntax highlighted code block using Shiki
  *
  * Uses Shiki dual themes with CSS variables for light/dark switching.
- * No JS-based dark mode detection needed — theme switching is handled
+ * No JS-based dark mode detection needed, theme switching is handled
  * entirely via CSS (see globals.css for .shiki/.dark .shiki rules).
  *
  * @see https://shiki.style/guide/dual-themes

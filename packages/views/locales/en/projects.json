@@ -102,7 +102,7 @@
     "local_daemon_already_attached_hint": "This machine already has a local directory attached. Remove it before adding another.",
     "local_rename_tooltip": "Rename",
     "local_rename_label": "Local directory label",
-    "local_no_daemon_tooltip": "Local daemon isn't reporting an ID yet — the agent can't open this directory.",
+    "local_no_daemon_tooltip": "Local daemon isn't reporting an ID yet, the agent can't open this directory.",
     "local_other_machine_tooltip": "Only available on the machine that registered this directory.",
     "chat_hint_prefix": "Agent will work in-place at",
     "toast_local_attached": "Local directory attached",

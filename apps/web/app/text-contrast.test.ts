@@ -10,7 +10,7 @@ import { describe, expect, it } from "vitest";
  * depend on the second. `text-muted-foreground/70` reads as "muted, a bit
  * quieter"; on a light surface it is 2.69:1, which is not quieter, it is gone.
  * 152 call sites spread across /30 to /80 and every one failed AA in light
- * mode — not because anyone chose an illegible grey, but because the palette
+ * mode, not because anyone chose an illegible grey, but because the palette
  * stopped at --muted-foreground and transparency was the only way left to say
  * "quieter".
  *
@@ -22,7 +22,7 @@ import { describe, expect, it } from "vitest";
  * floor and it is --muted-foreground.
  *
  * Assertions recompute contrast from the token files rather than hard-coding
- * ratios, so editing a token value is what fails the test — the only way a
+ * ratios, so editing a token value is what fails the test, the only way a
  * colour guard stays true. Ratios are WCAG 2.x relative luminance.
  */
 
@@ -183,27 +183,26 @@ const guardedColors = [
 /**
  * Transparency behind an interaction or disabled state is not a hierarchy
  * level: the resting state carries the contrast obligation and it is solid,
- * and WCAG exempts disabled controls outright. `dark:` is deliberately absent —
- * it paints a resting state.
+ * and WCAG exempts disabled controls outright. `dark:` is deliberately absent, * it paints a resting state.
  *
  * The test for admission to this list is narrow: the state must be transient
  * and user-driven, and the element's resting appearance must already be solid.
- * `dragging` qualifies for the same reason `active` does — a drag ghost at 60%
+ * `dragging` qualifies for the same reason `active` does, a drag ghost at 60%
  * is feedback for an in-flight gesture, not a tier the text lives in.
  *
  * The exemption is never decided by "a state word appears somewhere nearby".
  * That is how `"text-muted-foreground hover:text-foreground opacity-50"` slips
  * through: the `hover:` belongs to the colour, not to the opacity, and the
- * opacity is resting-state. It is decided by exactly two things — the variant
+ * opacity is resting-state. It is decided by exactly two things, the variant
  * prefix carried by the opacity utility itself, and the condition that governs
- * the literal the utility sits in — because those are the only two places the
+ * the literal the utility sits in, because those are the only two places the
  * state can actually live.
  */
 const stateWords =
   /\b(?:hover|focus|focus-visible|focus-within|active|disabled|visited|dragging|isDragging|group-hover|group-focus|peer-hover|peer-focus|aria-disabled|data-disabled)\b/;
 
 /**
- * `text-muted-foreground/70`, and equally `/[0.5]` and `/[50%]` — Tailwind
+ * `text-muted-foreground/70`, and equally `/[0.5]` and `/[50%]`, Tailwind
  * accepts an arbitrary alpha too, and a guard that only knows the bare-number
  * form is a guard with a documented way around it.
  */
@@ -220,7 +219,7 @@ const alphaOnText = new RegExp(
  * The colour and the opacity are correlated across the whole class expression,
  * not within one string. `cn("… text-muted-foreground", suppressed &&
  * "opacity-60")` is one element wearing both, and that split-literal shape is
- * the common one — it is how the comment trigger chips dimmed live text to
+ * the common one, it is how the comment trigger chips dimmed live text to
  * 2.55:1 while a per-literal check called them clean.
  */
 const guardedColorInClass = new RegExp(String.raw`\btext-(?:${guardedColors.join("|")})\b`);
@@ -308,7 +307,7 @@ function classSegments(
 
 /**
  * The condition governing a segment: whatever sits between its opening
- * delimiter and the nearest structural boundary — `suppressed &&`,
+ * delimiter and the nearest structural boundary, `suppressed &&`,
  * `disabled ?`, or nothing at all. When it is nothing, the literal is a leading
  * argument, so the property key the call is assigned to decides instead
  * (`disabled: cn("… opacity-50")`). That key has to look like `identifier:`
@@ -427,7 +426,7 @@ describe("text contrast", () => {
 
   // The landing route tree re-declares the light palette so token-driven
   // components stay light under next-themes' `.dark` class. That copy is only
-  // correct while it matches the source, so drift here is a bug in itself — a
+  // correct while it matches the source, so drift here is a bug in itself, a
   // tone missing from the copy silently inherits its `.dark` value on a white
   // surface.
   it.each(["--muted-foreground", "--faint-foreground"])(
@@ -442,7 +441,7 @@ describe("text contrast", () => {
   /**
    * The detector is the part of this guard most likely to rot, because every
    * hole in it is silent: the sweep still reports "clean". Both earlier
-   * versions passed the repo scan while real violations sat in the tree — one
+   * versions passed the repo scan while real violations sat in the tree, one
    * because it only looked inside a single string, one because it accepted any
    * state word near the utility. So the shapes it must and must not catch are
    * pinned here, next to the reason each one exists.

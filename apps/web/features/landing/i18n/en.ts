@@ -299,7 +299,7 @@ export function createEnDict(allowSignup: boolean): LandingDict {
         title: "DingTalk bots, a guided first run with Mika, and per-run token costs",
         changes: [],
         features: [
-          "Your agents can now live in DingTalk — DM them or @-mention them in a group.",
+          "Your agents can now live in DingTalk, DM them or @-mention them in a group.",
           "Signing up now ends with Mika ready to talk, plus cards to start your first task.",
           "The execution log shows what each run cost, and the whole Issue's total.",
           "Muting comment notifications no longer hides messages that @-mention you.",
@@ -328,7 +328,7 @@ export function createEnDict(allowSignup: boolean): LandingDict {
         title: "Leaner prompts, new runtimes, and a chat message queue",
         changes: [],
         features: [
-          "You can keep sending while an agent works — messages line up and run one by one.",
+          "You can keep sending while an agent works, messages line up and run one by one.",
           "Queued messages can be sent now, edited, removed, or cleared all at once.",
           "Reasonix is now a supported runtime, ready to pick up your work.",
           "QwenPaw can now run your agents as well.",
@@ -398,7 +398,7 @@ export function createEnDict(allowSignup: boolean): LandingDict {
         title: "Delete a runtime without losing your agents",
         changes: [],
         features: [
-          "Deleting a runtime now keeps your agents — point them at another machine and carry on.",
+          "Deleting a runtime now keeps your agents, point them at another machine and carry on.",
           "Arrow keys move the selection in your inbox, so you can read through it without the mouse.",
           "A new hands-on tutorial takes you from an empty workspace to a team that runs itself.",
           "Repo caches no task has touched for a month now clear themselves out.",
@@ -585,7 +585,7 @@ export function createEnDict(allowSignup: boolean): LandingDict {
         title: "Self-hosted Git providers and project-aware Chat",
         changes: [],
         features: [
-          "You can now connect self-hosted Git providers — Forgejo, Gitea, and GitLab — alongside GitHub.",
+          "You can now connect self-hosted Git providers, Forgejo, Gitea, and GitLab, alongside GitHub.",
           "Chat can now use your project's context to give more relevant answers.",
           "The execution log is now easier to read and stays smooth on long runs.",
           "The issue table now shows which agents are working, right in the list.",
@@ -685,7 +685,7 @@ export function createEnDict(allowSignup: boolean): LandingDict {
         title: "Customizable issue tables, live-sorting boards, and steadier agent runs",
         changes: [],
         features: [
-          "You can now customize your issue table — choose which columns appear and how they are arranged.",
+          "You can now customize your issue table, choose which columns appear and how they are arranged.",
         ],
         improvements: [
           "Boards and lists now reorder themselves the moment an issue gets a new comment or update.",
@@ -693,7 +693,7 @@ export function createEnDict(allowSignup: boolean): LandingDict {
           "You can now create an issue straight from the keyboard with the send shortcut.",
           "Your machine's agent service can now stay awake for a set time after tasks finish.",
           "Codex tasks now clean up after themselves, freeing up disk space.",
-          "Agent tasks no longer hang while getting ready — they start promptly or fail fast.",
+          "Agent tasks no longer hang while getting ready, they start promptly or fail fast.",
           "Codex agents now receive the custom environment secrets you set for them.",
         ],
         fixes: [
@@ -722,7 +722,7 @@ export function createEnDict(allowSignup: boolean): LandingDict {
           "Diagrams now open in a viewer you can pan and zoom, and save as an image.",
         ],
         improvements: [
-          "Long agent tasks no longer fail on a brief network drop — they retry and keep going.",
+          "Long agent tasks no longer fail on a brief network drop, they retry and keep going.",
           "Choose which fields appear when you create an issue, now from Settings.",
           "The issues page now clearly shows how many agents are working right now.",
           "Your machine's agent service now remembers the startup options you set.",
@@ -783,7 +783,7 @@ export function createEnDict(allowSignup: boolean): LandingDict {
           "You can now see which teammate is behind each agent run.",
           "You can now build agents on Grok.",
           "The agents list now shows each agent's access scope, with filtering and bulk editing.",
-          "Issue links now open in a new tab by default — you can change this in preferences.",
+          "Issue links now open in a new tab by default, you can change this in preferences.",
           "You can now create a workspace right from the command line.",
           "You can now pick a random color for labels and custom fields.",
           "Fold or unfold all comments on an issue at once from the command palette.",
@@ -828,7 +828,7 @@ export function createEnDict(allowSignup: boolean): LandingDict {
           "Hermes agents now pick up the skills you assign them, and can write files without being blocked.",
           "After you upgrade a coding tool in place, the background service finds its new location on its own, so tasks no longer fail.",
           "A queued task now starts as soon as the one before it finishes.",
-          "Chat unread badges are accurate now — replies that arrive while the app is backgrounded get marked, and archived chats no longer keep a stale unread.",
+          "Chat unread badges are accurate now, replies that arrive while the app is backgrounded get marked, and archived chats no longer keep a stale unread.",
           "Near the bottom of the screen, the @ and / menus now open upward instead of getting cut off.",
           "Autopilot's schedule trigger now reads more complex timing rules correctly.",
           "Autopilot webhook triggers are no longer lost.",
@@ -883,7 +883,7 @@ export function createEnDict(allowSignup: boolean): LandingDict {
         title: "New Codex models, issue-key autolinks, and avatar cropping",
         changes: [],
         features: [
-          "You can now run your agents on the new Codex gpt-5.6 models — Sol, Terra, and Luna.",
+          "You can now run your agents on the new Codex gpt-5.6 models, Sol, Terra, and Luna.",
           "Type or paste an issue key like MUL-123 and it turns into a clickable issue link on its own.",
           "When you upload an avatar, you can now crop, zoom, and rotate it before saving.",
           "When an agent ends without a text reply, chat now shows a clear no-reply note instead of a blank message.",
@@ -918,7 +918,7 @@ export function createEnDict(allowSignup: boolean): LandingDict {
           "Assigning an issue from the command line no longer fails on a momentary network hiccup.",
         ],
         fixes: [
-          "Your follow-up comment on an issue is never dropped — even sent while the agent is still working, it always gets picked up.",
+          "Your follow-up comment on an issue is never dropped, even sent while the agent is still working, it always gets picked up.",
           "When one agent mentions another, the mentioned agent now reliably starts working.",
           "A chat bot that got stuck can be reconnected again, and the \u201calready in use\u201d message now says exactly who holds it.",
           "Links wrapped in bold in comments and descriptions now display correctly.",
@@ -960,7 +960,7 @@ export function createEnDict(allowSignup: boolean): LandingDict {
         improvements: [
           "The in-progress task indicator in chat refreshes faster and makes fewer background requests.",
           "More agent providers can now be configured with MCP.",
-          "Opening a workspace no longer auto-opens the chat window — open it yourself from the button.",
+          "Opening a workspace no longer auto-opens the chat window, open it yourself from the button.",
         ],
         fixes: [
           "Multiple agent tasks running in parallel on the same machine no longer interfere with each other.",
@@ -985,19 +985,19 @@ export function createEnDict(allowSignup: boolean): LandingDict {
         ],
         fixes: [
           "Multi-stage squad flows no longer stall at the first stage when the squad leader is private and a sub-Issue is closed by an agent.",
-          "A parent Issue's staged sub-task-done note no longer wrongly claims an intermediate stage is the final one — the leader is offered both options and picks.",
-          "Several agents can now share a local repo checkout while a squad leader wraps up — the leader no longer holds the checkout lock.",
-          "Multi-hour agent tasks — long research, training, or codegen runs — are no longer killed by the server while your daemon is still alive.",
-          "Search no longer hangs on self-hosted setups — even large workspaces return results quickly on the first try.",
+          "A parent Issue's staged sub-task-done note no longer wrongly claims an intermediate stage is the final one, the leader is offered both options and picks.",
+          "Several agents can now share a local repo checkout while a squad leader wraps up, the leader no longer holds the checkout lock.",
+          "Multi-hour agent tasks, long research, training, or codegen runs, are no longer killed by the server while your daemon is still alive.",
+          "Search no longer hangs on self-hosted setups, even large workspaces return results quickly on the first try.",
           "The Issue and comment editor no longer freezes when you paste a long stacktrace or an unusual long string.",
           "The Antigravity agent no longer fails to start on machines where Claude is also installed.",
           "Browser MCP now starts correctly on Windows agents.",
           "The Codex agent's MCP settings are applied correctly again.",
-          "The Pi agent's task result now shows only the final answer — intermediate thinking is hidden.",
+          "The Pi agent's task result now shows only the final answer, intermediate thinking is hidden.",
           "Autopilots no longer accidentally run the same Issue twice in a row when a run takes longer than expected.",
-          "An Issue's PR list only shows PRs that really target that Issue — PRs that just mention the key in passing (\"Related to MUL-…\") no longer appear.",
+          "An Issue's PR list only shows PRs that really target that Issue, PRs that just mention the key in passing (\"Related to MUL-…\") no longer appear.",
           "The Issue action menu's nested \"More\" item is now called \"Relations\", so you can tell what's inside without opening it.",
-          "Every attachment upload button — chat, Issue creation, Issue description, feedback — now lets you pick multiple files at once from the system file dialog.",
+          "Every attachment upload button, chat, Issue creation, Issue description, feedback, now lets you pick multiple files at once from the system file dialog.",
         ],
       },
       {
@@ -1013,15 +1013,15 @@ export function createEnDict(allowSignup: boolean): LandingDict {
           "Ordered-list caret no longer strands on the block below when a comment draft with an empty `1. ` line reloads.",
           "The daemon now finds the correct agent CLI (Claude, Codex, …) even when a login-shell hook wrapper sits in front of it on PATH.",
           "PR review agents re-run when a new commit is pushed instead of silently reusing the previous verdict on the older commit.",
-          "Realtime clients no longer miss events published while a server pod restarts — a bounded 5-minute replay window covers the gap.",
+          "Realtime clients no longer miss events published while a server pod restarts, a bounded 5-minute replay window covers the gap.",
           "Kiro ACP runtime task usage is accounted correctly in the usage log again.",
           "Autopilot 'create issue' runs stay visible on the runs list even when the runtime is offline.",
           "Slack alert cards (Grafana, incoming webhooks) whose real message body lives in the attachment are now read from the attachment instead of the short fallback line.",
           "Codex agent tasks see the daemon's Codex model catalog inside the task home again. (Community-reported.)",
           "Legacy `/squads/…` and `/usage` web routes redirect to their current equivalents instead of 404-ing.",
           "The desktop app's Save dialog uses the real attachment filename instead of defaulting to `download.txt`. (Community contribution.)",
-          "Squad coordination: a private squad leader now wakes correctly when the worker agent it dispatched posts its completion comment via the HTTP API — the leader → worker → leader loop no longer stalls after the first hop.",
-          "Tasks no longer hard-fail on hosts whose Claude CLI predates `--effort` — the daemon drops the effort flag with a warning and runs the task plainly.",
+          "Squad coordination: a private squad leader now wakes correctly when the worker agent it dispatched posts its completion comment via the HTTP API, the leader → worker → leader loop no longer stalls after the first hop.",
+          "Tasks no longer hard-fail on hosts whose Claude CLI predates `--effort`, the daemon drops the effort flag with a warning and runs the task plainly.",
         ],
       },
       {
@@ -1036,7 +1036,7 @@ export function createEnDict(allowSignup: boolean): LandingDict {
           "Self-hosted: S3-compatible object storage now supports path-style addressing.",
         ],
         improvements: [
-          "Board, list, swimlane, and Gantt share one query and cache path — Members/Agents tab counts are exact, cross-project moves reconcile per-list, and slow networks get a shared refresh indicator on sort/filter changes.",
+          "Board, list, swimlane, and Gantt share one query and cache path, Members/Agents tab counts are exact, cross-project moves reconcile per-list, and slow networks get a shared refresh indicator on sort/filter changes.",
           "The chat live timeline no longer remounts on every streamed task message, so long agent runs stay smooth.",
         ],
         fixes: [
@@ -1073,7 +1073,7 @@ export function createEnDict(allowSignup: boolean): LandingDict {
           "The Issue and comment editor upgrades Tiptap to 3.27.1, fixing an inline `code` shortcut that could drop the character before it.",
         ],
         fixes: [
-          "The Slack chat agent no longer narrates its channel-history reads — it reads silently and replies with the answer.",
+          "The Slack chat agent no longer narrates its channel-history reads, it reads silently and replies with the answer.",
           "Attachment previews again open on self-hosted local-disk deployments. (Community-reported.)",
           "Cursor and Kiro runtime completion transcripts are recovered so the final result no longer goes missing.",
           "Self-host: METANICATOR_SLACK_SECRET_KEY is now passed through to the backend container in docker-compose.selfhost.yml. (Community-reported.)",
@@ -1092,7 +1092,7 @@ export function createEnDict(allowSignup: boolean): LandingDict {
           "Slack channels can backfill their conversation history into Metanicator, so an agent has the prior context the moment it joins.",
           "Slack messages show a 👀 reaction while an agent is preparing its reply, and the reaction is always cleared on the way out.",
           "Skill bundles can be installed from a local .skill or .zip archive.",
-          "metanicator issue commands no longer accept short UUID prefixes — use the issue key (MUL-123) or the full UUID.",
+          "metanicator issue commands no longer accept short UUID prefixes, use the issue key (MUL-123) or the full UUID.",
           "The Agents page is now usable on mobile.",
         ],
         improvements: [
@@ -1122,7 +1122,7 @@ export function createEnDict(allowSignup: boolean): LandingDict {
         ],
         fixes: [
           "Scheduled autopilots advance their next-run time the moment a run is dispatched, so a slow runner can no longer cause back-to-back duplicate dispatches.",
-          "Attachment previews open correctly whether the URL redirects inside a frame, comes back from the same origin, or was uploaded locally — and local upload URLs are now preferred when available.",
+          "Attachment previews open correctly whether the URL redirects inside a frame, comes back from the same origin, or was uploaded locally, and local upload URLs are now preferred when available.",
           "When the failed-task handler unsticks an Issue, the Issue view refreshes immediately instead of waiting for a manual reload.",
           "Sticky Issue comment headers share the same background fade as the highlight, so settling on a comment no longer looks out of sync.",
           "Chat conversations refresh their message cache when reconnecting, so you no longer see stale messages right after coming back online.",
@@ -1212,7 +1212,7 @@ export function createEnDict(allowSignup: boolean): LandingDict {
         changes: [],
         features: [
           "Sub-Issues can now be organized into stages, so parallel work moves forward together and the parent Issue is updated only when a stage is complete",
-          "Assigning or batch-updating an Issue now confirms upfront whether it will start an agent — and which one — so you can apply the change without launching a run; when a run does start, you can attach a handoff note that the agent receives as context for that run",
+          "Assigning or batch-updating an Issue now confirms upfront whether it will start an agent, and which one, so you can apply the change without launching a run; when a run does start, you can attach a handoff note that the agent receives as context for that run",
           "Qoder is now available as an agent provider, including model discovery and provider branding",
           "Custom runtimes can include fixed launch arguments, with clearer feedback when a saved runtime cannot register",
         ],
@@ -1959,7 +1959,7 @@ export function createEnDict(allowSignup: boolean): LandingDict {
           "Landing page header gains a Changelog link",
         ],
         improvements: [
-          "Daemon self-heals when a runtime is deleted server-side — no more zombie local entries",
+          "Daemon self-heals when a runtime is deleted server-side, no more zombie local entries",
           "Chat and comment composer share the same `Mod+Enter` send shortcut",
           "Copilot CLI model catalog expanded with correct dotted IDs",
           "Copilot failure details now surface in the UI instead of a generic error",
@@ -1975,7 +1975,7 @@ export function createEnDict(allowSignup: boolean): LandingDict {
           "Inbox scrolls to the target comment once the issue finishes loading",
           "`autopilot create/update` accepts `--mode run_only`",
           "Changelog header link styled to match the GitHub ghost button",
-          "OpenAI Codex / GPT model pricing populated — cost no longer shows $0",
+          "OpenAI Codex / GPT model pricing populated, cost no longer shows $0",
         ],
       },
       {
@@ -1991,7 +1991,7 @@ export function createEnDict(allowSignup: boolean): LandingDict {
           "Agent Create modal gains an expand button for editing long descriptions",
         ],
         improvements: [
-          "Issue timeline no longer fully re-renders on every WebSocket event — long issues scroll smoothly",
+          "Issue timeline no longer fully re-renders on every WebSocket event, long issues scroll smoothly",
           "Editor skips parsing very large or JSON pastes, eliminating freezes",
           "Autopilot skips dispatch when the assignee runtime is offline, avoiding empty runs",
           "Inbox auto-archives `task_failed` rows once they reach a terminal state",
@@ -2035,7 +2035,7 @@ export function createEnDict(allowSignup: boolean): LandingDict {
         ],
         fixes: [
           "Linux daemon self-restart uses `brew prefix` symlinks, so Homebrew Cellar deletion no longer orphans runtimes",
-          "CLI short IDs now route correctly — copied prefixes no longer 404",
+          "CLI short IDs now route correctly, copied prefixes no longer 404",
           "Windows non-ASCII comment / description input lands via new `--content-file` / `--description-file` flags",
           "Windows / Linux desktop replaces the Electron placeholder icon with the Metanicator asterisk",
           "Orphaned timeline replies are now correctly surfaced",
@@ -2074,7 +2074,7 @@ export function createEnDict(allowSignup: boolean): LandingDict {
         ],
         improvements: [
           "Settings 'Appearance' tab is renamed to 'Preferences', and the active tab is reflected in the URL so deep links work",
-          "Long issues open instantly — Timeline switched to cursor-based keyset pagination, and repeated `task_completed` / `task_failed` activity entries are coalesced",
+          "Long issues open instantly, Timeline switched to cursor-based keyset pagination, and repeated `task_completed` / `task_failed` activity entries are coalesced",
           "Runtime poll and heartbeat schedules are isolated per-runtime, so one busy runtime can no longer starve others",
           "CLI update requests persist in Redis, so a server restart no longer drops them",
           "Runtime cost usage window narrowed from 180 days to 14 days, dropping query load",
@@ -2110,13 +2110,13 @@ export function createEnDict(allowSignup: boolean): LandingDict {
           "Inbox shows an archive button on done tasks; the redundant mark-as-done hover button is gone",
         ],
         improvements: [
-          "Long-timeline issues open instantly from Inbox — the markdown render pipeline is memoized so unrelated WS events no longer re-render thousands of comments",
-          "Model picker works on multi-replica deployments — pending requests persist via Redis, with daemon retries on transient report failures",
+          "Long-timeline issues open instantly from Inbox, the markdown render pipeline is memoized so unrelated WS events no longer re-render thousands of comments",
+          "Model picker works on multi-replica deployments, pending requests persist via Redis, with daemon retries on transient report failures",
           "Daemon empty-claim cache TTL bumped, further reducing idle DB load",
         ],
         fixes: [
-          "Newly created agents show up everywhere immediately — the agent cache is hydrated on create",
-          "Hermes no longer replays the previous answer when a new turn starts — historical chunks are gated behind a per-turn flag",
+          "Newly created agents show up everywhere immediately, the agent cache is hydrated on create",
+          "Hermes no longer replays the previous answer when a new turn starts, historical chunks are gated behind a per-turn flag",
           "Codex runtime model picker exposes the GPT-5.5 family",
           "`metanicator login --token <PAT>` accepts the PAT as a flag value instead of rejecting it",
           "CLI update completion status is now reliable",
@@ -2134,10 +2134,10 @@ export function createEnDict(allowSignup: boolean): LandingDict {
         title: "Quick Capture Overhaul, Mermaid Diagrams & Typed Project Resources",
         changes: [],
         features: [
-          "Quick Capture replaces the old New Issue dialog — continuous-create mode, file uploads, and automatic enrichment from pasted URLs",
+          "Quick Capture replaces the old New Issue dialog, continuous-create mode, file uploads, and automatic enrichment from pasted URLs",
           "Mermaid diagrams render inline in markdown, with a fullscreen lightbox for complex graphs",
           "Projects can bind their own repo, separate from the workspace default",
-          "Permission-aware UI across agents, comments, runtimes, and skills — actions you can't take are no longer offered",
+          "Permission-aware UI across agents, comments, runtimes, and skills, actions you can't take are no longer offered",
         ],
         improvements: [
           "Daemon `/tasks/claim` polling uses a Redis empty-claim fast-path, dropping idle DB load and reclaiming disk on long-open issues",
@@ -2157,8 +2157,8 @@ export function createEnDict(allowSignup: boolean): LandingDict {
         title: "Create Issue by Agent, Agent Presence v3 & Daemon WebSocket Heartbeat",
         changes: [],
         features: [
-          "Create Issue by Agent — press `c`, write one line, pick an agent; issue creation runs async and the result lands in your inbox",
-          "Agent Presence v3 — availability and last-task split into clearer signals, with an execution log on the issue panel showing active and recent runs",
+          "Create Issue by Agent, press `c`, write one line, pick an agent; issue creation runs async and the result lands in your inbox",
+          "Agent Presence v3, availability and last-task split into clearer signals, with an execution log on the issue panel showing active and recent runs",
           "Daemon ↔ server heartbeat now flows over WebSocket with HTTP fallback, cutting task wakeup latency",
           "Mention picker ranks suggestions by your local recency",
         ],
@@ -2181,9 +2181,9 @@ export function createEnDict(allowSignup: boolean): LandingDict {
         changes: [],
         features: [
           "Kiro CLI added as a local agent runtime option",
-          "macOS dock badge for unread issues, plus a native notification when the window is unfocused — click to jump straight to the issue",
+          "macOS dock badge for unread issues, plus a native notification when the window is unfocused, click to jump straight to the issue",
           "Issue list now supports filtering by label, combinable with status / priority / assignee",
-          "Daemon receives task wakeups over WebSocket — task startup latency drops noticeably",
+          "Daemon receives task wakeups over WebSocket, task startup latency drops noticeably",
         ],
         improvements: [
           "List and board status group headers are simpler, with clearer color cues",
@@ -2192,7 +2192,7 @@ export function createEnDict(allowSignup: boolean): LandingDict {
           "Mention picker's issue search refreshes as you type",
         ],
         fixes: [
-          "Deleting a comment now cancels any agent task it triggered — no more ghost runs",
+          "Deleting a comment now cancels any agent task it triggered, no more ghost runs",
           "Stalled Codex turns now time out instead of holding the slot",
           "Windows daemon no longer dies when the parent shell closes",
           "Agent-to-agent mention threads no longer cause feedback loops",
@@ -2204,7 +2204,7 @@ export function createEnDict(allowSignup: boolean): LandingDict {
         title: "Issue Labels, Labs Tab & Sidebar Invite Dot",
         changes: [],
         features: [
-          "Issue labels — color-code and filter issues across list, board and detail views",
+          "Issue labels, color-code and filter issues across list, board and detail views",
           "Labs settings tab for experimental toggles",
           "Sidebar shows a dot when you have an unread workspace invite",
         ],
@@ -2226,7 +2226,7 @@ export function createEnDict(allowSignup: boolean): LandingDict {
         changes: [],
         features: [
           "`metanicator agent create/update --custom-env KEY=VALUE` injects custom environment variables into agent runs",
-          "Agent failure messages now include a tail of the runtime CLI's stderr — much easier to debug runtime errors",
+          "Agent failure messages now include a tail of the runtime CLI's stderr, much easier to debug runtime errors",
           "CLI update download timeout is now configurable, so slow links no longer abort `metanicator update`",
         ],
         improvements: [
@@ -2246,12 +2246,12 @@ export function createEnDict(allowSignup: boolean): LandingDict {
         title: "Chat V2, Issue Right-Click Menu & In-App Feedback",
         changes: [],
         features: [
-          "Chat V2 — dedicated sidebar entry and full main-area page for AI conversations",
+          "Chat V2, dedicated sidebar entry and full main-area page for AI conversations",
           "Right-click context menu on issues with a unified action set across list, board, and detail",
           "In-app feedback flow with a new Help launcher centralizing docs, support, and feedback",
-          "Autopilot modal redesigned — simpler schema and consistent schedule UI across creation and edit",
-          "Skills page redesigned — list + detail pages, scroll-fade card layout, shared PageHeader and mobile nav",
-          "Bilingual flat-content rewrite of the docs site — English and Chinese sections share one tree",
+          "Autopilot modal redesigned, simpler schema and consistent schedule UI across creation and edit",
+          "Skills page redesigned, list + detail pages, scroll-fade card layout, shared PageHeader and mobile nav",
+          "Bilingual flat-content rewrite of the docs site, English and Chinese sections share one tree",
         ],
         improvements: [
           "Agent profile card appears on avatar hover for quick context",
@@ -2259,7 +2259,7 @@ export function createEnDict(allowSignup: boolean): LandingDict {
           "Daemon agent prompts hardened to break self-mention loops between agents",
           "Server readiness health endpoints for proper rollout / ingress probes",
           "Daemon GC defaults tightened and now accept flexible duration suffixes (e.g. `7d`, `12h`)",
-          "Test Connection / runtime ping removed — runtime reachability is detected automatically",
+          "Test Connection / runtime ping removed, runtime reachability is detected automatically",
         ],
         fixes: [
           "Chat no longer flickers when a streamed response finalizes, and the input box no longer jumps when sending the first message",
@@ -2279,9 +2279,9 @@ export function createEnDict(allowSignup: boolean): LandingDict {
         changes: [],
         features: [
           "Import runtime local Skills into the workspace as first-class artifacts",
-          "Orphan-task recovery — abandoned agent runs auto-retry, with manual rerun as fallback",
+          "Orphan-task recovery, abandoned agent runs auto-retry, with manual rerun as fallback",
           "LaTeX rendering in issues, comments and chat",
-          "Chat Focus mode — share the page you're on as conversation context",
+          "Chat Focus mode, share the page you're on as conversation context",
         ],
         improvements: [
           "Sub-issue `status_changed` events no longer spam parent-issue subscribers",
@@ -2303,16 +2303,16 @@ export function createEnDict(allowSignup: boolean): LandingDict {
         title: "Desktop Cross-Platform Packaging, CLI Self-Update & Board Pagination",
         changes: [],
         features: [
-          "Desktop app cross-platform packaging — macOS, Windows, and Linux artifacts from a single release pipeline",
-          "`metanicator update` self-update command — upgrade the CLI and local daemon without reinstalling",
-          "Issue board paginates every status column, not only Done — large backlogs stay responsive",
+          "Desktop app cross-platform packaging, macOS, Windows, and Linux artifacts from a single release pipeline",
+          "`metanicator update` self-update command, upgrade the CLI and local daemon without reinstalling",
+          "Issue board paginates every status column, not only Done, large backlogs stay responsive",
         ],
         fixes: [
           "Workspace isolation enforced end-to-end for agent execution on the local daemon (security)",
           "Windows daemon stays alive after the terminal closes, so background agents keep running",
-          "Board cards render their description preview again — list queries no longer strip the description field",
+          "Board cards render their description preview again, list queries no longer strip the description field",
           "OpenClaw agent runtime now reads the real model from agent metadata instead of falling back to a default",
-          "Comment Markdown preserved end-to-end — the HTML sanitizer that was stripping formatting has been removed",
+          "Comment Markdown preserved end-to-end, the HTML sanitizer that was stripping formatting has been removed",
         ],
       },
       {
@@ -2321,14 +2321,14 @@ export function createEnDict(allowSignup: boolean): LandingDict {
         title: "Per-Agent Models, Kimi Runtime & Self-Host Auth",
         changes: [],
         features: [
-          "Per-agent `model` field with a provider-aware dropdown — pick the LLM model for each agent from the UI or via `metanicator agent create/update --model`, with live discovery from each runtime's CLI",
+          "Per-agent `model` field with a provider-aware dropdown, pick the LLM model for each agent from the UI or via `metanicator agent create/update --model`, with live discovery from each runtime's CLI",
           "Kimi CLI as a new agent runtime (Moonshot AI's `kimi-cli` over ACP), with model selection, auto-approved tool permissions, and streaming tool-call rendering",
           "Expand toggle on inline comment and reply editors for composing long text",
         ],
         fixes: [
           "Posting the result comment is now an explicit, numbered step in agent workflows so final replies reach the issue instead of terminal output",
           "Agent live status card no longer leaks across issues when switching via Cmd+K",
-          "Self-hosted session cookies honor the `FRONTEND_ORIGIN` scheme — plain-HTTP deployments stop silently dropping cookies, and `COOKIE_DOMAIN=<ip>` now falls back to host-only with a warning instead of breaking login",
+          "Self-hosted session cookies honor the `FRONTEND_ORIGIN` scheme, plain-HTTP deployments stop silently dropping cookies, and `COOKIE_DOMAIN=<ip>` now falls back to host-only with a warning instead of breaking login",
         ],
       },
       {
@@ -2338,7 +2338,7 @@ export function createEnDict(allowSignup: boolean): LandingDict {
         changes: [],
         features: [
           "Create sub-issue directly from selected text in the editor bubble menu",
-          "Self-hosted instance gating — `ALLOW_SIGNUP` and `ALLOWED_EMAIL_*` env vars to restrict account creation",
+          "Self-hosted instance gating, `ALLOW_SIGNUP` and `ALLOWED_EMAIL_*` env vars to restrict account creation",
           "Per-agent `mcp_config` field to restore MCP access",
           "Desktop app hourly update poll with manual check button in settings",
         ],
@@ -2356,9 +2356,9 @@ export function createEnDict(allowSignup: boolean): LandingDict {
         features: [
           "CLI `autopilot` commands for managing scheduled and triggered automations",
           "CLI `issue subscriber` commands for subscription management",
-          "Cmd+K palette extended — theme toggle, quick new issue/project, copy link, switch workspace",
+          "Cmd+K palette extended, theme toggle, quick new issue/project, copy link, switch workspace",
           "Project and sub-issue progress as optional card properties on the issue list",
-          "Persistent daemon UUID identity — CLI and desktop share one daemon across restarts and machine moves",
+          "Persistent daemon UUID identity, CLI and desktop share one daemon across restarts and machine moves",
           "Sole-owner workspace leave preflight check",
           "Persist comment collapse state across sessions",
         ],
@@ -2382,7 +2382,7 @@ export function createEnDict(allowSignup: boolean): LandingDict {
           "GitHub Copilot CLI runtime support",
           "Cursor Agent CLI runtime support",
           "Pi agent runtime support",
-          "Workspace URL refactor — slug-first routing (`/{slug}/issues`) with legacy URL redirects",
+          "Workspace URL refactor, slug-first routing (`/{slug}/issues`) with legacy URL redirects",
         ],
         fixes: [
           "Codex threads resume across tasks on the same issue",
@@ -2400,8 +2400,8 @@ export function createEnDict(allowSignup: boolean): LandingDict {
         title: "Desktop App, Autopilot & Invitations",
         changes: [],
         features: [
-          "Desktop app for macOS — native Electron app with tab system, built-in daemon management, immersive mode, and auto-update",
-          "Autopilot — scheduled and triggered automations for AI agents",
+          "Desktop app for macOS, native Electron app with tab system, built-in daemon management, immersive mode, and auto-update",
+          "Autopilot, scheduled and triggered automations for AI agents",
           "Workspace invitations with email notifications and dedicated accept page",
           "Custom CLI arguments per agent for advanced runtime configuration",
           "Chat redesign with unread tracking and improved session management",
@@ -2451,7 +2451,7 @@ export function createEnDict(allowSignup: boolean): LandingDict {
         title: "Windows Support, Auth & Onboarding",
         changes: [],
         features: [
-          "Windows support — CLI installation, daemon, and release builds",
+          "Windows support, CLI installation, daemon, and release builds",
           "Auth migrated to HttpOnly Cookie with WebSocket Origin whitelist",
           "Full-screen onboarding wizard for new workspaces",
           "Resizable Master Agent chat window with session history improvements",
@@ -2469,8 +2469,8 @@ export function createEnDict(allowSignup: boolean): LandingDict {
         title: "One-Click Setup, Self-Hosting & Stability",
         changes: [],
         features: [
-          "One-click install & setup — `curl | bash` installs CLI, `--with-server` bootstraps full self-hosting, `metanicator setup` configures your environment",
-          "Self-hosted storage — local file fallback when S3 is unavailable, plus custom S3 endpoint support (MinIO)",
+          "One-click install & setup, `curl | bash` installs CLI, `--with-server` bootstraps full self-hosting, `metanicator setup` configures your environment",
+          "Self-hosted storage, local file fallback when S3 is unavailable, plus custom S3 endpoint support (MinIO)",
           "Inline property editing (priority, status, lead) on project list page",
         ],
         improvements: [
@@ -2512,7 +2512,7 @@ export function createEnDict(allowSignup: boolean): LandingDict {
         changes: [],
         features: [
           "Pin issues and projects to sidebar with drag-and-drop reordering",
-          "Cmd+K command palette — recent issues, page navigation, and project search",
+          "Cmd+K command palette, recent issues, page navigation, and project search",
           "Project detail sidebar with properties panel (replaces overview tab)",
           "Project filter in Issues tab",
           "Project completion progress in project list",
@@ -2520,7 +2520,7 @@ export function createEnDict(allowSignup: boolean): LandingDict {
           "Assignee dropdown sorted by user's assignment frequency",
         ],
         fixes: [
-          "Markdown XSS — sanitize HTML rendering in comments with rehype-sanitize and server-side bluemonday",
+          "Markdown XSS, sanitize HTML rendering in comments with rehype-sanitize and server-side bluemonday",
           "Project kanban issue counts incorrect",
           "Self-hosting Docker build missing tsconfig dependencies",
           "Cmd+K requiring double ESC to close",
@@ -2545,8 +2545,8 @@ export function createEnDict(allowSignup: boolean): LandingDict {
           "`make dev` one-command local development setup",
         ],
         improvements: [
-          "Sidebar redesign — Personal / Workspace grouping, user profile footer, ⌘K search input",
-          "Search ranking — case-insensitive matching, identifier search (MUL-123), multi-word support",
+          "Sidebar redesign, Personal / Workspace grouping, user profile footer, ⌘K search input",
+          "Search ranking, case-insensitive matching, identifier search (MUL-123), multi-word support",
           "Search result keyword highlighting",
           "Daily token usage chart with cleaner Y-axis and per-category tooltip",
           "Master Agent multiline input support",
@@ -2572,10 +2572,10 @@ export function createEnDict(allowSignup: boolean): LandingDict {
         date: "2026-04-09",
         title: "Projects, Search & Monorepo",
         changes: [
-          "Project entity with full-stack CRUD — create, edit, and organize issues by project",
+          "Project entity with full-stack CRUD, create, edit, and organize issues by project",
           "Project picker in the create-issue modal and CLI project commands",
           "Full-text search for issues with pg_bigm",
-          "Monorepo extraction — shared packages for core, UI, and views (Turborepo)",
+          "Monorepo extraction, shared packages for core, UI, and views (Turborepo)",
           "Fullscreen agent execution transcript view",
           "Drag-and-drop file upload with file card display in the editor",
           "Attachment section with image grid and file cards on issues",
@@ -2591,7 +2591,7 @@ export function createEnDict(allowSignup: boolean): LandingDict {
         date: "2026-04-08",
         title: "Sub-Issues, TanStack Query & Usage Tracking",
         changes: [
-          "Sub-issue support — create, view, and manage child issues within any issue",
+          "Sub-issue support, create, view, and manage child issues within any issue",
           "Full migration to TanStack Query for server state (issues, inbox, workspace, runtimes)",
           "Per-task token usage tracking across all agent providers",
           "Multiple agents can now run concurrently on the same issue",
@@ -2611,7 +2611,7 @@ export function createEnDict(allowSignup: boolean): LandingDict {
         changes: [
           "Google OAuth login",
           "OpenClaw runtime support for running agents on OpenClaw infrastructure",
-          "Redesigned agent live card — always sticky with manual expand/collapse toggle",
+          "Redesigned agent live card, always sticky with manual expand/collapse toggle",
           "Load all open issues without pagination limit; closed issues paginate on scroll",
           "JWT and CloudFront cookie expiration extended from 72 hours to 30 days",
           "Remember last selected workspace after re-login",
@@ -2640,12 +2640,12 @@ export function createEnDict(allowSignup: boolean): LandingDict {
         changes: [
           "Unified Tiptap editor with a single Markdown pipeline for editing and display",
           "Reliable Markdown paste, inline code spacing, and link styling",
-          "Agent archive and restore — soft delete replaces hard delete",
+          "Agent archive and restore, soft delete replaces hard delete",
           "Archived agents hidden from default agent list",
           "Skeleton loading states, error toasts, and confirmation dialogs across the app",
           "OpenCode added as a supported agent provider",
           "Reply-triggered agent tasks now inherit thread-root @mentions",
-          "Granular real-time event handling for issues and inbox — no more full refetches",
+          "Granular real-time event handling for issues and inbox, no more full refetches",
           "Unified image upload flow for paste and button in the editor",
         ],
       },
@@ -2660,7 +2660,7 @@ export function createEnDict(allowSignup: boolean): LandingDict {
           "Repositories extracted into a standalone settings tab",
           "CLI update support from the web runtime page and direct download for non-Homebrew installs",
           "CLI commands for viewing issue execution runs and run messages",
-          "Agent permission model — owners and admins manage agents, members manage skills on their own agents",
+          "Agent permission model, owners and admins manage agents, members manage skills on their own agents",
           "Per-issue serial execution to prevent concurrent task collisions",
           "File upload now supports all file types",
           "README redesign with quickstart guide",
@@ -2805,13 +2805,13 @@ export function createEnDict(allowSignup: boolean): LandingDict {
     },
     cloud: {
       title: "Cloud runtime (waitlist)",
-      sub: "We’ll host the runtime for you. Not live yet — leave your email to be notified.",
+      sub: "We’ll host the runtime for you. Not live yet, leave your email to be notified.",
     },
     footer: {
       releaseNotes: "What’s new in {version}",
       allReleases: "View all releases",
       currentVersion: "Current version: {version}",
-      versionUnavailable: "Version unavailable — check GitHub",
+      versionUnavailable: "Version unavailable, check GitHub",
     },
   },
   contactSales: {
@@ -2844,11 +2844,11 @@ export function createEnDict(allowSignup: boolean): LandingDict {
       submitting: "Submitting…",
     },
     companySizes: [
-      { value: "1-10", label: "1 – 10 employees" },
-      { value: "11-50", label: "11 – 50 employees" },
-      { value: "51-200", label: "51 – 200 employees" },
-      { value: "201-500", label: "201 – 500 employees" },
-      { value: "501-1000", label: "501 – 1,000 employees" },
+      { value: "1-10", label: "1, 10 employees" },
+      { value: "11-50", label: "11, 50 employees" },
+      { value: "51-200", label: "51, 200 employees" },
+      { value: "201-500", label: "201, 500 employees" },
+      { value: "501-1000", label: "501, 1,000 employees" },
       { value: "1000+", label: "1,000+ employees" },
     ],
     useCases: [
@@ -2916,17 +2916,17 @@ export function createEnDict(allowSignup: boolean): LandingDict {
       privacyLinkHref: "/about",
     },
     success: {
-      title: "Thanks — we got it.",
+      title: "Thanks, we got it.",
       message:
         "A member of the Metanicator team will respond within three business days. In the meantime, feel free to explore the docs or star us on GitHub.",
       cta: "Back to home",
     },
     errors: {
-      generic: "Something went wrong — please try again in a moment.",
+      generic: "Something went wrong, please try again in a moment.",
       rateLimit:
         "We’ve received a few inquiries from this address recently. Please try again in a little while.",
       freeEmail:
-        "Please use a business email address — free providers (gmail, outlook, etc.) are not accepted.",
+        "Please use a business email address, free providers (gmail, outlook, etc.) are not accepted.",
       invalidEmail: "That doesn’t look like a valid email address.",
     },
   },

@@ -14,7 +14,7 @@ import {
  * `a`/mention renderers can route them to a navigable issue chip.
  *
  * This module is intentionally PURE (packages/ui): it has no workspace or API
- * access. It only DETECTS candidate identifiers — whether one resolves to a
+ * access. It only DETECTS candidate identifiers, whether one resolves to a
  * real issue in the current workspace is decided later, in the views layer,
  * via an exact-match lookup. A candidate that resolves to nothing renders as
  * plain text, so over-detection here is harmless (at most one deduped lookup).
@@ -23,7 +23,7 @@ import {
  *
  * NOTE: the `mention://issue/<id>` transport is reused for both real UUID
  * mentions and bare identifiers. Render sites tell them apart by the shape of
- * the id segment (`isIssueIdentifier`) — a UUID never matches the identifier
+ * the id segment (`isIssueIdentifier`), a UUID never matches the identifier
  * pattern, so the dispatch is unambiguous.
  */
 
@@ -34,7 +34,7 @@ import {
 // `_`, and `-` on both sides so we only match standalone tokens.
 const IDENTIFIER_RE = /(?<![A-Za-z0-9_-])([A-Z][A-Z0-9]*-\d+)(?![A-Za-z0-9_-])/g
 
-// Anchored single-token form — used by render sites to distinguish a bare
+// Anchored single-token form, used by render sites to distinguish a bare
 // identifier (carried through `mention://issue/<identifier>`) from a real UUID.
 export const ISSUE_IDENTIFIER_PATTERN = /^[A-Z][A-Z0-9]*-\d+$/
 
@@ -91,7 +91,7 @@ export function preprocessIssueIdentifiers(text: string): string {
     // end ("see MUL-1.") and stays linkable.
     const after = text[end]
     if (after === '.' && /[A-Za-z0-9]/.test(text[end + 1] ?? '')) continue
-    // Path segment such as `FOO-1/bar` or `foo/BAR-1` — a `/` on either side
+    // Path segment such as `FOO-1/bar` or `foo/BAR-1`, a `/` on either side
     // signals a path rather than a standalone reference.
     if (after === '/' || text[start - 1] === '/') continue
     // Embedded in a dotted name on the left (`file.MUL-1`).

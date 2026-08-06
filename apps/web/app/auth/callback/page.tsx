@@ -47,7 +47,7 @@ function CallbackContent() {
     // so an attacker-controlled `state=next:https://evil` cannot redirect here.
     const nextUrl = sanitizeNextUrl(nextPart ? nextPart.slice(5) : null);
 
-    // CLI callback params — carried across the Google OAuth round-trip so
+    // CLI callback params, carried across the Google OAuth round-trip so
     // headless/WSL2 `multica login` can receive the JWT after browser-based
     // Google auth completes.
     const cliCallbackPart = stateParts.find((p) => p.startsWith("cli_callback:"));
@@ -61,7 +61,7 @@ function CallbackContent() {
 
     const redirectUri = `${window.location.origin}/auth/callback`;
 
-    // Validate the CLI callback URL before redirecting — the state parameter
+    // Validate the CLI callback URL before redirecting, the state parameter
     // passes through Google OAuth and must be treated as attacker-controlled.
     const cliCallback =
       cliCallbackRaw && validateCliCallback(cliCallbackRaw)
@@ -99,7 +99,7 @@ function CallbackContent() {
           const onboarded = loggedInUser.onboarded_at != null;
 
           // 1. nextUrl wins: a `next=/invite/<id>` always survives the OAuth
-          //    round-trip — the user clicked a specific link and we should
+          //    round-trip, the user clicked a specific link and we should
           //    honor exactly that destination.
           if (nextUrl) {
             router.push(nextUrl);
@@ -111,7 +111,7 @@ function CallbackContent() {
           //    login on multica.ai instead of clicking the email link,
           //    or `state` was lost across the round-trip). Look them up by
           //    email and route to the batch /invitations page if any.
-          //    Already-onboarded users skip this lookup — their new invites
+          //    Already-onboarded users skip this lookup, their new invites
           //    surface in the sidebar dropdown, not as a forced wall.
           if (!onboarded) {
             try {
@@ -122,7 +122,7 @@ function CallbackContent() {
                 return;
               }
             } catch {
-              // Network blip on the invite lookup is non-fatal — fall through
+              // Network blip on the invite lookup is non-fatal, fall through
               // to the normal post-auth destination so the user isn't stuck
               // on a blank callback screen. Worst case they land on
               // /onboarding and the sidebar will surface invites later.
@@ -134,7 +134,7 @@ function CallbackContent() {
           //    onboarded users with zero workspaces). Source-attribution
           //    backfill for onboarded users with no recorded source is
           //    handled by `<SourceBackfillModal />` inside the dashboard
-          //    shell — not a route detour, so we route straight to dest.
+          //    shell, not a route detour, so we route straight to dest.
           router.push(resolvePostAuthDestination(wsList, onboarded));
         })
         .catch((err) => {

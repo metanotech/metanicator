@@ -27,7 +27,7 @@
   "status": {
     "active": "アクティブ",
     "paused": "一時停止中",
-    "paused_runtime_required": "一時停止中 — 担当エージェントのランタイムが必要です",
+    "paused_runtime_required": "一時停止中, 担当エージェントのランタイムが必要です",
     "archived": "アーカイブ済み"
   },
   "execution_mode": {
@@ -77,13 +77,13 @@
     "running": "実行中...",
     "toast_triggered": "オートパイロットを実行しました",
     "toast_trigger_failed": "オートパイロットを実行できませんでした",
-    "run_blocked_invocation_not_allowed": "実行されませんでした — このオートパイロットのエージェントを使用する権限がありません",
-    "run_blocked_runtime_offline": "実行されませんでした — エージェントのランタイムがオフラインです",
-    "run_blocked_agent_runtime_required": "実行されませんでした — エージェントにランタイムがありません。実行するにはバインドしてください",
-    "run_blocked_target_unavailable": "実行されませんでした — エージェントを利用できません",
-    "run_blocked_attribution": "実行されませんでした — 実行の責任者を特定できませんでした",
-    "run_blocked_already_active": "実行されませんでした — 直近の実行が本件をカバーしています",
-    "run_blocked_generic": "実行されませんでした — 実行がブロックされました",
+    "run_blocked_invocation_not_allowed": "実行されませんでした, このオートパイロットのエージェントを使用する権限がありません",
+    "run_blocked_runtime_offline": "実行されませんでした, エージェントのランタイムがオフラインです",
+    "run_blocked_agent_runtime_required": "実行されませんでした, エージェントにランタイムがありません。実行するにはバインドしてください",
+    "run_blocked_target_unavailable": "実行されませんでした, エージェントを利用できません",
+    "run_blocked_attribution": "実行されませんでした, 実行の責任者を特定できませんでした",
+    "run_blocked_already_active": "実行されませんでした, 直近の実行が本件をカバーしています",
+    "run_blocked_generic": "実行されませんでした, 実行がブロックされました",
     "section_properties": "プロパティ",
     "section_triggers": "トリガー",
     "section_run_history": "実行履歴",
@@ -155,7 +155,7 @@
     "copied": "Webhook payload をコピーしました",
     "copied_short": "コピーしました",
     "copy_failed": "コピーできませんでした",
-    "truncated_marker": "[切り詰め — 全体の payload を取得するにはコピーをクリック]"
+    "truncated_marker": "[切り詰め, 全体の payload を取得するにはコピーをクリック]"
   },
   "trigger_kind": {
     "schedule": "スケジュール",
@@ -169,7 +169,7 @@
     "webhook_url_label": "Webhook URL",
     "show_url": "URL を表示",
     "hide_url": "URL を非表示",
-    "hidden_url_aria": "Webhook URL は非表示です — クリックして表示",
+    "hidden_url_aria": "Webhook URL は非表示です, クリックして表示",
     "copy_url": "URL をコピー",
     "url_copied": "Webhook URL をコピーしました",
     "url_copy_failed": "URL をコピーできませんでした",
@@ -301,7 +301,7 @@
     "webhook_help_create": "このオートパイロットを作成すると、Metanicator が Webhook URL を生成します。その URL に任意の JSON を POST すると実行されます。",
     "webhook_help_edit": "このオートパイロットは Webhook で実行されます。URL の管理(コピー / 再生成)はオートパイロットの詳細ページで行ってください。",
     "webhook_created_title": "Webhook オートパイロットの準備が完了しました",
-    "webhook_created_description": "下の URL に任意の JSON を POST すると、オートパイロットが実行されます。今コピーしておいてください — オートパイロットの詳細ページでも確認・再生成できます。",
+    "webhook_created_description": "下の URL に任意の JSON を POST すると、オートパイロットが実行されます。今コピーしておいてください, オートパイロットの詳細ページでも確認・再生成できます。",
     "webhook_created_warning": "この URL はパスワードのように扱ってください。URL を持っている人は誰でもオートパイロットを実行できます。",
     "webhook_created_done": "完了",
     "event_filter_label": "イベントフィルター",

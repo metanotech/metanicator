@@ -5,7 +5,7 @@ import { CloudWaitlistExpand } from "@multica/views/onboarding";
 import { useLocale } from "../../i18n";
 
 /**
- * Cloud runtime waitlist — thin wrapper around the shared
+ * Cloud runtime waitlist, thin wrapper around the shared
  * CloudWaitlistExpand form with a download-page-appropriate title
  * and subtitle. Submission persists via `joinCloudWaitlist` inside
  * the child; the submitted flag here only prevents double-submits
