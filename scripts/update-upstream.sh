@@ -2,22 +2,26 @@
 set -e
 
 # Update Upstream Script
-# Automatically pulls the latest main code updates while keeping local rebranding and customizations.
+# Automatically pulls the latest main code updates from https://github.com/multica-ai/multica.git
+# as the source of truth, while preserving local rebranding and customizations.
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT_DIR="$(cd "${SCRIPT_DIR}/.." && pwd)"
 
 cd "${ROOT_DIR}"
 
-if git remote | grep -q "^upstream$"; then
-    REMOTE="${UPSTREAM_REMOTE:-upstream}"
-else
-    REMOTE="${UPSTREAM_REMOTE:-origin}"
-fi
+UPSTREAM_URL="${UPSTREAM_URL:-https://github.com/multica-ai/multica.git}"
 BRANCH="${UPSTREAM_BRANCH:-main}"
 
-echo "==> Fetching latest changes from ${REMOTE}/${BRANCH}..."
-git fetch "${REMOTE}" "${BRANCH}"
+# Ensure 'upstream' remote points to the source of truth (multica-ai/multica.git)
+if git remote | grep -q "^upstream$"; then
+    git remote set-url upstream "${UPSTREAM_URL}"
+else
+    git remote add upstream "${UPSTREAM_URL}"
+fi
+
+echo "==> Fetching source of truth updates from upstream (${UPSTREAM_URL})..."
+git fetch upstream "${BRANCH}"
 
 HAS_STASH=0
 if [ -n "$(git status --porcelain)" ]; then
@@ -26,11 +30,11 @@ if [ -n "$(git status --porcelain)" ]; then
     HAS_STASH=1
 fi
 
-echo "==> Integrating updates from ${REMOTE}/${BRANCH}..."
-if ! git pull --rebase "${REMOTE}" "${BRANCH}"; then
+echo "==> Rebasing local rebranding on top of upstream/${BRANCH}..."
+if ! git pull --rebase upstream "${BRANCH}"; then
     echo "⚠️  Rebase hit a conflict. Attempting standard merge fallback..."
     git rebase --abort 2>/dev/null || true
-    git pull --no-edit "${REMOTE}" "${BRANCH}"
+    git pull --no-edit upstream "${BRANCH}"
 fi
 
 if [ "${HAS_STASH}" -eq 1 ]; then
@@ -48,4 +52,5 @@ if [ -d "server" ] && command -v go >/dev/null 2>&1; then
     (cd server && go run ./cmd/migrate up) 2>/dev/null || true
 fi
 
-echo "✓ Upstream updates pulled successfully. Local rebranding and customizations preserved."
+echo "✓ Successfully updated from upstream source of truth (multica-ai/multica.git)!"
+echo "✓ Local rebranding and customizations preserved."
