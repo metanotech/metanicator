@@ -54,8 +54,6 @@ services:
         NEXT_PUBLIC_GOOGLE_CLIENT_ID: ${NEXT_PUBLIC_GOOGLE_CLIENT_ID:-}
 
     restart: unless-stopped
-    ports: 
-      - "4000:3000"
     depends_on:
       - backend
     networks:
