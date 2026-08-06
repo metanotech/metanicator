@@ -186,12 +186,13 @@ func canonicalURLHost(raw string) string {
 }
 
 // IsAllowSignupFromEnv returns false if signups are disabled via ALLOW_SIGNUP=false,
-// DISABLE_PUBLIC_REGISTRATION=true, DISABLE_SIGNUP=true, or ALLOW_PUBLIC_REGISTRATION=false.
+// DISABLE_PUBLIC_REGISTRATION=true, DISABLE_SIGNUP=true, AUTH_ALLOW_REGISTRATION=false, or ALLOW_PUBLIC_REGISTRATION=false.
 func IsAllowSignupFromEnv() bool {
 	if os.Getenv("DISABLE_PUBLIC_REGISTRATION") == "true" ||
 		os.Getenv("DISABLE_SIGNUP") == "true" ||
 		os.Getenv("ALLOW_PUBLIC_REGISTRATION") == "false" ||
-		os.Getenv("ALLOW_SIGNUP") == "false" {
+		os.Getenv("ALLOW_SIGNUP") == "false" ||
+		os.Getenv("AUTH_ALLOW_REGISTRATION") == "false" {
 		return false
 	}
 	return true
