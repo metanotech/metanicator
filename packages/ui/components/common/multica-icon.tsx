@@ -98,4 +98,4 @@ export function MetanicatorIcon({
   );
 }
 
-export const MetanicatorIcon = MetanicatorIcon;
+export const MulticaIcon = MetanicatorIcon;
