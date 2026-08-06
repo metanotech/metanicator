@@ -11,12 +11,6 @@ export function CommunityLinks({
 }: CommunityLinksProps) {
   const links = [
     {
-      label: "Discord",
-      href: "https://discord.gg/W8gYBn226t",
-      description: discordDescription,
-      Icon: DiscordMark,
-    },
-    {
       label: "GitHub",
       href: "https://github.com/metanotech/metanicator",
       description: githubDescription,

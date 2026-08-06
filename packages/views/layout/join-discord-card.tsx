@@ -32,11 +32,8 @@ import { useT } from "../i18n";
  * not just under it (MUL-5704).
  */
 export function JoinDiscordCard() {
-  const { t } = useT("layout");
-  const userId = useAuthStore((s) => s.user?.id);
-  const [dismissed, dismiss] = useDiscordCardDismissed(userId);
-
-  if (dismissed) return null;
+  return null;
+}
 
   return (
     <div className="group/discord relative min-w-0 flex-1">

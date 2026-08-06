@@ -59,15 +59,6 @@ export function HelpLauncher() {
           <ArrowUpRight className="size-3 translate-y-px text-faint-foreground" />
         </DropdownMenuItem>
         <DropdownMenuItem
-          render={
-            <a href={DISCORD_URL} target="_blank" rel="noopener noreferrer" />
-          }
-        >
-          <DiscordIcon className="h-3.5 w-3.5" />
-          {t(($) => $.help.discord)}
-          <ArrowUpRight className="size-3 translate-y-px text-faint-foreground" />
-        </DropdownMenuItem>
-        <DropdownMenuItem
           onClick={() => useModalStore.getState().open("feedback")}
         >
           <MessageCircle className="h-3.5 w-3.5" />
