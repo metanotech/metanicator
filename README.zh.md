@@ -13,9 +13,9 @@
 Multica 是一个开源的团队工作区。你像给同事派活一样，把任务交给 AI 编码智能体——它自己接手、边做边
 汇报、卡住了主动说，做完交回来给你审。可自部署，支持 20 种智能体 CLI，不绑定任何厂商。
 
-[![CI](https://github.com/multica-ai/multica/actions/workflows/ci.yml/badge.svg)](https://github.com/multica-ai/multica/actions/workflows/ci.yml)
-[![Release](https://img.shields.io/github/v/release/multica-ai/multica?style=flat)](https://github.com/multica-ai/multica/releases)
-[![GitHub stars](https://img.shields.io/github/stars/multica-ai/multica?style=flat)](https://github.com/multica-ai/multica/stargazers)
+[![CI](https://github.com/metanotech/metanicator/actions/workflows/ci.yml/badge.svg)](https://github.com/metanotech/metanicator/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/metanotech/metanicator?style=flat)](https://github.com/metanotech/metanicator/releases)
+[![GitHub stars](https://img.shields.io/github/stars/metanotech/metanicator?style=flat)](https://github.com/metanotech/metanicator/stargazers)
 [![Discord](https://img.shields.io/badge/Discord-Join-5865F2?logo=discord&logoColor=white)](https://discord.gg/W8gYBn226t)
 
 [官网](https://multica.ai) · [文档](https://multica.ai/docs) · [快速开始](https://multica.ai/docs/cloud-quickstart) · [下载](https://multica.ai/download) · [愿景](VISION.zh.md) · [自部署](SELF_HOSTING.md) · [Discord](https://discord.gg/W8gYBn226t) · [X](https://x.com/MulticaAI)
@@ -109,7 +109,7 @@ multica setup self-host
 ```
 
 Windows 上先设 `$env:MULTICA_MODE="with-server"`，再跑 PowerShell 安装脚本：
-`irm https://raw.githubusercontent.com/multica-ai/multica/main/scripts/install.ps1 | iex`。
+`irm https://raw.githubusercontent.com/metanotech/metanicator/main/scripts/install.ps1 | iex`。
 
 这会拉取 GHCR 上的官方镜像，需要 Docker。详见[自部署指南](SELF_HOSTING.md)。如果你选的 GHCR
 标签还没发布，可以在代码目录里跑 `make selfhost-build` 兜底。

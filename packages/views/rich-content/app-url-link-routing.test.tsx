@@ -90,7 +90,7 @@ describe("RichContent link routing", () => {
   });
 
   it("still hands a genuinely external link to the browser", () => {
-    const external = "https://github.com/multica-ai/multica/pull/1";
+    const external = "https://github.com/metanotech/metanicator/pull/1";
     renderContent(`[#1](${external})`);
 
     screen.getByText("#1").click();

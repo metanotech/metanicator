@@ -14,9 +14,9 @@ Multica is an open-source workspace where you assign work to AI coding agents th
 assign it to a teammate — they pick up the issue, report progress, raise blockers, and hand it
 back for review. Self-hostable, works with 20 agent CLIs, no lock-in.
 
-[![CI](https://github.com/multica-ai/multica/actions/workflows/ci.yml/badge.svg)](https://github.com/multica-ai/multica/actions/workflows/ci.yml)
-[![Release](https://img.shields.io/github/v/release/multica-ai/multica?style=flat)](https://github.com/multica-ai/multica/releases)
-[![GitHub stars](https://img.shields.io/github/stars/multica-ai/multica?style=flat)](https://github.com/multica-ai/multica/stargazers)
+[![CI](https://github.com/metanotech/metanicator/actions/workflows/ci.yml/badge.svg)](https://github.com/metanotech/metanicator/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/metanotech/metanicator?style=flat)](https://github.com/metanotech/metanicator/releases)
+[![GitHub stars](https://img.shields.io/github/stars/metanotech/metanicator?style=flat)](https://github.com/metanotech/metanicator/stargazers)
 [![Discord](https://img.shields.io/badge/Discord-Join-5865F2?logo=discord&logoColor=white)](https://discord.gg/W8gYBn226t)
 
 [Website](https://multica.ai) · [Docs](https://multica.ai/docs) · [Quickstart](https://multica.ai/docs/cloud-quickstart) · [Download](https://multica.ai/download) · [Vision](VISION.md) · [Self-Hosting](SELF_HOSTING.md) · [Discord](https://discord.gg/W8gYBn226t) · [X](https://x.com/MulticaAI)
@@ -113,7 +113,7 @@ multica setup self-host
 ```
 
 On Windows, set `$env:MULTICA_MODE="with-server"`, then run the PowerShell installer:
-`irm https://raw.githubusercontent.com/multica-ai/multica/main/scripts/install.ps1 | iex`.
+`irm https://raw.githubusercontent.com/metanotech/metanicator/main/scripts/install.ps1 | iex`.
 
 This pulls the official images from GHCR and requires Docker. See the
 [Self-Hosting Guide](SELF_HOSTING.md); if the selected GHCR tag has not been published yet,

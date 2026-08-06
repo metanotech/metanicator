@@ -16,7 +16,7 @@ const workspaceRef = vi.hoisted(() => ({
     id: "workspace-1",
     name: "Test Workspace",
     slug: "test-workspace",
-    repos: [{ url: "https://github.com/multica-ai/multica" }] as {
+    repos: [{ url: "https://github.com/metanotech/metanicator" }] as {
       url: string;
       description?: string;
     }[],
@@ -149,7 +149,7 @@ describe("RepositoriesTab — automatic updates", () => {
       id: "workspace-1",
       name: "Test Workspace",
       slug: "test-workspace",
-      repos: [{ url: "https://github.com/multica-ai/multica" }],
+      repos: [{ url: "https://github.com/metanotech/metanicator" }],
     };
     membersRef.current = [{ user_id: "user-1", role: "owner" }];
     githubRef.current = {
@@ -188,7 +188,7 @@ describe("RepositoriesTab — automatic updates", () => {
 
     const inputs = screen.getAllByRole("textbox") as HTMLInputElement[];
     expect(inputs).toHaveLength(2);
-    expect(inputs[0]!.value).toBe("https://github.com/multica-ai/multica");
+    expect(inputs[0]!.value).toBe("https://github.com/metanotech/metanicator");
     expect(screen.queryByRole("button", { name: /^Save$/ })).toBeNull();
   });
 
@@ -239,7 +239,7 @@ describe("RepositoriesTab — automatic updates", () => {
     await waitFor(() => {
       expect(mockUpdateWorkspace).toHaveBeenCalledWith("workspace-1", {
         repos: [
-          { url: "https://github.com/multica-ai/multica" },
+          { url: "https://github.com/metanotech/metanicator" },
           { url: "git@github.com:multica-ai/second.git" },
         ],
       });
@@ -268,14 +268,14 @@ describe("RepositoriesTab — automatic updates", () => {
 
     const urlInput = screen.getAllByRole("textbox")[0] as HTMLInputElement;
     await user.clear(urlInput);
-    await user.type(urlInput, "git@github.com:multica-ai/multica.git");
+    await user.type(urlInput, "git@github.com:metanotech/metanicator.git");
     expect(urlInput.type).toBe("text");
     expect(urlInput.validity.valid).toBe(true);
     await user.tab();
 
     await waitFor(() => {
       expect(mockUpdateWorkspace).toHaveBeenCalledWith("workspace-1", {
-        repos: [{ url: "git@github.com:multica-ai/multica.git" }],
+        repos: [{ url: "git@github.com:metanotech/metanicator.git" }],
       });
     });
   });
@@ -283,7 +283,7 @@ describe("RepositoriesTab — automatic updates", () => {
   it("includes the description in the automatic update payload", async () => {
     workspaceRef.current = {
       ...workspaceRef.current,
-      repos: [{ url: "https://github.com/multica-ai/multica", description: "Main app" }],
+      repos: [{ url: "https://github.com/metanotech/metanicator", description: "Main app" }],
     };
     const user = setupUser();
     render(<RepositoriesTab />, { wrapper: I18nWrapper });
@@ -298,7 +298,7 @@ describe("RepositoriesTab — automatic updates", () => {
       expect(mockUpdateWorkspace).toHaveBeenCalledWith("workspace-1", {
         repos: [
           {
-            url: "https://github.com/multica-ai/multica",
+            url: "https://github.com/metanotech/metanicator",
             description: "Updated description",
           },
         ],
@@ -359,7 +359,7 @@ describe("RepositoriesTab — automatic updates", () => {
   it("imports selected GitHub repositories and deduplicates HTTPS against SSH", async () => {
     workspaceRef.current = {
       ...workspaceRef.current,
-      repos: [{ url: "git@github.com:multica-ai/multica.git" }],
+      repos: [{ url: "git@github.com:metanotech/metanicator.git" }],
     };
     githubRef.current = {
       installations: [{ id: "installation-row-1", account_login: "multica-ai" }],
@@ -370,9 +370,9 @@ describe("RepositoriesTab — automatic updates", () => {
     githubRepositoriesRef.current = [
       {
         id: 1,
-        full_name: "multica-ai/multica",
-        html_url: "https://github.com/multica-ai/multica",
-        clone_url: "https://github.com/multica-ai/multica.git",
+        full_name: "metanotech/metanicator",
+        html_url: "https://github.com/metanotech/metanicator",
+        clone_url: "https://github.com/metanotech/metanicator.git",
         description: "Existing repository",
         private: false,
         archived: false,
@@ -408,7 +408,7 @@ describe("RepositoriesTab — automatic updates", () => {
     await waitFor(() => {
       expect(mockUpdateWorkspace).toHaveBeenCalledWith("workspace-1", {
         repos: [
-          { url: "git@github.com:multica-ai/multica.git" },
+          { url: "git@github.com:metanotech/metanicator.git" },
           {
             url: "https://github.com/multica-ai/console.git",
             description: "Console app",

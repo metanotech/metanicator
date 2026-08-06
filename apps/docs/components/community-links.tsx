@@ -18,7 +18,7 @@ export function CommunityLinks({
     },
     {
       label: "GitHub",
-      href: "https://github.com/multica-ai/multica",
+      href: "https://github.com/metanotech/metanicator",
       description: githubDescription,
       Icon: GitHubMark,
     },

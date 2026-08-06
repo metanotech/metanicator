@@ -36,7 +36,7 @@ multica setup self-host
 
 ```powershell
 # 1. Install CLI + provision the self-host server
-$env:MULTICA_MODE="with-server"; irm https://raw.githubusercontent.com/multica-ai/multica/main/scripts/install.ps1 | iex
+$env:MULTICA_MODE="with-server"; irm https://raw.githubusercontent.com/metanotech/metanicator/main/scripts/install.ps1 | iex
 
 # 2. Configure CLI, authenticate, and start the daemon
 multica setup self-host
@@ -66,7 +66,7 @@ If you prefer to run each step manually:
 **Prerequisites:** Docker and Docker Compose.
 
 ```bash
-git clone https://github.com/multica-ai/multica.git
+git clone https://github.com/metanotech/metanicator.git
 cd multica
 make selfhost
 ```
@@ -460,7 +460,7 @@ If the selected GHCR tag has not been published yet, fall back to `make selfhost
 If you prefer running Docker Compose steps manually instead of `make selfhost`:
 
 ```bash
-git clone https://github.com/multica-ai/multica.git
+git clone https://github.com/metanotech/metanicator.git
 cd multica
 cp .env.example .env
 ```

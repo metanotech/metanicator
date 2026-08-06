@@ -26,10 +26,10 @@ case "${1:-}" in
       exit 2
     fi
     printf '%s\n' \
-      github.com/multica-ai/multica/server \
-      github.com/multica-ai/multica/server/internal/daemon \
-      github.com/multica-ai/multica/server/pkg/agent \
-      github.com/multica-ai/multica/server/pkg/agent/internal/testutil
+      github.com/metanotech/metanicator/server \
+      github.com/metanotech/metanicator/server/internal/daemon \
+      github.com/metanotech/metanicator/server/pkg/agent \
+      github.com/metanotech/metanicator/server/pkg/agent/internal/testutil
     ;;
   test)
     printf '%s\n' "$*" >>"$MULTICA_TEST_GO_CALLS"
@@ -44,7 +44,7 @@ chmod 755 "$BIN_DIR/go"
 
 PATH="$BIN_DIR:$PATH" bash "$SCRIPT_DIR/test-go.sh" --race
 
-expected_calls='test -race github.com/multica-ai/multica/server github.com/multica-ai/multica/server/internal/daemon
+expected_calls='test -race github.com/metanotech/metanicator/server github.com/metanotech/metanicator/server/internal/daemon
 test -race -p 2 -parallel 2 ./pkg/agent/...'
 actual_calls=$(cat "$CALLS_FILE")
 if [ "$actual_calls" != "$expected_calls" ]; then

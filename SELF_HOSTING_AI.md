@@ -28,7 +28,7 @@ Wait for the server output `✓ Multica server is running and CLI is ready!` bef
 ## Alternative: Manual Setup
 
 ```bash
-git clone https://github.com/multica-ai/multica.git
+git clone https://github.com/metanotech/metanicator.git
 cd multica
 make selfhost
 brew install multica-ai/tap/multica
