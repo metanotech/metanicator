@@ -73,9 +73,9 @@ type AppConfig struct {
 // to anonymous callers — never user- or tenant-scoped data.
 func (h *Handler) GetConfig(w http.ResponseWriter, r *http.Request) {
 	config := AppConfig{
-		AllowSignup:               os.Getenv("ALLOW_SIGNUP") != "false",
+		AllowSignup:               IsAllowSignupFromEnv(),
 		GoogleClientID:            os.Getenv("GOOGLE_CLIENT_ID"),
-		WorkspaceCreationDisabled: os.Getenv("DISABLE_WORKSPACE_CREATION") == "true",
+		WorkspaceCreationDisabled: IsWorkspaceCreationDisabledFromEnv(),
 	}
 	if h.Storage != nil {
 		config.CdnDomain = h.Storage.CdnDomain()
@@ -183,4 +183,23 @@ func canonicalURLHost(raw string) string {
 		host = u.Hostname()
 	}
 	return strings.TrimSuffix(strings.ToLower(host), ".")
+}
+
+// IsAllowSignupFromEnv returns false if signups are disabled via ALLOW_SIGNUP=false,
+// DISABLE_PUBLIC_REGISTRATION=true, DISABLE_SIGNUP=true, or ALLOW_PUBLIC_REGISTRATION=false.
+func IsAllowSignupFromEnv() bool {
+	if os.Getenv("DISABLE_PUBLIC_REGISTRATION") == "true" ||
+		os.Getenv("DISABLE_SIGNUP") == "true" ||
+		os.Getenv("ALLOW_PUBLIC_REGISTRATION") == "false" ||
+		os.Getenv("ALLOW_SIGNUP") == "false" {
+		return false
+	}
+	return true
+}
+
+// IsWorkspaceCreationDisabledFromEnv returns true if workspace creation is disabled
+// explicitly or as part of public registration lockdown.
+func IsWorkspaceCreationDisabledFromEnv() bool {
+	return os.Getenv("DISABLE_WORKSPACE_CREATION") == "true" ||
+		os.Getenv("DISABLE_PUBLIC_REGISTRATION") == "true"
 }

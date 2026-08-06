@@ -1,5 +1,5 @@
 appId: ai.multica.desktop
-productName: Multica
+productName: Metanicator
 directories:
   buildResources: build
 files:
@@ -30,7 +30,7 @@ extraResources:
   - from: ../../NOTICE
     to: NOTICE
 protocols:
-  - name: Multica
+  - name: Metanicator
     schemes:
       - multica
 asarUnpack:
@@ -96,7 +96,7 @@ linux:
   # window prints `Multica` for both fields.
   desktop:
     entry:
-      StartupWMClass: Multica
+      StartupWMClass: Metanicator
   # Point at pre-rendered hicolor sizes. electron-builder *can* generate
   # 16/24/32/48/64/128/256/512 from a single build/icon.png, but the
   # auto-generation silently shipped only the 1024×1024 source in our

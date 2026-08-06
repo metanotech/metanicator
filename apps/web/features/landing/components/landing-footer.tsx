@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { MulticaIcon } from "@multica/ui/components/common/multica-icon";
+import { MetanicatorIcon } from "@multica/ui/components/common/multica-icon";
 import { cn } from "@multica/ui/lib/utils";
 import { useAuthStore } from "@multica/core/auth";
 import {
@@ -29,7 +29,7 @@ export function LandingFooter() {
           {/* Left — newsletter / CTA */}
           <div className="lg:w-[340px] lg:shrink-0">
             <Link href="#product" className="flex items-center gap-3">
-              <MulticaIcon className="size-5 text-white" noSpin />
+              <MetanicatorIcon className="size-5 text-white" noSpin />
               <span className="text-title font-semibold tracking-[0.04em] lowercase">
                 multica
               </span>
@@ -132,7 +132,7 @@ export function LandingFooter() {
         {/* Giant logo */}
         <div className="relative overflow-hidden pb-4">
           <div className="flex items-end gap-6 sm:gap-8">
-            <MulticaIcon
+            <MetanicatorIcon
               className="size-[clamp(4rem,12vw,10rem)] shrink-0 text-white"
               noSpin
             />

@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import { isOfficialMarketingHost } from "./public-host";
 
 describe("isOfficialMarketingHost", () => {
-  it.each(["multica.ai", "www.multica.ai", "MULTICA.AI", "multica.ai."])(
+  it.each(["multica.ai", "www.multica.ai", "METANICATOR.AI", "multica.ai."])(
     "recognizes %s as an official marketing host",
     (host) => {
       expect(isOfficialMarketingHost(host)).toBe(true);

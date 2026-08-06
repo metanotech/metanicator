@@ -83,7 +83,7 @@ export function AgentRowActions({
   // branches.
   const showStop = canManage && !isArchived && hasActiveWork;
   const showDuplicate = !isArchived; // any workspace member can duplicate
-  // Multica's built-in agents cannot be archived — the server refuses it, and
+  // Metanicator's built-in agents cannot be archived — the server refuses it, and
   // the workspace's entry point runs through one. Hide the action rather than
   // let it fail with a toast.
   const isSystemAgent = !!agent.system_key;

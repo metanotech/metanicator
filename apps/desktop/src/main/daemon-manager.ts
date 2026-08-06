@@ -393,7 +393,7 @@ function findCliOnPath(): string | null {
  * - Dev (`electron-vite dev`): `app.getAppPath()` → `apps/desktop`, resolving
  *   to `apps/desktop/resources/bin/multica`. `bundle-cli.mjs` populates this
  *   before dev starts, so iterating on Go changes is "make build → restart".
- * - Packaged: `app.getAppPath()` → `<Multica.app>/Contents/Resources/app.asar`.
+ * - Packaged: `app.getAppPath()` → `<Metanicator.app>/Contents/Resources/app.asar`.
  *   electron-builder's `asarUnpack: resources/**` extracts the binary to
  *   `app.asar.unpacked/`, so we swap the path segment to execute it.
  */
@@ -610,7 +610,7 @@ async function mintPat(jwt: string): Promise<string> {
       Authorization: `Bearer ${jwt}`,
     },
     // Omit expires_in_days → server treats as null → non-expiring PAT.
-    body: JSON.stringify({ name: "Multica Desktop" }),
+    body: JSON.stringify({ name: "Metanicator Desktop" }),
   });
   if (!res.ok) {
     const body = await res.text().catch(() => "");
@@ -888,7 +888,7 @@ async function probeLocalRuntimes(): Promise<LocalRuntimeProbe> {
 // applied by fix-path in main/index.ts — as a top-level const it would
 // snapshot process.env at import time, before that block runs.
 function desktopSpawnEnv(): NodeJS.ProcessEnv {
-  return { ...process.env, MULTICA_LAUNCHED_BY: "desktop" };
+  return { ...process.env, METANICATOR_LAUNCHED_BY: "desktop" };
 }
 
 async function startDaemon(): Promise<{ success: boolean; error?: string }> {

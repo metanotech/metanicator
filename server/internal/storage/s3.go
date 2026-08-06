@@ -29,18 +29,19 @@ type S3Storage struct {
 }
 
 // NewS3StorageFromEnv creates an S3Storage from environment variables.
-// Returns nil if S3_BUCKET is not set.
+// Returns nil if S3_BUCKET (or MINIO_BUCKET) is not set.
 //
 // Environment variables:
-//   - S3_BUCKET (required)
-//   - S3_REGION (default: us-west-2)
-//   - AWS_ACCESS_KEY_ID / AWS_SECRET_ACCESS_KEY (optional; falls back to default credential chain)
-//   - AWS_ENDPOINT_URL (optional S3-compatible endpoint)
-//   - S3_USE_PATH_STYLE (optional; defaults to true when AWS_ENDPOINT_URL is set)
+//   - S3_BUCKET / MINIO_BUCKET (required)
+//   - S3_REGION / MINIO_REGION (default: us-west-2)
+//   - AWS_ACCESS_KEY_ID / MINIO_ACCESS_KEY / MINIO_ROOT_USER
+//   - AWS_SECRET_ACCESS_KEY / MINIO_SECRET_KEY / MINIO_ROOT_PASSWORD
+//   - AWS_ENDPOINT_URL / MINIO_ENDPOINT / MINIO_ENDPOINT_URL / MINIO_URL
+//   - S3_USE_PATH_STYLE / MINIO_USE_PATH_STYLE
 func NewS3StorageFromEnv() *S3Storage {
-	bucket := os.Getenv("S3_BUCKET")
+	bucket := getEnvFirst("S3_BUCKET", "MINIO_BUCKET")
 	if bucket == "" {
-		slog.Info("S3_BUCKET not set, cloud upload disabled")
+		slog.Info("S3_BUCKET / MINIO_BUCKET not set, cloud upload disabled")
 		return nil
 	}
 	if looksLikeS3Hostname(bucket) {
@@ -50,7 +51,7 @@ func NewS3StorageFromEnv() *S3Storage {
 		)
 	}
 
-	region := os.Getenv("S3_REGION")
+	region := getEnvFirst("S3_REGION", "MINIO_REGION")
 	if region == "" {
 		region = "us-west-2"
 	}
@@ -59,8 +60,8 @@ func NewS3StorageFromEnv() *S3Storage {
 		config.WithRegion(region),
 	}
 
-	accessKey := os.Getenv("AWS_ACCESS_KEY_ID")
-	secretKey := os.Getenv("AWS_SECRET_ACCESS_KEY")
+	accessKey := getEnvFirst("AWS_ACCESS_KEY_ID", "MINIO_ACCESS_KEY", "MINIO_ROOT_USER", "MINIO_USER")
+	secretKey := getEnvFirst("AWS_SECRET_ACCESS_KEY", "MINIO_SECRET_KEY", "MINIO_ROOT_PASSWORD", "MINIO_PASSWORD")
 	if accessKey != "" && secretKey != "" {
 		opts = append(opts, config.WithCredentialsProvider(
 			credentials.NewStaticCredentialsProvider(accessKey, secretKey, ""),
@@ -75,7 +76,7 @@ func NewS3StorageFromEnv() *S3Storage {
 
 	cdnDomain := os.Getenv("CLOUDFRONT_DOMAIN")
 
-	endpointURL := os.Getenv("AWS_ENDPOINT_URL")
+	endpointURL := getEnvFirst("AWS_ENDPOINT_URL", "MINIO_ENDPOINT", "MINIO_ENDPOINT_URL", "MINIO_URL")
 	usePathStyle := s3UsePathStyleFromEnv(endpointURL)
 	s3Opts := []func(*s3.Options){}
 	if endpointURL != "" || usePathStyle {
@@ -98,6 +99,15 @@ func NewS3StorageFromEnv() *S3Storage {
 	}
 }
 
+func getEnvFirst(keys ...string) string {
+	for _, k := range keys {
+		if val := os.Getenv(k); val != "" {
+			return val
+		}
+	}
+	return ""
+}
+
 func (s *S3Storage) CdnDomain() string {
 	return s.cdnDomain
 }
@@ -113,8 +123,8 @@ func looksLikeS3Hostname(bucket string) bool {
 
 func s3UsePathStyleFromEnv(endpointURL string) bool {
 	defaultValue := endpointURL != ""
-	raw, ok := os.LookupEnv("S3_USE_PATH_STYLE")
-	if !ok || strings.TrimSpace(raw) == "" {
+	raw := getEnvFirst("S3_USE_PATH_STYLE", "MINIO_USE_PATH_STYLE")
+	if strings.TrimSpace(raw) == "" {
 		return defaultValue
 	}
 	parsed, err := parseBoolEnv(raw)

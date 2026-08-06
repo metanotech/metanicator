@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { LOCALE_COOKIE } from "@multica/core/i18n";
 import {
-  MULTICA_LOCALE_HEADER,
+  METANICATOR_LOCALE_HEADER,
   resolveLocaleFromSignals,
 } from "./lib/locale-routing";
 import { runtimeRewriteDestination } from "./config/runtime-urls";
@@ -38,7 +38,7 @@ function resolveLocale(req: NextRequest): string {
 // request — without it the value would only sit on the response.
 function nextWithLocale(req: NextRequest): NextResponse {
   const headers = new Headers(req.headers);
-  headers.set(MULTICA_LOCALE_HEADER, resolveLocale(req));
+  headers.set(METANICATOR_LOCALE_HEADER, resolveLocale(req));
   return NextResponse.next({ request: { headers } });
 }
 
@@ -83,24 +83,34 @@ export function proxy(req: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  // --- Root path: redirect logged-in users to their last workspace ---
-  // The official cloud host also serves the public marketing site. Visiting
-  // https://multica.ai/ must remain a public-site navigation even when a local
-  // desktop/runtime session has fresh auth cookies; explicit app routes such
-  // as /acme/issues and legacy /issues still route to the workspace app.
-  if (
-    pathname === "/" &&
-    hasSession &&
-    lastSlug &&
-    !isOfficialMarketingHost(req.nextUrl.hostname)
-  ) {
+  // --- Landing page routes: bypass landing pages and redirect to app/login ---
+  const landingRoutes = [
+    "/",
+    "/homepage",
+    "/about",
+    "/changelog",
+    "/contact-sales",
+    "/download",
+    "/usecases",
+  ];
+  const isLandingRoute =
+    pathname === "/" ||
+    landingRoutes.some(
+      (route) => route !== "/" && (pathname === route || pathname.startsWith(route + "/")),
+    );
+
+  if (isLandingRoute) {
     const url = req.nextUrl.clone();
-    url.pathname = `/${lastSlug}/issues`;
+    if (hasSession && lastSlug) {
+      url.pathname = `/${lastSlug}/issues`;
+      return NextResponse.redirect(url);
+    }
+    url.pathname = "/login";
     return NextResponse.redirect(url);
   }
 
   // --- Default: forward locale header to RSC, no redirect/rewrite ---
-  // Covers logged-out root path, /login, /:slug/*, and everything else.
+  // Covers /login, /:slug/*, and everything else.
   return nextWithLocale(req);
 }
 

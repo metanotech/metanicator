@@ -8,7 +8,7 @@ import { OpenSourceSection } from "./open-source-section";
 import { FAQSection } from "./faq-section";
 import { LandingFooter } from "./landing-footer";
 
-export function MulticaLanding() {
+export function MetanicatorLanding() {
   return (
     <>
       <div className="relative">
@@ -24,3 +24,6 @@ export function MulticaLanding() {
     </>
   );
 }
+
+export const MulticaLanding = MetanicatorLanding;
+

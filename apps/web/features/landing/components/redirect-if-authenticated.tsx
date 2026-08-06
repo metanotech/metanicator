@@ -36,9 +36,14 @@ export function RedirectIfAuthenticated() {
   });
 
   useEffect(() => {
-    if (isLoading || !user || !isFetched) return;
-    if (isOfficialMarketingHost(window.location.hostname)) return;
-    router.replace(resolvePostAuthDestination(list, hasOnboarded));
+    if (isLoading) return;
+    if (user) {
+      if (isFetched) {
+        router.replace(resolvePostAuthDestination(list, hasOnboarded));
+      }
+    } else {
+      router.replace("/login");
+    }
   }, [isLoading, user, isFetched, list, hasOnboarded, router]);
 
   return null;

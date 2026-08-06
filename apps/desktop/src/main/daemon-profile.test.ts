@@ -13,8 +13,8 @@ import {
   profileUserIdPath,
 } from "./daemon-profile";
 
-const MULTICA_DIR = join(homedir(), ".multica");
-const DEFAULT_CLI_CONFIG = join(MULTICA_DIR, "config.json");
+const METANICATOR_DIR = join(homedir(), ".multica");
+const DEFAULT_CLI_CONFIG = join(METANICATOR_DIR, "config.json");
 
 describe("deriveProfileName", () => {
   it("names the profile after the target host", () => {
@@ -36,7 +36,7 @@ describe("deriveProfileName", () => {
 
 describe("profile paths", () => {
   it("always resolves under profiles/<name>", () => {
-    const dir = join(MULTICA_DIR, "profiles", "desktop-api.multica.ai");
+    const dir = join(METANICATOR_DIR, "profiles", "desktop-api.multica.ai");
     expect(profileDir("desktop-api.multica.ai")).toBe(dir);
     expect(profileConfigPath("desktop-api.multica.ai")).toBe(
       join(dir, "config.json"),

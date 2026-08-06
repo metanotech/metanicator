@@ -492,6 +492,32 @@ func TestNewS3StorageFromEnv_ConfiguresEndpointPathStyle(t *testing.T) {
 			t.Fatalf("uploadedURL() = %q, want %q", got, want)
 		}
 	})
+
+	t.Run("supports MinIO environment variable fallbacks", func(t *testing.T) {
+		t.Setenv("S3_BUCKET", "")
+		t.Setenv("AWS_ENDPOINT_URL", "")
+		t.Setenv("AWS_ACCESS_KEY_ID", "")
+		t.Setenv("AWS_SECRET_ACCESS_KEY", "")
+
+		t.Setenv("MINIO_BUCKET", "minio-bucket")
+		t.Setenv("MINIO_ENDPOINT", "http://minio:9000")
+		t.Setenv("MINIO_ACCESS_KEY", "minioadmin")
+		t.Setenv("MINIO_SECRET_KEY", "minioadmin")
+
+		store := NewS3StorageFromEnv()
+		if store == nil {
+			t.Fatal("NewS3StorageFromEnv() = nil for MinIO fallbacks")
+		}
+		if store.bucket != "minio-bucket" {
+			t.Fatalf("bucket = %q, want %q", store.bucket, "minio-bucket")
+		}
+		if store.endpointURL != "http://minio:9000" {
+			t.Fatalf("endpointURL = %q, want %q", store.endpointURL, "http://minio:9000")
+		}
+		if !store.usePathStyle {
+			t.Fatalf("usePathStyle = false, want true")
+		}
+	})
 }
 
 func TestS3StorageUploadedURL(t *testing.T) {

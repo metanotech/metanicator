@@ -1,34 +1,8 @@
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
 import { ArrowUpRight } from "lucide-react";
+import { MetanicatorIcon } from "@multica/ui/components/common/multica-icon";
 
-// Docs-local stateless Multica mark — matches @multica/ui's MulticaIcon
-// visually (same 8-pointed-asterisk clip-path), but without useState/
-// useEffect so it's safe to render from Server Components such as
-// layout.config.tsx / layout.tsx. Keep in sync with
-// packages/ui/components/common/multica-icon.tsx if the mark changes.
-const MULTICA_CLIP = `polygon(
-  45% 62.1%, 45% 100%, 55% 100%, 55% 62.1%,
-  81.8% 88.9%, 88.9% 81.8%, 62.1% 55%, 100% 55%,
-  100% 45%, 62.1% 45%, 88.9% 18.2%, 81.8% 11.1%,
-  55% 37.9%, 55% 0%, 45% 0%, 45% 37.9%,
-  18.2% 11.1%, 11.1% 18.2%, 37.9% 45%, 0% 45%,
-  0% 55%, 37.9% 55%, 11.1% 81.8%, 18.2% 88.9%
-)`;
-
-function MulticaMark() {
-  return (
-    <span className="inline-block size-[1em]" aria-hidden="true">
-      <span
-        className="block size-full bg-current"
-        style={{ clipPath: MULTICA_CLIP }}
-      />
-    </span>
-  );
-}
-
-// GitHub mark — inlined SVG (lucide-react dropped the Github icon for brand
-// trademark reasons). Path matches apps/web/features/landing/components/
-// shared.tsx GitHubMark.
+// GitHub mark — inlined SVG
 function GitHubMark() {
   return (
     <svg
@@ -42,10 +16,6 @@ function GitHubMark() {
   );
 }
 
-// External links shown at the top of the sidebar (and in the top nav on
-// desktop). Leading icon = brand identity (GitHub mark / Multica asterisk);
-// trailing ArrowUpRight = "opens externally" glyph, same pattern as
-// `packages/views/layout/help-launcher.tsx` from PR #1560.
 const externalLinkText = (label: string) => (
   <span className="inline-flex items-center gap-1">
     {label}
@@ -56,7 +26,7 @@ const externalLinkText = (label: string) => (
 export const baseOptions: BaseLayoutProps = {
   nav: {
     title: (
-      <span className="font-semibold text-base">Multica Docs</span>
+      <span className="font-semibold text-base">Metanicator Docs</span>
     ),
   },
   links: [
@@ -67,8 +37,8 @@ export const baseOptions: BaseLayoutProps = {
       external: true,
     },
     {
-      icon: <MulticaMark />,
-      text: externalLinkText("Multica"),
+      icon: <MetanicatorIcon noSpin />,
+      text: externalLinkText("Metanicator"),
       url: "https://multica.ai",
       external: true,
     },
