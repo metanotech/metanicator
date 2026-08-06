@@ -90,6 +90,7 @@ func NewClientFromEnv() (*Client, error) {
 	if appID == "" || pemKey == "" {
 		return nil, nil
 	}
+	pemKey = strings.ReplaceAll(pemKey, "\\n", "\n")
 	key, err := jwt.ParseRSAPrivateKeyFromPEM([]byte(pemKey))
 	if err != nil {
 		// Deliberately do not include the key material in the error.
