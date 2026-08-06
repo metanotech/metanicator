@@ -80,8 +80,17 @@ export const metadata: Metadata = {
   description:
     "Open-source platform that turns coding agents into real teammates. Assign tasks, track progress, compound skills.",
   icons: {
-    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
-    shortcut: ["/favicon.svg"],
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
+      { url: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
+      { url: "/favicon-96x96.png", type: "image/png", sizes: "96x96" },
+    ],
+    apple: [
+      { url: "/apple-icon-152x152.png", sizes: "152x152", type: "image/png" },
+      { url: "/apple-icon-180x180.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
   },
   openGraph: {
     type: "website",
