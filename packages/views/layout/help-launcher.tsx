@@ -12,7 +12,6 @@ import {
 } from "@multica/ui/components/ui/dropdown-menu";
 import { useModalStore } from "@multica/core/modals";
 import { useConfigStore } from "@multica/core/config";
-import { DISCORD_URL, DiscordIcon } from "./discord";
 import { useT } from "../i18n";
 
 const DOCS_URL = "https://multica.ai/docs";
