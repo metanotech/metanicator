@@ -235,7 +235,6 @@ export function createJaDict(allowSignup: boolean): LandingDict {
             { label: "仕組み", href: "#how-it-works" },
             { label: "ユースケース", href: "/usecases" },
             { label: "変更履歴", href: "/changelog" },
-            { label: "ダウンロード", href: "/download" },
           ],
         },
         resources: {

@@ -108,7 +108,7 @@ friends. Multica drives them; it doesn't ship them.
 <br/>
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/multica-ai/multica/main/scripts/install.sh | bash -s -- --with-server
+curl -fsSL https://raw.githubusercontent.com/metanotech/metanicator/main/scripts/install.sh | bash -s -- --with-server
 multica setup self-host
 ```
 

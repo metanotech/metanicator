@@ -23,7 +23,7 @@ Two commands to set up everything — server, CLI, and configuration.
 
 ```bash
 # 1. Install CLI + provision the self-host server
-curl -fsSL https://raw.githubusercontent.com/multica-ai/multica/main/scripts/install.sh | bash -s -- --with-server
+curl -fsSL https://raw.githubusercontent.com/metanotech/metanicator/main/scripts/install.sh | bash -s -- --with-server
 
 # 2. Configure CLI, authenticate, and start the daemon
 multica setup self-host
@@ -416,7 +416,7 @@ External cron / systemd timer / Kubernetes `CronJob` setups that call `SELECT ro
 If you installed via the install script:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/multica-ai/multica/main/scripts/install.sh | bash -s -- --stop
+curl -fsSL https://raw.githubusercontent.com/metanotech/metanicator/main/scripts/install.sh | bash -s -- --stop
 ```
 
 If you cloned the repo manually:

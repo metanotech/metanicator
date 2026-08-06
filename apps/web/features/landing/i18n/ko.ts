@@ -234,7 +234,6 @@ export function createKoDict(allowSignup: boolean): LandingDict {
             { label: "작동 방식", href: "#how-it-works" },
             { label: "사용 사례", href: "/usecases" },
             { label: "변경 로그", href: "/changelog" },
-            { label: "다운로드", href: "/download" },
           ],
         },
         resources: {

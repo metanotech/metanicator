@@ -104,7 +104,7 @@ Claude Code、Codex、Cursor 都行。Multica 负责驱动它们，但不替你�
 <br/>
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/multica-ai/multica/main/scripts/install.sh | bash -s -- --with-server
+curl -fsSL https://raw.githubusercontent.com/metanotech/metanicator/main/scripts/install.sh | bash -s -- --with-server
 multica setup self-host
 ```
 
