@@ -1,0 +1,74 @@
+name: metanicator
+
+services:
+  backend:
+    build:
+      context: "https://github.com/metanotech/metanicator.git#main"
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    networks:
+      - dokploy-network
+    volumes:
+      - backend_uploads:/app/data/uploads
+    environment:
+      DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@shared-enviroments-metanotech-a2wcjz:5432/${POSTGRES_DB}?sslmode=disable
+      PORT: "8080"
+      JWT_SECRET: ${JWT_SECRET}
+      FRONTEND_ORIGIN: ${FRONTEND_ORIGIN}
+      CORS_ALLOWED_ORIGINS: ${CORS_ALLOWED_ORIGINS:-${ALLOWED_ORIGINS:-}}
+      MULTICA_APP_URL: ${MULTICA_APP_URL}
+      RESEND_API_KEY: ${RESEND_API_KEY}
+      RESEND_FROM_EMAIL: ${RESEND_FROM_EMAIL}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
+      GOOGLE_REDIRECT_URI: ${GOOGLE_REDIRECT_URI}
+      COOKIE_DOMAIN: ${COOKIE_DOMAIN}
+      
+      # Privacy & Registration Lockdown (Personal Use)
+      ALLOW_SIGNUP: ${ALLOW_SIGNUP:-false}
+      DISABLE_PUBLIC_REGISTRATION: ${DISABLE_PUBLIC_REGISTRATION:-true}
+      DISABLE_SIGNUP: ${DISABLE_SIGNUP:-true}
+      DISABLE_WORKSPACE_CREATION: ${DISABLE_WORKSPACE_CREATION:-false}
+      
+      # Storage Configuration (MinIO / Cloudflare R2 / S3)
+      S3_BUCKET: ${S3_BUCKET}
+      S3_REGION: ${S3_REGION:-us-west-2}
+      AWS_ENDPOINT_URL: ${AWS_ENDPOINT_URL}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      ATTACHMENT_DOWNLOAD_MODE: ${ATTACHMENT_DOWNLOAD_MODE:-auto}
+      S3_USE_PATH_STYLE: ${S3_USE_PATH_STYLE:-true}
+      
+      # MinIO native fallbacks
+      MINIO_BUCKET: ${MINIO_BUCKET:-}
+      MINIO_ENDPOINT: ${MINIO_ENDPOINT:-}
+      MINIO_ACCESS_KEY: ${MINIO_ACCESS_KEY:-}
+      MINIO_SECRET_KEY: ${MINIO_SECRET_KEY:-}
+
+  frontend:
+    build:
+      context: "https://github.com/metanotech/metanicator.git#main"
+      dockerfile: Dockerfile.web
+      args:
+        REMOTE_API_URL: ${REMOTE_API_URL:-http://backend:8080}
+        NEXT_PUBLIC_GOOGLE_CLIENT_ID: ${NEXT_PUBLIC_GOOGLE_CLIENT_ID:-}
+
+    restart: unless-stopped
+    ports: 
+      - "4000:3000"
+    depends_on:
+      - backend
+    networks:
+      - dokploy-network
+    environment:
+      HOSTNAME: "0.0.0.0"
+      REMOTE_API_URL: ${REMOTE_API_URL:-http://backend:8080}
+      ALLOW_SIGNUP: ${ALLOW_SIGNUP:-false}
+      DISABLE_PUBLIC_REGISTRATION: ${DISABLE_PUBLIC_REGISTRATION:-true}
+
+volumes:
+  backend_uploads:
+
+networks:
+  dokploy-network:
+    external: true
