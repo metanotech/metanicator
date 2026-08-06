@@ -9,7 +9,11 @@ ROOT_DIR="$(cd "${SCRIPT_DIR}/.." && pwd)"
 
 cd "${ROOT_DIR}"
 
-REMOTE="${UPSTREAM_REMOTE:-origin}"
+if git remote | grep -q "^upstream$"; then
+    REMOTE="${UPSTREAM_REMOTE:-upstream}"
+else
+    REMOTE="${UPSTREAM_REMOTE:-origin}"
+fi
 BRANCH="${UPSTREAM_BRANCH:-main}"
 
 echo "==> Fetching latest changes from ${REMOTE}/${BRANCH}..."
