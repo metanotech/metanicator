@@ -674,10 +674,20 @@ func fetchInstallationAccount(ctx context.Context, installationID int64) (login,
 func signGitHubAppJWT(now time.Time) (string, error) {
 	appID := strings.TrimSpace(os.Getenv("GITHUB_APP_ID"))
 	pemKey := strings.TrimSpace(os.Getenv("GITHUB_APP_PRIVATE_KEY"))
+	if pemKey == "" {
+		pemKey = strings.TrimSpace(os.Getenv("GITHUB_APP_PRIVATE_KEY_BASE64"))
+	}
 	if appID == "" || pemKey == "" {
 		return "", nil
 	}
 	pemKey = strings.ReplaceAll(pemKey, "\\n", "\n")
+	if !strings.Contains(pemKey, "-----BEGIN") {
+		if decoded, err := base64.StdEncoding.DecodeString(pemKey); err == nil {
+			pemKey = string(decoded)
+		} else if decoded, err := base64.RawStdEncoding.DecodeString(pemKey); err == nil {
+			pemKey = string(decoded)
+		}
+	}
 	key, err := jwt.ParseRSAPrivateKeyFromPEM([]byte(pemKey))
 	if err != nil {
 		return "", fmt.Errorf("parse GITHUB_APP_PRIVATE_KEY: %w", err)
