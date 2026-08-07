@@ -6,6 +6,8 @@ services:
       context: "https://github.com/metanotech/metanicator.git#main"
       dockerfile: Dockerfile
     restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     networks:
       - dokploy-network
     volumes:
