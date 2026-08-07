@@ -128,6 +128,7 @@ services:
       MULTICA_VCS_SECRET_KEY: ${MULTICA_VCS_SECRET_KEY:-}
     networks:
       - default
+      - dokploy-network
       - minio
     restart: unless-stopped
 
@@ -153,6 +154,8 @@ volumes:
   backend_uploads:
 
 networks:
+  dokploy-network:
+    external: true
   minio:
     name: ${MINIO_NETWORK:-shared-enviroments-minio-qujsbo}
     external: true
