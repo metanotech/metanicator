@@ -126,6 +126,9 @@ services:
       MULTICA_SLACK_SECRET_KEY: ${MULTICA_SLACK_SECRET_KEY:-}
       MULTICA_VCS_INTEGRATION_ENABLED: ${MULTICA_VCS_INTEGRATION_ENABLED:-true}
       MULTICA_VCS_SECRET_KEY: ${MULTICA_VCS_SECRET_KEY:-}
+    networks:
+      - default
+      - minio
     restart: unless-stopped
 
   frontend:
@@ -148,3 +151,8 @@ services:
 volumes:
   pgdata:
   backend_uploads:
+
+networks:
+  minio:
+    name: ${MINIO_NETWORK:-shared-enviroments-minio-qujsbo}
+    external: true
