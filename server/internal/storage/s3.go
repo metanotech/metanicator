@@ -351,6 +351,19 @@ func (s *S3Storage) Upload(ctx context.Context, key string, data []byte, content
 		CacheControl:       aws.String("max-age=432000,public"),
 		StorageClass:       s.storageClass(),
 	}, s.uploadChecksumOptions()...)
+	if err != nil && isNoSuchBucketError(err) {
+		slog.Info("S3 bucket missing, attempting auto-creation", "bucket", s.bucket)
+		_, _ = s.client.CreateBucket(ctx, &s3.CreateBucketInput{Bucket: aws.String(s.bucket)})
+		_, err = s.client.PutObject(ctx, &s3.PutObjectInput{
+			Bucket:             aws.String(s.bucket),
+			Key:                aws.String(key),
+			Body:               bytes.NewReader(data),
+			ContentType:        aws.String(contentType),
+			ContentDisposition: aws.String(ContentDisposition(contentType, filename)),
+			CacheControl:       aws.String("max-age=432000,public"),
+			StorageClass:       s.storageClass(),
+		}, s.uploadChecksumOptions()...)
+	}
 	if err != nil {
 		return "", fmt.Errorf("s3 PutObject: %w", err)
 	}
@@ -371,18 +384,28 @@ func (s *S3Storage) UploadStream(ctx context.Context, key string, data io.Reader
 		CacheControl:       aws.String("max-age=432000,public"),
 		StorageClass:       s.storageClass(),
 	}
-	_, err := s.client.PutObject(ctx, input, func(opts *s3.Options) {
-		// A non-seekable stream cannot be rewound for SigV4 payload hashing.
-		// S3 supports UNSIGNED-PAYLOAD for authenticated requests. Avoid the
-		// optional trailing-checksum path as well: it requires another rewind
-		// or aws-chunked framing that S3-compatible backends handle unevenly.
+	optFunc := func(opts *s3.Options) {
 		opts.APIOptions = append(opts.APIOptions, v4.SwapComputePayloadSHA256ForUnsignedPayloadMiddleware)
 		opts.RequestChecksumCalculation = aws.RequestChecksumCalculationWhenRequired
-	})
+	}
+	_, err := s.client.PutObject(ctx, input, optFunc)
+	if err != nil && isNoSuchBucketError(err) {
+		slog.Info("S3 bucket missing during stream upload, attempting auto-creation", "bucket", s.bucket)
+		_, _ = s.client.CreateBucket(ctx, &s3.CreateBucketInput{Bucket: aws.String(s.bucket)})
+		_, err = s.client.PutObject(ctx, input, optFunc)
+	}
 	if err != nil {
 		return "", fmt.Errorf("s3 PutObject: %w", err)
 	}
 	return s.uploadedURL(key), nil
+}
+
+func isNoSuchBucketError(err error) bool {
+	if err == nil {
+		return false
+	}
+	msg := err.Error()
+	return strings.Contains(msg, "NoSuchBucket") || strings.Contains(msg, "specified bucket does not exist")
 }
 
 // uploadedURL returns the URL stored for client consumption after an upload.
