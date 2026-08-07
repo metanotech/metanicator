@@ -51,9 +51,14 @@ func NewS3StorageFromEnv() *S3Storage {
 		)
 	}
 
-	region := getEnvFirst("S3_REGION", "MINIO_REGION")
+	endpointURL := getEnvFirst("AWS_ENDPOINT_URL", "MINIO_ENDPOINT", "MINIO_ENDPOINT_URL", "MINIO_URL")
+	region := getEnvFirst("MINIO_REGION", "S3_REGION")
 	if region == "" {
-		region = "us-west-2"
+		if endpointURL != "" {
+			region = "us-east-1"
+		} else {
+			region = "us-west-2"
+		}
 	}
 
 	opts := []func(*config.LoadOptions) error{
@@ -201,6 +206,7 @@ func (s *S3Storage) uploadChecksumOptions() []func(*s3.Options) {
 		return nil
 	}
 	return []func(*s3.Options){func(opts *s3.Options) {
+		opts.APIOptions = append(opts.APIOptions, v4.SwapComputePayloadSHA256ForUnsignedPayloadMiddleware)
 		opts.RequestChecksumCalculation = aws.RequestChecksumCalculationWhenRequired
 	}}
 }
