@@ -221,7 +221,7 @@ func (s *S3Storage) uploadChecksumOptions() []func(*s3.Options) {
 // Custom endpoints (e.g. MinIO) only support STANDARD; real AWS defaults to INTELLIGENT_TIERING.
 func (s *S3Storage) storageClass() types.StorageClass {
 	if s.endpointURL != "" {
-		return types.StorageClassStandard
+		return ""
 	}
 	return types.StorageClassIntelligentTiering
 }
