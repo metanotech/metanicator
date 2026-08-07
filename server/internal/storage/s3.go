@@ -89,10 +89,17 @@ func NewS3StorageFromEnv() *S3Storage {
 				o.BaseEndpoint = aws.String(endpointURL)
 			}
 			o.UsePathStyle = usePathStyle
+			if accessKey != "" && secretKey != "" {
+				o.Credentials = credentials.NewStaticCredentialsProvider(accessKey, secretKey, "")
+			}
 		},
 	}
 
-	slog.Info("S3 storage initialized", "bucket", bucket, "region", region, "cdn_domain", cdnDomain, "endpoint_url", endpointURL, "use_path_style", usePathStyle)
+	keyPrefix := ""
+	if len(accessKey) >= 4 {
+		keyPrefix = accessKey[:4] + "..."
+	}
+	slog.Info("S3 storage initialized", "bucket", bucket, "region", region, "cdn_domain", cdnDomain, "endpoint_url", endpointURL, "access_key_prefix", keyPrefix, "use_path_style", usePathStyle)
 	return &S3Storage{
 		client:       s3.NewFromConfig(cfg, s3Opts...),
 		bucket:       bucket,
