@@ -81,7 +81,6 @@ func NewS3StorageFromEnv() *S3Storage {
 
 	cdnDomain := os.Getenv("CLOUDFRONT_DOMAIN")
 
-	endpointURL := getEnvFirst("AWS_ENDPOINT_URL", "MINIO_ENDPOINT", "MINIO_ENDPOINT_URL", "MINIO_URL")
 	usePathStyle := s3UsePathStyleFromEnv(endpointURL)
 	s3Opts := []func(*s3.Options){}
 	if endpointURL != "" || usePathStyle {
