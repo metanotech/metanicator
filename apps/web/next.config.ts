@@ -67,6 +67,22 @@ const nextConfig: NextConfig = {
       afterFiles: remoteApiUrl
         ? [
             {
+              source: "/health",
+              destination: `${remoteApiUrl}/health`,
+            },
+            {
+              source: "/healthz",
+              destination: `${remoteApiUrl}/healthz`,
+            },
+            {
+              source: "/readyz",
+              destination: `${remoteApiUrl}/readyz`,
+            },
+            {
+              source: "/health/:path*",
+              destination: `${remoteApiUrl}/health/:path*`,
+            },
+            {
               source: "/api/:path*",
               destination: `${remoteApiUrl}/api/:path*`,
             },
