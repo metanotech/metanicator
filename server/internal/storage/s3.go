@@ -82,14 +82,14 @@ func NewS3StorageFromEnv() *S3Storage {
 	cdnDomain := os.Getenv("CLOUDFRONT_DOMAIN")
 
 	usePathStyle := s3UsePathStyleFromEnv(endpointURL)
-	s3Opts := []func(*s3.Options){}
-	if endpointURL != "" || usePathStyle {
-		s3Opts = append(s3Opts, func(o *s3.Options) {
+	s3Opts := []func(*s3.Options){
+		func(o *s3.Options) {
+			o.Region = region
 			if endpointURL != "" {
 				o.BaseEndpoint = aws.String(endpointURL)
 			}
 			o.UsePathStyle = usePathStyle
-		})
+		},
 	}
 
 	slog.Info("S3 storage initialized", "bucket", bucket, "region", region, "cdn_domain", cdnDomain, "endpoint_url", endpointURL, "use_path_style", usePathStyle)
