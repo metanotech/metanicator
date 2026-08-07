@@ -60,8 +60,8 @@ func NewS3StorageFromEnv() *S3Storage {
 		config.WithRegion(region),
 	}
 
-	accessKey := getEnvFirst("AWS_ACCESS_KEY_ID", "MINIO_ACCESS_KEY", "MINIO_ROOT_USER", "MINIO_USER")
-	secretKey := getEnvFirst("AWS_SECRET_ACCESS_KEY", "MINIO_SECRET_KEY", "MINIO_ROOT_PASSWORD", "MINIO_PASSWORD")
+	accessKey := getEnvFirst("MINIO_ACCESS_KEY", "AWS_ACCESS_KEY_ID", "MINIO_ROOT_USER", "MINIO_USER")
+	secretKey := getEnvFirst("MINIO_SECRET_KEY", "AWS_SECRET_ACCESS_KEY", "MINIO_ROOT_PASSWORD", "MINIO_PASSWORD")
 	if accessKey != "" && secretKey != "" {
 		opts = append(opts, config.WithCredentialsProvider(
 			credentials.NewStaticCredentialsProvider(accessKey, secretKey, ""),
