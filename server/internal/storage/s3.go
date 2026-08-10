@@ -17,7 +17,10 @@ import (
 	"github.com/aws/aws-sdk-go-v2/credentials"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
 	"github.com/aws/aws-sdk-go-v2/service/s3/types"
+	smithymiddleware "github.com/aws/smithy-go/middleware"
 )
+
+const disableAcceptEncodingGzipMiddlewareID = "DisableAcceptEncodingGzip"
 
 type S3Storage struct {
 	client       *s3.Client
@@ -85,9 +88,7 @@ func NewS3StorageFromEnv() *S3Storage {
 	s3Opts := []func(*s3.Options){
 		func(o *s3.Options) {
 			o.Region = region
-			if endpointURL != "" {
-				o.BaseEndpoint = aws.String(endpointURL)
-			}
+			configureS3Endpoint(o, endpointURL)
 			o.UsePathStyle = usePathStyle
 			if accessKey != "" && secretKey != "" {
 				o.Credentials = credentials.NewStaticCredentialsProvider(accessKey, secretKey, "")
@@ -157,6 +158,33 @@ func parseBoolEnv(raw string) (bool, error) {
 	}
 }
 
+// configureS3Endpoint installs the compatibility middleware needed by
+// non-AWS S3 endpoints. The AWS SDK sets Accept-Encoding to identity before
+// SigV4 signing, but proxies such as Cloudflare may rewrite it in transit. By
+// removing that SDK middleware, net/http remains free to add Accept-Encoding
+// after signing and the header is not part of SignedHeaders.
+func configureS3Endpoint(options *s3.Options, endpointURL string) {
+	if endpointURL == "" {
+		return
+	}
+
+	options.BaseEndpoint = aws.String(endpointURL)
+	if !usesAWSEndpointURL(endpointURL) {
+		options.APIOptions = append(options.APIOptions, removeDisableAcceptEncodingGzipMiddleware)
+	}
+}
+
+// removeDisableAcceptEncodingGzipMiddleware is deliberately idempotent. Some
+// SDK flows, including presigning, may already have removed the middleware
+// before client-level API options are applied.
+func removeDisableAcceptEncodingGzipMiddleware(stack *smithymiddleware.Stack) error {
+	if _, ok := stack.Finalize.Get(disableAcceptEncodingGzipMiddlewareID); !ok {
+		return nil
+	}
+	_, err := stack.Finalize.Remove(disableAcceptEncodingGzipMiddlewareID)
+	return err
+}
+
 // awsEndpointDomains are the parent domains AWS serves S3 from. VPC, dualstack
 // and FIPS hostnames all live under them, as does the China partition.
 var awsEndpointDomains = []string{"amazonaws.com", "amazonaws.com.cn"}
@@ -166,10 +194,14 @@ var awsEndpointDomains = []string{"amazonaws.com", "amazonaws.com.cn"}
 // host label boundary, so "notamazonaws.com" and "s3.amazonaws.com.evil.net"
 // are correctly treated as third-party endpoints.
 func (s *S3Storage) usesAWSEndpoint() bool {
-	if s.endpointURL == "" {
+	return usesAWSEndpointURL(s.endpointURL)
+}
+
+func usesAWSEndpointURL(endpointURL string) bool {
+	if endpointURL == "" {
 		return true
 	}
-	host := endpointHostname(s.endpointURL)
+	host := endpointHostname(endpointURL)
 	for _, domain := range awsEndpointDomains {
 		if host == domain || strings.HasSuffix(host, "."+domain) {
 			return true

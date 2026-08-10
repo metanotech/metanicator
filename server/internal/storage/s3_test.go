@@ -1,6 +1,7 @@
 package storage
 
 import (
+	"bytes"
 	"context"
 	"io"
 	"net/http"
@@ -13,7 +14,185 @@ import (
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/credentials"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
+	smithymiddleware "github.com/aws/smithy-go/middleware"
 )
+
+type roundTripFunc func(*http.Request) (*http.Response, error)
+
+func (f roundTripFunc) RoundTrip(request *http.Request) (*http.Response, error) {
+	return f(request)
+}
+
+func TestS3StorageCustomEndpointDoesNotSignAcceptEncoding(t *testing.T) {
+	type observedRequest struct {
+		authorization      string
+		acceptEncoding     string
+		contentLength      int64
+		contentSHA256      string
+		contentEncoding    string
+		decodedLength      string
+		trailer            string
+		transferEncoding   []string
+		checksumHeaders    http.Header
+		contentType        string
+		contentDisposition string
+		cacheControl       string
+		body               []byte
+	}
+
+	for _, tc := range []struct {
+		name      string
+		payload   []byte
+		streaming bool
+	}{
+		{name: "buffered upload", payload: []byte("buffered payload")},
+		{name: "multi-megabyte streaming upload", payload: bytes.Repeat([]byte("streamed-payload-"), 256*1024), streaming: true},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			observed := make(chan observedRequest, 1)
+			server := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+				body, err := io.ReadAll(r.Body)
+				if err != nil {
+					t.Errorf("read request body: %v", err)
+				}
+				checksumHeaders := make(http.Header)
+				for name, values := range r.Header {
+					if strings.HasPrefix(strings.ToLower(name), "x-amz-checksum-") {
+						checksumHeaders[name] = append([]string(nil), values...)
+					}
+				}
+				observed <- observedRequest{
+					authorization:      r.Header.Get("Authorization"),
+					acceptEncoding:     r.Header.Get("Accept-Encoding"),
+					contentLength:      r.ContentLength,
+					contentSHA256:      r.Header.Get("X-Amz-Content-Sha256"),
+					contentEncoding:    r.Header.Get("Content-Encoding"),
+					decodedLength:      r.Header.Get("X-Amz-Decoded-Content-Length"),
+					trailer:            r.Header.Get("X-Amz-Trailer"),
+					transferEncoding:   append([]string(nil), r.TransferEncoding...),
+					checksumHeaders:    checksumHeaders,
+					contentType:        r.Header.Get("Content-Type"),
+					contentDisposition: r.Header.Get("Content-Disposition"),
+					cacheControl:       r.Header.Get("Cache-Control"),
+					body:               body,
+				}
+				w.WriteHeader(http.StatusOK)
+			}))
+			t.Cleanup(server.Close)
+
+			// This transport wrapper represents Cloudflare changing the header
+			// after SigV4 signing but before RustFS receives the request.
+			baseTransport := server.Client().Transport
+			proxyClient := &http.Client{Transport: roundTripFunc(func(request *http.Request) (*http.Response, error) {
+				proxied := request.Clone(request.Context())
+				proxied.Header.Set("Accept-Encoding", "gzip, br")
+				return baseTransport.RoundTrip(proxied)
+			})}
+			client := s3.New(s3.Options{
+				Region:                     "us-east-1",
+				Credentials:                aws.NewCredentialsCache(credentials.NewStaticCredentialsProvider("AKID", "SECRET", "")),
+				UsePathStyle:               true,
+				HTTPClient:                 proxyClient,
+				RequestChecksumCalculation: aws.RequestChecksumCalculationWhenSupported,
+			}, func(options *s3.Options) {
+				configureS3Endpoint(options, server.URL)
+			})
+			store := &S3Storage{
+				client:       client,
+				bucket:       "test-bucket",
+				region:       "us-east-1",
+				endpointURL:  server.URL,
+				usePathStyle: true,
+			}
+
+			const contentType = "application/octet-stream"
+			const filename = "media.bin"
+			var err error
+			if tc.streaming {
+				_, err = store.UploadStream(
+					context.Background(), "uploads/media.bin",
+					io.LimitReader(bytes.NewReader(tc.payload), int64(len(tc.payload))),
+					int64(len(tc.payload)), contentType, filename,
+				)
+			} else {
+				_, err = store.Upload(
+					context.Background(), "uploads/media.bin", tc.payload,
+					contentType, filename,
+				)
+			}
+			if err != nil {
+				t.Fatalf("upload: %v", err)
+			}
+
+			got := <-observed
+			if got.acceptEncoding != "gzip, br" {
+				t.Fatalf("accept-encoding at origin = %q, want proxy-mutated value", got.acceptEncoding)
+			}
+			signedHeaders := signedHeadersFromAuthorization(got.authorization)
+			if len(signedHeaders) == 0 {
+				t.Fatalf("authorization header has no SignedHeaders: %q", got.authorization)
+			}
+			for _, header := range signedHeaders {
+				if header == "accept-encoding" {
+					t.Fatalf("accept-encoding unexpectedly signed: %q", got.authorization)
+				}
+			}
+			if got.contentLength != int64(len(tc.payload)) || len(got.transferEncoding) != 0 {
+				t.Fatalf("request is not fixed length: content_length=%d transfer=%v", got.contentLength, got.transferEncoding)
+			}
+			if got.contentSHA256 != "UNSIGNED-PAYLOAD" {
+				t.Fatalf("x-amz-content-sha256 = %q, want UNSIGNED-PAYLOAD", got.contentSHA256)
+			}
+			if got.contentEncoding != "" || got.decodedLength != "" || got.trailer != "" || len(got.checksumHeaders) != 0 {
+				t.Fatalf("unexpected chunking or checksum headers: content_encoding=%q decoded_length=%q trailer=%q checksums=%v",
+					got.contentEncoding, got.decodedLength, got.trailer, got.checksumHeaders)
+			}
+			if !bytes.Equal(got.body, tc.payload) {
+				t.Fatalf("request body changed: got %d bytes, want %d", len(got.body), len(tc.payload))
+			}
+			if got.contentType != contentType || got.contentDisposition != ContentDisposition(contentType, filename) || got.cacheControl != "max-age=432000,public" {
+				t.Fatalf("upload metadata changed: content_type=%q content_disposition=%q cache_control=%q",
+					got.contentType, got.contentDisposition, got.cacheControl)
+			}
+		})
+	}
+}
+
+func signedHeadersFromAuthorization(authorization string) []string {
+	for _, part := range strings.Split(authorization, ",") {
+		part = strings.TrimSpace(part)
+		if value, ok := strings.CutPrefix(part, "SignedHeaders="); ok {
+			return strings.Split(value, ";")
+		}
+	}
+	return nil
+}
+
+func TestConfigureS3EndpointAcceptEncodingMiddleware(t *testing.T) {
+	t.Run("custom endpoint middleware is idempotent", func(t *testing.T) {
+		options := s3.Options{}
+		configureS3Endpoint(&options, "https://s3.metanotech.com")
+		if len(options.APIOptions) != 1 {
+			t.Fatalf("APIOptions count = %d, want 1", len(options.APIOptions))
+		}
+
+		stack := smithymiddleware.NewStack("test", func() interface{} { return nil })
+		if err := options.APIOptions[0](stack); err != nil {
+			t.Fatalf("apply middleware to stack without target: %v", err)
+		}
+		if err := options.APIOptions[0](stack); err != nil {
+			t.Fatalf("apply middleware twice: %v", err)
+		}
+	})
+
+	t.Run("standard AWS endpoint is unchanged", func(t *testing.T) {
+		options := s3.Options{}
+		configureS3Endpoint(&options, "https://s3.us-east-1.amazonaws.com")
+		if len(options.APIOptions) != 0 {
+			t.Fatalf("APIOptions count = %d, want 0", len(options.APIOptions))
+		}
+	})
+}
 
 func TestS3StorageUploadStreamUsesFixedLengthRequest(t *testing.T) {
 	type observedRequest struct {
