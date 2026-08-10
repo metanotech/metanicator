@@ -91,15 +91,31 @@ For file uploads and attachments, configure S3 and (optionally) CloudFront:
 | Variable | Description |
 |----------|-------------|
 | `S3_BUCKET` | Bucket name only (e.g. `my-bucket`). Do **not** include the `.s3.<region>.amazonaws.com` suffix — the server constructs the public URL from `S3_BUCKET` + `S3_REGION` |
-| `S3_REGION` | AWS region (default: `us-west-2`). Must match the bucket's actual region — used for both SDK signing and public URLs |
-| `AWS_ACCESS_KEY_ID` / `AWS_SECRET_ACCESS_KEY` | Static credentials. When both are unset, the AWS SDK default credential chain is used |
-| `AWS_ENDPOINT_URL` | Custom S3-compatible endpoint (e.g. MinIO, R2, B2). Setting this defaults to path-style URLs for backward compatibility |
-| `S3_USE_PATH_STYLE` | Optional S3 addressing mode. Leave empty for the default (`true` when `AWS_ENDPOINT_URL` is set, `false` for AWS S3). Set `false` for S3-compatible providers that require virtual-hosted-style URLs |
+| `S3_REGION` | Signing region (default: `us-east-1` in the Compose deployment). RustFS accepts any region value; AWS S3 requires the bucket's actual region |
+| `S3_ACCESS_KEY` / `S3_SECRET_KEY` | Static credentials. `AWS_ACCESS_KEY_ID` / `AWS_SECRET_ACCESS_KEY` remain accepted alternatives; when all are unset, the AWS SDK default credential chain is used |
+| `S3_ENDPOINT_URL` | Custom S3-compatible endpoint (e.g. RustFS, R2, B2). `AWS_ENDPOINT_URL` remains an accepted alternative. Setting an endpoint defaults to path-style URLs |
+| `S3_USE_PATH_STYLE` | S3 addressing mode. Compose defaults to `true` for RustFS; set `false` for AWS S3 or providers that require virtual-hosted-style URLs |
 | `ATTACHMENT_DOWNLOAD_MODE` | Attachment download behavior: `auto` (default), `cloudfront`, `presign`, or `proxy`. Use `proxy` for private buckets behind Docker/VPC-only endpoints such as `http://rustfs:9000`. Avatars follow the same policy — see below |
 | `ATTACHMENT_DOWNLOAD_URL_TTL` | TTL for CloudFront signed URLs and S3 presigned download URLs (default: `30m`) |
 | `CLOUDFRONT_DOMAIN` | CloudFront distribution domain — when set, public URLs use this host instead of the S3 host |
 | `CLOUDFRONT_KEY_PAIR_ID` | CloudFront key pair ID for signed URLs |
 | `CLOUDFRONT_PRIVATE_KEY` | CloudFront private key (PEM format) |
+
+For RustFS, configure the backend with the S3 API endpoint and the credentials
+created in RustFS:
+
+```dotenv
+S3_ENDPOINT_URL=http://rustfs:9000
+S3_BUCKET=attachments
+S3_ACCESS_KEY=<rustfs-access-key>
+S3_SECRET_KEY=<rustfs-secret-key>
+S3_USE_PATH_STYLE=true
+ATTACHMENT_DOWNLOAD_MODE=proxy
+```
+
+When replacing MinIO, copy the existing objects to the RustFS bucket before
+switching the endpoint. Keep the bucket name and object keys unchanged so
+existing attachment URLs continue to resolve through the backend proxy.
 
 #### Avatars on a private bucket
 
@@ -108,7 +124,7 @@ URL. When the bucket is public — a public `CLOUDFRONT_DOMAIN`, or the default
 local-disk backend — that URL is served to clients unchanged.
 
 When the bucket is private and no public CDN domain is configured (S3 with
-Block Public Access, R2, MinIO), the API instead serves avatars from
+Block Public Access, R2, RustFS), the API instead serves avatars from
 `/api/avatars/<signature>/<key>` and resolves each request through
 `ATTACHMENT_DOWNLOAD_MODE` — a presigned redirect, a CloudFront-signed
 redirect, or a proxied body. The signature in the path is what authorizes the

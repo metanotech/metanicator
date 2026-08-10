@@ -112,15 +112,15 @@ allowlist의 정확한 판단 순서는 [로그인과 가입](/auth-setup#가입
 | 변수 | 기본값 | 설명 |
 |---|---|---|
 | `S3_BUCKET` | 비어 있음 | Bucket 이름. 전체 hostname을 입력하지 않음 |
-| `S3_REGION` | `us-west-2` | Bucket region |
-| `AWS_ACCESS_KEY_ID` | SDK 기본 자격 증명 chain | 정적 access key |
-| `AWS_SECRET_ACCESS_KEY` | SDK 기본 자격 증명 chain | 정적 secret key |
-| `AWS_ENDPOINT_URL` | 비어 있음 | MinIO 같은 S3 호환 endpoint |
-| `S3_USE_PATH_STYLE` | 사용자 지정 endpoint에서는 `true` | path-style 주소 사용 여부 |
+| `S3_REGION` | Compose에서는 `us-east-1` | 서명 region. RustFS는 모든 값을 허용함 |
+| `S3_ACCESS_KEY` / `AWS_ACCESS_KEY_ID` | SDK 기본 자격 증명 chain | 정적 access key |
+| `S3_SECRET_KEY` / `AWS_SECRET_ACCESS_KEY` | SDK 기본 자격 증명 chain | 정적 secret key |
+| `S3_ENDPOINT_URL` / `AWS_ENDPOINT_URL` | 비어 있음 | RustFS 같은 S3 호환 endpoint |
+| `S3_USE_PATH_STYLE` | Compose에서는 `true` | path-style 주소 사용 여부. AWS S3에서는 `false`로 설정 |
 | `ATTACHMENT_DOWNLOAD_MODE` | `auto` | `auto`, `cloudfront`, `presign`, `proxy` 중 하나 |
 | `ATTACHMENT_DOWNLOAD_URL_TTL` | `30m` | 서명된 다운로드 주소의 유효 기간 |
 
-내부 네트워크의 MinIO처럼 브라우저에서 endpoint에 직접 접근할 수 없다면 `ATTACHMENT_DOWNLOAD_MODE=proxy`를 사용하세요.
+내부 네트워크의 RustFS처럼 브라우저에서 endpoint에 직접 접근할 수 없다면 `ATTACHMENT_DOWNLOAD_MODE=proxy`를 사용하세요.
 
 ### 로컬 디스크
 

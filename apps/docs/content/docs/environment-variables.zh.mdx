@@ -112,15 +112,15 @@ MULTICA_PUBLIC_URL=https://api.multica.example.com
 | 变量 | 默认值 | 说明 |
 |---|---|---|
 | `S3_BUCKET` | 空 | Bucket 名称，不要填写完整 hostname |
-| `S3_REGION` | `us-west-2` | Bucket 所在区域 |
-| `AWS_ACCESS_KEY_ID` | SDK 默认凭据链 | 静态 access key |
-| `AWS_SECRET_ACCESS_KEY` | SDK 默认凭据链 | 静态 secret key |
-| `AWS_ENDPOINT_URL` | 空 | MinIO 等 S3 兼容 endpoint |
-| `S3_USE_PATH_STYLE` | 自定义 endpoint 时为 `true` | 是否使用 path-style 地址 |
+| `S3_REGION` | Compose 中为 `us-east-1` | 签名区域；RustFS 接受任意值 |
+| `S3_ACCESS_KEY` / `AWS_ACCESS_KEY_ID` | SDK 默认凭据链 | 静态 access key |
+| `S3_SECRET_KEY` / `AWS_SECRET_ACCESS_KEY` | SDK 默认凭据链 | 静态 secret key |
+| `S3_ENDPOINT_URL` / `AWS_ENDPOINT_URL` | 空 | RustFS 等 S3 兼容 endpoint |
+| `S3_USE_PATH_STYLE` | Compose 中为 `true` | 是否使用 path-style 地址；AWS S3 请设为 `false` |
 | `ATTACHMENT_DOWNLOAD_MODE` | `auto` | `auto`、`cloudfront`、`presign` 或 `proxy` |
 | `ATTACHMENT_DOWNLOAD_URL_TTL` | `30m` | 签名下载地址的有效期 |
 
-内网 MinIO 等 endpoint 无法被浏览器直接访问时，使用 `ATTACHMENT_DOWNLOAD_MODE=proxy`。
+内网 RustFS 等 endpoint 无法被浏览器直接访问时，使用 `ATTACHMENT_DOWNLOAD_MODE=proxy`。
 
 ### 本地磁盘
 

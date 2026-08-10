@@ -112,15 +112,15 @@ When `S3_BUCKET` is unset, Multica uses local disk.
 | Variable | Default | Description |
 |---|---|---|
 | `S3_BUCKET` | empty | Bucket name; do not use the full hostname |
-| `S3_REGION` | `us-west-2` | Region the bucket lives in |
-| `AWS_ACCESS_KEY_ID` | SDK default credential chain | Static access key |
-| `AWS_SECRET_ACCESS_KEY` | SDK default credential chain | Static secret key |
-| `AWS_ENDPOINT_URL` | empty | S3-compatible endpoint such as MinIO |
-| `S3_USE_PATH_STYLE` | `true` with a custom endpoint | Whether to use path-style addressing |
+| `S3_REGION` | `us-east-1` in Compose | Signing region; RustFS accepts any value |
+| `S3_ACCESS_KEY` / `AWS_ACCESS_KEY_ID` | SDK default credential chain | Static access key |
+| `S3_SECRET_KEY` / `AWS_SECRET_ACCESS_KEY` | SDK default credential chain | Static secret key |
+| `S3_ENDPOINT_URL` / `AWS_ENDPOINT_URL` | empty | S3-compatible endpoint such as RustFS |
+| `S3_USE_PATH_STYLE` | `true` in Compose | Whether to use path-style addressing; set `false` for AWS S3 |
 | `ATTACHMENT_DOWNLOAD_MODE` | `auto` | `auto`, `cloudfront`, `presign`, or `proxy` |
 | `ATTACHMENT_DOWNLOAD_URL_TTL` | `30m` | Lifetime of signed download URLs |
 
-Use `ATTACHMENT_DOWNLOAD_MODE=proxy` when the endpoint — an internal MinIO, for example — is not reachable from the browser.
+Use `ATTACHMENT_DOWNLOAD_MODE=proxy` when the endpoint — an internal RustFS service, for example — is not reachable from the browser.
 
 ### Local disk
 

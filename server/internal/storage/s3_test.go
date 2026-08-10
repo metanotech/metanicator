@@ -215,8 +215,8 @@ func TestS3StorageUsesAWSEndpoint(t *testing.T) {
 		{"https://cos.ap-shanghai.myqcloud.com", false},
 		{"https://notamazonaws.com", false},
 		{"https://s3.amazonaws.com.example.net", false},
-		{"https://minio.internal:9000?probe=amazonaws.com", false},
-		{"https://minio.internal:9000/amazonaws.com", false},
+		{"https://rustfs.internal:9000?probe=amazonaws.com", false},
+		{"https://rustfs.internal:9000/amazonaws.com", false},
 		{"oss-cn-shanghai-internal.aliyuncs.com", false},
 	} {
 		t.Run(tc.endpointURL, func(t *testing.T) {
@@ -399,6 +399,24 @@ func TestS3StorageKeyFromURL_LegacyBucketOnlyHostStillRoundTrips(t *testing.T) {
 	}
 }
 
+func TestS3StorageKeyFromURL_PreviousProviderEndpointPreservesNestedKey(t *testing.T) {
+	store := &S3Storage{
+		bucket:       "test-bucket",
+		endpointURL:  "http://rustfs:9000",
+		usePathStyle: true,
+	}
+
+	cases := []string{
+		"http://minio:9000/test-bucket/uploads/abc/file.png",
+		"https://test-bucket.minio.example.com/uploads/abc/file.png",
+	}
+	for _, rawURL := range cases {
+		if got := store.KeyFromURL(rawURL); got != "uploads/abc/file.png" {
+			t.Fatalf("KeyFromURL(%q) = %q, want %q", rawURL, got, "uploads/abc/file.png")
+		}
+	}
+}
+
 func TestLooksLikeS3Hostname(t *testing.T) {
 	cases := []struct {
 		bucket string
@@ -493,29 +511,38 @@ func TestNewS3StorageFromEnv_ConfiguresEndpointPathStyle(t *testing.T) {
 		}
 	})
 
-	t.Run("supports MinIO environment variable fallbacks", func(t *testing.T) {
-		t.Setenv("S3_BUCKET", "")
-		t.Setenv("AWS_ENDPOINT_URL", "")
-		t.Setenv("AWS_ACCESS_KEY_ID", "")
-		t.Setenv("AWS_SECRET_ACCESS_KEY", "")
-
-		t.Setenv("MINIO_BUCKET", "minio-bucket")
-		t.Setenv("MINIO_ENDPOINT", "http://minio:9000")
-		t.Setenv("MINIO_ACCESS_KEY", "minioadmin")
-		t.Setenv("MINIO_SECRET_KEY", "minioadmin")
+	t.Run("supports RustFS S3 environment variables", func(t *testing.T) {
+		t.Setenv("S3_BUCKET", "rustfs-bucket")
+		t.Setenv("S3_REGION", "")
+		t.Setenv("S3_ENDPOINT_URL", "http://rustfs:9000")
+		t.Setenv("S3_ACCESS_KEY", "rustfsadmin")
+		t.Setenv("S3_SECRET_KEY", "rustfssecret")
+		t.Setenv("AWS_ENDPOINT_URL", "https://legacy.example.com")
+		t.Setenv("AWS_ACCESS_KEY_ID", "LEGACY")
+		t.Setenv("AWS_SECRET_ACCESS_KEY", "LEGACY_SECRET")
 
 		store := NewS3StorageFromEnv()
 		if store == nil {
-			t.Fatal("NewS3StorageFromEnv() = nil for MinIO fallbacks")
+			t.Fatal("NewS3StorageFromEnv() = nil for RustFS variables")
 		}
-		if store.bucket != "minio-bucket" {
-			t.Fatalf("bucket = %q, want %q", store.bucket, "minio-bucket")
+		if store.bucket != "rustfs-bucket" {
+			t.Fatalf("bucket = %q, want %q", store.bucket, "rustfs-bucket")
 		}
-		if store.endpointURL != "http://minio:9000" {
-			t.Fatalf("endpointURL = %q, want %q", store.endpointURL, "http://minio:9000")
+		if store.endpointURL != "http://rustfs:9000" {
+			t.Fatalf("endpointURL = %q, want %q", store.endpointURL, "http://rustfs:9000")
+		}
+		if store.region != "us-east-1" {
+			t.Fatalf("region = %q, want %q", store.region, "us-east-1")
 		}
 		if !store.usePathStyle {
 			t.Fatalf("usePathStyle = false, want true")
+		}
+		creds, err := store.client.Options().Credentials.Retrieve(context.Background())
+		if err != nil {
+			t.Fatalf("retrieve credentials: %v", err)
+		}
+		if creds.AccessKeyID != "rustfsadmin" || creds.SecretAccessKey != "rustfssecret" {
+			t.Fatalf("credentials = %q/%q, want RustFS credentials", creds.AccessKeyID, creds.SecretAccessKey)
 		}
 	})
 }

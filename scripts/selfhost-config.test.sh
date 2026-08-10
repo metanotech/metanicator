@@ -47,6 +47,34 @@ require_config "$config" 'FRONTEND_ORIGIN: http://localhost:3100'
 require_config "$config" 'GOOGLE_REDIRECT_URI: http://localhost:3100/auth/callback'
 require_config "$config" 'MULTICA_APP_URL: http://localhost:3100'
 
+rustfs_config="$(
+  env \
+    S3_BUCKET=attachments \
+    S3_REGION=us-east-1 \
+    S3_ENDPOINT_URL=http://rustfs:9000 \
+    S3_ACCESS_KEY=rustfsadmin \
+    S3_SECRET_KEY=rustfssecret \
+    docker compose \
+      --env-file "$tmp_env" \
+      -f docker-compose.selfhost.yml \
+      config
+)"
+
+require_config "$rustfs_config" 'S3_BUCKET: attachments'
+require_config "$rustfs_config" 'S3_REGION: us-east-1'
+require_config "$rustfs_config" 'S3_ENDPOINT_URL: http://rustfs:9000'
+require_config "$rustfs_config" 'S3_ACCESS_KEY: rustfsadmin'
+require_config "$rustfs_config" 'S3_SECRET_KEY: rustfssecret'
+require_config "$rustfs_config" 'AWS_ENDPOINT_URL: http://rustfs:9000'
+require_config "$rustfs_config" 'AWS_ACCESS_KEY_ID: rustfsadmin'
+require_config "$rustfs_config" 'AWS_SECRET_ACCESS_KEY: rustfssecret'
+require_config "$rustfs_config" 'S3_USE_PATH_STYLE: "true"'
+
+if grep -Fq 'MINIO_' <<<"$rustfs_config"; then
+  echo "The self-host Compose config must not expose legacy MinIO variables."
+  exit 1
+fi
+
 for script in scripts/dev.sh scripts/check.sh; do
   if ! grep -Fq '. scripts/local-env.sh' "$script"; then
     echo "$script must source scripts/local-env.sh for shared local env derivation."

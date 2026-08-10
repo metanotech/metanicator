@@ -24,24 +24,24 @@ type S3Storage struct {
 	bucket       string
 	region       string // used to construct virtual-hosted-style public URLs when no CDN/endpoint is set
 	cdnDomain    string // if set, returned URLs use this instead of bucket name
-	endpointURL  string // custom S3-compatible endpoint (e.g. MinIO)
+	endpointURL  string // custom S3-compatible endpoint (e.g. RustFS)
 	usePathStyle bool   // controls path-style S3 addressing
 }
 
 // NewS3StorageFromEnv creates an S3Storage from environment variables.
-// Returns nil if S3_BUCKET (or MINIO_BUCKET) is not set.
+// Returns nil if S3_BUCKET is not set.
 //
 // Environment variables:
-//   - S3_BUCKET / MINIO_BUCKET (required)
-//   - S3_REGION / MINIO_REGION (default: us-west-2)
-//   - AWS_ACCESS_KEY_ID / MINIO_ACCESS_KEY / MINIO_ROOT_USER
-//   - AWS_SECRET_ACCESS_KEY / MINIO_SECRET_KEY / MINIO_ROOT_PASSWORD
-//   - AWS_ENDPOINT_URL / MINIO_ENDPOINT / MINIO_ENDPOINT_URL / MINIO_URL
-//   - S3_USE_PATH_STYLE / MINIO_USE_PATH_STYLE
+//   - S3_BUCKET (required)
+//   - S3_REGION (default: us-east-1 for custom endpoints, us-west-2 for AWS)
+//   - S3_ACCESS_KEY / AWS_ACCESS_KEY_ID
+//   - S3_SECRET_KEY / AWS_SECRET_ACCESS_KEY
+//   - S3_ENDPOINT_URL / AWS_ENDPOINT_URL
+//   - S3_USE_PATH_STYLE
 func NewS3StorageFromEnv() *S3Storage {
-	bucket := getEnvFirst("S3_BUCKET", "MINIO_BUCKET")
+	bucket := os.Getenv("S3_BUCKET")
 	if bucket == "" {
-		slog.Info("S3_BUCKET / MINIO_BUCKET not set, cloud upload disabled")
+		slog.Info("S3_BUCKET not set, cloud upload disabled")
 		return nil
 	}
 	if looksLikeS3Hostname(bucket) {
@@ -51,8 +51,8 @@ func NewS3StorageFromEnv() *S3Storage {
 		)
 	}
 
-	endpointURL := getEnvFirst("AWS_ENDPOINT_URL", "MINIO_ENDPOINT", "MINIO_ENDPOINT_URL", "MINIO_URL")
-	region := getEnvFirst("MINIO_REGION", "S3_REGION")
+	endpointURL := getEnvFirst("S3_ENDPOINT_URL", "AWS_ENDPOINT_URL")
+	region := os.Getenv("S3_REGION")
 	if region == "" {
 		if endpointURL != "" {
 			region = "us-east-1"
@@ -65,8 +65,8 @@ func NewS3StorageFromEnv() *S3Storage {
 		config.WithRegion(region),
 	}
 
-	accessKey := getEnvFirst("MINIO_ACCESS_KEY", "AWS_ACCESS_KEY_ID", "MINIO_ROOT_USER", "MINIO_USER")
-	secretKey := getEnvFirst("MINIO_SECRET_KEY", "AWS_SECRET_ACCESS_KEY", "MINIO_ROOT_PASSWORD", "MINIO_PASSWORD")
+	accessKey := getEnvFirst("S3_ACCESS_KEY", "AWS_ACCESS_KEY_ID")
+	secretKey := getEnvFirst("S3_SECRET_KEY", "AWS_SECRET_ACCESS_KEY")
 	if accessKey != "" && secretKey != "" {
 		opts = append(opts, config.WithCredentialsProvider(
 			credentials.NewStaticCredentialsProvider(accessKey, secretKey, ""),
@@ -134,7 +134,7 @@ func looksLikeS3Hostname(bucket string) bool {
 
 func s3UsePathStyleFromEnv(endpointURL string) bool {
 	defaultValue := endpointURL != ""
-	raw := getEnvFirst("S3_USE_PATH_STYLE", "MINIO_USE_PATH_STYLE")
+	raw := os.Getenv("S3_USE_PATH_STYLE")
 	if strings.TrimSpace(raw) == "" {
 		return defaultValue
 	}
@@ -218,7 +218,7 @@ func (s *S3Storage) uploadChecksumOptions() []func(*s3.Options) {
 }
 
 // storageClass returns the appropriate S3 storage class.
-// Custom endpoints (e.g. MinIO) only support STANDARD; real AWS defaults to INTELLIGENT_TIERING.
+// Custom endpoints (e.g. RustFS) use their default storage class; real AWS defaults to INTELLIGENT_TIERING.
 func (s *S3Storage) storageClass() types.StorageClass {
 	if s.endpointURL != "" {
 		return ""
@@ -266,6 +266,24 @@ func (s *S3Storage) KeyFromURL(rawURL string) string {
 			return strings.TrimPrefix(rawURL, prefix)
 		}
 	}
+
+	// A storage-provider migration changes the endpoint but not the bucket or
+	// object keys. Recover nested keys from URLs written by the previous
+	// provider, for both path-style and virtual-hosted-style addressing.
+	if parsed, err := url.Parse(rawURL); err == nil {
+		objectPath := strings.TrimPrefix(parsed.Path, "/")
+		bucketPathPrefix := s.bucket + "/"
+		if strings.HasPrefix(objectPath, bucketPathPrefix) {
+			return strings.TrimPrefix(objectPath, bucketPathPrefix)
+		}
+
+		hostname := strings.ToLower(parsed.Hostname())
+		bucketHostname := strings.ToLower(s.bucket)
+		if objectPath != "" && (hostname == bucketHostname || strings.HasPrefix(hostname, bucketHostname+".")) {
+			return objectPath
+		}
+	}
+
 	// Fallback: take everything after the last "/".
 	if i := strings.LastIndex(rawURL, "/"); i >= 0 {
 		return rawURL[i+1:]
@@ -423,7 +441,7 @@ func isNoSuchBucketError(err error) bool {
 // uploadedURL returns the URL stored for client consumption after an upload.
 // Priority: CDN domain > custom endpoint > AWS S3 region-qualified host. The CDN
 // domain wins even when a custom endpoint is set so S3-compatible backends
-// (MinIO, R2, B2, Wasabi, etc.) can be paired with a separate public-read
+// (RustFS, R2, B2, Wasabi, etc.) can be paired with a separate public-read
 // domain — writes still go through the SDK with the custom endpoint; only the
 // reader-facing URL changes.
 //
