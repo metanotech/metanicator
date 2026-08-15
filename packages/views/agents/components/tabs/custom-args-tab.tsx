@@ -9,10 +9,10 @@ import {
   Terminal,
   Trash2,
 } from "lucide-react";
-import type { Agent, RuntimeDevice } from "@multica/core/types";
-import { createSafeId } from "@multica/core/utils";
-import { Button } from "@multica/ui/components/ui/button";
-import { Input } from "@multica/ui/components/ui/input";
+import type { Agent, RuntimeDevice } from "@metanicator/core/types";
+import { createSafeId } from "@metanicator/core/utils";
+import { Button } from "@metanicator/ui/components/ui/button";
+import { Input } from "@metanicator/ui/components/ui/input";
 import { toast } from "sonner";
 import { useT } from "../../../i18n";
 import {

@@ -2,11 +2,11 @@ import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Inter, Geist_Mono, Source_Serif_4 } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Toaster } from "@multica/ui/components/ui/sonner";
-import { cn } from "@multica/ui/lib/utils";
+import { Toaster } from "@metanicator/ui/components/ui/sonner";
+import { cn } from "@metanicator/ui/lib/utils";
 import { WebProviders } from "@/components/web-providers";
-import type { SupportedLocale } from "@multica/core/i18n";
-import { RESOURCES } from "@multica/views/locales";
+import type { SupportedLocale } from "@metanicator/core/i18n";
+import { RESOURCES } from "@metanicator/views/locales";
 import { getRequestLocale } from "@/lib/request-locale";
 import {
   resolveBrowserApiBaseUrl,
@@ -71,7 +71,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.multica.ai"),
+  metadataBase: new URL("https://www.metanicator.ai"),
   title: {
     default: "Metanicator, Project Management for Human + Agent Teams",
     template: "%s | Metanicator",
@@ -98,8 +98,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@multica_hq",
-    creator: "@multica_hq",
+    site: "@metanicator_hq",
+    creator: "@metanicator_hq",
   },
   alternates: {
     canonical: "/",

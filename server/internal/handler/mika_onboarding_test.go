@@ -4,8 +4,8 @@ import (
 	"strings"
 	"testing"
 
-	db "github.com/multica-ai/multica/server/pkg/db/generated"
-	"github.com/multica-ai/multica/server/pkg/protocol"
+	db "github.com/metanotech/metanicator/server/pkg/db/generated"
+	"github.com/metanotech/metanicator/server/pkg/protocol"
 )
 
 func TestBuildMikaOnboardingKickoffSelectsSkillWithKnownContext(t *testing.T) {
@@ -21,7 +21,7 @@ func TestBuildMikaOnboardingKickoffSelectsSkillWithKnownContext(t *testing.T) {
 	)
 
 	for _, want := range []string{
-		"multica-onboarding skill",
+		"metanicator-onboarding skill",
 		"Simplified Chinese",
 		`Workspace name: "Venus"`,
 		"Role: engineer / developer",

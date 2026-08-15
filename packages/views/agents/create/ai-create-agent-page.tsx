@@ -2,11 +2,11 @@
 
 import { useCallback, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { agentBuilderSessionListOptions } from "@multica/core/agents";
-import { useWorkspaceId } from "@multica/core/hooks";
-import { useWorkspacePaths } from "@multica/core/paths";
-import { runtimeDisplayLabel } from "@multica/core/runtimes";
-import type { RuntimeDevice } from "@multica/core/types";
+import { agentBuilderSessionListOptions } from "@metanicator/core/agents";
+import { useWorkspaceId } from "@metanicator/core/hooks";
+import { useWorkspacePaths } from "@metanicator/core/paths";
+import { runtimeDisplayLabel } from "@metanicator/core/runtimes";
+import type { RuntimeDevice } from "@metanicator/core/types";
 import { useNavigation } from "../../navigation";
 import { useT } from "../../i18n";
 import { BuilderSetupPanel } from "./builder-setup-panel";

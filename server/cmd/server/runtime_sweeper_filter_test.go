@@ -8,9 +8,9 @@ import (
 	"time"
 
 	"github.com/jackc/pgx/v5/pgtype"
-	"github.com/multica-ai/multica/server/internal/handler"
-	"github.com/multica-ai/multica/server/internal/util"
-	db "github.com/multica-ai/multica/server/pkg/db/generated"
+	"github.com/metanotech/metanicator/server/internal/handler"
+	"github.com/metanotech/metanicator/server/internal/util"
+	db "github.com/metanotech/metanicator/server/pkg/db/generated"
 )
 
 // fakeLiveness drives every Available / IsAliveBatch branch in

@@ -30,11 +30,11 @@ import {
   Trash2,
 } from "lucide-react";
 import { toast } from "sonner";
-import { cn } from "@multica/ui/lib/utils";
-import { copyText } from "@multica/ui/lib/clipboard";
-import { api } from "@multica/core/api";
-import { useConfigStore } from "@multica/core/config";
-import type { Attachment as AttachmentRecord } from "@multica/core/types";
+import { cn } from "@metanicator/ui/lib/utils";
+import { copyText } from "@metanicator/ui/lib/clipboard";
+import { api } from "@metanicator/core/api";
+import { useConfigStore } from "@metanicator/core/config";
+import type { Attachment as AttachmentRecord } from "@metanicator/core/types";
 import { useT } from "../i18n";
 import { useAttachmentDownloadResolver } from "./attachment-download-context";
 import { useAttachmentPreview } from "./attachment-preview-modal";

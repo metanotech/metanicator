@@ -2,9 +2,9 @@ import {
   matchLocale,
   SUPPORTED_LOCALES,
   type SupportedLocale,
-} from "@multica/core/i18n";
+} from "@metanicator/core/i18n";
 
-export const METANICATOR_LOCALE_HEADER = "x-multica-locale";
+export const METANICATOR_LOCALE_HEADER = "x-metanicator-locale";
 
 export function isSupportedLocale(
   value: string | null,

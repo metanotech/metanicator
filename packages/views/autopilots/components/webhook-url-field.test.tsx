@@ -27,13 +27,13 @@ describe("WebhookUrlField", () => {
 
   it("reveals the full URL when the masked value is clicked", () => {
     const { container } = renderWithI18n(<WebhookUrlField url={URL} />);
-    fireEvent.click(screen.getByRole("button", { name: "Webhook URL hidden — click to show" }));
+    fireEvent.click(screen.getByRole("button", { name: /Webhook URL hidden.*click to show/i }));
     expect(container.textContent).toContain(URL);
   });
 
   it("hides again via the toggle", () => {
     const { container } = renderWithI18n(<WebhookUrlField url={URL} />);
-    fireEvent.click(screen.getByRole("button", { name: "Webhook URL hidden — click to show" }));
+    fireEvent.click(screen.getByRole("button", { name: /Webhook URL hidden.*click to show/i }));
     fireEvent.click(screen.getByRole("button", { name: "Hide URL" }));
     expect(container.textContent).not.toContain("awt_supersecret");
   });
@@ -49,7 +49,7 @@ describe("WebhookUrlField", () => {
   it("re-hides when the URL changes — a rotated token is never inherited revealed", () => {
     const rotated = "https://api.example.com/api/webhooks/autopilots/awt_rotatedsecret";
     const { container, rerender } = renderWithI18n(<WebhookUrlField url={URL} />);
-    fireEvent.click(screen.getByRole("button", { name: "Webhook URL hidden — click to show" }));
+    fireEvent.click(screen.getByRole("button", { name: /Webhook URL hidden.*click to show/i }));
     expect(container.textContent).toContain(URL);
 
     // Rotate: the row stays mounted and only the prop changes. The new
@@ -57,11 +57,11 @@ describe("WebhookUrlField", () => {
     rerender(<WebhookUrlField url={rotated} />);
     expect(container.textContent).not.toContain("awt_rotatedsecret");
     expect(
-      screen.getByRole("button", { name: "Webhook URL hidden — click to show" }),
+      screen.getByRole("button", { name: /Webhook URL hidden.*click to show/i }),
     ).toBeInTheDocument();
 
     // The new URL can still be revealed on its own.
-    fireEvent.click(screen.getByRole("button", { name: "Webhook URL hidden — click to show" }));
+    fireEvent.click(screen.getByRole("button", { name: /Webhook URL hidden.*click to show/i }));
     expect(container.textContent).toContain(rotated);
   });
 

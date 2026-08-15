@@ -15,17 +15,17 @@ import {
 } from "lucide-react";
 import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { useCurrentWorkspace, useWorkspacePaths } from "@multica/core/paths";
+import { useCurrentWorkspace, useWorkspacePaths } from "@metanicator/core/paths";
 import {
   agentListOptions,
   memberListOptions,
   squadListOptions,
   workspaceKeys,
-} from "@multica/core/workspace/queries";
-import { resolvePublicFileUrl } from "@multica/core/workspace/avatar-url";
-import { useAuthStore } from "@multica/core/auth";
-import { api } from "@multica/core/api";
-import { useModalStore } from "@multica/core/modals";
+} from "@metanicator/core/workspace/queries";
+import { resolvePublicFileUrl } from "@metanicator/core/workspace/avatar-url";
+import { useAuthStore } from "@metanicator/core/auth";
+import { api } from "@metanicator/core/api";
+import { useModalStore } from "@metanicator/core/modals";
 import {
   useSquadsViewStore,
   SQUAD_SCOPES,
@@ -34,9 +34,9 @@ import {
   type SquadListFilters,
   type SquadsScope,
   type SquadSortField,
-} from "@multica/core/squads/stores";
-import type { Agent, MemberWithUser, Squad } from "@multica/core/types";
-import { Button } from "@multica/ui/components/ui/button";
+} from "@metanicator/core/squads/stores";
+import type { Agent, MemberWithUser, Squad } from "@metanicator/core/types";
+import { Button } from "@metanicator/ui/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -44,7 +44,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@multica/ui/components/ui/dialog";
+} from "@metanicator/ui/components/ui/dialog";
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -56,7 +56,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@multica/ui/components/ui/dropdown-menu";
+} from "@metanicator/ui/components/ui/dropdown-menu";
 import {
   ListGrid,
   ListGridCell,
@@ -65,20 +65,20 @@ import {
   ListGridRow,
   LIST_GRID_BOTTOM_CLEARANCE,
   type ListGridSortDirection,
-} from "@multica/ui/components/ui/list-grid";
+} from "@metanicator/ui/components/ui/list-grid";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@multica/ui/components/ui/popover";
-import { Skeleton } from "@multica/ui/components/ui/skeleton";
-import { Switch } from "@multica/ui/components/ui/switch";
+} from "@metanicator/ui/components/ui/popover";
+import { Skeleton } from "@metanicator/ui/components/ui/skeleton";
+import { Switch } from "@metanicator/ui/components/ui/switch";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@multica/ui/components/ui/tooltip";
-import { ActorAvatar as ActorAvatarBase } from "@multica/ui/components/common/actor-avatar";
+} from "@metanicator/ui/components/ui/tooltip";
+import { ActorAvatar as ActorAvatarBase } from "@metanicator/ui/components/common/actor-avatar";
 import { ActorAvatar } from "../../common/actor-avatar";
 import { FILTER_ITEM_CLASS, HoverCheck } from "../../common/hover-check";
 import { useRowLink } from "../../navigation";

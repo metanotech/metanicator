@@ -1,14 +1,14 @@
 "use client";
 
-import { ActorAvatar } from "@multica/ui/components/common/actor-avatar";
-import { Button } from "@multica/ui/components/ui/button";
+import { ActorAvatar } from "@metanicator/ui/components/common/actor-avatar";
+import { Button } from "@metanicator/ui/components/ui/button";
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from "@multica/ui/components/ui/hover-card";
-import { useActorName } from "@multica/core/workspace/hooks";
-import type { WorkingAgentSummary } from "@multica/core/types";
+} from "@metanicator/ui/components/ui/hover-card";
+import { useActorName } from "@metanicator/core/workspace/hooks";
+import type { WorkingAgentSummary } from "@metanicator/core/types";
 import { AgentAvatarStack } from "../../agents/components/agent-avatar-stack";
 import { useT } from "../../i18n";
 

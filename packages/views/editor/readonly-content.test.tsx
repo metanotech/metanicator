@@ -27,13 +27,13 @@ vi.mock("../i18n", async () => {
   };
 });
 
-vi.mock("@multica/core/api", () => ({
+vi.mock("@metanicator/core/api", () => ({
   api: { getAttachmentTextContent: getAttachmentTextContentMock },
   PreviewTooLargeError: class extends Error {},
   PreviewUnsupportedError: class extends Error {},
 }));
 
-vi.mock("@multica/core/paths", () => ({
+vi.mock("@metanicator/core/paths", () => ({
   useWorkspacePaths: () => ({
     issueDetail: (id: string) => `/test/issues/${id}`,
   }),

@@ -3,14 +3,14 @@
 import { useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
-import { useAuthStore } from "@multica/core/auth";
+import { useAuthStore } from "@metanicator/core/auth";
 import {
   paths,
   resolvePostAuthDestination,
   useHasOnboarded,
-} from "@multica/core/paths";
-import { workspaceListOptions } from "@multica/core/workspace/queries";
-import { CliInstallInstructions, OnboardingFlow } from "@multica/views/onboarding";
+} from "@metanicator/core/paths";
+import { workspaceListOptions } from "@metanicator/core/workspace/queries";
+import { CliInstallInstructions, OnboardingFlow } from "@metanicator/views/onboarding";
 
 /**
  * Web shell for the onboarding flow. The route is the platform chrome on

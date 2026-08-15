@@ -3,9 +3,9 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
-import { MetanicatorIcon } from "@multica/ui/components/common/multica-icon";
-import { cn } from "@multica/ui/lib/utils";
-import { useAuthStore } from "@multica/core/auth";
+import { MetanicatorIcon } from "@metanicator/ui/components/common/metanicator-icon";
+import { cn } from "@metanicator/ui/lib/utils";
+import { useAuthStore } from "@metanicator/core/auth";
 import { docsHrefForLocale, useLocale } from "../i18n";
 import { useDashboardCtaHref } from "../utils/use-dashboard-cta";
 import { formatStarCount, useGithubStars } from "../utils/use-github-stars";
@@ -55,7 +55,7 @@ export function LandingHeader({
                 variant === "dark" ? "text-white/92" : "text-[#0a0d12]",
               )}
             >
-              multica
+              metanicator
             </span>
           </Link>
 

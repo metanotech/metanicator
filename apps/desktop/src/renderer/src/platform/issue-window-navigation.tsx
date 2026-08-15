@@ -3,15 +3,15 @@ import { useLocation, useNavigate } from "react-router-dom";
 import {
   bucketDiagnosticPath,
   setDiagnosticRoute,
-} from "@multica/core/diagnostics";
+} from "@metanicator/core/diagnostics";
 import {
   NavigationProvider,
   type NavigationAdapter,
-} from "@multica/views/navigation";
+} from "@metanicator/views/navigation";
 import { parseIssueWindowPath } from "../../../shared/issue-window";
 
 /**
- * Answer the `multica:navigate` event inside a dedicated issue window (MUL-5208).
+ * Answer the `metanicator:navigate` event inside a dedicated issue window (MUL-5208).
  *
  * The event is what a link in content (comment, description) fires once it
  * resolves to an in-app destination, including an absolute URL on this
@@ -41,8 +41,8 @@ function useContentLinkHandler(
         `${runtimeConfig.config.appUrl}${path}`,
       );
     };
-    window.addEventListener("multica:navigate", handler);
-    return () => window.removeEventListener("multica:navigate", handler);
+    window.addEventListener("metanicator:navigate", handler);
+    return () => window.removeEventListener("metanicator:navigate", handler);
   }, [navigate, runtimeConfig]);
 }
 

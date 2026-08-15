@@ -1,5 +1,5 @@
-import type { Attachment } from "@multica/core/types";
-import { contentReferencesAttachment } from "@multica/core/types";
+import type { Attachment } from "@metanicator/core/types";
+import { contentReferencesAttachment } from "@metanicator/core/types";
 
 /**
  * The attachments to render as standalone cards below a message / comment

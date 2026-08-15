@@ -397,11 +397,11 @@ func claudeStaticModels() []Model {
 // so a discovery failure hides the speed picker and fails the override closed.
 func codexStaticModels() []Model {
 	// `Default` here is NOT a user-facing "default model" badge — the picker
-	// stopped rendering that (Multica follows the CLI config when the model is
+	// stopped rendering that (Metanicator follows the CLI config when the model is
 	// unset). It only marks the current flagship for the "default must track
 	// the latest release" catalog guard
 	// (TestCodexStaticModelsMatchVerifiedFallbackCatalog,
-	// multica#2009). It is deliberately NOT used to validate effort for an
+	// metanicator#2009). It is deliberately NOT used to validate effort for an
 	// empty (follow-CLI-config) model: that config can resolve to any model,
 	// so ValidateThinkingLevel fails an empty codex model closed rather than
 	// borrowing this entry's catalog (which alone advertises `ultra`) — see
@@ -451,8 +451,8 @@ func codexStaticModels() []Model {
 func discoverTraecliModels(ctx context.Context, executablePath string) ([]Model, error) {
 	return discoverACPModels(ctx, executablePath, acpDiscoveryProvider{
 		defaultBin:   "traecli",
-		clientName:   "multica-model-discovery",
-		tmpdirPrefix: "multica-traecli-discovery-",
+		clientName:   "metanicator-model-discovery",
+		tmpdirPrefix: "metanicator-traecli-discovery-",
 		acpArgs:      []string{"acp", "serve", "--yolo"},
 	})
 }
@@ -562,7 +562,7 @@ func discoverOpenCodeModels(ctx context.Context, executablePath string) ([]Model
 	// Newer opencode (1.15+) syncs its hosted free-model catalog over the
 	// network on `opencode models`, which can take ~6s; the previous 5s cap
 	// timed out and returned an empty list, so the runtime showed online but
-	// the model picker was empty. See multica-ai/multica#3627.
+	// the model picker was empty. See metanicator-ai/metanicator#3627.
 	runCtx, cancel := context.WithTimeout(ctx, 15*time.Second)
 	defer cancel()
 	cmd := exec.CommandContext(runCtx, executablePath, "models", "--verbose")
@@ -909,9 +909,9 @@ func isPiDiscoveryNoise(line string) bool {
 func discoverHermesModels(ctx context.Context, executablePath string) ([]Model, error) {
 	return discoverACPModels(ctx, executablePath, acpDiscoveryProvider{
 		defaultBin:   "hermes",
-		clientName:   "multica-model-discovery",
+		clientName:   "metanicator-model-discovery",
 		extraEnv:     []string{"HERMES_YOLO_MODE=1"},
-		tmpdirPrefix: "multica-hermes-discovery-",
+		tmpdirPrefix: "metanicator-hermes-discovery-",
 	})
 }
 
@@ -927,8 +927,8 @@ func discoverHermesModels(ctx context.Context, executablePath string) ([]Model, 
 func discoverKimiModels(ctx context.Context, executablePath string) ([]Model, error) {
 	return discoverACPModels(ctx, executablePath, acpDiscoveryProvider{
 		defaultBin:   "kimi",
-		clientName:   "multica-model-discovery",
-		tmpdirPrefix: "multica-kimi-discovery-",
+		clientName:   "metanicator-model-discovery",
+		tmpdirPrefix: "metanicator-kimi-discovery-",
 	})
 }
 
@@ -939,9 +939,9 @@ func discoverKimiModels(ctx context.Context, executablePath string) ([]Model, er
 func discoverReasonixModels(ctx context.Context, executablePath string) ([]Model, error) {
 	return discoverACPModels(ctx, executablePath, acpDiscoveryProvider{
 		defaultBin:       "reasonix",
-		clientName:       "multica-model-discovery",
+		clientName:       "metanicator-model-discovery",
 		acpArgs:          reasonixACPLaunchArgs(),
-		tmpdirPrefix:     "multica-reasonix-discovery-",
+		tmpdirPrefix:     "metanicator-reasonix-discovery-",
 		isolatedStateEnv: "REASONIX_STATE_HOME",
 	})
 }
@@ -951,8 +951,8 @@ func discoverReasonixModels(ctx context.Context, executablePath string) ([]Model
 func discoverKiroModels(ctx context.Context, executablePath string) ([]Model, error) {
 	return discoverACPModels(ctx, executablePath, acpDiscoveryProvider{
 		defaultBin:   "kiro-cli",
-		clientName:   "multica-model-discovery",
-		tmpdirPrefix: "multica-kiro-discovery-",
+		clientName:   "metanicator-model-discovery",
+		tmpdirPrefix: "metanicator-kiro-discovery-",
 	})
 }
 
@@ -978,8 +978,8 @@ func discoverKiroModels(ctx context.Context, executablePath string) ([]Model, er
 func discoverCopilotModels(ctx context.Context, executablePath string) (Catalog, error) {
 	models, err := discoverACPModels(ctx, executablePath, acpDiscoveryProvider{
 		defaultBin:   "copilot",
-		clientName:   "multica-model-discovery",
-		tmpdirPrefix: "multica-copilot-discovery-",
+		clientName:   "metanicator-model-discovery",
+		tmpdirPrefix: "metanicator-copilot-discovery-",
 		acpArgs:      []string{"--acp"},
 	})
 	if err != nil || len(models) == 0 {
@@ -998,9 +998,9 @@ func discoverCopilotModels(ctx context.Context, executablePath string) (Catalog,
 func discoverQoderModels(ctx context.Context, executablePath, defaultBin string) ([]Model, error) {
 	return discoverACPModels(ctx, executablePath, acpDiscoveryProvider{
 		defaultBin:   defaultBin,
-		clientName:   "multica-model-discovery",
+		clientName:   "metanicator-model-discovery",
 		acpArgs:      []string{"--yolo", "--acp"},
-		tmpdirPrefix: "multica-qoder-discovery-",
+		tmpdirPrefix: "metanicator-qoder-discovery-",
 	})
 }
 
@@ -1495,8 +1495,8 @@ func discoverGrokModels(ctx context.Context, executablePath string) (Catalog, er
 	// after initialize returns the methods this installed CLI actually offers.
 	models, err := discoverACPModels(ctx, executablePath, acpDiscoveryProvider{
 		defaultBin:   "grok",
-		clientName:   "multica-model-discovery",
-		tmpdirPrefix: "multica-grok-discovery-",
+		clientName:   "metanicator-model-discovery",
+		tmpdirPrefix: "metanicator-grok-discovery-",
 		acpArgs:      []string{"--no-auto-update", "agent", "--always-approve", "stdio"},
 		selectAuthMethod: func(initResult json.RawMessage, childEnv []string) (string, error) {
 			return selectGrokAuthMethod(extractACPAuthMethods(initResult), envHasNonEmpty(childEnv, "XAI_API_KEY"))
@@ -1842,8 +1842,8 @@ func isOpenclawIdentifier(s string) bool {
 func discoverCodebuddyModels(ctx context.Context, executablePath string) (Catalog, error) {
 	models, err := discoverACPModels(ctx, executablePath, acpDiscoveryProvider{
 		defaultBin:   "codebuddy",
-		clientName:   "multica-model-discovery",
-		tmpdirPrefix: "multica-codebuddy-discovery-",
+		clientName:   "metanicator-model-discovery",
+		tmpdirPrefix: "metanicator-codebuddy-discovery-",
 		acpArgs:      []string{"--acp"},
 		strictErrors: true,
 		annotate:     annotateCodebuddyThinkingFromACP,

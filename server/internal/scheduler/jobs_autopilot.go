@@ -11,9 +11,9 @@ import (
 	"github.com/jackc/pgx/v5/pgtype"
 	"github.com/jackc/pgx/v5/pgxpool"
 
-	"github.com/multica-ai/multica/server/internal/service"
-	"github.com/multica-ai/multica/server/internal/util"
-	db "github.com/multica-ai/multica/server/pkg/db/generated"
+	"github.com/metanotech/metanicator/server/internal/service"
+	"github.com/metanotech/metanicator/server/internal/util"
+	db "github.com/metanotech/metanicator/server/pkg/db/generated"
 )
 
 // JobNameAutopilotScheduleDispatch is the canonical job name written

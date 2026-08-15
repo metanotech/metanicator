@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { MetanicatorLanding } from "@/features/landing/components/multica-landing";
+import { MetanicatorLanding } from "@/features/landing/components/metanicator-landing";
 import { RedirectIfAuthenticated } from "@/features/landing/components/redirect-if-authenticated";
 
 export const metadata: Metadata = {

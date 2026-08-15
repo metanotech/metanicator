@@ -4,10 +4,10 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import type { ReactNode } from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import type { Agent } from "@multica/core/types";
-import { configStore } from "@multica/core/config";
-import { COMPOSIO_MCP_APPS_FLAG } from "@multica/core/feature-flags";
-import { I18nProvider } from "@multica/core/i18n/react";
+import type { Agent } from "@metanicator/core/types";
+import { configStore } from "@metanicator/core/config";
+import { COMPOSIO_MCP_APPS_FLAG } from "@metanicator/core/feature-flags";
+import { I18nProvider } from "@metanicator/core/i18n/react";
 import enCommon from "../../../locales/en/common.json";
 import enAgents from "../../../locales/en/agents.json";
 
@@ -47,19 +47,19 @@ vi.mock("@tanstack/react-query", () => ({
   queryOptions: <T,>(opts: T) => opts,
 }));
 
-vi.mock("@multica/core/composio", () => ({
+vi.mock("@metanicator/core/composio", () => ({
   composioConnectionsOptions: () => ({ queryKey: ["composio", "connections"] }),
   composioToolkitsOptions: () => ({ queryKey: ["composio", "toolkits"] }),
 }));
 
-vi.mock("@multica/core/agents", () => ({
+vi.mock("@metanicator/core/agents", () => ({
   useUpdateAgentAllowlist: () => ({
     mutate: mutateSpy,
     isPending: isPendingRef.current,
   }),
 }));
 
-vi.mock("@multica/core/paths", () => ({
+vi.mock("@metanicator/core/paths", () => ({
   useWorkspacePaths: () => ({ settings: () => "/ws/settings" }),
 }));
 

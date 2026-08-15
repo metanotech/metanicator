@@ -1,8 +1,8 @@
 "use client";
 
 import { AppLink } from "../../navigation";
-import { useWorkspacePaths } from "@multica/core/paths";
-import { useIssueLinkStore } from "@multica/core/issues/stores";
+import { useWorkspacePaths } from "@metanicator/core/paths";
+import { useIssueLinkStore } from "@metanicator/core/issues/stores";
 import { IssueChip } from "./issue-chip";
 
 interface IssueMentionCardProps {

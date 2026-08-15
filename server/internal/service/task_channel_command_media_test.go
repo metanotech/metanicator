@@ -8,9 +8,9 @@ import (
 	"github.com/jackc/pgx/v5/pgtype"
 	"github.com/jackc/pgx/v5/pgxpool"
 
-	"github.com/multica-ai/multica/server/internal/events"
-	"github.com/multica-ai/multica/server/internal/util"
-	db "github.com/multica-ai/multica/server/pkg/db/generated"
+	"github.com/metanotech/metanicator/server/internal/events"
+	"github.com/metanotech/metanicator/server/internal/util"
+	db "github.com/metanotech/metanicator/server/pkg/db/generated"
 )
 
 // seedChannelCommandSession creates the chat session these tests enqueue

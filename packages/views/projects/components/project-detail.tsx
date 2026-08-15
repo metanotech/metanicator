@@ -4,21 +4,21 @@ import { useMemo, useState, useCallback, useRef, useEffect } from "react";
 import { useDefaultLayout, usePanelRef } from "react-resizable-panels";
 import { Check, ChevronRight, Link2, MoreHorizontal, PanelRight, Pin, PinOff, Trash2, UserMinus } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
-import { cn } from "@multica/ui/lib/utils";
-import { copyText } from "@multica/ui/lib/clipboard";
+import { cn } from "@metanicator/ui/lib/utils";
+import { copyText } from "@metanicator/ui/lib/clipboard";
 import { toast } from "sonner";
-import type { ProjectStatus, ProjectPriority } from "@multica/core/types";
-import { useAuthStore } from "@multica/core/auth";
-import { projectDetailOptions } from "@multica/core/projects/queries";
-import { useUpdateProject, useDeleteProject } from "@multica/core/projects/mutations";
-import { pinListOptions } from "@multica/core/pins";
-import { useCreatePin, useDeletePin } from "@multica/core/pins";
-import { memberListOptions, agentListOptions } from "@multica/core/workspace/queries";
-import { useWorkspaceId } from "@multica/core/hooks";
-import { useRecentContextStore } from "@multica/core/chat";
-import { useWorkspacePaths } from "@multica/core/paths";
-import { useActorName } from "@multica/core/workspace/hooks";
-import { PROJECT_STATUS_ORDER, PROJECT_STATUS_CONFIG, PROJECT_PRIORITY_ORDER } from "@multica/core/projects/config";
+import type { ProjectStatus, ProjectPriority } from "@metanicator/core/types";
+import { useAuthStore } from "@metanicator/core/auth";
+import { projectDetailOptions } from "@metanicator/core/projects/queries";
+import { useUpdateProject, useDeleteProject } from "@metanicator/core/projects/mutations";
+import { pinListOptions } from "@metanicator/core/pins";
+import { useCreatePin, useDeletePin } from "@metanicator/core/pins";
+import { memberListOptions, agentListOptions } from "@metanicator/core/workspace/queries";
+import { useWorkspaceId } from "@metanicator/core/hooks";
+import { useRecentContextStore } from "@metanicator/core/chat";
+import { useWorkspacePaths } from "@metanicator/core/paths";
+import { useActorName } from "@metanicator/core/workspace/hooks";
+import { PROJECT_STATUS_ORDER, PROJECT_STATUS_CONFIG, PROJECT_PRIORITY_ORDER } from "@metanicator/core/projects/config";
 import { getProjectIssueMetrics } from "./project-issue-metrics";
 import { ActorAvatar } from "../../common/actor-avatar";
 import { useNavigation } from "../../navigation";
@@ -28,29 +28,29 @@ import { ProjectResourcesSection } from "./project-resources-section";
 import { ProjectStartDatePicker } from "./project-start-date-picker";
 import { ProjectDueDatePicker } from "./project-due-date-picker";
 import { IssueSurface } from "../../issues/surface/issue-surface";
-import { Skeleton } from "@multica/ui/components/ui/skeleton";
-import { Button } from "@multica/ui/components/ui/button";
-import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@multica/ui/components/ui/resizable";
-import { Sheet, SheetContent } from "@multica/ui/components/ui/sheet";
-import { useIsMobile } from "@multica/ui/hooks/use-mobile";
+import { Skeleton } from "@metanicator/ui/components/ui/skeleton";
+import { Button } from "@metanicator/ui/components/ui/button";
+import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@metanicator/ui/components/ui/resizable";
+import { Sheet, SheetContent } from "@metanicator/ui/components/ui/sheet";
+import { useIsMobile } from "@metanicator/ui/hooks/use-mobile";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@multica/ui/components/ui/dropdown-menu";
+} from "@metanicator/ui/components/ui/dropdown-menu";
 import {
   Popover,
   PopoverTrigger,
   PopoverContent,
-} from "@multica/ui/components/ui/popover";
+} from "@metanicator/ui/components/ui/popover";
 import {
   Tooltip,
   TooltipTrigger,
   TooltipContent,
-} from "@multica/ui/components/ui/tooltip";
-import { EmojiPicker } from "@multica/ui/components/common/emoji-picker";
+} from "@metanicator/ui/components/ui/tooltip";
+import { EmojiPicker } from "@metanicator/ui/components/common/emoji-picker";
 import { BreadcrumbHeader } from "../../layout/breadcrumb-header";
 import {
   AnimatedRightSidebar,
@@ -67,7 +67,7 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@multica/ui/components/ui/alert-dialog";
+} from "@metanicator/ui/components/ui/alert-dialog";
 import { useT } from "../../i18n";
 import { useProjectStatusLabels, useProjectPriorityLabels } from "./labels";
 import { matchesPinyin } from "../../editor/extensions/pinyin-match";
@@ -150,7 +150,7 @@ export function ProjectDetail({ projectId }: { projectId: string }) {
 
   // Sidebar panel
   const { defaultLayout, onLayoutChanged } = useDefaultLayout({
-    id: "multica_project_detail_layout",
+    id: "metanicator_project_detail_layout",
   });
   const sidebarRef = usePanelRef();
   const desktopSidebarInitialOpen = getAnimatedRightSidebarInitialOpen(

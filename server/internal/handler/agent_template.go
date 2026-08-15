@@ -15,13 +15,13 @@ import (
 	"github.com/jackc/pgx/v5/pgconn"
 	"github.com/jackc/pgx/v5/pgtype"
 
-	"github.com/multica-ai/multica/server/internal/agenttmpl"
-	"github.com/multica-ai/multica/server/internal/analytics"
-	"github.com/multica-ai/multica/server/internal/logger"
-	obsmetrics "github.com/multica-ai/multica/server/internal/metrics"
-	"github.com/multica-ai/multica/server/internal/util"
-	db "github.com/multica-ai/multica/server/pkg/db/generated"
-	"github.com/multica-ai/multica/server/pkg/protocol"
+	"github.com/metanotech/metanicator/server/internal/agenttmpl"
+	"github.com/metanotech/metanicator/server/internal/analytics"
+	"github.com/metanotech/metanicator/server/internal/logger"
+	obsmetrics "github.com/metanotech/metanicator/server/internal/metrics"
+	"github.com/metanotech/metanicator/server/internal/util"
+	db "github.com/metanotech/metanicator/server/pkg/db/generated"
+	"github.com/metanotech/metanicator/server/pkg/protocol"
 )
 
 // agentTemplates is the in-memory catalog loaded once at package init. We

@@ -5,10 +5,10 @@ import (
 	"testing"
 
 	"github.com/jackc/pgx/v5/pgtype"
-	"github.com/multica-ai/multica/server/internal/events"
-	"github.com/multica-ai/multica/server/internal/util"
-	db "github.com/multica-ai/multica/server/pkg/db/generated"
-	"github.com/multica-ai/multica/server/pkg/protocol"
+	"github.com/metanotech/metanicator/server/internal/events"
+	"github.com/metanotech/metanicator/server/internal/util"
+	db "github.com/metanotech/metanicator/server/pkg/db/generated"
+	"github.com/metanotech/metanicator/server/pkg/protocol"
 )
 
 // Regressions for the MUL-5483 code review. Each test pins one behavior that

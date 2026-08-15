@@ -14,8 +14,8 @@ import type {
   IssuePriority,
   IssueStatus,
   TimelineEntry,
-} from "@multica/core/types";
-import { formatDateOnly } from "@multica/core/issues/date";
+} from "@metanicator/core/types";
+import { formatDateOnly } from "@metanicator/core/issues/date";
 
 const STATUS_LABEL: Record<IssueStatus, string> = {
   backlog: "Backlog",

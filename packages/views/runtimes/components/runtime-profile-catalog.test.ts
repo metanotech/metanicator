@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { RuntimeProfile } from "@multica/core/types";
+import type { RuntimeProfile } from "@metanicator/core/types";
 import {
   buildRuntimeCatalog,
   formatCommandLine,

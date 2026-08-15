@@ -2,13 +2,13 @@
 
 import { useCallback, useMemo } from "react";
 import { toast } from "sonner";
-import type { UpdateIssueRequest } from "@multica/core/types";
+import type { UpdateIssueRequest } from "@metanicator/core/types";
 import {
   useBatchDeleteIssues,
   useBatchUpdateIssues,
   useUpdateIssue,
-} from "@multica/core/issues/mutations";
-import { useModalStore } from "@multica/core/modals";
+} from "@metanicator/core/issues/mutations";
+import { useModalStore } from "@metanicator/core/modals";
 import {
   type IssueSurfaceActions,
   type IssueSurfaceMutationOptions,

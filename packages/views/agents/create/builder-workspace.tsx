@@ -12,12 +12,12 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@multica/ui/components/ui/alert-dialog";
+} from "@metanicator/ui/components/ui/alert-dialog";
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from "@multica/ui/components/ui/resizable";
+} from "@metanicator/ui/components/ui/resizable";
 import {
   applyDraftRuntimeChange,
   decodeBuilderInput,
@@ -25,12 +25,12 @@ import {
   mergeBuilderDraft,
   parseBuilderDraft,
   stripBuilderDraft,
-} from "@multica/core/agents";
+} from "@metanicator/core/agents";
 import {
   runtimeDisplayLabel,
   runtimeModelsOptions,
-} from "@multica/core/runtimes";
-import type { AgentBuilderSessionSummary } from "@multica/core/types";
+} from "@metanicator/core/runtimes";
+import type { AgentBuilderSessionSummary } from "@metanicator/core/types";
 import { AgentConfigurationPanel } from "./agent-configuration-panel";
 import { BuilderConversation } from "./builder-conversation";
 import { CreateAgentFooter } from "./create-agent-footer";
@@ -76,7 +76,7 @@ export function BuilderWorkspace({
 }) {
   const { t } = useT("agents");
   const { defaultLayout, onLayoutChanged } = useDefaultLayout({
-    id: "multica_agent_builder_layout",
+    id: "metanicator_agent_builder_layout",
   });
 
   // Resuming: the conversation already runs somewhere, and only the server

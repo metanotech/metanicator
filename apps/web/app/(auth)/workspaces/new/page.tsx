@@ -3,10 +3,10 @@
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { useAuthStore } from "@multica/core/auth";
-import { paths } from "@multica/core/paths";
-import { workspaceListOptions } from "@multica/core/workspace/queries";
-import { CliInstallInstructions, OnboardingFlow } from "@multica/views/onboarding";
+import { useAuthStore } from "@metanicator/core/auth";
+import { paths } from "@metanicator/core/paths";
+import { workspaceListOptions } from "@metanicator/core/workspace/queries";
+import { CliInstallInstructions, OnboardingFlow } from "@metanicator/views/onboarding";
 
 /**
  * Creating a workspace runs the onboarding flow, entered at the workspace

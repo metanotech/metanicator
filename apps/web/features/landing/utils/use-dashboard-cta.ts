@@ -1,14 +1,14 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import { useAuthStore } from "@multica/core/auth";
-import { workspaceListOptions } from "@multica/core/workspace";
+import { useAuthStore } from "@metanicator/core/auth";
+import { workspaceListOptions } from "@metanicator/core/workspace";
 import {
   paths,
   resolvePostAuthDestination,
   useHasOnboarded,
-} from "@multica/core/paths";
-import type { Workspace } from "@multica/core/types";
+} from "@metanicator/core/paths";
+import type { Workspace } from "@metanicator/core/types";
 
 /**
  * While the workspace list is in flight the CTA points at `/issues`, which the

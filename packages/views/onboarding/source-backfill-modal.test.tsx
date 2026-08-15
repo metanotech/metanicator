@@ -2,7 +2,7 @@ import { act, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { I18nProvider } from "@multica/core/i18n/react";
+import { I18nProvider } from "@metanicator/core/i18n/react";
 import enCommon from "../locales/en/common.json";
 import enOnboarding from "../locales/en/onboarding.json";
 
@@ -19,10 +19,10 @@ const { mockUser, mockSaveQuestionnaire, mockWorkspace, mockAgentDoneTotal, mock
     mockListIssues: vi.fn(),
   }));
 
-vi.mock("@multica/core/auth", async () => {
+vi.mock("@metanicator/core/auth", async () => {
   const actual =
-    await vi.importActual<typeof import("@multica/core/auth")>(
-      "@multica/core/auth",
+    await vi.importActual<typeof import("@metanicator/core/auth")>(
+      "@metanicator/core/auth",
     );
   const useAuthStore = Object.assign(
     (selector: (s: { user: unknown }) => unknown) =>
@@ -32,26 +32,26 @@ vi.mock("@multica/core/auth", async () => {
   return { ...actual, useAuthStore };
 });
 
-vi.mock("@multica/core/onboarding", async () => {
+vi.mock("@metanicator/core/onboarding", async () => {
   const actual =
-    await vi.importActual<typeof import("@multica/core/onboarding")>(
-      "@multica/core/onboarding",
+    await vi.importActual<typeof import("@metanicator/core/onboarding")>(
+      "@metanicator/core/onboarding",
     );
   return { ...actual, saveQuestionnaire: mockSaveQuestionnaire };
 });
 
-vi.mock("@multica/core/paths", async () => {
+vi.mock("@metanicator/core/paths", async () => {
   const actual =
-    await vi.importActual<typeof import("@multica/core/paths")>(
-      "@multica/core/paths",
+    await vi.importActual<typeof import("@metanicator/core/paths")>(
+      "@metanicator/core/paths",
     );
   return { ...actual, useCurrentWorkspace: () => mockWorkspace.value };
 });
 
-vi.mock("@multica/core/api", async () => {
+vi.mock("@metanicator/core/api", async () => {
   const actual =
-    await vi.importActual<typeof import("@multica/core/api")>(
-      "@multica/core/api",
+    await vi.importActual<typeof import("@metanicator/core/api")>(
+      "@metanicator/core/api",
     );
   return {
     ...actual,
@@ -71,7 +71,7 @@ function setUser(partial: Record<string, unknown> | null) {
 function wipeDismissCounters() {
   for (let i = window.localStorage.length - 1; i >= 0; i--) {
     const k = window.localStorage.key(i);
-    if (k && k.startsWith("multica.source_backfill.dismiss.")) {
+    if (k && k.startsWith("metanicator.source_backfill.dismiss.")) {
       window.localStorage.removeItem(k);
     }
   }
@@ -363,7 +363,7 @@ describe("SourceBackfillModal", () => {
   });
 
   it("does not open once the per-user dismiss cap is reached on this browser", () => {
-    window.localStorage.setItem("multica.source_backfill.dismiss.u1", "3");
+    window.localStorage.setItem("metanicator.source_backfill.dismiss.u1", "3");
     setUser({
       id: "u1",
       onboarded_at: "2026-01-01T00:00:00Z",

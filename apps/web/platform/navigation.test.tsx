@@ -1,5 +1,5 @@
 /**
- * MUL-5208 — the web half of the `multica:navigate` bridge.
+ * MUL-5208 — the web half of the `metanicator:navigate` bridge.
  *
  * Shared content (comments, chat, issue descriptions) fires this event whenever
  * a link resolves to an in-app destination, including an absolute URL on this
@@ -23,11 +23,11 @@ vi.mock("next/navigation", () => ({
 }));
 
 import { WebNavigationProvider } from "./navigation";
-import { useNavigation, type NavigationAdapter } from "@multica/views/navigation";
+import { useNavigation, type NavigationAdapter } from "@metanicator/views/navigation";
 
 function navigate(path: string) {
   window.dispatchEvent(
-    new CustomEvent("multica:navigate", { detail: { path } }),
+    new CustomEvent("metanicator:navigate", { detail: { path } }),
   );
 }
 
@@ -61,7 +61,7 @@ describe("WebNavigationProvider internal link bridge", () => {
   it("ignores an event without a path", () => {
     render(<WebNavigationProvider>{null}</WebNavigationProvider>);
 
-    window.dispatchEvent(new CustomEvent("multica:navigate", { detail: {} }));
+    window.dispatchEvent(new CustomEvent("metanicator:navigate", { detail: {} }));
 
     expect(router.push).not.toHaveBeenCalled();
   });

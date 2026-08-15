@@ -16,29 +16,29 @@ import type {
   AgentRuntime,
   DisabledRuntimeSkill,
   RuntimeLocalSkillSummary,
-} from "@multica/core/types";
-import { api, ApiError } from "@multica/core/api";
-import { useWorkspaceId } from "@multica/core/hooks";
+} from "@metanicator/core/types";
+import { api, ApiError } from "@metanicator/core/api";
+import { useWorkspaceId } from "@metanicator/core/hooks";
 import {
   runtimeCapabilitiesOptions,
   runtimeDisplayLabel,
-} from "@multica/core/runtimes";
+} from "@metanicator/core/runtimes";
 import {
   skillDetailOptions,
   skillListOptions,
   workspaceKeys,
-} from "@multica/core/workspace/queries";
-import { Badge } from "@multica/ui/components/ui/badge";
-import { Button } from "@multica/ui/components/ui/button";
+} from "@metanicator/core/workspace/queries";
+import { Badge } from "@metanicator/ui/components/ui/badge";
+import { Button } from "@metanicator/ui/components/ui/button";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@multica/ui/components/ui/dialog";
-import { Switch } from "@multica/ui/components/ui/switch";
-import { cn } from "@multica/ui/lib/utils";
+} from "@metanicator/ui/components/ui/dialog";
+import { Switch } from "@metanicator/ui/components/ui/switch";
+import { cn } from "@metanicator/ui/lib/utils";
 import { SkillAddDialog } from "../skill-add-dialog";
 import { useT } from "../../../i18n";
 

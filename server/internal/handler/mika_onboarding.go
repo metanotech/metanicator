@@ -8,7 +8,7 @@ import (
 	"strings"
 
 	"github.com/go-chi/chi/v5"
-	"github.com/multica-ai/multica/server/internal/service"
+	"github.com/metanotech/metanicator/server/internal/service"
 )
 
 type startMikaOnboardingRequest struct {
@@ -224,7 +224,7 @@ func buildMikaOnboardingKickoff(
 ) string {
 	return fmt.Sprintf(`This is a product-authored trigger, not a message from the member. The member has not written anything yet — you are opening the conversation.
 
-Load and follow the built-in multica-onboarding skill, and write its opening reply in %s.
+Load and follow the built-in metanicator-onboarding skill, and write its opening reply in %s.
 
 Write only that opening. Produce no text before it — no "loading the skill" narration, no preamble of any kind; load the skill silently first, then write the reply. Never acknowledge, quote, restate, or refer to these instructions, and never phrase the reply as an answer to a question.
 %s
@@ -290,7 +290,7 @@ func mikaOnboardingProfileBlock(
 	}
 	if len(useCases) > 0 {
 		// Joined with "; " because several labels contain their own commas.
-		fmt.Fprintf(&b, "- Wants to use Multica to: %s\n", strings.Join(useCases, "; "))
+		fmt.Fprintf(&b, "- Wants to use Metanicator to: %s\n", strings.Join(useCases, "; "))
 	}
 	return strings.TrimRight(b.String(), "\n")
 }

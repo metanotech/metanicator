@@ -2,19 +2,19 @@
 
 import { useMemo, useState } from "react";
 import { TriangleAlert } from "lucide-react";
-import type { CommentTriggerPreviewAgent, CommentTriggerOutcome } from "@multica/core/types";
-import { useAgentPresenceDetail } from "@multica/core/agents";
-import { mentionLabelsByTarget } from "@multica/core/issues/comment-trigger-outcomes";
-import { useCurrentWorkspace } from "@multica/core/paths";
-import { ActorAvatar as ActorAvatarBase } from "@multica/ui/components/common/actor-avatar";
-import { AVATAR_SIZE_PX } from "@multica/ui/lib/avatar-size";
+import type { CommentTriggerPreviewAgent, CommentTriggerOutcome } from "@metanicator/core/types";
+import { useAgentPresenceDetail } from "@metanicator/core/agents";
+import { mentionLabelsByTarget } from "@metanicator/core/issues/comment-trigger-outcomes";
+import { useCurrentWorkspace } from "@metanicator/core/paths";
+import { ActorAvatar as ActorAvatarBase } from "@metanicator/ui/components/common/actor-avatar";
+import { AVATAR_SIZE_PX } from "@metanicator/ui/lib/avatar-size";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@multica/ui/components/ui/popover";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@multica/ui/components/ui/tooltip";
-import { cn } from "@multica/ui/lib/utils";
+} from "@metanicator/ui/components/ui/popover";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@metanicator/ui/components/ui/tooltip";
+import { cn } from "@metanicator/ui/lib/utils";
 import { AgentStatusDot } from "../../common/actor-avatar";
 import { useT } from "../../i18n";
 import { blockedReasonLabel, blockedShortReasonLabel } from "../blocked-trigger-copy";

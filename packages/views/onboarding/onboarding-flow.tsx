@@ -3,7 +3,7 @@
 import { useCallback, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { useAuthStore } from "@multica/core/auth";
+import { useAuthStore } from "@metanicator/core/auth";
 import {
   completeOnboarding,
   ONBOARDING_STEP_ORDER,
@@ -12,9 +12,9 @@ import {
   useWelcomeStore,
   type OnboardingStep,
   type QuestionnaireAnswers,
-} from "@multica/core/onboarding";
-import { workspaceListOptions } from "@multica/core/workspace/queries";
-import type { AgentRuntime, Workspace } from "@multica/core/types";
+} from "@metanicator/core/onboarding";
+import { workspaceListOptions } from "@metanicator/core/workspace/queries";
+import type { AgentRuntime, Workspace } from "@metanicator/core/types";
 import { StepWelcome } from "./steps/step-welcome";
 import { StepShell } from "./components/step-shell";
 import { StepAboutYou } from "./steps/step-about-you";

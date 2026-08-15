@@ -38,13 +38,13 @@ vi.mock("../i18n", async () => {
   };
 });
 
-vi.mock("@multica/core/api", () => ({
+vi.mock("@metanicator/core/api", () => ({
   api: { getAttachmentTextContent: vi.fn() },
   PreviewTooLargeError: class extends Error {},
   PreviewUnsupportedError: class extends Error {},
 }));
 
-vi.mock("@multica/core/paths", () => ({
+vi.mock("@metanicator/core/paths", () => ({
   useWorkspacePaths: () => ({
     issueDetail: (id: string) => `/test/issues/${id}`,
     projectDetail: (id: string) => `/test/projects/${id}`,
@@ -125,7 +125,7 @@ Object.defineProperty(HTMLCanvasElement.prototype, "getContext", {
 
 import { ReadonlyContent } from "../editor/readonly-content";
 import { ChatMessageList } from "../chat/components/chat-message-list";
-import { taskMessagesOptions } from "@multica/core/chat/queries";
+import { taskMessagesOptions } from "@metanicator/core/chat/queries";
 
 // naiyuan's fixture, corrected to a single closed fence.
 const MERMAID_FIXTURE = [

@@ -9,8 +9,8 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/multica-ai/multica/server/internal/events"
-	"github.com/multica-ai/multica/server/pkg/protocol"
+	"github.com/metanotech/metanicator/server/internal/events"
+	"github.com/metanotech/metanicator/server/pkg/protocol"
 )
 
 // createTestIssueLabel creates an issue-scoped label in the test workspace via

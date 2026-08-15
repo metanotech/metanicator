@@ -172,9 +172,9 @@ describe("runtimeRewriteDestination", () => {
   it("maps docs paths to the runtime docs origin", () => {
     expect(
       runtimeRewriteDestination("/docs/zh/agents", {
-        DOCS_URL: "http://multica-docs:3000",
+        DOCS_URL: "http://metanicator-docs:3000",
       }),
-    ).toBe("http://multica-docs:3000/docs/zh/agents");
+    ).toBe("http://metanicator-docs:3000/docs/zh/agents");
   });
 
   it("maps websocket paths to the runtime API origin", () => {

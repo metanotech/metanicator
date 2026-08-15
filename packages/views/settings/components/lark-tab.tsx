@@ -12,9 +12,9 @@ import { ChevronRight, ExternalLink, RefreshCw, Trash2 } from "lucide-react";
 // was fine. The named export maps straight to `exports.QRCode` and
 // resolves correctly under both bundlers.
 import { QRCode } from "react-qr-code";
-import { cn } from "@multica/ui/lib/utils";
-import { Button } from "@multica/ui/components/ui/button";
-import { Card, CardContent } from "@multica/ui/components/ui/card";
+import { cn } from "@metanicator/ui/lib/utils";
+import { Button } from "@metanicator/ui/components/ui/button";
+import { Card, CardContent } from "@metanicator/ui/components/ui/card";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -24,7 +24,7 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@multica/ui/components/ui/alert-dialog";
+} from "@metanicator/ui/components/ui/alert-dialog";
 import {
   Dialog,
   DialogContent,
@@ -32,14 +32,14 @@ import {
   DialogTitle,
   DialogDescription,
   DialogFooter,
-} from "@multica/ui/components/ui/dialog";
-import { useAuthStore } from "@multica/core/auth";
-import { useWorkspaceId } from "@multica/core/hooks";
-import { memberListOptions } from "@multica/core/workspace/queries";
-import { useActorName } from "@multica/core/workspace/hooks";
-import { larkInstallationsOptions, larkKeys } from "@multica/core/lark";
-import { api, ApiError } from "@multica/core/api";
-import type { LarkInstallation, LarkInstallStatusResponse } from "@multica/core/types";
+} from "@metanicator/ui/components/ui/dialog";
+import { useAuthStore } from "@metanicator/core/auth";
+import { useWorkspaceId } from "@metanicator/core/hooks";
+import { memberListOptions } from "@metanicator/core/workspace/queries";
+import { useActorName } from "@metanicator/core/workspace/hooks";
+import { larkInstallationsOptions, larkKeys } from "@metanicator/core/lark";
+import { api, ApiError } from "@metanicator/core/api";
+import type { LarkInstallation, LarkInstallStatusResponse } from "@metanicator/core/types";
 import { ActorAvatar } from "../../common/actor-avatar";
 import { useT } from "../../i18n";
 

@@ -2,9 +2,9 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { useAuthStore } from "@multica/core/auth";
-import { paths } from "@multica/core/paths";
-import { InvitationsPage } from "@multica/views/invitations";
+import { useAuthStore } from "@metanicator/core/auth";
+import { paths } from "@metanicator/core/paths";
+import { InvitationsPage } from "@metanicator/views/invitations";
 
 export default function InvitationsRoutePage() {
   const router = useRouter();

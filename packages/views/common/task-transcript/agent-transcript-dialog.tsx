@@ -21,12 +21,12 @@ import {
   Info,
   Coins,
 } from "lucide-react";
-import { cn } from "@multica/ui/lib/utils";
-import { copyText } from "@multica/ui/lib/clipboard";
-import { Button } from "@multica/ui/components/ui/button";
-import { Dialog, DialogContent, DialogTitle } from "@multica/ui/components/ui/dialog";
-import { Popover, PopoverContent, PopoverTrigger } from "@multica/ui/components/ui/popover";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@multica/ui/components/ui/collapsible";
+import { cn } from "@metanicator/ui/lib/utils";
+import { copyText } from "@metanicator/ui/lib/clipboard";
+import { Button } from "@metanicator/ui/components/ui/button";
+import { Dialog, DialogContent, DialogTitle } from "@metanicator/ui/components/ui/dialog";
+import { Popover, PopoverContent, PopoverTrigger } from "@metanicator/ui/components/ui/popover";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@metanicator/ui/components/ui/collapsible";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -36,20 +36,20 @@ import {
   DropdownMenuItem,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
-} from "@multica/ui/components/ui/dropdown-menu";
+} from "@metanicator/ui/components/ui/dropdown-menu";
 import { ActorAvatar } from "../actor-avatar";
 import { AttributionBadge } from "../../issues/components/attribution-badge";
 import { RichContent } from "../../rich-content";
-import { api } from "@multica/core/api";
+import { api } from "@metanicator/core/api";
 import {
   useTranscriptViewStore,
   type TranscriptDetailDensity,
   type TranscriptFilterKey,
   type TranscriptSortDirection,
-} from "@multica/core/agents/stores";
-import type { AgentTask, Agent, AgentRuntime } from "@multica/core/types/agent";
-import { runtimeDisplayName } from "@multica/core/runtimes";
-import { useCustomPricingStore } from "@multica/core/runtimes/custom-pricing-store";
+} from "@metanicator/core/agents/stores";
+import type { AgentTask, Agent, AgentRuntime } from "@metanicator/core/types/agent";
+import { runtimeDisplayName } from "@metanicator/core/runtimes";
+import { useCustomPricingStore } from "@metanicator/core/runtimes/custom-pricing-store";
 import { redactSecrets } from "./redact";
 import {
   createNewestFirstFollow,

@@ -8,10 +8,10 @@ import (
 	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgtype"
 
-	"github.com/multica-ai/multica/server/internal/integrations/channel"
-	"github.com/multica-ai/multica/server/internal/integrations/channel/engine"
-	"github.com/multica-ai/multica/server/internal/util"
-	db "github.com/multica-ai/multica/server/pkg/db/generated"
+	"github.com/metanotech/metanicator/server/internal/integrations/channel"
+	"github.com/metanotech/metanicator/server/internal/integrations/channel/engine"
+	"github.com/metanotech/metanicator/server/internal/util"
+	db "github.com/metanotech/metanicator/server/pkg/db/generated"
 )
 
 // This test keeps only the external IM transport outside the process. From the

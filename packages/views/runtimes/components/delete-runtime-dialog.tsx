@@ -4,28 +4,28 @@ import { useEffect, useMemo, useState } from "react";
 import { AlertTriangle, Globe, Info, Lock } from "lucide-react";
 import { toast } from "sonner";
 import { useQuery } from "@tanstack/react-query";
-import { ApiError } from "@multica/core/api";
-import type { Agent, AgentRuntime, MemberWithUser } from "@multica/core/types";
-import { runtimeDisplayLabel } from "@multica/core/runtimes";
+import { ApiError } from "@metanicator/core/api";
+import type { Agent, AgentRuntime, MemberWithUser } from "@metanicator/core/types";
+import { runtimeDisplayLabel } from "@metanicator/core/runtimes";
 import {
   useDeleteRuntime,
   useUnbindAgentsAndDeleteRuntime,
-} from "@multica/core/runtimes/mutations";
+} from "@metanicator/core/runtimes/mutations";
 import {
   agentListOptions,
   memberListOptions,
-} from "@multica/core/workspace/queries";
+} from "@metanicator/core/workspace/queries";
 import {
   type AgentPresenceDetail,
   useWorkspacePresenceMap,
-} from "@multica/core/agents";
-import { useAuthStore } from "@multica/core/auth";
+} from "@metanicator/core/agents";
+import { useAuthStore } from "@metanicator/core/auth";
 import {
   AlertDialog,
   AlertDialogContent,
-} from "@multica/ui/components/ui/alert-dialog";
-import { Button } from "@multica/ui/components/ui/button";
-import { Checkbox } from "@multica/ui/components/ui/checkbox";
+} from "@metanicator/ui/components/ui/alert-dialog";
+import { Button } from "@metanicator/ui/components/ui/button";
+import { Checkbox } from "@metanicator/ui/components/ui/checkbox";
 import { ActorAvatar } from "../../common/actor-avatar";
 import { availabilityConfig, workloadConfig } from "../../agents/presence";
 import { useT } from "../../i18n";

@@ -1,4 +1,4 @@
-import { cn } from "@multica/ui/lib/utils";
+import { cn } from "@metanicator/ui/lib/utils";
 
 export const githubUrl = "https://github.com/metanotech/metanicator";
 export const twitterUrl = "https://x.com/MetanicatorAI";

@@ -22,15 +22,15 @@ import type {
   IssueStatus,
   Project,
   IssueProperty,
-} from "@multica/core/types";
-import { useLoadMoreByAssigneeGroup, useLoadMoreByStatus } from "@multica/core/issues/mutations";
-import type { AssigneeGroupedIssuesFilter, IssueSortParam, MyIssuesFilter } from "@multica/core/issues/queries";
-import { useViewStore } from "@multica/core/issues/stores/view-store-context";
-import { propertyIdFromViewKey } from "@multica/core/issues/stores/view-store";
-import { propertyListOptions, useSetIssueProperty, useUnsetIssueProperty } from "@multica/core/properties";
-import { useWorkspaceId } from "@multica/core/hooks";
-import type { IssueGrouping } from "@multica/core/issues/stores/view-store";
-import { useActorName } from "@multica/core/workspace/hooks";
+} from "@metanicator/core/types";
+import { useLoadMoreByAssigneeGroup, useLoadMoreByStatus } from "@metanicator/core/issues/mutations";
+import type { AssigneeGroupedIssuesFilter, IssueSortParam, MyIssuesFilter } from "@metanicator/core/issues/queries";
+import { useViewStore } from "@metanicator/core/issues/stores/view-store-context";
+import { propertyIdFromViewKey } from "@metanicator/core/issues/stores/view-store";
+import { propertyListOptions, useSetIssueProperty, useUnsetIssueProperty } from "@metanicator/core/properties";
+import { useWorkspaceId } from "@metanicator/core/hooks";
+import type { IssueGrouping } from "@metanicator/core/issues/stores/view-store";
+import { useActorName } from "@metanicator/core/workspace/hooks";
 import { BoardColumn, BOARD_CARD_WIDTH, type BoardColumnGroup } from "./board-column";
 import { BoardCardContent } from "./board-card";
 import { HiddenColumnsPanel, HiddenColumnRow } from "./hidden-columns-panel";

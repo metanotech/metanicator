@@ -18,8 +18,8 @@ import (
 )
 
 const (
-	AuthCookieName      = "multica_auth"
-	CSRFCookieName      = "multica_csrf"
+	AuthCookieName      = "metanicator_auth"
+	CSRFCookieName      = "metanicator_csrf"
 	defaultAuthTokenTTL = 30 * 24 * time.Hour // 30 days
 )
 

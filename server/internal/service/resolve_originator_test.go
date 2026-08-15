@@ -10,13 +10,13 @@ import (
 
 	"github.com/jackc/pgx/v5/pgtype"
 	"github.com/jackc/pgx/v5/pgxpool"
-	"github.com/multica-ai/multica/server/internal/attribution"
-	"github.com/multica-ai/multica/server/internal/events"
-	"github.com/multica-ai/multica/server/internal/featureflags"
-	"github.com/multica-ai/multica/server/internal/runtimeapps"
-	"github.com/multica-ai/multica/server/internal/util"
-	db "github.com/multica-ai/multica/server/pkg/db/generated"
-	"github.com/multica-ai/multica/server/pkg/featureflag"
+	"github.com/metanotech/metanicator/server/internal/attribution"
+	"github.com/metanotech/metanicator/server/internal/events"
+	"github.com/metanotech/metanicator/server/internal/featureflags"
+	"github.com/metanotech/metanicator/server/internal/runtimeapps"
+	"github.com/metanotech/metanicator/server/internal/util"
+	db "github.com/metanotech/metanicator/server/pkg/db/generated"
+	"github.com/metanotech/metanicator/server/pkg/featureflag"
 )
 
 // newResolveOriginatorPool mirrors the local-postgres pattern used in
@@ -27,7 +27,7 @@ func newResolveOriginatorPool(t *testing.T) *pgxpool.Pool {
 	t.Helper()
 	dbURL := os.Getenv("DATABASE_URL")
 	if dbURL == "" {
-		dbURL = "postgres://multica:multica@localhost:5432/multica?sslmode=disable"
+		dbURL = "postgres://metanicator:metanicator@localhost:5432/metanicator?sslmode=disable"
 	}
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
@@ -121,14 +121,14 @@ func seedOriginatorFanout(t *testing.T, pool *pgxpool.Pool) (memberCommentID, ag
 
 	if err := pool.QueryRow(ctx, `
 		INSERT INTO "user" (name, email)
-		VALUES ('Resolve Originator User', 'resolve-originator-fanout@multica.test')
+		VALUES ('Resolve Originator User', 'resolve-originator-fanout@metanicator.test')
 		RETURNING id
 	`).Scan(&userIDStr); err != nil {
 		t.Fatalf("seed user: %v", err)
 	}
 	t.Cleanup(func() {
 		pool.Exec(context.Background(),
-			`DELETE FROM "user" WHERE email = 'resolve-originator-fanout@multica.test'`)
+			`DELETE FROM "user" WHERE email = 'resolve-originator-fanout@metanicator.test'`)
 	})
 
 	if err := pool.QueryRow(ctx, `
@@ -428,7 +428,7 @@ func TestEnqueueTaskForIssueStoresRuntimeMCPOverlayInQueuedRow(t *testing.T) {
 	ctx := context.Background()
 	q := db.New(pool)
 	suffix := time.Now().UnixNano()
-	email := fmt.Sprintf("runtime-overlay-insert-%d@multica.test", suffix)
+	email := fmt.Sprintf("runtime-overlay-insert-%d@metanicator.test", suffix)
 	workspaceSlug := fmt.Sprintf("runtime-overlay-insert-%d", suffix)
 
 	var userIDStr, workspaceIDStr, runtimeIDStr, agentIDStr, issueIDStr string

@@ -9,10 +9,10 @@ import (
 	"time"
 
 	"github.com/jackc/pgx/v5/pgtype"
-	"github.com/multica-ai/multica/server/internal/events"
-	db "github.com/multica-ai/multica/server/pkg/db/generated"
-	"github.com/multica-ai/multica/server/pkg/llm"
-	"github.com/multica-ai/multica/server/pkg/protocol"
+	"github.com/metanotech/metanicator/server/internal/events"
+	db "github.com/metanotech/metanicator/server/pkg/db/generated"
+	"github.com/metanotech/metanicator/server/pkg/llm"
+	"github.com/metanotech/metanicator/server/pkg/protocol"
 )
 
 // ---------------------------------------------------------------------------

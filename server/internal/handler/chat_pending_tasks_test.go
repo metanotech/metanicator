@@ -9,11 +9,11 @@ import (
 	"testing"
 
 	"github.com/google/uuid"
-	"github.com/multica-ai/multica/server/internal/events"
-	"github.com/multica-ai/multica/server/internal/middleware"
-	"github.com/multica-ai/multica/server/internal/util"
-	db "github.com/multica-ai/multica/server/pkg/db/generated"
-	"github.com/multica-ai/multica/server/pkg/protocol"
+	"github.com/metanotech/metanicator/server/internal/events"
+	"github.com/metanotech/metanicator/server/internal/middleware"
+	"github.com/metanotech/metanicator/server/internal/util"
+	db "github.com/metanotech/metanicator/server/pkg/db/generated"
+	"github.com/metanotech/metanicator/server/pkg/protocol"
 )
 
 // chatPendingCtxAs injects the workspace + member context that the chi

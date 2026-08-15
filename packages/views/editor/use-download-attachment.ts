@@ -2,9 +2,9 @@
 
 import { useCallback } from "react";
 import { toast } from "sonner";
-import { api } from "@multica/core/api";
-import { useWorkspaceSlug } from "@multica/core/paths";
-import { resolvePublicFileUrl } from "@multica/core/workspace/avatar-url";
+import { api } from "@metanicator/core/api";
+import { useWorkspaceSlug } from "@metanicator/core/paths";
+import { resolvePublicFileUrl } from "@metanicator/core/workspace/avatar-url";
 import { useT } from "../i18n";
 
 interface DesktopBridge {

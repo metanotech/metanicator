@@ -5,22 +5,22 @@ import {
   useQuery,
   type QueryKey,
 } from "@tanstack/react-query";
-import type { Issue, IssueAssigneeGroup, Project } from "@multica/core/types";
-import { ALL_STATUSES } from "@multica/core/issues/config";
-import { projectListOptions } from "@multica/core/projects/queries";
+import type { Issue, IssueAssigneeGroup, Project } from "@metanicator/core/types";
+import { ALL_STATUSES } from "@metanicator/core/issues/config";
+import { projectListOptions } from "@metanicator/core/projects/queries";
 import {
   childIssueProgressOptions,
   type AssigneeGroupedIssuesFilter,
   type IssueSortParam,
   type MyIssuesFilter,
-} from "@multica/core/issues/queries";
+} from "@metanicator/core/issues/queries";
 import {
   issueSurfaceAssigneeGroupsOptions,
   issueSurfaceGanttOptions,
   issueSurfaceListOptions,
-} from "@multica/core/issues/surface/repository";
-import type { IssueSurfaceQueryPlan } from "@multica/core/issues/surface/query-plan";
-import type { IssueStatus } from "@multica/core/types";
+} from "@metanicator/core/issues/surface/repository";
+import type { IssueSurfaceQueryPlan } from "@metanicator/core/issues/surface/query-plan";
+import type { IssueStatus } from "@metanicator/core/types";
 import {
   applyIssueFilters,
   filterAssigneeGroups,

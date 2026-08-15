@@ -14,21 +14,21 @@ import {
   Square,
   Trash2,
 } from "lucide-react";
-import { cn } from "@multica/ui/lib/utils";
-import { useWorkspaceId } from "@multica/core/hooks";
-import { useWorkspacePresenceMap } from "@multica/core/agents";
-import { api } from "@multica/core/api";
-import { pendingChatTasksOptions, chatKeys, sortChatSessions } from "@multica/core/chat/queries";
+import { cn } from "@metanicator/ui/lib/utils";
+import { useWorkspaceId } from "@metanicator/core/hooks";
+import { useWorkspacePresenceMap } from "@metanicator/core/agents";
+import { api } from "@metanicator/core/api";
+import { pendingChatTasksOptions, chatKeys, sortChatSessions } from "@metanicator/core/chat/queries";
 import {
   useDeleteChatSession,
   useSetChatSessionArchived,
   useSetChatSessionPinned,
-} from "@multica/core/chat/mutations";
-import { useChatStore } from "@multica/core/chat";
-import type { Agent, ChatSession, PendingChatTasksResponse } from "@multica/core/types";
+} from "@metanicator/core/chat/mutations";
+import { useChatStore } from "@metanicator/core/chat";
+import type { Agent, ChatSession, PendingChatTasksResponse } from "@metanicator/core/types";
 import { ActorAvatar } from "../../common/actor-avatar";
-import { createLogger } from "@multica/core/logger";
-import { removeChatMessageFromCaches } from "@multica/core/realtime";
+import { createLogger } from "@metanicator/core/logger";
+import { removeChatMessageFromCaches } from "@metanicator/core/realtime";
 import { useT } from "../../i18n";
 
 const apiLogger = createLogger("chat.api");

@@ -20,9 +20,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/multica-ai/multica/server/internal/daemon/execenv"
-	"github.com/multica-ai/multica/server/internal/daemon/repocache"
-	"github.com/multica-ai/multica/server/pkg/agent"
+	"github.com/metanotech/metanicator/server/internal/daemon/execenv"
+	"github.com/metanotech/metanicator/server/internal/daemon/repocache"
+	"github.com/metanotech/metanicator/server/pkg/agent"
 	"github.com/pelletier/go-toml/v2"
 )
 
@@ -66,7 +66,7 @@ func TestTriggerRestart_BrewLinuxCellarDeleted(t *testing.T) {
 	})
 
 	prefix := filepath.Join(t.TempDir(), "home", "linuxbrew", ".linuxbrew")
-	deletedCellarPath := filepath.Join(prefix, "Cellar", "multica", "0.2.9", "bin", "multica")
+	deletedCellarPath := filepath.Join(prefix, "Cellar", "metanicator", "0.2.9", "bin", "metanicator")
 	isBrewInstall = func() bool { return true }
 	getBrewPrefix = func() string { return prefix }
 
@@ -75,7 +75,7 @@ func TestTriggerRestart_BrewLinuxCellarDeleted(t *testing.T) {
 	}
 	d.triggerRestart()
 
-	want := filepath.Join(prefix, "bin", "multica")
+	want := filepath.Join(prefix, "bin", "metanicator")
 	if got := d.RestartBinary(); got != want {
 		t.Fatalf("restart binary = %q, want %q", got, want)
 	}
@@ -92,7 +92,7 @@ func TestTriggerRestart_UsesResolvedFallback(t *testing.T) {
 		isBrewInstall = originalIsBrewInstall
 	})
 
-	want := filepath.Join(t.TempDir(), "multica")
+	want := filepath.Join(t.TempDir(), "metanicator")
 	if err := os.WriteFile(want, []byte("test executable"), 0o755); err != nil {
 		t.Fatalf("write executable fixture: %v", err)
 	}
@@ -147,8 +147,8 @@ func TestIsBlockedEnvKey(t *testing.T) {
 		key  string
 		want bool
 	}{
-		{key: "MULTICA_TOKEN", want: true},
-		{key: "multica_runtime_id", want: true},
+		{key: "METANICATOR_TOKEN", want: true},
+		{key: "metanicator_runtime_id", want: true},
 		{key: "HOME", want: true},
 		{key: "PATH", want: true},
 		{key: "TMPDIR", want: true},
@@ -192,7 +192,7 @@ func TestPrepareReasonixTaskStateHome(t *testing.T) {
 	if err != nil {
 		t.Fatalf("prepareReasonixTaskStateHome: %v", err)
 	}
-	want := filepath.Join(home, ".multica", "profiles", "work", "reasonix-state", "runtime-1", "agent_2")
+	want := filepath.Join(home, ".metanicator", "profiles", "work", "reasonix-state", "runtime-1", "agent_2")
 	if got != want {
 		t.Fatalf("state home = %q, want %q", got, want)
 	}
@@ -265,10 +265,10 @@ func TestLayerCustomEnvAndHermesHome(t *testing.T) {
 		},
 		{
 			name:        "blocklisted key dropped, overlay still applied",
-			customEnv:   map[string]string{"CODEX_HOME": "/evil", "MULTICA_TOKEN": "x"},
+			customEnv:   map[string]string{"CODEX_HOME": "/evil", "METANICATOR_TOKEN": "x"},
 			overlayHome: "/tmp/task/hermes-home",
 			wantHermes:  "/tmp/task/hermes-home",
-			wantAbsent:  []string{"CODEX_HOME", "MULTICA_TOKEN"},
+			wantAbsent:  []string{"CODEX_HOME", "METANICATOR_TOKEN"},
 		},
 	}
 
@@ -335,14 +335,14 @@ func TestConfigureCodexTaskShellEnvironment(t *testing.T) {
 			"SystemRoot=C:\\Windows",
 			"USERPROFILE=C:\\Users\\test",
 			"OPENAI_API_KEY=host-secret",
-			"MULTICA_LLM_API_KEY=daemon-secret",
+			"METANICATOR_LLM_API_KEY=daemon-secret",
 		}
 		agentEnv := map[string]string{
 			"CUSTOM_ACCESS_TOKEN": "agent-secret",
 			"CUSTOM_FLAG":         "enabled",
 			"UNAUTHORIZED_TOKEN":  "daemon-secret",
-			"MULTICA_SERVER_URL":  "https://task.example",
-			"MULTICA_TOKEN":       "mat_task",
+			"METANICATOR_SERVER_URL":  "https://task.example",
+			"METANICATOR_TOKEN":       "mat_task",
 		}
 		agentCustomEnv := map[string]string{
 			"CUSTOM_ACCESS_TOKEN": "agent-secret",
@@ -356,12 +356,12 @@ func TestConfigureCodexTaskShellEnvironment(t *testing.T) {
 			t.Fatalf("read config.toml: %v", err)
 		}
 		config := string(data)
-		for _, want := range []string{"SystemRoot", "USERPROFILE", "CUSTOM_ACCESS_TOKEN", "CUSTOM_FLAG", "MULTICA_SERVER_URL", "MULTICA_TOKEN"} {
+		for _, want := range []string{"SystemRoot", "USERPROFILE", "CUSTOM_ACCESS_TOKEN", "CUSTOM_FLAG", "METANICATOR_SERVER_URL", "METANICATOR_TOKEN"} {
 			if !strings.Contains(config, want) {
 				t.Errorf("config.toml missing %q:\n%s", want, config)
 			}
 		}
-		for _, unwanted := range []string{"OPENAI_API_KEY", "MULTICA_LLM_API_KEY", "UNAUTHORIZED_TOKEN", "MULTICA_*", "agent-secret", "daemon-secret", "mat_task"} {
+		for _, unwanted := range []string{"OPENAI_API_KEY", "METANICATOR_LLM_API_KEY", "UNAUTHORIZED_TOKEN", "METANICATOR_*", "agent-secret", "daemon-secret", "mat_task"} {
 			if strings.Contains(config, unwanted) {
 				t.Errorf("config.toml unexpectedly contains %q:\n%s", unwanted, config)
 			}
@@ -370,7 +370,7 @@ func TestConfigureCodexTaskShellEnvironment(t *testing.T) {
 
 	t.Run("Codex without task home fails closed", func(t *testing.T) {
 		t.Parallel()
-		err := configureCodexTaskShellEnvironment("codex", "", nil, map[string]string{"MULTICA_TOKEN": "mat_task"}, nil, slog.Default())
+		err := configureCodexTaskShellEnvironment("codex", "", nil, map[string]string{"METANICATOR_TOKEN": "mat_task"}, nil, slog.Default())
 		if err == nil || !strings.Contains(err.Error(), "CODEX_HOME is missing") {
 			t.Fatalf("error = %v, want missing CODEX_HOME", err)
 		}
@@ -401,8 +401,8 @@ func TestCodexTaskShellEnvInheritsRealHome(t *testing.T) {
 	// task-scoped CODEX_HOME, and — since MUL-5578 — no HOME/XDG entry.
 	explicit := map[string]string{
 		"CODEX_HOME":         codexHome,
-		"MULTICA_TOKEN":      "mat_task",
-		"MULTICA_SERVER_URL": "https://task.example",
+		"METANICATOR_TOKEN":      "mat_task",
+		"METANICATOR_SERVER_URL": "https://task.example",
 	}
 
 	if err := configureCodexTaskShellEnvironment("codex", codexHome, inherited, explicit, nil, slog.Default()); err != nil {
@@ -442,7 +442,7 @@ func TestCodexShellAuthorizedCustomEnvNamesUsesDaemonBlocklist(t *testing.T) {
 	got := codexShellAuthorizedCustomEnvNames(map[string]string{
 		"CUSTOM_ACCESS_TOKEN": "agent-secret",
 		"custom_secret":       "agent-secret",
-		"MULTICA_TOKEN":       "must-not-authorize",
+		"METANICATOR_TOKEN":       "must-not-authorize",
 		"PATH":                "/must/not/override",
 		"HOME":                "/must/not/override",
 		"CODEX_HOME":          "/must/not/override",
@@ -506,7 +506,7 @@ func TestTaskScopedAuthToken(t *testing.T) {
 
 // When `brew --prefix` is unavailable but the executable path is under a
 // known Cellar root, triggerRestart must recover the prefix from the
-// known-prefix list and target <prefix>/bin/multica.
+// known-prefix list and target <prefix>/bin/metanicator.
 func TestTriggerRestart_BrewPrefixUnavailable_FallsBackToKnownPrefix(t *testing.T) {
 	originalIsBrewInstall := isBrewInstall
 	originalGetBrewPrefix := getBrewPrefix
@@ -520,7 +520,7 @@ func TestTriggerRestart_BrewPrefixUnavailable_FallsBackToKnownPrefix(t *testing.
 	})
 
 	const knownPrefix = "/home/linuxbrew/.linuxbrew"
-	cellarPath := filepath.Join(knownPrefix, "Cellar", "multica", "0.2.9", "bin", "multica")
+	cellarPath := filepath.Join(knownPrefix, "Cellar", "metanicator", "0.2.9", "bin", "metanicator")
 	isBrewInstall = func() bool { return true }
 	getBrewPrefix = func() string { return "" }
 	resolveSelfExecutable = func() (string, error) { return cellarPath, nil }
@@ -536,7 +536,7 @@ func TestTriggerRestart_BrewPrefixUnavailable_FallsBackToKnownPrefix(t *testing.
 	}
 	d.triggerRestart()
 
-	want := filepath.Join(knownPrefix, "bin", "multica")
+	want := filepath.Join(knownPrefix, "bin", "metanicator")
 	if got := d.RestartBinary(); got != want {
 		t.Fatalf("restart binary = %q, want %q", got, want)
 	}
@@ -544,7 +544,7 @@ func TestTriggerRestart_BrewPrefixUnavailable_FallsBackToKnownPrefix(t *testing.
 
 // When `brew --prefix` is unavailable AND the executable is not under any
 // known Cellar root, triggerRestart logs a warning and keeps the executable
-// path (no fabricated <prefix>/bin/multica path).
+// path (no fabricated <prefix>/bin/metanicator path).
 func TestTriggerRestart_BrewPrefixUnavailable_NoKnownPrefix_KeepsExecutable(t *testing.T) {
 	originalIsBrewInstall := isBrewInstall
 	originalGetBrewPrefix := getBrewPrefix
@@ -736,7 +736,7 @@ func TestBuildPromptContainsIssueID(t *testing.T) {
 	// Prompt should contain the issue ID and CLI hint.
 	for _, want := range []string{
 		issueID,
-		"multica issue get",
+		"metanicator issue get",
 	} {
 		if !strings.Contains(prompt, want) {
 			t.Fatalf("prompt missing %q", want)
@@ -775,12 +775,12 @@ func TestSessionContinuityNoticeMatchesSurface(t *testing.T) {
 		},
 		{
 			// Slack has a history reader, so the conversation is recoverable —
-			// just from the channel rather than from Multica. Telling the user it
+			// just from the channel rather than from Metanicator. Telling the user it
 			// was lost contradicts the commands the same prompt hands the agent.
 			name:         "slack rebuilds from the channel",
 			task:         Task{ChatSessionID: "chat-1", ChatChannelType: execenv.ChannelTypeSlack},
 			tellUser:     false,
-			wantMentions: "multica chat history",
+			wantMentions: "metanicator chat history",
 		},
 		{
 			// Web chat history lived only in the provider session.
@@ -790,7 +790,7 @@ func TestSessionContinuityNoticeMatchesSurface(t *testing.T) {
 			wantMentions: "not readable from anywhere",
 		},
 		{
-			// Multica ships no history reader for Feishu, so despite being a
+			// Metanicator ships no history reader for Feishu, so despite being a
 			// channel it is in the same position as a web chat.
 			name:         "feishu has no history reader",
 			task:         Task{ChatSessionID: "chat-1", ChatChannelType: execenv.ChannelTypeFeishu},
@@ -998,7 +998,7 @@ func TestBuildPromptAutopilotRunOnly(t *testing.T) {
 		"Autopilot run ID: run-1",
 		"Daily dependency check",
 		"Check dependencies and report outdated packages.",
-		"multica autopilot get autopilot-1 --output json",
+		"metanicator autopilot get autopilot-1 --output json",
 	} {
 		if !strings.Contains(prompt, want) {
 			t.Fatalf("autopilot prompt missing %q\n---\n%s", want, prompt)
@@ -1009,7 +1009,7 @@ func TestBuildPromptAutopilotRunOnly(t *testing.T) {
 	// workflow section (execenv.AutopilotIssueCommandsGuard). MUL-5696 found
 	// that a second hand-maintained per-turn copy drifts, so the per-turn
 	// prompt must not restate it in any form.
-	if strings.Contains(prompt, "Do not run `multica issue get`") {
+	if strings.Contains(prompt, "Do not run `metanicator issue get`") {
 		t.Fatalf("autopilot prompt restates the issue-command boundary the brief owns (MUL-5696)\n---\n%s", prompt)
 	}
 	if strings.Contains(prompt, "Your assigned issue ID is:") {
@@ -1040,7 +1040,7 @@ func TestBuildPromptCommentTriggered(t *testing.T) {
 		commentContent,
 		"Focus on THIS comment",
 		commentID,
-		"multica issue comment add " + issueID + " --parent " + commentID,
+		"metanicator issue comment add " + issueID + " --parent " + commentID,
 		"do NOT reuse --parent values from previous turns",
 		// MUL-5442 (2026-08-06): with the generic no-reply rule retired,
 		// the reply command is framed as a plain imperative again — the
@@ -1053,7 +1053,7 @@ func TestBuildPromptCommentTriggered(t *testing.T) {
 	}
 
 	// Should still contain CLI hint for fetching issue context.
-	if !strings.Contains(prompt, "multica issue get") {
+	if !strings.Contains(prompt, "metanicator issue get") {
 		t.Fatal("prompt missing CLI hint for issue context")
 	}
 }
@@ -1144,7 +1144,7 @@ func TestBuildPromptCommentTriggeredNoContent(t *testing.T) {
 		Agent:            &AgentData{Name: "Test"},
 	}, "claude")
 
-	if !strings.Contains(prompt, "multica issue get") {
+	if !strings.Contains(prompt, "metanicator issue get") {
 		t.Fatal("prompt missing CLI hint")
 	}
 }
@@ -1173,7 +1173,7 @@ func TestBuildPromptSquadLeaderNoActionProhibition(t *testing.T) {
 	for _, want := range []string{
 		"Squad leader no_action rule",
 		"DO NOT post any comment",
-		"multica squad activity",
+		"metanicator squad activity",
 	} {
 		if !strings.Contains(prompt, want) {
 			t.Fatalf("squad leader prompt missing %q\n---\n%s", want, prompt)
@@ -3316,7 +3316,7 @@ func TestEnsureRepoReadyRefreshesOnMiss(t *testing.T) {
 }
 
 // A project github_repo URL that the workspace itself does not bind must still
-// be allowed for `multica repo checkout` after registerTaskRepos runs. Without
+// be allowed for `metanicator repo checkout` after registerTaskRepos runs. Without
 // this, the new project-repos-override-workspace-repos behavior would surface
 // repos in the meta-skill that the agent then can't actually clone.
 func TestRegisterTaskReposAllowsProjectOnlyURL(t *testing.T) {
@@ -3520,8 +3520,8 @@ func TestEnsureRepoReadyConcurrentMissRefreshesOnce(t *testing.T) {
 }
 
 func TestShellArgsFromEnv(t *testing.T) {
-	t.Setenv("MULTICA_CLAUDE_ARGS", `--max-turns 60 --append-system-prompt "multi word"`)
-	got, err := shellArgsFromEnv("MULTICA_CLAUDE_ARGS")
+	t.Setenv("METANICATOR_CLAUDE_ARGS", `--max-turns 60 --append-system-prompt "multi word"`)
+	got, err := shellArgsFromEnv("METANICATOR_CLAUDE_ARGS")
 	if err != nil {
 		t.Fatalf("shellArgsFromEnv: %v", err)
 	}
@@ -3532,8 +3532,8 @@ func TestShellArgsFromEnv(t *testing.T) {
 }
 
 func TestShellArgsFromEnvEmptyIsNil(t *testing.T) {
-	t.Setenv("MULTICA_CODEX_ARGS", "   ")
-	got, err := shellArgsFromEnv("MULTICA_CODEX_ARGS")
+	t.Setenv("METANICATOR_CODEX_ARGS", "   ")
+	got, err := shellArgsFromEnv("METANICATOR_CODEX_ARGS")
 	if err != nil {
 		t.Fatalf("shellArgsFromEnv: %v", err)
 	}
@@ -3692,7 +3692,7 @@ func TestReportTaskResult_CancelledParentStillReportsTerminalState(t *testing.T)
 	}
 }
 
-// Pins the GitHub multica#1952 fail-closed behaviour: a task whose
+// Pins the GitHub metanicator#1952 fail-closed behaviour: a task whose
 // agent run never produced a real result (blocked, cancelled, or any
 // future status we forget to enumerate) MUST go through FailTask, so
 // the UI never shows a green "Completed" badge for a run that didn't
@@ -4724,12 +4724,12 @@ func TestSanitizeAgentEnv(t *testing.T) {
 	in := map[string]string{
 		"HOME":        "/evil",
 		"PATH":        "/evil/bin",
-		"MULTICA_X":   "1",
+		"METANICATOR_X":   "1",
 		"TEAM_SKILLS": "/srv/team",
 		"HERMES_HOME": "/some/home",
 	}
 	got := sanitizeAgentEnv(in)
-	for _, blocked := range []string{"HOME", "PATH", "MULTICA_X"} {
+	for _, blocked := range []string{"HOME", "PATH", "METANICATOR_X"} {
 		if _, ok := got[blocked]; ok {
 			t.Errorf("blocklisted key %q must be dropped from the effective env", blocked)
 		}

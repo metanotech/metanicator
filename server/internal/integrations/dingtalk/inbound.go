@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"strings"
 
-	"github.com/multica-ai/multica/server/internal/integrations/channel"
-	"github.com/multica-ai/multica/server/internal/integrations/channel/engine"
+	"github.com/metanotech/metanicator/server/internal/integrations/channel"
+	"github.com/metanotech/metanicator/server/internal/integrations/channel/engine"
 )
 
 // This file holds the translation from a DingTalk Stream callback

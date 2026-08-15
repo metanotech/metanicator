@@ -24,8 +24,8 @@ import {
   UserPen,
   Waves,
 } from "lucide-react";
-import { Button } from "@multica/ui/components/ui/button";
-import { Spinner } from "@multica/ui/components/ui/spinner";
+import { Button } from "@metanicator/ui/components/ui/button";
+import { Spinner } from "@metanicator/ui/components/ui/spinner";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -40,33 +40,33 @@ import {
   DropdownMenuSub,
   DropdownMenuSubTrigger,
   DropdownMenuSubContent,
-} from "@multica/ui/components/ui/dropdown-menu";
+} from "@metanicator/ui/components/ui/dropdown-menu";
 import {
   Popover,
   PopoverTrigger,
   PopoverContent,
-} from "@multica/ui/components/ui/popover";
-import { Calendar } from "@multica/ui/components/ui/calendar";
-import { Switch } from "@multica/ui/components/ui/switch";
+} from "@metanicator/ui/components/ui/popover";
+import { Calendar } from "@metanicator/ui/components/ui/calendar";
+import { Switch } from "@metanicator/ui/components/ui/switch";
 import {
   ALL_STATUSES,
   PRIORITY_DISPLAY_ORDER,
-} from "@multica/core/issues/config";
+} from "@metanicator/core/issues/config";
 import { StatusIcon, PriorityIcon } from ".";
 import { useQuery } from "@tanstack/react-query";
-import { useWorkspaceId } from "@multica/core/hooks";
-import { memberListOptions, agentListOptions, squadListOptions } from "@multica/core/workspace/queries";
-import { projectListOptions } from "@multica/core/projects/queries";
-import { labelListOptions } from "@multica/core/labels/queries";
-import { propertyListOptions } from "@multica/core/properties";
-import { propertyIdFromViewKey } from "@multica/core/issues/stores/view-store";
+import { useWorkspaceId } from "@metanicator/core/hooks";
+import { memberListOptions, agentListOptions, squadListOptions } from "@metanicator/core/workspace/queries";
+import { projectListOptions } from "@metanicator/core/projects/queries";
+import { labelListOptions } from "@metanicator/core/labels/queries";
+import { propertyListOptions } from "@metanicator/core/properties";
+import { propertyIdFromViewKey } from "@metanicator/core/issues/stores/view-store";
 import type {
   Issue,
   IssueProperty,
   IssueTableFacetSpec,
   IssueTableFacetsResponse,
   WorkingAgentSummary,
-} from "@multica/core/types";
+} from "@metanicator/core/types";
 import { ProjectIcon } from "../../projects/components/project-icon";
 import { ActorAvatar } from "../../common/actor-avatar";
 import { PropertyIcon } from "../../common/property-icon";
@@ -84,14 +84,14 @@ import {
   type SwimlaneGrouping,
   type TableGrouping,
   type ViewMode,
-} from "@multica/core/issues/stores/view-store";
-import { useViewStore, useViewStoreApi } from "@multica/core/issues/stores/view-store-context";
-import { addDaysDateOnly, dateOnlyToLocalDate, formatDateOnly, toDateOnly, todayDateOnly } from "@multica/core/issues/date";
+} from "@metanicator/core/issues/stores/view-store";
+import { useViewStore, useViewStoreApi } from "@metanicator/core/issues/stores/view-store-context";
+import { addDaysDateOnly, dateOnlyToLocalDate, formatDateOnly, toDateOnly, todayDateOnly } from "@metanicator/core/issues/date";
 import {
   useIssuesScopeStore,
   type IssuesScope,
-} from "@multica/core/issues/stores/issues-scope-store";
-import { Tooltip, TooltipTrigger, TooltipContent } from "@multica/ui/components/ui/tooltip";
+} from "@metanicator/core/issues/stores/issues-scope-store";
+import { Tooltip, TooltipTrigger, TooltipContent } from "@metanicator/ui/components/ui/tooltip";
 import { useT } from "../../i18n";
 import { matchesPinyin } from "../../editor/extensions/pinyin-match";
 import { FILTER_ITEM_CLASS, HoverCheck } from "../../common/hover-check";

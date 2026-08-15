@@ -6,7 +6,7 @@ import { proxy } from "./proxy";
 function makeRequest(
   path: string,
   cookies: Record<string, string> = {},
-  host = "app.multica.test",
+  host = "app.metanicator.test",
 ) {
   const cookieHeader = Object.entries(cookies)
     .map(([key, value]) => `${key}=${value}`)
@@ -52,7 +52,7 @@ function withoutRuntimeUpstreams(run: () => void) {
 
 describe("proxy legacy workspace route redirects", () => {
   const sessionCookies = {
-    multica_logged_in: "1",
+    metanicator_logged_in: "1",
     last_workspace_slug: "acme",
   };
 
@@ -72,7 +72,7 @@ describe("proxy legacy workspace route redirects", () => {
     "redirects legacy /%s URLs through the last workspace slug",
     (segment, expectedPath) => {
       expect(redirectLocation(`/${segment}?tab=all`, sessionCookies)).toBe(
-        `https://app.multica.test${expectedPath}?tab=all`,
+        `https://app.metanicator.test${expectedPath}?tab=all`,
       );
     },
   );
@@ -80,19 +80,19 @@ describe("proxy legacy workspace route redirects", () => {
   it("preserves nested legacy paths and query strings", () => {
     expect(
       redirectLocation("/squads/squad-123?view=members", sessionCookies),
-    ).toBe("https://app.multica.test/acme/squads/squad-123?view=members");
+    ).toBe("https://app.metanicator.test/acme/squads/squad-123?view=members");
   });
 
   it("sends logged-out legacy URLs to login", () => {
     expect(redirectLocation("/usage?tab=billing")).toBe(
-      "https://app.multica.test/login?tab=billing",
+      "https://app.metanicator.test/login?tab=billing",
     );
   });
 
-  it("sends logged-in legacy URLs without a last workspace cookie to login", () => {
+  it("sends logged-in legacy URLs without a last workspace cookie to root", () => {
     expect(
-      redirectLocation("/squads", { multica_logged_in: "1" }),
-    ).toBe("https://app.multica.test/login");
+      redirectLocation("/squads", { metanicator_logged_in: "1" }),
+    ).toBe("https://app.metanicator.test/");
   });
 
   it("does not redirect workspace-scoped URLs whose first segment is already a slug", () => {
@@ -101,18 +101,18 @@ describe("proxy legacy workspace route redirects", () => {
 
   it("redirects root URLs to the last workspace for authenticated users", () => {
     expect(redirectLocation("/", sessionCookies)).toBe(
-      "https://app.multica.test/acme/issues",
+      "https://app.metanicator.test/acme/issues",
     );
   });
 
   it("redirects unauthenticated root visits to /login", () => {
-    expect(redirectLocation("/")).toBe("https://app.multica.test/login");
+    expect(redirectLocation("/")).toBe("https://app.metanicator.test/login");
   });
 
   it.each(["/homepage", "/about", "/changelog", "/download", "/usecases"])(
     "redirects landing route %s to /login for unauthenticated users",
     (route) => {
-      expect(redirectLocation(route)).toBe("https://app.multica.test/login");
+      expect(redirectLocation(route)).toBe("https://app.metanicator.test/login");
     },
   );
 });
@@ -208,19 +208,19 @@ describe("proxy root and locale handling", () => {
   it("redirects logged-in root visits to the last workspace", () => {
     const res = proxy(
       makeRequest("/", {
-        multica_logged_in: "1",
+        metanicator_logged_in: "1",
         last_workspace_slug: "acme",
       }),
     );
 
     expect(res.status).toBe(307);
     expect(res.headers.get("location")).toBe(
-      "https://app.multica.test/acme/issues",
+      "https://app.metanicator.test/acme/issues",
     );
   });
 
   it("forwards locale on login requests", () => {
-    const res = proxy(makeRequest("/login", { "multica-locale": "zh-Hans" }));
+    const res = proxy(makeRequest("/login", { "metanicator-locale": "zh-Hans" }));
 
     expect(res.status).toBe(200);
     expect(res.headers.get("location")).toBeNull();

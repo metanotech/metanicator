@@ -2,13 +2,13 @@
 
 import { useState } from "react";
 import { ArrowUpRight, Check, Clock, LoaderCircle } from "lucide-react";
-import { cn } from "@multica/ui/lib/utils";
+import { cn } from "@metanicator/ui/lib/utils";
 import {
   Tooltip,
   TooltipTrigger,
   TooltipContent,
-} from "@multica/ui/components/ui/tooltip";
-import type { ChatQuickAction } from "@multica/core/types";
+} from "@metanicator/ui/components/ui/tooltip";
+import type { ChatQuickAction } from "@metanicator/core/types";
 import { useT } from "../../i18n";
 
 /**

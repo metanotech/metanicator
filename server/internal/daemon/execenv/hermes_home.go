@@ -38,11 +38,11 @@ import (
 //     resolves relative external_dirs against HERMES_HOME, so leaving them
 //     relative after the redirect would silently repoint them) — this exposes
 //     the user's global/builtin skills read-only without copying them;
-//   - populates the task-local `skills/` dir with ONLY the Multica-bound skills,
+//   - populates the task-local `skills/` dir with ONLY the Metanicator-bound skills,
 //     which take precedence because Hermes lists the home skills dir first;
 //   - keeps `memories/` overlay-owned (a fresh per-task dir), NOT symlinked to
 //     the shared home: Hermes loads and writes back MEMORY.md/USER.md there, and
-//     per-agent memory is a Multica product concern — the host's local Hermes
+//     per-agent memory is a Metanicator product concern — the host's local Hermes
 //     memory must not bleed into a task, nor task memory back out to the host;
 //   - keeps the state.db SQLite session store and its journal sidecars
 //     overlay-owned too: Hermes creates them lazily, Reuse preserves them for
@@ -87,7 +87,7 @@ import (
 // HERMES_HOME to the overlay, and is written even when the source has none so
 // Hermes' project-.env fallback (loaded with override=True only when no user
 // .env loaded) can't relocate the home either.
-const hermesTaskLocalStateMarker = ".multica-task-local-state-v1"
+const hermesTaskLocalStateMarker = ".metanicator-task-local-state-v1"
 
 var hermesOverriddenEntries = map[string]struct{}{
 	"skills":                   {},
@@ -731,7 +731,7 @@ func computeHermesExternalDirs(sharedHome string, existing []string, env map[str
 
 // writeHermesBoundSkills rebuilds the task-local skills/ dir from scratch so a
 // skill removed since the last run can't linger, then writes only the
-// Multica-bound skills. They keep their natural slug (no user skills share this
+// Metanicator-bound skills. They keep their natural slug (no user skills share this
 // dir) and therefore take precedence over any same-named external skill.
 func writeHermesBoundSkills(hermesHome string, workspaceSkills []SkillContextForEnv, logger *slog.Logger) error {
 	skillsDir := filepath.Join(hermesHome, "skills")

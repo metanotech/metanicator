@@ -1,6 +1,6 @@
 import { cache } from "react";
 import { cookies, headers } from "next/headers";
-import { LOCALE_COOKIE, type SupportedLocale } from "@multica/core/i18n";
+import { LOCALE_COOKIE, type SupportedLocale } from "@metanicator/core/i18n";
 import {
   isSupportedLocale,
   METANICATOR_LOCALE_HEADER,

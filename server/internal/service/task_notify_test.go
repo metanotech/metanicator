@@ -4,8 +4,8 @@ import (
 	"context"
 	"testing"
 
-	"github.com/multica-ai/multica/server/internal/util"
-	db "github.com/multica-ai/multica/server/pkg/db/generated"
+	"github.com/metanotech/metanicator/server/internal/util"
+	db "github.com/metanotech/metanicator/server/pkg/db/generated"
 )
 
 // stubWakeup records every call so the test can assert that notify

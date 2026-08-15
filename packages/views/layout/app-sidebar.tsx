@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { cn } from "@multica/ui/lib/utils";
-import { useScrollFade } from "@multica/ui/hooks/use-scroll-fade";
+import { cn } from "@metanicator/ui/lib/utils";
+import { useScrollFade } from "@metanicator/ui/hooks/use-scroll-fade";
 import { AppLink, useNavigation } from "../navigation";
 import { HelpLauncher } from "./help-launcher";
 import { JoinDiscordCard } from "./join-discord-card";
@@ -26,13 +26,13 @@ import {
   X,
 } from "lucide-react";
 import { WorkspaceAvatar } from "../workspace/workspace-avatar";
-import { ActorAvatar } from "@multica/ui/components/common/actor-avatar";
-import { Tooltip, TooltipTrigger, TooltipContent } from "@multica/ui/components/ui/tooltip";
-import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@multica/ui/components/ui/collapsible";
-import { CappedNumberFlow } from "@multica/ui/components/ui/number-flow";
+import { ActorAvatar } from "@metanicator/ui/components/common/actor-avatar";
+import { Tooltip, TooltipTrigger, TooltipContent } from "@metanicator/ui/components/ui/tooltip";
+import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@metanicator/ui/components/ui/collapsible";
+import { CappedNumberFlow } from "@metanicator/ui/components/ui/number-flow";
 import { StatusIcon } from "../issues/components/status-icon";
-import { useIssueDraftStore } from "@multica/core/issues/stores/draft-store";
-import { openCreateIssueWithPreference } from "@multica/core/issues/stores/create-mode-store";
+import { useIssueDraftStore } from "@metanicator/core/issues/stores/draft-store";
+import { openCreateIssueWithPreference } from "@metanicator/core/issues/stores/create-mode-store";
 import {
   Sidebar,
   SidebarContent,
@@ -46,7 +46,7 @@ import {
   SidebarMenuItem,
   SidebarRail,
   useSidebar,
-} from "@multica/ui/components/ui/sidebar";
+} from "@metanicator/ui/components/ui/sidebar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -55,30 +55,30 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@multica/ui/components/ui/dropdown-menu";
-import { useAuthStore } from "@multica/core/auth";
-import { useCurrentWorkspace, useWorkspacePaths, paths } from "@multica/core/paths";
-import { workspaceListOptions, myInvitationListOptions, workspaceKeys } from "@multica/core/workspace/queries";
-import { resolvePublicFileUrl } from "@multica/core/workspace/avatar-url";
+} from "@metanicator/ui/components/ui/dropdown-menu";
+import { useAuthStore } from "@metanicator/core/auth";
+import { useCurrentWorkspace, useWorkspacePaths, paths } from "@metanicator/core/paths";
+import { workspaceListOptions, myInvitationListOptions, workspaceKeys } from "@metanicator/core/workspace/queries";
+import { resolvePublicFileUrl } from "@metanicator/core/workspace/avatar-url";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { inboxKeys, deduplicateInboxItems, inboxUnreadSummaryOptions, hasOtherWorkspaceUnread, unreadWorkspaceIds } from "@multica/core/inbox/queries";
-import { chatSessionsOptions } from "@multica/core/chat/queries";
-import { countUnreadChatMessages } from "@multica/core/chat/unread";
-import { useChatStore } from "@multica/core/chat";
-import { api, ApiError } from "@multica/core/api";
-import { useConfigStore } from "@multica/core/config";
-import { pinListOptions } from "@multica/core/pins/queries";
-import { useDeletePin, useReorderPins } from "@multica/core/pins/mutations";
-import { issueDetailOptions } from "@multica/core/issues/queries";
-import { projectDetailOptions } from "@multica/core/projects/queries";
-import type { PinnedItem } from "@multica/core/types";
+import { inboxKeys, deduplicateInboxItems, inboxUnreadSummaryOptions, hasOtherWorkspaceUnread, unreadWorkspaceIds } from "@metanicator/core/inbox/queries";
+import { chatSessionsOptions } from "@metanicator/core/chat/queries";
+import { countUnreadChatMessages } from "@metanicator/core/chat/unread";
+import { useChatStore } from "@metanicator/core/chat";
+import { api, ApiError } from "@metanicator/core/api";
+import { useConfigStore } from "@metanicator/core/config";
+import { pinListOptions } from "@metanicator/core/pins/queries";
+import { useDeletePin, useReorderPins } from "@metanicator/core/pins/mutations";
+import { issueDetailOptions } from "@metanicator/core/issues/queries";
+import { projectDetailOptions } from "@metanicator/core/projects/queries";
+import type { PinnedItem } from "@metanicator/core/types";
 import { useLogout } from "../auth";
 import { ProjectIcon } from "../projects/components/project-icon";
 import { routeIconForPath } from "./route-icon-components";
 import { useT } from "../i18n";
 import {
   useShortcut,
-} from "@multica/core/shortcuts";
+} from "@metanicator/core/shortcuts";
 import { ShortcutKeycaps } from "../common/shortcut-keycaps";
 import { useAppForeground } from "../common/use-app-foreground";
 

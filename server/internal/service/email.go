@@ -117,7 +117,7 @@ func resolveFromEmail(smtpHost string) string {
 		if resendFrom != "" {
 			return resendFrom
 		}
-		return "noreply@multica.ai"
+		return "noreply@metanicator.ai"
 	}
 	if smtpFrom := strings.TrimSpace(os.Getenv("SMTP_FROM_EMAIL")); smtpFrom != "" {
 		return smtpFrom
@@ -234,7 +234,7 @@ func NewEmailService() *EmailService {
 	case client != nil:
 		fmt.Printf("EmailService: Resend API from=%s\n", from)
 	default:
-		fmt.Println("EmailService: DEV mode — codes printed to stdout (set MULTICA_DEV_VERIFICATION_CODE in .env for a fixed local code)")
+		fmt.Println("EmailService: DEV mode — codes printed to stdout (set METANICATOR_DEV_VERIFICATION_CODE in .env for a fixed local code)")
 	}
 
 	return &EmailService{
@@ -366,7 +366,7 @@ func (s *EmailService) SendVerificationCode(to, code string) error {
 // SendInvitationEmail notifies the invitee that they have been invited to a workspace.
 // invitationID is included in the URL so the email deep-links to /invite/{id}.
 func (s *EmailService) SendInvitationEmail(to, inviterName, workspaceName, invitationID string) error {
-	appURL := strings.TrimRight(strings.TrimSpace(os.Getenv("MULTICA_APP_URL")), "/")
+	appURL := strings.TrimRight(strings.TrimSpace(os.Getenv("METANICATOR_APP_URL")), "/")
 	if appURL == "" {
 		appURL = strings.TrimRight(strings.TrimSpace(os.Getenv("FRONTEND_ORIGIN")), "/")
 	}

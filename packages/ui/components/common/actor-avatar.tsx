@@ -2,14 +2,14 @@
 
 import { useState, useEffect } from "react";
 import { Bot, Users } from "lucide-react";
-import { cn } from "@multica/ui/lib/utils";
+import { cn } from "@metanicator/ui/lib/utils";
 import {
   AVATAR_SIZE_PX,
   DEFAULT_AVATAR_SIZE,
   type AvatarSize,
-} from "@multica/ui/lib/avatar-size";
-import { parseAvatarEmoji } from "@multica/ui/lib/avatar-emoji";
-import { MetanicatorIcon } from "./multica-icon";
+} from "@metanicator/ui/lib/avatar-size";
+import { parseAvatarEmoji } from "@metanicator/ui/lib/avatar-emoji";
+import { MetanicatorIcon } from "./metanicator-icon";
 
 interface ActorAvatarProps {
   name: string;

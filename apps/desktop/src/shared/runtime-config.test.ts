@@ -10,9 +10,9 @@ describe("runtime config", () => {
   it("uses cloud defaults without a desktop.json file", () => {
     expect(DEFAULT_RUNTIME_CONFIG).toEqual({
       schemaVersion: 1,
-      apiUrl: "https://api.multica.ai",
-      wsUrl: "wss://api.multica.ai/ws",
-      appUrl: "https://multica.ai",
+      apiUrl: "https://api.metanicator.ai",
+      wsUrl: "wss://api.metanicator.ai/ws",
+      appUrl: "https://metanicator.ai",
     });
   });
 
@@ -35,13 +35,13 @@ describe("runtime config", () => {
   it("strips the leading api. label when deriving appUrl", () => {
     expect(
       parseRuntimeConfig(
-        JSON.stringify({ schemaVersion: 1, apiUrl: "https://api.multica.ai" }),
+        JSON.stringify({ schemaVersion: 1, apiUrl: "https://api.metanicator.ai" }),
       ),
     ).toEqual({
       schemaVersion: 1,
-      apiUrl: "https://api.multica.ai",
-      wsUrl: "wss://api.multica.ai/ws",
-      appUrl: "https://multica.ai",
+      apiUrl: "https://api.metanicator.ai",
+      wsUrl: "wss://api.metanicator.ai/ws",
+      appUrl: "https://metanicator.ai",
     });
   });
 
@@ -79,7 +79,7 @@ describe("runtime config", () => {
 
   it("rejects non-http api schemes", () => {
     expect(() =>
-      parseRuntimeConfig(JSON.stringify({ schemaVersion: 1, apiUrl: "file:///tmp/multica" })),
+      parseRuntimeConfig(JSON.stringify({ schemaVersion: 1, apiUrl: "file:///tmp/metanicator" })),
     ).toThrow(/apiUrl must use http or https/);
   });
 
@@ -126,26 +126,26 @@ describe("runtime config", () => {
     // api at `api.<web-host>`, so stripping the leading label gives the
     // right web origin without a separate VITE_APP_URL.
     expect(
-      runtimeConfigFromDevEnv({ apiUrl: "https://api.test.multica.ai" }),
+      runtimeConfigFromDevEnv({ apiUrl: "https://api.test.metanicator.ai" }),
     ).toEqual({
       schemaVersion: 1,
-      apiUrl: "https://api.test.multica.ai",
-      wsUrl: "wss://api.test.multica.ai/ws",
-      appUrl: "https://test.multica.ai",
+      apiUrl: "https://api.test.metanicator.ai",
+      wsUrl: "wss://api.test.metanicator.ai/ws",
+      appUrl: "https://test.metanicator.ai",
     });
   });
 
   it("dev VITE_APP_URL still wins over apiUrl-derived value", () => {
     expect(
       runtimeConfigFromDevEnv({
-        apiUrl: "https://api.test.multica.ai",
-        appUrl: "https://staging.multica.ai",
+        apiUrl: "https://api.test.metanicator.ai",
+        appUrl: "https://staging.metanicator.ai",
       }),
     ).toEqual({
       schemaVersion: 1,
-      apiUrl: "https://api.test.multica.ai",
-      wsUrl: "wss://api.test.multica.ai/ws",
-      appUrl: "https://staging.multica.ai",
+      apiUrl: "https://api.test.metanicator.ai",
+      wsUrl: "wss://api.test.metanicator.ai/ws",
+      appUrl: "https://staging.metanicator.ai",
     });
   });
 });

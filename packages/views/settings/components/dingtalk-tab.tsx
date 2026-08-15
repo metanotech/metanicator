@@ -4,17 +4,17 @@ import { useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { ChevronRight, ExternalLink, MessagesSquare, Trash2 } from "lucide-react";
-import { cn } from "@multica/ui/lib/utils";
-import { Button } from "@multica/ui/components/ui/button";
-import { Card, CardContent } from "@multica/ui/components/ui/card";
+import { cn } from "@metanicator/ui/lib/utils";
+import { Button } from "@metanicator/ui/components/ui/button";
+import { Card, CardContent } from "@metanicator/ui/components/ui/card";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from "@multica/ui/components/ui/dialog";
-import { Input } from "@multica/ui/components/ui/input";
-import { Label } from "@multica/ui/components/ui/label";
+} from "@metanicator/ui/components/ui/dialog";
+import { Input } from "@metanicator/ui/components/ui/input";
+import { Label } from "@metanicator/ui/components/ui/label";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -24,14 +24,14 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@multica/ui/components/ui/alert-dialog";
-import { useAuthStore } from "@multica/core/auth";
-import { useWorkspaceId } from "@multica/core/hooks";
-import { memberListOptions } from "@multica/core/workspace/queries";
-import { useActorName } from "@multica/core/workspace/hooks";
-import { dingtalkInstallationsOptions, dingtalkKeys } from "@multica/core/dingtalk";
-import { api } from "@multica/core/api";
-import type { DingTalkInstallation } from "@multica/core/types";
+} from "@metanicator/ui/components/ui/alert-dialog";
+import { useAuthStore } from "@metanicator/core/auth";
+import { useWorkspaceId } from "@metanicator/core/hooks";
+import { memberListOptions } from "@metanicator/core/workspace/queries";
+import { useActorName } from "@metanicator/core/workspace/hooks";
+import { dingtalkInstallationsOptions, dingtalkKeys } from "@metanicator/core/dingtalk";
+import { api } from "@metanicator/core/api";
+import type { DingTalkInstallation } from "@metanicator/core/types";
 import { ActorAvatar } from "../../common/actor-avatar";
 import { openExternal } from "../../platform";
 import { useT } from "../../i18n";
@@ -242,7 +242,7 @@ function dingtalkDocsUrl(lang: string | undefined): string {
       : lang?.startsWith("ko")
         ? "/ko"
         : "";
-  return `https://multica.ai/docs${prefix}/dingtalk-bot-integration`;
+  return `https://metanicator.ai/docs${prefix}/dingtalk-bot-integration`;
 }
 
 // DingTalkAgentBindButton is the per-agent CTA exposed from the agent detail

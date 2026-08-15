@@ -724,7 +724,7 @@ func anyModelSupportsThinkingValue(models []Model, value string) bool {
 // providerThinkingEnums is the server-side accept-list for runtimes with a
 // fixed reasoning-effort vocabulary. Codex and OpenCode are deliberately
 // absent because their values come from daemon-local model catalogs, which can
-// gain new tokens without a Multica release.
+// gain new tokens without a Metanicator release.
 //
 // The server doesn't have local CLI binaries, so it cannot do per-model
 // discovery the way the daemon can. Fixed-catalog providers use this enum;
@@ -771,7 +771,7 @@ var thinkingDynamicCatalogProviders = map[string]bool{
 	"opencode": true,
 }
 
-// ThinkingControlSupported reports whether Multica can deliver a per-agent
+// ThinkingControlSupported reports whether Metanicator can deliver a per-agent
 // reasoning effort to this runtime at all. False means the answer to any
 // thinking_level is "no", regardless of the token: the runtime exposes no
 // effort dial on the surface the daemon speaks to it over, so there is nothing
@@ -780,7 +780,7 @@ var thinkingDynamicCatalogProviders = map[string]bool{
 // Hermes is the instructive case (MUL-5770). The Hermes CLI does support
 // reasoning effort — `agent.reasoning_effort` in `<HERMES_HOME>/config.yaml`,
 // checked against its own `minimal|low|medium|high|xhigh|max|ultra` set — but
-// Multica drives Hermes over ACP (`hermes acp`), and its ACP adapter does not
+// Metanicator drives Hermes over ACP (`hermes acp`), and its ACP adapter does not
 // carry that setting onto the session:
 //   - `session/new` advertises `models` and `modes` only, no `configOptions`,
 //     so there is no effort catalog to discover;

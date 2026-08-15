@@ -4,8 +4,8 @@ import (
 	"context"
 	"testing"
 
-	"github.com/multica-ai/multica/server/internal/service"
-	db "github.com/multica-ai/multica/server/pkg/db/generated"
+	"github.com/metanotech/metanicator/server/internal/service"
+	db "github.com/metanotech/metanicator/server/pkg/db/generated"
 )
 
 // A chat-created issue must broadcast the same full issue payload the HTTP

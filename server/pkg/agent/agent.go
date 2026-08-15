@@ -25,7 +25,7 @@ type Backend interface {
 type ExecOptions struct {
 	Cwd   string
 	Model string
-	// SystemPrompt carries the Multica runtime brief for the few providers
+	// SystemPrompt carries the Metanicator runtime brief for the few providers
 	// that cannot pick it up from disk. The daemon leaves it empty for every
 	// other provider (see daemon.providerNeedsInlineSystemPrompt), because the
 	// brief is already delivered as a per-task context file in the workdir —
@@ -241,7 +241,7 @@ type Config struct {
 // migration 242 to add qoderclicn, migration 253 to add qwenpaw, and
 // migration 254 to add reasonix): a
 // custom runtime profile may only
-// be based on a backend Multica officially supports.
+// be based on a backend Metanicator officially supports.
 // qoder and qoderclicn share the same ACP backend; keeping both provider keys
 // lets the daemon auto-detect and register the international and China-region
 // binaries independently. traecli (Trae) has a New backend, launch

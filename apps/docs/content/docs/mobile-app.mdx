@@ -1,13 +1,13 @@
 ---
 title: Mobile app (iOS)
-description: Install Multica on your iPhone from source, and connect to Cloud or a self-hosted instance.
+description: Install Metanicator on your iPhone from source, and connect to Cloud or a self-hosted instance.
 ---
 
 import { Callout } from "fumadocs-ui/components/callout";
 
-The Multica iOS client is not on the App Store yet. You can build a Release version from the open-source repository on a Mac and install it on your own iPhone. There is no Android client yet.
+The Metanicator iOS client is not on the App Store yet. You can build a Release version from the open-source repository on a Mac and install it on your own iPhone. There is no Android client yet.
 
-The installed app connects to Multica Cloud by default; sign in with your existing account. Workspaces, issues, comments, and run history all live on the server — nothing needs to be synced manually from web or Desktop.
+The installed app connects to Metanicator Cloud by default; sign in with your existing account. Workspaces, issues, comments, and run history all live on the server — nothing needs to be synced manually from web or Desktop.
 
 ## Prerequisites
 
@@ -27,7 +27,7 @@ Clone the repository and install dependencies:
 
 ```bash
 git clone https://github.com/metanotech/metanicator.git
-cd multica
+cd metanicator
 pnpm install
 ```
 
@@ -52,11 +52,11 @@ Builds signed with an Apple Developer Program account stay valid longer and can 
 If Xcode reports `No matching provisioning profiles found`, the default bundle identifier may not belong to your Apple ID. Switch to a reverse-domain name you control and rebuild:
 
 ```bash
-export EXPO_BUNDLE_IDENTIFIER_PROD=com.yourname.multica
+export EXPO_BUNDLE_IDENTIFIER_PROD=com.yourname.metanicator
 pnpm ios:mobile:device:prod:release
 ```
 
-The value only needs to be available in your Apple Developer team; it does not affect your Multica account or workspaces.
+The value only needs to be available in your Apple Developer team; it does not affect your Metanicator account or workspaces.
 
 ## Updating
 

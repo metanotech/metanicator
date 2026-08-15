@@ -19,11 +19,11 @@ import (
 	"github.com/jackc/pgx/v5/pgtype"
 	"golang.org/x/sync/errgroup"
 
-	"github.com/multica-ai/multica/server/internal/integrations/channel"
-	"github.com/multica-ai/multica/server/internal/integrations/channel/engine"
-	"github.com/multica-ai/multica/server/internal/storage"
-	"github.com/multica-ai/multica/server/internal/util"
-	db "github.com/multica-ai/multica/server/pkg/db/generated"
+	"github.com/metanotech/metanicator/server/internal/integrations/channel"
+	"github.com/metanotech/metanicator/server/internal/integrations/channel/engine"
+	"github.com/metanotech/metanicator/server/internal/storage"
+	"github.com/metanotech/metanicator/server/internal/util"
+	db "github.com/metanotech/metanicator/server/pkg/db/generated"
 )
 
 // DingTalk publishes no inbound image limits. Keep the adapter's memory and

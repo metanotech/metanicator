@@ -2,9 +2,9 @@ import { useMemo } from "react";
 import {
   NavigationProvider,
   type NavigationAdapter,
-} from "@multica/views/navigation";
-import { useAuthStore } from "@multica/core/auth";
-import { isReservedSlug } from "@multica/core/paths";
+} from "@metanicator/views/navigation";
+import { useAuthStore } from "@metanicator/core/auth";
+import { isReservedSlug } from "@metanicator/core/paths";
 import {
   useTabStore,
   getActiveTab,
@@ -96,7 +96,7 @@ function tryRouteToOtherWorkspace(path: string): boolean {
 }
 
 /**
- * Open a path that a link inside content resolved to (the `multica:navigate`
+ * Open a path that a link inside content resolved to (the `metanicator:navigate`
  * event fired by the shared editor/markdown link handler) in a foreground tab.
  *
  * A content link is a jump to another subject, so it gets its own tab rather

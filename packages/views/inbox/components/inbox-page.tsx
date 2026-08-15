@@ -3,17 +3,17 @@
 import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 import { useDefaultLayout } from "react-resizable-panels";
 import { useQuery } from "@tanstack/react-query";
-import { useWorkspaceId } from "@multica/core/hooks";
-import { useWorkspacePaths } from "@multica/core/paths";
-import { useModalStore } from "@multica/core/modals";
-import { useIssueDraftStore } from "@multica/core/issues/stores/draft-store";
+import { useWorkspaceId } from "@metanicator/core/hooks";
+import { useWorkspacePaths } from "@metanicator/core/paths";
+import { useModalStore } from "@metanicator/core/modals";
+import { useIssueDraftStore } from "@metanicator/core/issues/stores/draft-store";
 import {
   inboxListOptions,
   archivedInboxListOptions,
   deduplicateInboxItems,
   deduplicateArchivedInboxItems,
   useInboxUnreadCount,
-} from "@multica/core/inbox/queries";
+} from "@metanicator/core/inbox/queries";
 import {
   useMarkInboxRead,
   useMarkInboxUnread,
@@ -23,10 +23,10 @@ import {
   useArchiveAllInbox,
   useArchiveAllReadInbox,
   useArchiveCompletedInbox,
-} from "@multica/core/inbox/mutations";
+} from "@metanicator/core/inbox/mutations";
 
 import { IssueDetail } from "../../issues/components";
-import { ErrorBoundary } from "@multica/ui/components/common/error-boundary";
+import { ErrorBoundary } from "@metanicator/ui/components/common/error-boundary";
 import { useNavigation } from "../../navigation";
 import { toast } from "sonner";
 import {
@@ -40,23 +40,23 @@ import {
   ListChecks,
   ArrowLeft,
 } from "lucide-react";
-import type { InboxItem } from "@multica/core/types";
-import { Button } from "@multica/ui/components/ui/button";
+import type { InboxItem } from "@metanicator/core/types";
+import { Button } from "@metanicator/ui/components/ui/button";
 import {
   ResizablePanelGroup,
   ResizablePanel,
   ResizableHandle,
-} from "@multica/ui/components/ui/resizable";
-import { Skeleton } from "@multica/ui/components/ui/skeleton";
-import { NumberFlow } from "@multica/ui/components/ui/number-flow";
+} from "@metanicator/ui/components/ui/resizable";
+import { Skeleton } from "@metanicator/ui/components/ui/skeleton";
+import { NumberFlow } from "@metanicator/ui/components/ui/number-flow";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
-} from "@multica/ui/components/ui/dropdown-menu";
-import { useIsMobile } from "@multica/ui/hooks/use-mobile";
+} from "@metanicator/ui/components/ui/dropdown-menu";
+import { useIsMobile } from "@metanicator/ui/hooks/use-mobile";
 import { PageHeader } from "../../layout/page-header";
 import { useTimeAgo } from "./inbox-list-item";
 import { InboxList } from "./inbox-list";
@@ -199,7 +199,7 @@ export function InboxPage() {
   ]);
 
   const { defaultLayout, onLayoutChanged } = useDefaultLayout({
-    id: "multica_inbox_layout",
+    id: "metanicator_inbox_layout",
   });
 
   const isMobile = useIsMobile();
@@ -530,7 +530,7 @@ export function InboxPage() {
         key={selected.issue_id}
         issueId={selected.issue_id}
         defaultSidebarOpen={false}
-        layoutId="multica_inbox_issue_detail_layout"
+        layoutId="metanicator_inbox_issue_detail_layout"
         highlightCommentId={selected.details?.comment_id ?? undefined}
         leadingAction={mobileBackAction}
         onDelete={() => {

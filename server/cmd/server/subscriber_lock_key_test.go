@@ -6,9 +6,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/multica-ai/multica/server/internal/util"
+	"github.com/metanotech/metanicator/server/internal/util"
 
-	db "github.com/multica-ai/multica/server/pkg/db/generated"
+	db "github.com/metanotech/metanicator/server/pkg/db/generated"
 )
 
 // TestLockSubscriberWrites_KeyedOnUUIDValueNotSpelling covers MUL-5483 review

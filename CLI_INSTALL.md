@@ -1,4 +1,4 @@
-# Multica CLI — Installation Guide for AI Agents
+# Metanicator CLI — Installation Guide for AI Agents
 
 > **Audience:** This document is designed for AI agents (Claude Code, Codex, etc.) to read and execute step-by-step. Each step includes the exact shell commands to run, expected outcomes, and error handling.
 
@@ -7,25 +7,25 @@
 Give this instruction to your AI agent:
 
 ```
-Fetch https://github.com/metanotech/metanicator/blob/main/CLI_INSTALL.md and follow the instructions to install Multica CLI, log in, and start the daemon on this machine.
+Fetch https://github.com/metanotech/metanicator/blob/main/CLI_INSTALL.md and follow the instructions to install Metanicator CLI, log in, and start the daemon on this machine.
 ```
 
 ---
 
-## Step 1: Check if Multica CLI is already installed
+## Step 1: Check if Metanicator CLI is already installed
 
 Run:
 
 ```bash
-multica version
+metanicator version
 ```
 
-- **If it prints a version string** (e.g. `multica v0.x.x`): skip to **Step 3**.
+- **If it prints a version string** (e.g. `metanicator v0.x.x`): skip to **Step 3**.
 - **If command not found**: continue to **Step 2**.
 
 ---
 
-## Step 2: Install the Multica CLI
+## Step 2: Install the Metanicator CLI
 
 > **Windows users:** Skip to [Option C: Windows (PowerShell)](#option-c-windows-powershell) below.
 
@@ -40,13 +40,13 @@ which brew
 If `brew` is found, install via Homebrew:
 
 ```bash
-brew install multica-ai/tap/multica
+brew install metanicator-ai/tap/metanicator
 ```
 
 Then verify:
 
 ```bash
-multica version
+metanicator version
 ```
 
 If the version prints successfully, skip to **Step 3**.
@@ -54,7 +54,7 @@ If the version prints successfully, skip to **Step 3**.
 To upgrade later, run:
 
 ```bash
-brew upgrade multica-ai/tap/multica
+brew upgrade metanicator-ai/tap/metanicator
 ```
 
 ### Option B: Download from GitHub Releases (macOS/Linux, no Homebrew)
@@ -77,22 +77,22 @@ LATEST=$(curl -sI https://github.com/metanotech/metanicator/releases/latest | gr
 
 # Download and extract
 VERSION="${LATEST#v}"
-curl -sL "https://github.com/metanotech/metanicator/releases/download/${LATEST}/multica-cli-${VERSION}-${OS}-${ARCH}.tar.gz" -o /tmp/multica.tar.gz
-tar -xzf /tmp/multica.tar.gz -C /tmp multica
-sudo mv /tmp/multica /usr/local/bin/multica
-rm /tmp/multica.tar.gz
+curl -sL "https://github.com/metanotech/metanicator/releases/download/${LATEST}/metanicator-cli-${VERSION}-${OS}-${ARCH}.tar.gz" -o /tmp/metanicator.tar.gz
+tar -xzf /tmp/metanicator.tar.gz -C /tmp metanicator
+sudo mv /tmp/metanicator /usr/local/bin/metanicator
+rm /tmp/metanicator.tar.gz
 ```
 
 Verify:
 
 ```bash
-multica version
+metanicator version
 ```
 
 **If this fails:**
 - Check that `/usr/local/bin` is in `$PATH`.
-- On Linux, you may need `chmod +x /usr/local/bin/multica`.
-- If `sudo` is not available, install to a user-writable directory: `mv /tmp/multica ~/.local/bin/multica` and ensure `~/.local/bin` is in `$PATH`.
+- On Linux, you may need `chmod +x /usr/local/bin/metanicator`.
+- If `sudo` is not available, install to a user-writable directory: `mv /tmp/metanicator ~/.local/bin/metanicator` and ensure `~/.local/bin` is in `$PATH`.
 
 ### Option C: Windows (PowerShell)
 
@@ -102,17 +102,17 @@ Run in PowerShell (no admin required):
 irm https://raw.githubusercontent.com/metanotech/metanicator/main/scripts/install.ps1 | iex
 ```
 
-This downloads the latest Windows binary from GitHub Releases, installs it to `%USERPROFILE%\.multica\bin\`, and adds it to your user PATH.
+This downloads the latest Windows binary from GitHub Releases, installs it to `%USERPROFILE%\.metanicator\bin\`, and adds it to your user PATH.
 
 Verify:
 
 ```powershell
-multica version
+metanicator version
 ```
 
 **If this fails:**
 - Restart your terminal so the updated PATH takes effect.
-- If you use Scoop, the installer will use it automatically: `scoop bucket add multica https://github.com/multica-ai/scoop-bucket.git && scoop install multica`
+- If you use Scoop, the installer will use it automatically: `scoop bucket add metanicator https://github.com/metanotech/scoop-bucket.git && scoop install metanicator`
 - If your execution policy blocks the script: `Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned` then re-run.
 
 ---
@@ -122,26 +122,26 @@ multica version
 Run:
 
 ```bash
-multica login
+metanicator login
 ```
 
 **Important:** This command opens a browser window for OAuth authentication. Tell the user:
 
-> "A browser window will open for Multica login. Please complete the authentication in your browser, then come back here."
+> "A browser window will open for Metanicator login. Please complete the authentication in your browser, then come back here."
 
 Wait for the command to complete. It will automatically discover and watch all workspaces the user belongs to.
 
 Verify:
 
 ```bash
-multica auth status
+metanicator auth status
 ```
 
 Expected output should show the authenticated user and server URL.
 
 **If login fails:**
-- If no browser is available (headless environment), the user can generate a Personal Access Token at `https://multica.ai/settings?tab=tokens` and run: `multica login --token <mul_...>` (use `--token=` with an empty value to be prompted interactively).
-- If the server URL needs to be customized: `multica config set server_url <url>` before logging in.
+- If no browser is available (headless environment), the user can generate a Personal Access Token at `https://metanicator.ai/settings?tab=tokens` and run: `metanicator login --token <mul_...>` (use `--token=` with an empty value to be prompted interactively).
+- If the server URL needs to be customized: `metanicator config set server_url <url>` before logging in.
 
 ---
 
@@ -150,26 +150,26 @@ Expected output should show the authenticated user and server URL.
 First, check if the daemon is already running:
 
 ```bash
-multica daemon status
+metanicator daemon status
 ```
 
 - **If status is "running"**: skip to **Step 5**.
 - **If status is "stopped"**: start it:
 
 ```bash
-multica daemon start
+metanicator daemon start
 ```
 
 Wait 3 seconds, then verify:
 
 ```bash
-multica daemon status
+metanicator daemon status
 ```
 
 Expected output should show `running` status with detected agents (e.g. `claude`, `codex`, `copilot`, `opencode`, `openclaw`, `hermes`, `pi`, `cursor-agent`, `grok`).
 
 **If daemon fails to start:**
-- Check logs: `multica daemon logs`
+- Check logs: `metanicator daemon logs`
 - If a port conflict occurs, the daemon may already be running under a different profile.
 - If no agents are detected, ensure at least one AI CLI (`claude`, `codex`, `copilot`, `opencode`, `openclaw`, `hermes`, `pi`, `cursor-agent`, or `grok`) is installed and on the `$PATH`.
 
@@ -180,7 +180,7 @@ Expected output should show `running` status with detected agents (e.g. `claude`
 Run:
 
 ```bash
-multica daemon status
+metanicator daemon status
 ```
 
 Confirm:
@@ -190,7 +190,7 @@ Confirm:
 
 If the agents list is empty, tell the user:
 
-> "The Multica daemon is running but no AI agent CLIs were detected. Please install at least one supported CLI (`claude`, `codex`, `copilot`, `opencode`, `openclaw`, `hermes`, `pi`, `cursor-agent`, or `grok`), then restart the daemon with `multica daemon stop && multica daemon start`."
+> "The Metanicator daemon is running but no AI agent CLIs were detected. Please install at least one supported CLI (`claude`, `codex`, `copilot`, `opencode`, `openclaw`, `hermes`, `pi`, `cursor-agent`, or `grok`), then restart the daemon with `metanicator daemon stop && metanicator daemon start`."
 
 ---
 
@@ -198,4 +198,4 @@ If the agents list is empty, tell the user:
 
 When all steps are complete, inform the user:
 
-> "Multica CLI is installed and the daemon is running. Agents in your workspaces can now execute tasks on this machine. You can manage workspaces with `multica workspace list` and view daemon logs with `multica daemon logs -f`."
+> "Metanicator CLI is installed and the daemon is running. Agents in your workspaces can now execute tasks on this machine. You can manage workspaces with `metanicator workspace list` and view daemon logs with `metanicator daemon logs -f`."

@@ -5,11 +5,11 @@ import { ArrowLeft, Check } from "lucide-react";
 import {
   ONBOARDING_STEP_ORDER,
   type OnboardingStep,
-} from "@multica/core/onboarding";
-import { cn } from "@multica/ui/lib/utils";
-import { Button } from "@multica/ui/components/ui/button";
-import { MetanicatorIcon } from "@multica/ui/components/common/multica-icon";
-import { DotSphere } from "@multica/ui/components/ui/dot-sphere";
+} from "@metanicator/core/onboarding";
+import { cn } from "@metanicator/ui/lib/utils";
+import { Button } from "@metanicator/ui/components/ui/button";
+import { MetanicatorIcon } from "@metanicator/ui/components/common/metanicator-icon";
+import { DotSphere } from "@metanicator/ui/components/ui/dot-sphere";
 import {
   Stepper,
   StepperDescription,
@@ -18,7 +18,7 @@ import {
   StepperNav,
   StepperSeparator,
   StepperTitle,
-} from "@multica/ui/components/ui/stepper";
+} from "@metanicator/ui/components/ui/stepper";
 import { useT } from "../../i18n";
 
 /**

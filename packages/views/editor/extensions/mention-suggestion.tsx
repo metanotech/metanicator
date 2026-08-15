@@ -11,35 +11,35 @@ import {
   type ReactNode,
 } from "react";
 import type { QueryClient } from "@tanstack/react-query";
-import { getCurrentWsId } from "@multica/core/platform";
-import { flattenIssueBuckets, issueKeys } from "@multica/core/issues/queries";
-import { workspaceKeys } from "@multica/core/workspace/queries";
-import { useAuthStore } from "@multica/core/auth";
-import { canAssignAgentToIssue } from "@multica/core/permissions";
-import { isAgentRuntimeBound } from "@multica/core/agents";
-import { api } from "@multica/core/api";
-import { isImeComposing } from "@multica/core/utils";
+import { getCurrentWsId } from "@metanicator/core/platform";
+import { flattenIssueBuckets, issueKeys } from "@metanicator/core/issues/queries";
+import { workspaceKeys } from "@metanicator/core/workspace/queries";
+import { useAuthStore } from "@metanicator/core/auth";
+import { canAssignAgentToIssue } from "@metanicator/core/permissions";
+import { isAgentRuntimeBound } from "@metanicator/core/agents";
+import { api } from "@metanicator/core/api";
+import { isImeComposing } from "@metanicator/core/utils";
 import type {
   Issue,
   ListIssuesCache,
   MemberWithUser,
   Agent,
   Squad,
-} from "@multica/core/types";
+} from "@metanicator/core/types";
 import { ListTodo } from "lucide-react";
 import { ActorAvatar } from "../../common/actor-avatar";
 import { StatusIcon } from "../../issues/components/status-icon";
 import { ProjectIcon } from "../../projects/components/project-icon";
 import { useT } from "../../i18n";
-import { Badge } from "@multica/ui/components/ui/badge";
+import { Badge } from "@metanicator/ui/components/ui/badge";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@multica/ui/components/ui/tooltip";
-import { cn } from "@multica/ui/lib/utils";
-import type { IssueStatus, ProjectStatus } from "@multica/core/types";
-import { PROJECT_STATUS_CONFIG } from "@multica/core/projects/config";
+} from "@metanicator/ui/components/ui/tooltip";
+import { cn } from "@metanicator/ui/lib/utils";
+import type { IssueStatus, ProjectStatus } from "@metanicator/core/types";
+import { PROJECT_STATUS_CONFIG } from "@metanicator/core/projects/config";
 import type { SuggestionOptions } from "@tiptap/suggestion";
 import { PluginKey } from "@tiptap/pm/state";
 import {

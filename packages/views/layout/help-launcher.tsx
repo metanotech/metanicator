@@ -9,13 +9,13 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@multica/ui/components/ui/dropdown-menu";
-import { useModalStore } from "@multica/core/modals";
-import { useConfigStore } from "@multica/core/config";
+} from "@metanicator/ui/components/ui/dropdown-menu";
+import { useModalStore } from "@metanicator/core/modals";
+import { useConfigStore } from "@metanicator/core/config";
 import { useT } from "../i18n";
 
-const DOCS_URL = "https://multica.ai/docs";
-const CHANGELOG_URL = "https://multica.ai/changelog";
+const DOCS_URL = "https://metanicator.ai/docs";
+const CHANGELOG_URL = "https://metanicator.ai/changelog";
 
 export function HelpLauncher() {
   const { t } = useT("layout");

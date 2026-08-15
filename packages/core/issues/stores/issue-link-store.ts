@@ -24,7 +24,7 @@ export const useIssueLinkStore = create<IssueLinkStore>()(
       setOpenInNewTab: (open) => set({ openInNewTab: open }),
     }),
     {
-      name: "multica_issue_link",
+      name: "metanicator_issue_link",
       storage: createJSONStorage(() => defaultStorage),
     },
   ),

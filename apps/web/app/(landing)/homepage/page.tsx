@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { MetanicatorLanding } from "@/features/landing/components/multica-landing";
+import { MetanicatorLanding } from "@/features/landing/components/metanicator-landing";
 
 export const metadata: Metadata = {
   title: "Homepage",

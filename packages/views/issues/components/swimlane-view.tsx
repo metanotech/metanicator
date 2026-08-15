@@ -27,27 +27,27 @@ import type {
   IssueTableGroupDescriptor,
   Project,
   UpdateIssueRequest,
-} from "@multica/core/types";
-import { useViewStore, useViewStoreApi } from "@multica/core/issues/stores/view-store-context";
+} from "@metanicator/core/types";
+import { useViewStore, useViewStoreApi } from "@metanicator/core/issues/stores/view-store-context";
 import { filterIssues, type IssueFilters } from "../utils/filter";
 import { getMoveAnchors } from "../utils/drag-utils";
-import type { SwimlaneGrouping } from "@multica/core/issues/stores/view-store";
-import { useWorkspacePaths } from "@multica/core/paths";
-import { useWorkspaceId } from "@multica/core/hooks";
-import { useActorName } from "@multica/core/workspace/hooks";
-import { useLoadMoreByStatus } from "@multica/core/issues/mutations";
-import { childrenByParentsOptions, issueKeys, type IssueSortParam, type MyIssuesFilter } from "@multica/core/issues/queries";
+import type { SwimlaneGrouping } from "@metanicator/core/issues/stores/view-store";
+import { useWorkspacePaths } from "@metanicator/core/paths";
+import { useWorkspaceId } from "@metanicator/core/hooks";
+import { useActorName } from "@metanicator/core/workspace/hooks";
+import { useLoadMoreByStatus } from "@metanicator/core/issues/mutations";
+import { childrenByParentsOptions, issueKeys, type IssueSortParam, type MyIssuesFilter } from "@metanicator/core/issues/queries";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
-} from "@multica/ui/components/ui/dropdown-menu";
+} from "@metanicator/ui/components/ui/dropdown-menu";
 import { sortIssues } from "../utils/sort";
-import { ALL_STATUSES, STATUS_CONFIG } from "@multica/core/issues/config";
+import { ALL_STATUSES, STATUS_CONFIG } from "@metanicator/core/issues/config";
 import { DraggableBoardCard, BoardCardContent } from "./board-card";
 import { StatusIcon } from "./status-icon";
-import { Button } from "@multica/ui/components/ui/button";
+import { Button } from "@metanicator/ui/components/ui/button";
 import { StatusHeading } from "./status-heading";
 import { HiddenColumnsPanel, HiddenColumnRow } from "./hidden-columns-panel";
 import { InfiniteScrollSentinel } from "./infinite-scroll-sentinel";

@@ -8,21 +8,21 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@multica/ui/components/ui/select";
-import { Switch } from "@multica/ui/components/ui/switch";
-import { useTheme } from "@multica/ui/components/common/theme-provider";
+} from "@metanicator/ui/components/ui/select";
+import { Switch } from "@metanicator/ui/components/ui/switch";
+import { useTheme } from "@metanicator/ui/components/common/theme-provider";
 import {
   DEFAULT_LOCALE,
   SUPPORTED_LOCALES,
   type SupportedLocale,
-} from "@multica/core/i18n";
-import { useLocaleAdapter } from "@multica/core/i18n/react";
-import { useAuthStore } from "@multica/core/auth";
+} from "@metanicator/core/i18n";
+import { useLocaleAdapter } from "@metanicator/core/i18n/react";
+import { useAuthStore } from "@metanicator/core/auth";
 import {
   useCommentComposerStore,
   useIssueLinkStore,
-} from "@multica/core/issues/stores";
-import { api } from "@multica/core/api";
+} from "@metanicator/core/issues/stores";
+import { api } from "@metanicator/core/api";
 import { browserTimezone, timezoneOptions } from "../../common/timezone-select";
 import { useT } from "../../i18n";
 import {

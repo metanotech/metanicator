@@ -5,7 +5,7 @@ import {
   toInternalAppPath,
 } from "./link-handler";
 
-const APP_ORIGIN = "https://app.multica.ai";
+const APP_ORIGIN = "https://app.metanicator.ai";
 
 function navigatedPaths(): string[] {
   return dispatched.map((e) => (e as CustomEvent<{ path: string }>).detail.path);

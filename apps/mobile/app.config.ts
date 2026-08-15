@@ -21,11 +21,11 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       : isStaging
         ? "Metanicator (Staging)"
         : "Metanicator (Dev)",
-    slug: "multica-mobile",
+    slug: "metanicator-mobile",
     version: "0.1.0",
     orientation: "portrait",
     userInterfaceStyle: "automatic",
-    scheme: "multica",
+    scheme: "metanicator",
     // 1024x1024 source shared with the desktop client
     // (apps/desktop/build/icon.png). Expo prebuild generates every required
     // iOS icon size from this single PNG.
@@ -42,10 +42,10 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       // auto-loads `.env.<mode>.local` regardless of APP_ENV) and collapse
       // dev / staging / prod onto a single id.
       bundleIdentifier: isProd
-        ? (process.env.EXPO_BUNDLE_IDENTIFIER_PROD ?? "ai.multica.mobile")
+        ? (process.env.EXPO_BUNDLE_IDENTIFIER_PROD ?? "ai.metanicator.mobile")
         : isStaging
-          ? "ai.multica.mobile.staging"
-          : (process.env.EXPO_BUNDLE_IDENTIFIER_DEV ?? "ai.multica.mobile.dev"),
+          ? "ai.metanicator.mobile.staging"
+          : (process.env.EXPO_BUNDLE_IDENTIFIER_DEV ?? "ai.metanicator.mobile.dev"),
     },
     plugins: [
       "expo-router",

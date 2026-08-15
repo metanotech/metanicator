@@ -2,17 +2,17 @@
 
 import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
 import { FilterX, ListTodo, Plus } from "lucide-react";
-import { Button } from "@multica/ui/components/ui/button";
-import { Skeleton } from "@multica/ui/components/ui/skeleton";
-import { cn } from "@multica/ui/lib/utils";
-import { useWorkspaceId } from "@multica/core/hooks";
+import { Button } from "@metanicator/ui/components/ui/button";
+import { Skeleton } from "@metanicator/ui/components/ui/skeleton";
+import { cn } from "@metanicator/ui/lib/utils";
+import { useWorkspaceId } from "@metanicator/core/hooks";
 import {
   useViewStore,
   ViewStoreProvider,
-} from "@multica/core/issues/stores/view-store-context";
-import { getIssueSurfaceViewStore } from "@multica/core/issues/stores/surface-view-store";
-import { issueScopeKey } from "@multica/core/issues/surface/scope";
-import type { Issue } from "@multica/core/types";
+} from "@metanicator/core/issues/stores/view-store-context";
+import { getIssueSurfaceViewStore } from "@metanicator/core/issues/stores/surface-view-store";
+import { issueScopeKey } from "@metanicator/core/issues/surface/scope";
+import type { Issue } from "@metanicator/core/types";
 import { BoardView } from "../components/board-view";
 import { BatchActionToolbar } from "../components/batch-action-toolbar";
 import { GanttView } from "../components/gantt-view";

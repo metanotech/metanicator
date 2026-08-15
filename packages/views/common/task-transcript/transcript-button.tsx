@@ -3,21 +3,21 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Loader2, ScrollText } from "lucide-react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { cn } from "@multica/ui/lib/utils";
+import { cn } from "@metanicator/ui/lib/utils";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@multica/ui/components/ui/tooltip";
-import { api } from "@multica/core/api";
+} from "@metanicator/ui/components/ui/tooltip";
+import { api } from "@metanicator/core/api";
 import {
   chatKeys,
   isTaskMessageTaskId,
   mergeTaskMessagesBySeq,
   taskMessagesOptions,
-} from "@multica/core/chat/queries";
-import type { AgentTask } from "@multica/core/types/agent";
-import type { TaskMessagePayload } from "@multica/core/types/events";
+} from "@metanicator/core/chat/queries";
+import type { AgentTask } from "@metanicator/core/types/agent";
+import type { TaskMessagePayload } from "@metanicator/core/types/events";
 import { AgentTranscriptDialog } from "./agent-transcript-dialog";
 import { buildTimeline, type TimelineItem } from "./build-timeline";
 
@@ -139,9 +139,9 @@ export function TranscriptButton({
       setOpen(false);
     };
 
-    window.addEventListener("multica:navigate", handleGlobalNavigate);
+    window.addEventListener("metanicator:navigate", handleGlobalNavigate);
     return () => {
-      window.removeEventListener("multica:navigate", handleGlobalNavigate);
+      window.removeEventListener("metanicator:navigate", handleGlobalNavigate);
     };
   }, [open, setOpen]);
 

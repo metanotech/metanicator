@@ -5,9 +5,9 @@ import (
 	"errors"
 
 	"github.com/jackc/pgx/v5"
-	"github.com/multica-ai/multica/server/internal/auth"
-	"github.com/multica-ai/multica/server/internal/util"
-	db "github.com/multica-ai/multica/server/pkg/db/generated"
+	"github.com/metanotech/metanicator/server/internal/auth"
+	"github.com/metanotech/metanicator/server/internal/util"
+	db "github.com/metanotech/metanicator/server/pkg/db/generated"
 )
 
 // ownerLookupFor returns an auth.OwnerLookupFunc that asks the

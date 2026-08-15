@@ -1,6 +1,6 @@
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
 import { ArrowUpRight } from "lucide-react";
-import { MetanicatorIcon } from "@multica/ui/components/common/multica-icon";
+import { MetanicatorIcon } from "@metanicator/ui/components/common/metanicator-icon";
 
 // GitHub mark — inlined SVG
 function GitHubMark() {
@@ -39,7 +39,7 @@ export const baseOptions: BaseLayoutProps = {
     {
       icon: <MetanicatorIcon noSpin />,
       text: externalLinkText("Metanicator"),
-      url: "https://multica.ai",
+      url: "https://metanicator.ai",
       external: true,
     },
   ],

@@ -15,11 +15,11 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/jackc/pgx/v5/pgtype"
-	"github.com/multica-ai/multica/server/internal/logger"
-	"github.com/multica-ai/multica/server/internal/service"
-	"github.com/multica-ai/multica/server/internal/util"
-	db "github.com/multica-ai/multica/server/pkg/db/generated"
-	"github.com/multica-ai/multica/server/pkg/protocol"
+	"github.com/metanotech/metanicator/server/internal/logger"
+	"github.com/metanotech/metanicator/server/internal/service"
+	"github.com/metanotech/metanicator/server/internal/util"
+	db "github.com/metanotech/metanicator/server/pkg/db/generated"
+	"github.com/metanotech/metanicator/server/pkg/protocol"
 )
 
 type CommentResponse struct {
@@ -361,7 +361,7 @@ const (
 //
 // Both values must be set together so the cursor can tie-break entries
 // landing in the same microsecond. The cursor for the next page is
-// emitted via the X-Multica-Next-Before / X-Multica-Next-Before-Id
+// emitted via the X-Metanicator-Next-Before / X-Metanicator-Next-Before-Id
 // response headers.
 //
 // Combination rules (kept narrow on purpose — Elon flagged the matrix risk):
@@ -667,8 +667,8 @@ func (h *Handler) ListComments(w http.ResponseWriter, r *http.Request) {
 	// body so the default flat-array response shape — which the desktop UI
 	// and existing callers depend on — is unchanged.
 	if result.NextBefore != "" && result.NextBeforeID != "" {
-		w.Header().Set("X-Multica-Next-Before", result.NextBefore)
-		w.Header().Set("X-Multica-Next-Before-Id", result.NextBeforeID)
+		w.Header().Set("X-Metanicator-Next-Before", result.NextBefore)
+		w.Header().Set("X-Metanicator-Next-Before-Id", result.NextBeforeID)
 	}
 	if result.CommentsTruncated {
 		w.Header().Set(HeaderCommentsTruncated, "true")

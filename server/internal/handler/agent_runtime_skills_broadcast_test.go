@@ -6,8 +6,8 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/multica-ai/multica/server/internal/events"
-	"github.com/multica-ai/multica/server/pkg/protocol"
+	"github.com/metanotech/metanicator/server/internal/events"
+	"github.com/metanotech/metanicator/server/pkg/protocol"
 )
 
 // TestSetAgentRuntimeSkillEnabledBroadcastsAgentStatus guards the realtime

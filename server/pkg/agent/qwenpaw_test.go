@@ -34,7 +34,7 @@ func TestNewReturnsQwenpawBackend(t *testing.T) {
 }
 
 // fakeQwenpawACPScript impersonates `qwenpaw acp` for unit tests.
-// Wire format mirrors other Multica ACP fakes (grok/kimi):
+// Wire format mirrors other Metanicator ACP fakes (grok/kimi):
 // session/new returns sessionId, session/load accepts an existing session,
 // session/prompt returns stopReason=end_turn.
 // session/set_model is also handled for backward compatibility with older

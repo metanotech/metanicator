@@ -2,23 +2,23 @@
 
 import { useCallback, useEffect, useId, useMemo, useRef, useState, type ReactNode } from "react";
 import { CheckCircle2, MessageSquare, MessagesSquare, Search } from "lucide-react";
-import type { TimelineEntry } from "@multica/core/types";
-import { useActorName } from "@multica/core/workspace/hooks";
+import type { TimelineEntry } from "@metanicator/core/types";
+import { useActorName } from "@metanicator/core/workspace/hooks";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@multica/ui/components/ui/popover";
-import { Button } from "@multica/ui/components/ui/button";
-import { cn } from "@multica/ui/lib/utils";
-import { createShortcutChord, useShortcut } from "@multica/core/shortcuts";
-import { preprocessMentionShortcodes } from "@multica/core/markdown";
-import { isImeComposing } from "@multica/core/utils";
+} from "@metanicator/ui/components/ui/popover";
+import { Button } from "@metanicator/ui/components/ui/button";
+import { cn } from "@metanicator/ui/lib/utils";
+import { createShortcutChord, useShortcut } from "@metanicator/core/shortcuts";
+import { preprocessMentionShortcodes } from "@metanicator/core/markdown";
+import { isImeComposing } from "@metanicator/core/utils";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@multica/ui/components/ui/tooltip";
+} from "@metanicator/ui/components/ui/tooltip";
 import { ActorAvatar } from "../../common/actor-avatar";
 import { pickerNavigationDirection } from "../../common/picker-keys";
 import { ShortcutKeycaps } from "../../common/shortcut-keycaps";

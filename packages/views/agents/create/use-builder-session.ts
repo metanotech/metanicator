@@ -8,15 +8,15 @@ import {
   decodeBuilderInput,
   pickBuilderRestore,
   type BuilderRestore,
-} from "@multica/core/agents";
-import { api, ApiError } from "@multica/core/api";
+} from "@metanicator/core/agents";
+import { api, ApiError } from "@metanicator/core/api";
 import {
   chatKeys,
   chatMessagesOptions,
   pendingChatTaskOptions,
-} from "@multica/core/chat/queries";
-import { useWorkspaceId } from "@multica/core/hooks";
-import type { ChatMessage } from "@multica/core/types";
+} from "@metanicator/core/chat/queries";
+import { useWorkspaceId } from "@metanicator/core/hooks";
+import type { ChatMessage } from "@metanicator/core/types";
 import { useAppForeground } from "../../common/use-app-foreground";
 import { useChatDraftRestore } from "../../chat/components/use-chat-draft-restore";
 import { useT } from "../../i18n";

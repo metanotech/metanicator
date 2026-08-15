@@ -1,9 +1,9 @@
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import { arrayMove } from "@dnd-kit/sortable";
-import { createPersistStorage, defaultStorage } from "@multica/core/platform";
-import { createSafeId } from "@multica/core/utils";
-import { isReservedSlug } from "@multica/core/paths";
+import { createPersistStorage, defaultStorage } from "@metanicator/core/platform";
+import { createSafeId } from "@metanicator/core/utils";
+import { isReservedSlug } from "@metanicator/core/paths";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -230,8 +230,8 @@ interface TabStore {
 // ---------------------------------------------------------------------------
 //
 // A tab's icon is NOT part of this model. It is derived from `tab.url` at
-// render time via `routeIconForPath` (@multica/views/layout), which shares the
-// route → icon map in `@multica/core/paths` with the sidebar nav — so the two
+// render time via `routeIconForPath` (@metanicator/views/layout), which shares the
+// route → icon map in `@metanicator/core/paths` with the sidebar nav — so the two
 // surfaces cannot drift, and no stale icon can survive in persisted state.
 // Title is likewise not determined here; it comes from document.title.
 
@@ -863,7 +863,7 @@ export const useTabStore = create<TabStore>()(
       },
     }),
     {
-      name: "multica_tabs",
+      name: "metanicator_tabs",
       version: 4,
       storage: createJSONStorage(() => createPersistStorage(defaultStorage)),
       migrate: (persistedState, version) => {

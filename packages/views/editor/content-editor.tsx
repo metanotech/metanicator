@@ -41,14 +41,14 @@ import {
   type MouseEvent as ReactMouseEvent,
 } from "react";
 import { useEditor, EditorContent, type Editor } from "@tiptap/react";
-import { cn } from "@multica/ui/lib/utils";
-import type { UploadResult } from "@multica/core/hooks/use-file-upload";
-import { useWorkspaceSlug } from "@multica/core/paths";
+import { cn } from "@metanicator/ui/lib/utils";
+import type { UploadResult } from "@metanicator/core/hooks/use-file-upload";
+import { useWorkspaceSlug } from "@metanicator/core/paths";
 import { useQueryClient } from "@tanstack/react-query";
-import { issueIdentifierOptions } from "@multica/core/issues/queries";
-import { workspaceListOptions } from "@multica/core/workspace/queries";
-import { isIssueIdentifier } from "@multica/ui/markdown";
-import type { Attachment } from "@multica/core/types";
+import { issueIdentifierOptions } from "@metanicator/core/issues/queries";
+import { workspaceListOptions } from "@metanicator/core/workspace/queries";
+import { isIssueIdentifier } from "@metanicator/ui/markdown";
+import type { Attachment } from "@metanicator/core/types";
 import {
   parseMarkdownChunked,
   MARKDOWN_CHUNK_THRESHOLD,
@@ -63,7 +63,7 @@ import {
   insertUploadPlaceholder,
   settleUploadNode,
 } from "./extensions/file-upload";
-import { configStore } from "@multica/core/config";
+import { configStore } from "@metanicator/core/config";
 import { preprocessMarkdown } from "./utils/preprocess";
 import { repairEmptyListItems } from "./utils/repair-list-items";
 import { useAppOrigin } from "../navigation";

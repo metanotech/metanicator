@@ -3,7 +3,7 @@ import {
   preprocessMentionShortcodes,
   preprocessFileCards,
   preprocessIssueIdentifiers,
-} from "@multica/ui/markdown";
+} from "@metanicator/ui/markdown";
 
 /**
  * Preprocess a markdown string before loading into Tiptap via contentType: 'markdown'.

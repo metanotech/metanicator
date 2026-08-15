@@ -4,11 +4,11 @@ import (
 	"context"
 	"testing"
 
-	"github.com/multica-ai/multica/server/internal/events"
-	"github.com/multica-ai/multica/server/internal/handler"
-	"github.com/multica-ai/multica/server/internal/util"
-	db "github.com/multica-ai/multica/server/pkg/db/generated"
-	"github.com/multica-ai/multica/server/pkg/protocol"
+	"github.com/metanotech/metanicator/server/internal/events"
+	"github.com/metanotech/metanicator/server/internal/handler"
+	"github.com/metanotech/metanicator/server/internal/util"
+	db "github.com/metanotech/metanicator/server/pkg/db/generated"
+	"github.com/metanotech/metanicator/server/pkg/protocol"
 )
 
 // subscriberTest helpers — reuse the integration test fixtures from TestMain
@@ -122,7 +122,7 @@ func TestSubscriberIssueCreated_CreatorAndAssignee(t *testing.T) {
 	bus := events.New()
 	registerSubscriberListeners(bus, testPool)
 
-	assigneeEmail := "subscriber-assignee-test@multica.ai"
+	assigneeEmail := "subscriber-assignee-test@metanicator.ai"
 	assigneeID := createTestUser(t, assigneeEmail)
 	t.Cleanup(func() { cleanupTestUser(t, assigneeEmail) })
 
@@ -206,7 +206,7 @@ func TestSubscriberIssueUpdated_AssigneeChanged(t *testing.T) {
 	bus := events.New()
 	registerSubscriberListeners(bus, testPool)
 
-	assigneeEmail := "subscriber-new-assignee-test@multica.ai"
+	assigneeEmail := "subscriber-new-assignee-test@metanicator.ai"
 	assigneeID := createTestUser(t, assigneeEmail)
 	t.Cleanup(func() { cleanupTestUser(t, assigneeEmail) })
 
@@ -280,7 +280,7 @@ func TestSubscriberCommentCreated_CommenterSubscribed(t *testing.T) {
 	bus := events.New()
 	registerSubscriberListeners(bus, testPool)
 
-	commenterEmail := "subscriber-commenter-test@multica.ai"
+	commenterEmail := "subscriber-commenter-test@metanicator.ai"
 	commenterID := createTestUser(t, commenterEmail)
 	t.Cleanup(func() { cleanupTestUser(t, commenterEmail) })
 

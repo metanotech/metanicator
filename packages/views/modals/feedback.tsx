@@ -7,9 +7,9 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from "@multica/ui/components/ui/dialog";
-import { Button } from "@multica/ui/components/ui/button";
-import { FileUploadButton } from "@multica/ui/components/common/file-upload-button";
+} from "@metanicator/ui/components/ui/dialog";
+import { Button } from "@metanicator/ui/components/ui/button";
+import { FileUploadButton } from "@metanicator/ui/components/common/file-upload-button";
 import {
   ContentEditor,
   type ContentEditorRef,
@@ -23,10 +23,10 @@ import {
   useFeedbackDraftStore,
   FEEDBACK_KINDS,
   type FeedbackKind,
-} from "@multica/core/feedback";
-import { useCurrentWorkspace } from "@multica/core/paths";
+} from "@metanicator/core/feedback";
+import { useCurrentWorkspace } from "@metanicator/core/paths";
 import { useT } from "../i18n";
-import { useShortcut } from "@multica/core/shortcuts";
+import { useShortcut } from "@metanicator/core/shortcuts";
 import { ShortcutKeycaps } from "../common/shortcut-keycaps";
 
 const MAX_MESSAGE_LEN = 10000;

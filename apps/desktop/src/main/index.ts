@@ -99,7 +99,7 @@ const BUNDLED_ICON_PATH = join(__dirname, "../../resources/icon.png").replace(
 // macOS/Linux GUI launches inherit a minimal PATH from launchd that omits
 // the user's shell config (~/.zshrc, Homebrew, nvm, ~/.local/bin, etc.).
 // Run the user's login shell once to recover the real PATH so the bundled
-// multica CLI can find agent binaries like claude/codex/opencode. Must run
+// metanicator CLI can find agent binaries like claude/codex/opencode. Must run
 // before any child_process.spawn / execFile call in the main process —
 // ES module imports are hoisted, so this block executes before createWindow
 // or any daemon-manager spawn.
@@ -116,7 +116,7 @@ if (process.platform !== "win32") {
   process.env.PATH = `${fallbackPaths.join(":")}:${process.env.PATH ?? ""}`;
 }
 
-const PROTOCOL = "multica";
+const PROTOCOL = "metanicator";
 const devLog = is.dev ? createBestEffortDevLog() : undefined;
 
 // Where the main process parks a freeze/crash breadcrumb until the next
@@ -185,14 +185,14 @@ function handleDeepLink(url: string): void {
     const parsed = new URL(url);
     if (parsed.protocol !== `${PROTOCOL}:`) return;
 
-    // multica://auth/callback?token=<jwt>
+    // metanicator://auth/callback?token=<jwt>
     if (parsed.hostname === "auth" && parsed.pathname === "/callback") {
       const token = parsed.searchParams.get("token");
       if (token) dispatchToMainRenderer("auth:token", token);
       return;
     }
 
-    // multica://invite/<invitationId>
+    // metanicator://invite/<invitationId>
     // Dispatched from the web invite page when the user chooses "Open in
     // desktop app". The renderer opens the invite overlay — no tab, no
     // route persistence, so deep-linking the same invite twice stays safe.
@@ -248,7 +248,7 @@ function createRendererWebPreferences(
     // to that view, keeping the main renderer plugin-free.
     plugins: true,
     additionalArguments: [
-      `--multica-locale=${systemLocale}`,
+      `--metanicator-locale=${systemLocale}`,
       ...additionalArguments,
     ],
   };
@@ -650,7 +650,7 @@ if (!gotTheLock) {
     });
 
     electronApp.setAppUserModelId(
-      is.dev ? "ai.multica.desktop.dev" : "ai.multica.desktop",
+      is.dev ? "ai.metanicator.desktop.dev" : "ai.metanicator.desktop",
     );
 
     // macOS: replace the default Electron dock icon with the bundled logo

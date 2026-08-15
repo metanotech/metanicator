@@ -1,6 +1,6 @@
 "use client";
 
-import { MetanicatorIcon } from "@multica/ui/components/common/multica-icon";
+import { MetanicatorIcon } from "@metanicator/ui/components/common/metanicator-icon";
 import { useT } from "../i18n";
 
 /**

@@ -10,16 +10,16 @@ import type {
   IssueAssigneeType,
   IssueStatus,
   Project,
-} from "@multica/core/types";
-import { Button } from "@multica/ui/components/ui/button";
+} from "@metanicator/core/types";
+import { Button } from "@metanicator/ui/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
-} from "@multica/ui/components/ui/dropdown-menu";
-import { STATUS_CONFIG } from "@multica/core/issues/config";
-import { useViewStoreApi } from "@multica/core/issues/stores/view-store-context";
+} from "@metanicator/ui/components/ui/dropdown-menu";
+import { STATUS_CONFIG } from "@metanicator/core/issues/config";
+import { useViewStoreApi } from "@metanicator/core/issues/stores/view-store-context";
 import { StatusHeading } from "./status-heading";
 import { DraggableBoardCard } from "./board-card";
 import type { ChildProgress } from "./list-row";

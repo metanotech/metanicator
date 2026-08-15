@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { hashKey, keepPreviousData, useQuery } from "@tanstack/react-query";
 import type { QueryKey } from "@tanstack/react-query";
-import { api } from "@multica/core/api";
+import { api } from "@metanicator/core/api";
 import type {
   Issue,
   IssueAssigneeGroup,
@@ -14,26 +14,26 @@ import type {
   IssueTableQuerySpec,
   Project,
   WorkingAgentSummary,
-} from "@multica/core/types";
-import { workspaceWorkingAgentsOptions } from "@multica/core/agents";
-import { useWorkspaceId } from "@multica/core/hooks";
-import { ALL_STATUSES } from "@multica/core/issues/config";
-import { dateOnlyToLocalDate } from "@multica/core/issues/date";
+} from "@metanicator/core/types";
+import { workspaceWorkingAgentsOptions } from "@metanicator/core/agents";
+import { useWorkspaceId } from "@metanicator/core/hooks";
+import { ALL_STATUSES } from "@metanicator/core/issues/config";
+import { dateOnlyToLocalDate } from "@metanicator/core/issues/date";
 import type {
   AssigneeGroupedIssuesFilter,
   IssueSortParam,
   MyIssuesFilter,
-} from "@multica/core/issues/queries";
-import { issueTableFacetsOptions } from "@multica/core/issues/queries";
+} from "@metanicator/core/issues/queries";
+import { issueTableFacetsOptions } from "@metanicator/core/issues/queries";
 import {
   buildIssueSurfaceQueryPlan,
   type IssueSurfaceQueryPlan,
-} from "@multica/core/issues/surface/query-plan";
-import type { IssueScope } from "@multica/core/issues/surface/scope";
-import type { IssueDateFilter, SortField } from "@multica/core/issues/stores/view-store";
-import { propertyListOptions } from "@multica/core/properties";
-import { propertyIdFromViewKey } from "@multica/core/issues/stores/view-store";
-import { useViewStore } from "@multica/core/issues/stores/view-store-context";
+} from "@metanicator/core/issues/surface/query-plan";
+import type { IssueScope } from "@metanicator/core/issues/surface/scope";
+import type { IssueDateFilter, SortField } from "@metanicator/core/issues/stores/view-store";
+import { propertyListOptions } from "@metanicator/core/properties";
+import { propertyIdFromViewKey } from "@metanicator/core/issues/stores/view-store";
+import { useViewStore } from "@metanicator/core/issues/stores/view-store-context";
 import type { IssueFilters } from "../utils/filter";
 import type { ChildProgress } from "../components/list-row";
 import { IssueTableExportIntegrityError } from "../components/table-view-model";

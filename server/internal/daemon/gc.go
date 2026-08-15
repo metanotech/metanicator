@@ -10,8 +10,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/multica-ai/multica/server/internal/daemon/execenv"
-	"github.com/multica-ai/multica/server/internal/daemon/repocache"
+	"github.com/metanotech/metanicator/server/internal/daemon/execenv"
+	"github.com/metanotech/metanicator/server/internal/daemon/repocache"
 )
 
 // reposDirName is the bare-repo cache directory inside the workspaces root.

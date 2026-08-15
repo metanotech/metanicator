@@ -7,12 +7,12 @@ import {
   applyDraftRuntimeChange,
   type AgentDraft,
   type AgentPermissionScope,
-} from "@multica/core/agents";
-import type { MemberWithUser, RuntimeDevice } from "@multica/core/types";
-import { Checkbox } from "@multica/ui/components/ui/checkbox";
-import { Input } from "@multica/ui/components/ui/input";
-import { Textarea } from "@multica/ui/components/ui/textarea";
-import { cn } from "@multica/ui/lib/utils";
+} from "@metanicator/core/agents";
+import type { MemberWithUser, RuntimeDevice } from "@metanicator/core/types";
+import { Checkbox } from "@metanicator/ui/components/ui/checkbox";
+import { Input } from "@metanicator/ui/components/ui/input";
+import { Textarea } from "@metanicator/ui/components/ui/textarea";
+import { cn } from "@metanicator/ui/lib/utils";
 import { ActorAvatar } from "../../common/actor-avatar";
 import { AvatarUploadControl } from "../../common/avatar-upload-control";
 import { useT } from "../../i18n";

@@ -20,7 +20,7 @@ const jsonLd = {
     {
       "@type": "Organization",
       name: "Metanicator",
-      url: "https://www.multica.ai",
+      url: "https://www.metanicator.ai",
       sameAs: ["https://github.com/metanotech/metanicator"],
     },
     {

@@ -5,11 +5,11 @@ import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import {
   NavigationProvider,
   type NavigationAdapter,
-} from "@multica/views/navigation";
+} from "@metanicator/views/navigation";
 import { canGoBackInApp } from "./in-app-history";
 
 /**
- * Web half of the `multica:navigate` bridge — the event shared content
+ * Web half of the `metanicator:navigate` bridge — the event shared content
  * (comments, chat, issue descriptions) fires when a link resolves to an in-app
  * destination. Desktop's shell answers it by opening a tab; on the web the
  * equivalent is a router push in place. Without this the event has no listener
@@ -22,8 +22,8 @@ function useInternalLinkHandler(router: ReturnType<typeof useRouter>) {
       if (!path) return;
       router.push(path);
     };
-    window.addEventListener("multica:navigate", handler);
-    return () => window.removeEventListener("multica:navigate", handler);
+    window.addEventListener("metanicator:navigate", handler);
+    return () => window.removeEventListener("metanicator:navigate", handler);
   }, [router]);
 }
 

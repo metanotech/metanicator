@@ -8,17 +8,17 @@ import {
   type InfiniteData,
 } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { useWorkspaceId } from "@multica/core/hooks";
-import { useAuthStore } from "@multica/core/auth";
-import { agentListOptions, memberListOptions } from "@multica/core/workspace/queries";
-import { projectListOptions } from "@multica/core/projects/queries";
-import { canAssignAgent } from "@multica/views/issues/components";
-import { api, dispatchReasonCode } from "@multica/core/api";
+import { useWorkspaceId } from "@metanicator/core/hooks";
+import { useAuthStore } from "@metanicator/core/auth";
+import { agentListOptions, memberListOptions } from "@metanicator/core/workspace/queries";
+import { projectListOptions } from "@metanicator/core/projects/queries";
+import { canAssignAgent } from "@metanicator/views/issues/components";
+import { api, dispatchReasonCode } from "@metanicator/core/api";
 import {
   isAgentRuntimeBound as hasAgentRuntime,
   useAgentPresenceDetail,
   useWorkspaceAgentAvailability,
-} from "@multica/core/agents";
+} from "@metanicator/core/agents";
 import {
   chatSessionsOptions,
   chatMessagesPageOptions,
@@ -26,29 +26,29 @@ import {
   chatKeys,
   isTaskMessageTaskId,
   sortChatSessions,
-} from "@multica/core/chat/queries";
+} from "@metanicator/core/chat/queries";
 import {
   useCreateChatSession,
   useMarkChatSessionRead,
   useSetChatSessionProject,
   useSetChatSessionArchived,
-} from "@multica/core/chat/mutations";
-import { useChatStore } from "@multica/core/chat";
+} from "@metanicator/core/chat/mutations";
+import { useChatStore } from "@metanicator/core/chat";
 import {
   enqueuePendingChatTask,
   hideQueuedChatMessages,
-} from "@multica/core/chat/pending";
+} from "@metanicator/core/chat/pending";
 import { useChatDraftRestore } from "./use-chat-draft-restore";
 import { useChatTaskActions } from "./use-chat-task-actions";
 import { useChatProjectContextSupport } from "./use-chat-project-context-support";
-import { createLogger } from "@multica/core/logger";
+import { createLogger } from "@metanicator/core/logger";
 import type {
   Agent,
   Attachment,
   ChatMessage,
   ChatMessagesPage,
   ChatPendingTask,
-} from "@multica/core/types";
+} from "@metanicator/core/types";
 import { useT } from "../../i18n";
 import { useAppForeground } from "../../common/use-app-foreground";
 

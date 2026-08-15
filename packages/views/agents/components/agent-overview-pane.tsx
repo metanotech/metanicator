@@ -6,14 +6,14 @@ import type {
   Agent,
   AgentRuntime,
   MemberWithUser,
-} from "@multica/core/types";
-import { providerSupportsMcpConfig } from "@multica/core/agents";
-import { useFeatureEnabled } from "@multica/core/config";
-import { COMPOSIO_MCP_APPS_FLAG } from "@multica/core/feature-flags";
-import { useWorkspaceId } from "@multica/core/hooks";
-import { larkInstallationsOptions } from "@multica/core/lark";
-import { slackInstallationsOptions } from "@multica/core/slack";
-import { dingtalkInstallationsOptions } from "@multica/core/dingtalk";
+} from "@metanicator/core/types";
+import { providerSupportsMcpConfig } from "@metanicator/core/agents";
+import { useFeatureEnabled } from "@metanicator/core/config";
+import { COMPOSIO_MCP_APPS_FLAG } from "@metanicator/core/feature-flags";
+import { useWorkspaceId } from "@metanicator/core/hooks";
+import { larkInstallationsOptions } from "@metanicator/core/lark";
+import { slackInstallationsOptions } from "@metanicator/core/slack";
+import { dingtalkInstallationsOptions } from "@metanicator/core/dingtalk";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -23,8 +23,8 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@multica/ui/components/ui/alert-dialog";
-import { cn } from "@multica/ui/lib/utils";
+} from "@metanicator/ui/components/ui/alert-dialog";
+import { cn } from "@metanicator/ui/lib/utils";
 import { ActivityTab } from "./tabs/activity-tab";
 import { InstructionsTab } from "./tabs/instructions-tab";
 import { SkillsTab } from "./tabs/skills-tab";

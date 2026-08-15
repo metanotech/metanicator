@@ -21,8 +21,8 @@ vi.mock("../issues/hooks", () => ({
 
 // Only the workspace hooks are stubbed — the real path helpers stay in place so
 // the reserved-slug rule that decides in-app vs external is the shipped one.
-vi.mock("@multica/core/paths", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@multica/core/paths")>()),
+vi.mock("@metanicator/core/paths", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@metanicator/core/paths")>()),
   useWorkspacePaths: () => ({
     issueDetail: (id: string) => `/test/issues/${id}`,
     projectDetail: (id: string) => `/test/projects/${id}`,
@@ -54,12 +54,12 @@ let openSpy: ReturnType<typeof vi.spyOn>;
 
 beforeEach(() => {
   navigatedPaths = [];
-  window.addEventListener("multica:navigate", captureNavigate);
+  window.addEventListener("metanicator:navigate", captureNavigate);
   openSpy = vi.spyOn(window, "open").mockImplementation(() => null);
 });
 
 afterEach(() => {
-  window.removeEventListener("multica:navigate", captureNavigate);
+  window.removeEventListener("metanicator:navigate", captureNavigate);
   vi.restoreAllMocks();
 });
 

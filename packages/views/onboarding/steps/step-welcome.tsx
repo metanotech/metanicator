@@ -2,12 +2,12 @@
 
 import { useState } from "react";
 import { ArrowRight, Download, Loader2 } from "lucide-react";
-import { Button, buttonVariants } from "@multica/ui/components/ui/button";
-import { MetanicatorIcon } from "@multica/ui/components/common/multica-icon";
-import { cn } from "@multica/ui/lib/utils";
-import { DragStrip } from "@multica/views/platform";
-import { STATUS_CONFIG } from "@multica/core/issues/config";
-import type { IssueStatus } from "@multica/core/types";
+import { Button, buttonVariants } from "@metanicator/ui/components/ui/button";
+import { MetanicatorIcon } from "@metanicator/ui/components/common/metanicator-icon";
+import { cn } from "@metanicator/ui/lib/utils";
+import { DragStrip } from "@metanicator/views/platform";
+import { STATUS_CONFIG } from "@metanicator/core/issues/config";
+import type { IssueStatus } from "@metanicator/core/types";
 import { StatusIcon } from "../../issues/components/status-icon";
 import { ProviderLogo } from "../../runtimes/components/provider-logo";
 import { useT } from "../../i18n";

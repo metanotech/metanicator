@@ -6,10 +6,10 @@ import { ComposioTab } from "./composio-tab";
 import { SlackTab } from "./slack-tab";
 import { DingTalkTab } from "./dingtalk-tab";
 import { VCSTab } from "./vcs-tab";
-import { ApiError } from "@multica/core/api";
-import { composioToolkitsOptions } from "@multica/core/composio";
-import { useConfigStore, useFeatureEnabled } from "@multica/core/config";
-import { COMPOSIO_MCP_APPS_FLAG } from "@multica/core/feature-flags";
+import { ApiError } from "@metanicator/core/api";
+import { composioToolkitsOptions } from "@metanicator/core/composio";
+import { useConfigStore, useFeatureEnabled } from "@metanicator/core/config";
+import { COMPOSIO_MCP_APPS_FLAG } from "@metanicator/core/feature-flags";
 import { useT } from "../../i18n";
 import { SettingsSection, SettingsTab } from "./settings-layout";
 

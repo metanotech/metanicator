@@ -12,11 +12,11 @@
   },
   "iconLibrary": "lucide",
   "aliases": {
-    "components": "@multica/ui/components",
-    "ui": "@multica/ui/components/ui",
-    "hooks": "@multica/ui/hooks",
-    "lib": "@multica/ui/lib",
-    "utils": "@multica/ui/lib/utils"
+    "components": "@metanicator/ui/components",
+    "ui": "@metanicator/ui/components/ui",
+    "hooks": "@metanicator/ui/hooks",
+    "lib": "@metanicator/ui/lib",
+    "utils": "@metanicator/ui/lib/utils"
   },
   "registries": {
     "@reui": {

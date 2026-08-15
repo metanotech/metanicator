@@ -10,9 +10,9 @@ import (
 
 	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgtype"
-	"github.com/multica-ai/multica/server/internal/events"
-	db "github.com/multica-ai/multica/server/pkg/db/generated"
-	"github.com/multica-ai/multica/server/pkg/protocol"
+	"github.com/metanotech/metanicator/server/internal/events"
+	db "github.com/metanotech/metanicator/server/pkg/db/generated"
+	"github.com/metanotech/metanicator/server/pkg/protocol"
 )
 
 // These tests cover the pure-Go halves of RegistrationService —
@@ -71,15 +71,15 @@ func TestRegistrationServiceConstructorValidatesDeps(t *testing.T) {
 }
 
 // TestBotNamePreset pins the bot-name pre-fill format that rides on the
-// QR URL: "<agent> - Multica", with a blank agent name degrading to
-// plain "Multica" rather than a dangling " - Multica".
+// QR URL: "<agent> - Metanicator", with a blank agent name degrading to
+// plain "Metanicator" rather than a dangling " - Metanicator".
 func TestBotNamePreset(t *testing.T) {
 	cases := []struct{ in, want string }{
-		{"Ada", "Ada - Multica"},
-		{"  Ada  ", "Ada - Multica"},
-		{"产品助手", "产品助手 - Multica"},
-		{"", "Multica"},
-		{"   ", "Multica"},
+		{"Ada", "Ada - Metanicator"},
+		{"  Ada  ", "Ada - Metanicator"},
+		{"产品助手", "产品助手 - Metanicator"},
+		{"", "Metanicator"},
+		{"   ", "Metanicator"},
 	}
 	for _, tc := range cases {
 		if got := botNamePreset(tc.in); got != tc.want {

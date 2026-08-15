@@ -7,9 +7,9 @@ import {
   Check,
   Lock,
 } from "lucide-react";
-import { Button } from "@multica/ui/components/ui/button";
-import { api } from "@multica/core/api";
-import type { RuntimeUpdateStatus } from "@multica/core/types";
+import { Button } from "@metanicator/ui/components/ui/button";
+import { api } from "@metanicator/core/api";
+import type { RuntimeUpdateStatus } from "@metanicator/core/types";
 import { useT } from "../../i18n";
 
 const GITHUB_RELEASES_URL =

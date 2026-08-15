@@ -4,17 +4,17 @@ import { useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { Copy, GitBranch, RefreshCw, Trash2 } from "lucide-react";
-import { Button } from "@multica/ui/components/ui/button";
-import { Card, CardContent } from "@multica/ui/components/ui/card";
-import { Input } from "@multica/ui/components/ui/input";
-import { Label } from "@multica/ui/components/ui/label";
+import { Button } from "@metanicator/ui/components/ui/button";
+import { Card, CardContent } from "@metanicator/ui/components/ui/card";
+import { Input } from "@metanicator/ui/components/ui/input";
+import { Label } from "@metanicator/ui/components/ui/label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@multica/ui/components/ui/select";
+} from "@metanicator/ui/components/ui/select";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -24,11 +24,11 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@multica/ui/components/ui/alert-dialog";
-import { useWorkspaceId } from "@multica/core/hooks";
-import { vcsConnectionsOptions } from "@multica/core/vcs";
-import { api } from "@multica/core/api";
-import type { ConnectVCSResponse, VCSProvider } from "@multica/core/types";
+} from "@metanicator/ui/components/ui/alert-dialog";
+import { useWorkspaceId } from "@metanicator/core/hooks";
+import { vcsConnectionsOptions } from "@metanicator/core/vcs";
+import { api } from "@metanicator/core/api";
+import type { ConnectVCSResponse, VCSProvider } from "@metanicator/core/types";
 import { useT } from "../../i18n";
 
 const PROVIDERS: VCSProvider[] = ["forgejo", "gitea", "gitlab"];

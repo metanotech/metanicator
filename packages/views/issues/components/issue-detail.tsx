@@ -25,43 +25,43 @@ import {
   Users,
 } from "lucide-react";
 import { BreadcrumbHeader, type BreadcrumbSegment } from "../../layout/breadcrumb-header";
-import { Skeleton } from "@multica/ui/components/ui/skeleton";
-import { Button } from "@multica/ui/components/ui/button";
-import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@multica/ui/components/ui/resizable";
-import { Sheet, SheetContent } from "@multica/ui/components/ui/sheet";
-import { useIsMobile } from "@multica/ui/hooks/use-mobile";
+import { Skeleton } from "@metanicator/ui/components/ui/skeleton";
+import { Button } from "@metanicator/ui/components/ui/button";
+import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@metanicator/ui/components/ui/resizable";
+import { Sheet, SheetContent } from "@metanicator/ui/components/ui/sheet";
+import { useIsMobile } from "@metanicator/ui/hooks/use-mobile";
 import { ContentEditor, type ContentEditorRef, TitleEditor, type TitleEditorRef, useFileDropZone, FileDropOverlay, useLazyEditor, useEditorUpload, ImageSequenceProvider } from "../../editor";
-import { collectImageSequence, type ImageSequenceBlock } from "@multica/core/attachments/image-sequence";
-import { FileUploadButton } from "@multica/ui/components/common/file-upload-button";
+import { collectImageSequence, type ImageSequenceBlock } from "@metanicator/core/attachments/image-sequence";
+import { FileUploadButton } from "@metanicator/ui/components/common/file-upload-button";
 import {
   Tooltip,
   TooltipTrigger,
   TooltipContent,
-} from "@multica/ui/components/ui/tooltip";
+} from "@metanicator/ui/components/ui/tooltip";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
-} from "@multica/ui/components/ui/dropdown-menu";
-import { Popover, PopoverTrigger, PopoverContent } from "@multica/ui/components/ui/popover";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@multica/ui/components/ui/dialog";
-import { Checkbox } from "@multica/ui/components/ui/checkbox";
-import { Command, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem } from "@multica/ui/components/ui/command";
-import { AvatarGroup, AvatarGroupCount } from "@multica/ui/components/ui/avatar";
+} from "@metanicator/ui/components/ui/dropdown-menu";
+import { Popover, PopoverTrigger, PopoverContent } from "@metanicator/ui/components/ui/popover";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@metanicator/ui/components/ui/dialog";
+import { Checkbox } from "@metanicator/ui/components/ui/checkbox";
+import { Command, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem } from "@metanicator/ui/components/ui/command";
+import { AvatarGroup, AvatarGroupCount } from "@metanicator/ui/components/ui/avatar";
 import { ActorAvatar } from "../../common/actor-avatar";
 import { PropRow } from "../../common/prop-row";
 import { PropertyIcon } from "../../common/property-icon";
-import type { Attachment, Issue, IssueProperty, IssueStatus, IssuePriority, TimelineEntry, UpdateIssueRequest } from "@multica/core/types";
-import { contentReferencesAttachment } from "@multica/core/types";
-import { STATUS_CONFIG, PRIORITY_CONFIG } from "@multica/core/issues/config";
-import { formatDateOnly, isPastDateOnly } from "@multica/core/issues/date";
-import { useUpdateIssue } from "@multica/core/issues/mutations";
+import type { Attachment, Issue, IssueProperty, IssueStatus, IssuePriority, TimelineEntry, UpdateIssueRequest } from "@metanicator/core/types";
+import { contentReferencesAttachment } from "@metanicator/core/types";
+import { STATUS_CONFIG, PRIORITY_CONFIG } from "@metanicator/core/issues/config";
+import { formatDateOnly, isPastDateOnly } from "@metanicator/core/issues/date";
+import { useUpdateIssue } from "@metanicator/core/issues/mutations";
 import { toast } from "sonner";
 import { StatusIcon, PriorityIcon, StatusPicker, PriorityPicker, StagePicker, StartDatePicker, DueDatePicker, AssigneePicker, LabelPicker } from ".";
 import { maxSiblingStage } from "./pickers/stage-picker";
 import { CustomPropertyValueEditor, CustomPropertyValueDisplay } from "./pickers/custom-property-picker";
-import { Switch } from "@multica/ui/components/ui/switch";
+import { Switch } from "@metanicator/ui/components/ui/switch";
 import { IssueActionsDropdown, useIssueActions, IssueActionsContextMenu, IssueContextMenuProvider } from "../actions";
 import { LabelChip } from "../../labels/label-chip";
 import { IssueAgentActivityIndicator } from "./issue-agent-activity-indicator";
@@ -71,8 +71,8 @@ import { LocalDirectoryHint } from "../../projects/components/local-directory-hi
 import { CommentCard } from "./comment-card";
 import { CommentInput } from "./comment-input";
 import { ResolvedThreadBar } from "./resolved-thread-bar";
-import { getShortcut, shortcutMatchesEvent } from "@multica/core/shortcuts";
-import { isImeComposing } from "@multica/core/utils";
+import { getShortcut, shortcutMatchesEvent } from "@metanicator/core/shortcuts";
+import { isImeComposing } from "@metanicator/core/utils";
 import { ThreadMinimap } from "./thread-minimap";
 import { ThreadNavPanel, mentionsUser, type ThreadNavThread } from "./thread-nav-panel";
 import { collectThreadReplies, deriveThreadResolution } from "./thread-utils";
@@ -80,19 +80,19 @@ import { IssueAgentHeaderChip } from "./issue-agent-header-chip";
 import { ExecutionLogSection } from "./execution-log-section";
 import { QuickActionsSection } from "./quick-actions-section";
 import { PullRequestList } from "./pull-request-list";
-import { useGitHubSettings } from "@multica/core/github";
+import { useGitHubSettings } from "@metanicator/core/github";
 import { useQuery } from "@tanstack/react-query";
-import { useAuthStore } from "@multica/core/auth";
-import { useWorkspacePaths } from "@multica/core/paths";
-import { useActorName } from "@multica/core/workspace/hooks";
-import { useWorkspaceId } from "@multica/core/hooks";
-import { useRecentContextStore } from "@multica/core/chat";
-import { issueListOptions, issueDetailOptions, childIssuesOptions, childIssueProgressOptions, issueAttachmentsOptions } from "@multica/core/issues/queries";
-import { projectDetailOptions } from "@multica/core/projects/queries";
+import { useAuthStore } from "@metanicator/core/auth";
+import { useWorkspacePaths } from "@metanicator/core/paths";
+import { useActorName } from "@metanicator/core/workspace/hooks";
+import { useWorkspaceId } from "@metanicator/core/hooks";
+import { useRecentContextStore } from "@metanicator/core/chat";
+import { issueListOptions, issueDetailOptions, childIssuesOptions, childIssueProgressOptions, issueAttachmentsOptions } from "@metanicator/core/issues/queries";
+import { projectDetailOptions } from "@metanicator/core/projects/queries";
 import { ProjectIcon } from "../../projects/components/project-icon";
-import { issueLabelsOptions } from "@multica/core/labels";
-import { propertyListOptions } from "@multica/core/properties";
-import { memberListOptions, agentListOptions } from "@multica/core/workspace/queries";
+import { issueLabelsOptions } from "@metanicator/core/labels";
+import { propertyListOptions } from "@metanicator/core/properties";
+import { memberListOptions, agentListOptions } from "@metanicator/core/workspace/queries";
 import {
   selectExpandedResolved,
   useRecentIssuesStore,
@@ -101,16 +101,16 @@ import {
   SUB_ISSUE_ROW_PROPERTY_KEYS,
   type SubIssueRowProperties,
   type SubIssueRowPropertyKey,
-} from "@multica/core/issues/stores";
-import { useIssueSelectionStore } from "@multica/core/issues/stores/selection-store";
+} from "@metanicator/core/issues/stores";
+import { useIssueSelectionStore } from "@metanicator/core/issues/stores/selection-store";
 import { BatchActionToolbar } from "./batch-action-toolbar";
 import { useIssueTimeline } from "../hooks/use-issue-timeline";
 import { useIssueReactions } from "../hooks/use-issue-reactions";
 import { useIssueSubscribers } from "../hooks/use-issue-subscribers";
-import { ReactionBar } from "@multica/ui/components/common/reaction-bar";
+import { ReactionBar } from "@metanicator/ui/components/common/reaction-bar";
 import { useTimeAgo } from "../../i18n";
 import { useRestoredScrollOffset, useRestoredScrollRef } from "../../platform";
-import { cn } from "@multica/ui/lib/utils";
+import { cn } from "@metanicator/ui/lib/utils";
 
 import { ProgressRing } from "./progress-ring";
 import { matchesPinyin } from "../../editor/extensions/pinyin-match";
@@ -1047,7 +1047,7 @@ export function IssueDetailSkeleton({ leading }: { leading?: ReactNode } = {}) {
 // IssueDetail
 // ---------------------------------------------------------------------------
 
-export function IssueDetail({ issueId, onDelete, onDone, defaultSidebarOpen = true, layoutId = "multica_issue_detail_layout", highlightCommentId, leadingAction }: IssueDetailProps) {
+export function IssueDetail({ issueId, onDelete, onDone, defaultSidebarOpen = true, layoutId = "metanicator_issue_detail_layout", highlightCommentId, leadingAction }: IssueDetailProps) {
   const { t } = useT("issues");
   const timeAgo = useTimeAgo();
   const id = issueId;

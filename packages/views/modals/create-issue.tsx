@@ -22,7 +22,7 @@ import {
   Tag,
   X as XIcon,
 } from "lucide-react";
-import { cn } from "@multica/ui/lib/utils";
+import { cn } from "@metanicator/ui/lib/utils";
 import { toast } from "sonner";
 import type {
   Issue,
@@ -30,12 +30,12 @@ import type {
   IssuePriority,
   IssueAssigneeType,
   IssuePropertyValue,
-} from "@multica/core/types";
-import { contentReferencesAttachment } from "@multica/core/types";
+} from "@metanicator/core/types";
+import { contentReferencesAttachment } from "@metanicator/core/types";
 import {
   DialogContent,
   DialogTitle,
-} from "@multica/ui/components/ui/dialog";
+} from "@metanicator/ui/components/ui/dialog";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -45,42 +45,42 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@multica/ui/components/ui/dropdown-menu";
-import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "@multica/ui/components/ui/tooltip";
-import { Button } from "@multica/ui/components/ui/button";
-import { Switch } from "@multica/ui/components/ui/switch";
+} from "@metanicator/ui/components/ui/dropdown-menu";
+import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "@metanicator/ui/components/ui/tooltip";
+import { Button } from "@metanicator/ui/components/ui/button";
+import { Switch } from "@metanicator/ui/components/ui/switch";
 import { ContentEditor, type ContentEditorRef, TitleEditor, type TitleEditorRef, useFileDropZone, FileDropOverlay, useUploadGate, useComposerSubmit } from "../editor";
 import { useIssueCreateUploads } from "./use-issue-create-uploads";
-import { useShortcut } from "@multica/core/shortcuts";
+import { useShortcut } from "@metanicator/core/shortcuts";
 import { ShortcutKeycaps } from "../common/shortcut-keycaps";
 import { StatusIcon, StatusPicker, PriorityIcon, PriorityPicker, StagePicker, AssigneePicker, StartDatePicker, DueDatePicker, LabelPicker } from "../issues/components";
 import { maxSiblingStage } from "../issues/components/pickers/stage-picker";
 import { ProjectPicker } from "../projects/components/project-picker";
 import { useIssueTriggerPreview } from "../issues/hooks/use-issue-trigger-preview";
-import { useActorName } from "@multica/core/workspace/hooks";
-import { useCurrentWorkspace, useWorkspacePaths } from "@multica/core/paths";
-import { useWorkspaceId } from "@multica/core/hooks";
-import { useIssueDraftStore, type IssueCreateDraft } from "@multica/core/issues/stores/draft-store";
-import { useCreateModeStore } from "@multica/core/issues/stores/create-mode-store";
-import { useQuickCreateStore } from "@multica/core/issues/stores/quick-create-store";
+import { useActorName } from "@metanicator/core/workspace/hooks";
+import { useCurrentWorkspace, useWorkspacePaths } from "@metanicator/core/paths";
+import { useWorkspaceId } from "@metanicator/core/hooks";
+import { useIssueDraftStore, type IssueCreateDraft } from "@metanicator/core/issues/stores/draft-store";
+import { useCreateModeStore } from "@metanicator/core/issues/stores/create-mode-store";
+import { useQuickCreateStore } from "@metanicator/core/issues/stores/quick-create-store";
 import {
   useIssueCreateSettingsStore,
   type ManualCreateField,
-} from "@multica/core/issues/stores/issue-create-settings-store";
-import { issueDetailOptions, childIssuesOptions } from "@multica/core/issues/queries";
-import { useCreateIssue, useUpdateIssue } from "@multica/core/issues/mutations";
-import { useAttachLabelToIssue } from "@multica/core/labels";
+} from "@metanicator/core/issues/stores/issue-create-settings-store";
+import { issueDetailOptions, childIssuesOptions } from "@metanicator/core/issues/queries";
+import { useCreateIssue, useUpdateIssue } from "@metanicator/core/issues/mutations";
+import { useAttachLabelToIssue } from "@metanicator/core/labels";
 import {
   propertyListOptions,
   useSetIssueProperty,
-} from "@multica/core/properties";
+} from "@metanicator/core/properties";
 import {
   ApiError,
   DuplicateIssueErrorBodySchema,
   type DuplicateIssueErrorBody,
   parseWithFallback,
-} from "@multica/core/api";
-import { FileUploadButton } from "@multica/ui/components/common/file-upload-button";
+} from "@metanicator/core/api";
+import { FileUploadButton } from "@metanicator/ui/components/common/file-upload-button";
 import { PillButton } from "../common/pill-button";
 import { ActorAvatar } from "../common/actor-avatar";
 import { PropertyIcon } from "../common/property-icon";
@@ -1294,7 +1294,7 @@ export function manualDialogContentClass(isExpanded: boolean) {
 // shell's shared Dialog, but a few legacy callers (and the test suite) still
 // import this module's modal version. Equivalent runtime behavior to the
 // pre-refactor component when used standalone.
-import { Dialog as DialogRoot } from "@multica/ui/components/ui/dialog";
+import { Dialog as DialogRoot } from "@metanicator/ui/components/ui/dialog";
 export function CreateIssueModal(props: {
   onClose: () => void;
   data?: Record<string, unknown> | null;

@@ -15,27 +15,27 @@ import type {
   Agent,
   MemberWithUser,
   RuntimeProfile,
-} from "@multica/core/types";
-import { useAuthStore } from "@multica/core/auth";
-import { useWorkspaceId } from "@multica/core/hooks";
-import { memberListOptions, agentListOptions } from "@multica/core/workspace/queries";
-import { useUpdateRuntime } from "@multica/core/runtimes/mutations";
+} from "@metanicator/core/types";
+import { useAuthStore } from "@metanicator/core/auth";
+import { useWorkspaceId } from "@metanicator/core/hooks";
+import { memberListOptions, agentListOptions } from "@metanicator/core/workspace/queries";
+import { useUpdateRuntime } from "@metanicator/core/runtimes/mutations";
 import {
   deriveRuntimeHealth,
   runtimeDisplayName,
   runtimeProfileListOptions,
-} from "@multica/core/runtimes";
+} from "@metanicator/core/runtimes";
 import {
   type AgentPresenceDetail,
   useWorkspacePresenceMap,
-} from "@multica/core/agents";
-import { useWorkspacePaths } from "@multica/core/paths";
-import { Button } from "@multica/ui/components/ui/button";
+} from "@metanicator/core/agents";
+import { useWorkspacePaths } from "@metanicator/core/paths";
+import { Button } from "@metanicator/ui/components/ui/button";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@multica/ui/components/ui/tooltip";
+} from "@metanicator/ui/components/ui/tooltip";
 import { ActorAvatar } from "../../common/actor-avatar";
 import { BreadcrumbHeader } from "../../layout/breadcrumb-header";
 import { AppLink, useNavigation } from "../../navigation";
@@ -334,7 +334,7 @@ function HeroCard({
         </Fact>
       </dl>
 
-      {/* Diagnostic IDs — multica CLI git hash + truncated daemon UUID.
+      {/* Diagnostic IDs — metanicator CLI git hash + truncated daemon UUID.
           Only useful when filing an issue or reading logs; folded by
           default so they don't compete with the user-visible facts above. */}
       {hasTechDetails && (

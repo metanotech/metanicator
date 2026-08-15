@@ -76,21 +76,21 @@ if ! health_ok; then
 fi
 
 echo ""
-echo "✓ Multica is running!"
+echo "✓ Metanicator is running!"
 echo "  Frontend: ${frontend_url}"
 echo "  Backend:  ${backend_url}"
 echo ""
 if [ "$mode" = "build" ]; then
   echo "Built images locally via docker-compose.selfhost.build.yml."
-  echo "Local tags: multica-backend:dev and multica-web:dev."
+  echo "Local tags: metanicator-backend:dev and metanicator-web:dev."
 else
-  echo "Images: ${MULTICA_BACKEND_IMAGE:-ghcr.io/metanotech/metanicator-backend}:${MULTICA_IMAGE_TAG:-latest}"
-  echo "        ${MULTICA_WEB_IMAGE:-ghcr.io/metanotech/metanicator-web}:${MULTICA_IMAGE_TAG:-latest}"
+  echo "Images: ${METANICATOR_BACKEND_IMAGE:-ghcr.io/metanotech/metanicator-backend}:${METANICATOR_IMAGE_TAG:-latest}"
+  echo "        ${METANICATOR_WEB_IMAGE:-ghcr.io/metanotech/metanicator-web}:${METANICATOR_IMAGE_TAG:-latest}"
 fi
 echo ""
 echo "Log in: configure RESEND_API_KEY in .env for email codes,"
 echo "        or read the generated code from backend logs when Resend is unset."
 echo ""
 echo "Next — install the CLI and connect your machine:"
-echo "  brew install multica-ai/tap/multica"
-echo "  multica setup self-host"
+echo "  brew install metanicator-ai/tap/metanicator"
+echo "  metanicator setup self-host"

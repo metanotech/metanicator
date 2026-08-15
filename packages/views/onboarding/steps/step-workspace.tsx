@@ -3,8 +3,8 @@
 import { type ReactNode, useRef, useEffect, useState } from "react";
 import { Dices, Plus } from "lucide-react";
 import { toast } from "sonner";
-import { Button } from "@multica/ui/components/ui/button";
-import { Input } from "@multica/ui/components/ui/input";
+import { Button } from "@metanicator/ui/components/ui/button";
+import { Input } from "@metanicator/ui/components/ui/input";
 import {
   Field,
   FieldDescription,
@@ -12,14 +12,14 @@ import {
   FieldGroup,
   FieldLabel,
   FieldTitle,
-} from "@multica/ui/components/ui/field";
-import { cn } from "@multica/ui/lib/utils";
-import { useCreateWorkspace } from "@multica/core/workspace/mutations";
-import type { Workspace } from "@multica/core/types";
-import { isImeComposing } from "@multica/core/utils";
-import { matchLocale } from "@multica/core/i18n";
-import { useConfigStore } from "@multica/core/config";
-import { workspaceUrlHost } from "@multica/core/workspace/workspace-url";
+} from "@metanicator/ui/components/ui/field";
+import { cn } from "@metanicator/ui/lib/utils";
+import { useCreateWorkspace } from "@metanicator/core/workspace/mutations";
+import type { Workspace } from "@metanicator/core/types";
+import { isImeComposing } from "@metanicator/core/utils";
+import { matchLocale } from "@metanicator/core/i18n";
+import { useConfigStore } from "@metanicator/core/config";
+import { workspaceUrlHost } from "@metanicator/core/workspace/workspace-url";
 import { useLogout } from "../../auth";
 import {
   StepFooter,
@@ -34,7 +34,7 @@ import {
   nameToWorkspaceSlug,
   randomCelestialWorkspaceIdentity,
 } from "../../workspace/slug";
-import { isReservedSlug } from "@multica/core/paths";
+import { isReservedSlug } from "@metanicator/core/paths";
 
 /**
  * Step 2 — create your first workspace, or continue with one set up in

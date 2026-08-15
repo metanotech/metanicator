@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { useSidebar } from "@multica/ui/components/ui/sidebar";
+import { useSidebar } from "@metanicator/ui/components/ui/sidebar";
 import {
   getShortcut,
   isEditableShortcutTarget,
@@ -9,12 +9,12 @@ import {
   SHORTCUT_ACTION_BY_ID,
   useShortcutStore,
   type ShortcutActionId,
-} from "@multica/core/shortcuts";
-import { useChatStore } from "@multica/core/chat";
-import { openCreateIssueWithPreference } from "@multica/core/issues/stores";
-import { useModalStore } from "@multica/core/modals";
-import { useWorkspacePaths } from "@multica/core/paths";
-import { isImeComposing } from "@multica/core/utils";
+} from "@metanicator/core/shortcuts";
+import { useChatStore } from "@metanicator/core/chat";
+import { openCreateIssueWithPreference } from "@metanicator/core/issues/stores";
+import { useModalStore } from "@metanicator/core/modals";
+import { useWorkspacePaths } from "@metanicator/core/paths";
+import { isImeComposing } from "@metanicator/core/utils";
 import { isFloatingChatRouteSuppressed } from "../chat/floating-chat-visibility";
 import { useNavigation } from "../navigation";
 import { useSearchStore } from "../search/search-store";

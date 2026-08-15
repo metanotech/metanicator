@@ -8,10 +8,10 @@ import type {
   AgentPermissionMode,
   AgentVisibility,
   MemberWithUser,
-} from "@multica/core/types";
-import { effectiveAccessScope } from "@multica/core/agents";
-import { Button } from "@multica/ui/components/ui/button";
-import { Checkbox } from "@multica/ui/components/ui/checkbox";
+} from "@metanicator/core/types";
+import { effectiveAccessScope } from "@metanicator/core/agents";
+import { Button } from "@metanicator/ui/components/ui/button";
+import { Checkbox } from "@metanicator/ui/components/ui/checkbox";
 import { ActorAvatar } from "../../../common/actor-avatar";
 import { useT } from "../../../i18n";
 

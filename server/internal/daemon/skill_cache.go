@@ -9,7 +9,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/multica-ai/multica/server/pkg/skillbundle"
+	"github.com/metanotech/metanicator/server/pkg/skillbundle"
 )
 
 type SkillBundleCache struct {

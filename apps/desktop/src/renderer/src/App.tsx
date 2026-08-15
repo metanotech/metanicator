@@ -1,16 +1,16 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { CoreProvider } from "@multica/core/platform";
-import { pickLocale, type SupportedLocale } from "@multica/core/i18n";
-import { useAuthStore } from "@multica/core/auth";
-import { useWelcomeStore } from "@multica/core/onboarding";
-import { workspaceKeys, workspaceListOptions } from "@multica/core/workspace/queries";
-import { api } from "@multica/core/api";
-import { useHasOnboarded } from "@multica/core/paths";
-import { setCurrentWorkspace } from "@multica/core/platform";
-import { ThemeProvider } from "@multica/ui/components/common/theme-provider";
-import { MetanicatorIcon } from "@multica/ui/components/common/multica-icon";
-import { Toaster } from "@multica/ui/components/ui/sonner";
+import { CoreProvider } from "@metanicator/core/platform";
+import { pickLocale, type SupportedLocale } from "@metanicator/core/i18n";
+import { useAuthStore } from "@metanicator/core/auth";
+import { useWelcomeStore } from "@metanicator/core/onboarding";
+import { workspaceKeys, workspaceListOptions } from "@metanicator/core/workspace/queries";
+import { api } from "@metanicator/core/api";
+import { useHasOnboarded } from "@metanicator/core/paths";
+import { setCurrentWorkspace } from "@metanicator/core/platform";
+import { ThemeProvider } from "@metanicator/ui/components/common/theme-provider";
+import { MetanicatorIcon } from "@metanicator/ui/components/common/metanicator-icon";
+import { Toaster } from "@metanicator/ui/components/ui/sonner";
 import { DesktopLoginPage } from "./pages/login";
 import { DesktopShell } from "./components/desktop-layout";
 import { UpdateNotification } from "./components/update-notification";
@@ -20,8 +20,8 @@ import { useWindowOverlayStore } from "./stores/window-overlay-store";
 import { useDaemonIPCBridge } from "./platform/daemon-ipc-bridge";
 import { syncDaemonOnLogin } from "./platform/daemon-login-sync";
 import { createDesktopLocaleAdapter } from "./platform/i18n-adapter";
-import { captureEvent } from "@multica/core/analytics";
-import { RESOURCES } from "@multica/views/locales";
+import { captureEvent } from "@metanicator/core/analytics";
+import { RESOURCES } from "@metanicator/views/locales";
 import { DesktopClientUsageReporter } from "./platform/client-usage-reporter";
 import { DiagnosticRouteReporter } from "./platform/diagnostic-route-reporter";
 import { flushFreezeBreadcrumb } from "./freeze-flush";
@@ -129,13 +129,13 @@ function AppContent() {
     : null;
 
   // Tell the main process which backend URL we talk to, so daemon-manager
-  // can pick the matching CLI profile (server_url from ~/.multica config).
+  // can pick the matching CLI profile (server_url from ~/.metanicator config).
   useEffect(() => {
     if (!runtimeConfig) return;
     window.daemonAPI.setTargetApiUrl(runtimeConfig.apiUrl);
   }, [runtimeConfig]);
 
-  // Listen for invite IDs delivered via deep link (multica://invite/<id>).
+  // Listen for invite IDs delivered via deep link (metanicator://invite/<id>).
   // We open the overlay regardless of login state — if the user isn't logged
   // in, InvitePage's queries will fail and render the "not found" state,
   // which is acceptable; the expected pre-flight happens in the web app
@@ -146,7 +146,7 @@ function AppContent() {
     });
   }, []);
 
-  // Listen for auth token delivered via deep link (multica://auth/callback?token=...).
+  // Listen for auth token delivered via deep link (metanicator://auth/callback?token=...).
   // daemonAPI.syncToken is handled separately by the [user] effect below, which
   // fires whenever a user logs in (deep link, session restore, account switch).
   useEffect(() => {
@@ -173,7 +173,7 @@ function AppContent() {
   // inside syncDaemonOnLogin is load-bearing — see that module.
   useEffect(() => {
     if (!user || !runtimeConfig) return;
-    const token = localStorage.getItem("multica_token");
+    const token = localStorage.getItem("metanicator_token");
     if (!token) return;
     const userId = user.id;
     (async () => {
@@ -335,7 +335,7 @@ function BlockingRuntimeConfigError({ message }: { message: string }) {
       <div className="max-w-xl rounded-lg border bg-card p-6 shadow-sm">
         <h1 className="text-title font-semibold">Desktop configuration error</h1>
         <p className="mt-3 text-body text-muted-foreground">
-          Metanicator Desktop could not load <code>~/.multica/desktop.json</code>. Fix or remove the file and restart the app.
+          Metanicator Desktop could not load <code>~/.metanicator/desktop.json</code>. Fix or remove the file and restart the app.
         </p>
         <pre className="mt-4 whitespace-pre-wrap rounded-md bg-muted p-3 text-caption text-muted-foreground">
           {message}

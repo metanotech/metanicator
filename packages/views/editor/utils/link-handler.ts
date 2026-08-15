@@ -5,8 +5,8 @@
  * (react-markdown link component), and link-hover-card (Open button).
  */
 
-import { isGlobalPath, isReservedSlug } from "@multica/core/paths";
-import { isIssueIdentifier } from "@multica/ui/markdown";
+import { isGlobalPath, isReservedSlug } from "@metanicator/core/paths";
+import { isIssueIdentifier } from "@metanicator/ui/markdown";
 
 /**
  * Top-level workspace-scoped routes. Used to detect "/{route}/..." paths that
@@ -236,7 +236,7 @@ export function parseWorkspaceEntityLink(
 }
 
 /**
- * Open a link — internal paths dispatch multica:navigate, external open new tab.
+ * Open a link — internal paths dispatch metanicator:navigate, external open new tab.
  *
  * If `currentSlug` is provided and `href` is a workspace-scoped path lacking a
  * slug (e.g. "/issues/abc" instead of "/{slug}/issues/abc"), the slug is
@@ -267,7 +267,7 @@ export function openLink(
       // the user wrote what they meant.
     }
     window.dispatchEvent(
-      new CustomEvent("multica:navigate", { detail: { path } }),
+      new CustomEvent("metanicator:navigate", { detail: { path } }),
     );
   } else {
     window.open(href, "_blank", "noopener,noreferrer");

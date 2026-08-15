@@ -13,15 +13,15 @@ import (
 	"github.com/jackc/pgx/v5/pgtype"
 	"github.com/jackc/pgx/v5/pgxpool"
 
-	"github.com/multica-ai/multica/server/internal/integrations/channel"
-	db "github.com/multica-ai/multica/server/pkg/db/generated"
+	"github.com/metanotech/metanicator/server/internal/integrations/channel"
+	db "github.com/metanotech/metanicator/server/pkg/db/generated"
 )
 
 func sessionPersistenceTestDB(t *testing.T) *pgxpool.Pool {
 	t.Helper()
 	dsn := os.Getenv("DATABASE_URL")
 	if dsn == "" {
-		dsn = "postgres://multica:multica@localhost:5432/multica?sslmode=disable"
+		dsn = "postgres://metanicator:metanicator@localhost:5432/metanicator?sslmode=disable"
 	}
 	ctx := context.Background()
 	pool, err := pgxpool.New(ctx, dsn)
@@ -55,7 +55,7 @@ func seedSessionPersistenceFixture(t *testing.T, pool *pgxpool.Pool) sessionPers
 	var runtimeID, agentID pgtype.UUID
 
 	if err := pool.QueryRow(ctx, `INSERT INTO "user" (name, email) VALUES ($1, $2) RETURNING id`,
-		"Channel media test", fmt.Sprintf("channel-media-%d@multica.test", suffix)).Scan(&f.userID); err != nil {
+		"Channel media test", fmt.Sprintf("channel-media-%d@metanicator.test", suffix)).Scan(&f.userID); err != nil {
 		t.Fatalf("create user: %v", err)
 	}
 	t.Cleanup(func() {
@@ -77,7 +77,7 @@ func seedSessionPersistenceFixture(t *testing.T, pool *pgxpool.Pool) sessionPers
 	}
 	if err := pool.QueryRow(ctx, `
 		INSERT INTO agent_runtime (workspace_id, name, runtime_mode, provider, owner_id)
-		VALUES ($1, $2, 'local', 'multica_daemon', $3)
+		VALUES ($1, $2, 'local', 'metanicator_daemon', $3)
 		RETURNING id`, f.workspaceID, fmt.Sprintf("channel-media-runtime-%d", suffix), f.userID).Scan(&runtimeID); err != nil {
 		t.Fatalf("create runtime: %v", err)
 	}

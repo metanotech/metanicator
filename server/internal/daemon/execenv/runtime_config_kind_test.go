@@ -68,7 +68,7 @@ func TestBuildMetaSkillContentBriefContent(t *testing.T) {
 		AgentID:          "eve-1",
 	})
 
-	if !strings.Contains(out, "- `multica issue get <id> --output json` — full issue.\n") {
+	if !strings.Contains(out, "- `metanicator issue get <id> --output json` — full issue.\n") {
 		t.Errorf("brief is missing the `issue get` one-liner\n---\n%s", out)
 	}
 	if strings.Contains(out, "Get full issue details.") {
@@ -131,13 +131,13 @@ func TestBuildMetaSkillContentSlimKindMatrix(t *testing.T) {
 	}
 	issueKinds := map[taskKind]bool{kindIssue: true}
 	checks := []sectionCheck{
-		{"# Multica Agent Runtime", allKinds},
+		{"# Metanicator Agent Runtime", allKinds},
 		{"## Background Task Safety", allKinds},
 		{"## Agent Identity", allKinds},
 		{"## Available Commands", allKinds},
 		{"## Issue Body Formatting", allKinds},
 		{"### Workflow", allKinds},
-		{"## Important: Always Use the `multica` CLI", allKinds},
+		{"## Important: Always Use the `metanicator` CLI", allKinds},
 		{"## Output", allKinds},
 		{"## Comment Formatting", issueKinds},
 		{"## Repositories", map[taskKind]bool{
@@ -225,8 +225,8 @@ func TestSlimQuickCreateAvailableCommands(t *testing.T) {
 
 	for _, want := range []string{
 		"## Available Commands",
-		"multica issue create --title",
-		"`multica --help`",
+		"metanicator issue create --title",
+		"`metanicator --help`",
 	} {
 		if !strings.Contains(out, want) {
 			t.Errorf("quick_create slim Available Commands missing %q", want)
@@ -234,18 +234,18 @@ func TestSlimQuickCreateAvailableCommands(t *testing.T) {
 	}
 
 	for _, banned := range []string{
-		"multica issue get <id>",
-		"multica issue comment list <issue-id>",
-		"multica issue update <id>",
-		"multica issue status <id> <status>",
-		"multica issue comment add <issue-id>",
-		"multica issue metadata list <issue-id>",
-		"multica issue metadata set <issue-id>",
-		"multica issue metadata delete <issue-id>",
-		"multica issue children <id>",
-		"multica repo checkout <url>",
+		"metanicator issue get <id>",
+		"metanicator issue comment list <issue-id>",
+		"metanicator issue update <id>",
+		"metanicator issue status <id> <status>",
+		"metanicator issue comment add <issue-id>",
+		"metanicator issue metadata list <issue-id>",
+		"metanicator issue metadata set <issue-id>",
+		"metanicator issue metadata delete <issue-id>",
+		"metanicator issue children <id>",
+		"metanicator repo checkout <url>",
 		"### Squad maintenance",
-		"multica squad member set-role",
+		"metanicator squad member set-role",
 	} {
 		if strings.Contains(out, banned) {
 			t.Errorf("quick_create slim Available Commands should NOT advertise %q (hard guardrails forbid the call)", banned)

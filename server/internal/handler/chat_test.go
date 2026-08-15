@@ -11,9 +11,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/multica-ai/multica/server/internal/middleware"
-	"github.com/multica-ai/multica/server/internal/util"
-	db "github.com/multica-ai/multica/server/pkg/db/generated"
+	"github.com/metanotech/metanicator/server/internal/middleware"
+	"github.com/metanotech/metanicator/server/internal/util"
+	db "github.com/metanotech/metanicator/server/pkg/db/generated"
 )
 
 // withChatTestWorkspaceCtx injects the workspace+member context that the

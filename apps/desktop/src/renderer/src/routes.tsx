@@ -13,24 +13,24 @@ import {
   RuntimeSettingsPage,
 } from "./pages/runtime-detail-page";
 import { AttachmentPreviewRoute } from "./pages/attachment-preview-page";
-import { IssuesPage } from "@multica/views/issues/components";
-import { ProjectsPage } from "@multica/views/projects/components";
-import { DashboardPage } from "@multica/views/dashboard";
-import { AutopilotsPage } from "@multica/views/autopilots/components";
-import { MyIssuesPage } from "@multica/views/my-issues";
-import { SkillsPage } from "@multica/views/skills";
+import { IssuesPage } from "@metanicator/views/issues/components";
+import { ProjectsPage } from "@metanicator/views/projects/components";
+import { DashboardPage } from "@metanicator/views/dashboard";
+import { AutopilotsPage } from "@metanicator/views/autopilots/components";
+import { MyIssuesPage } from "@metanicator/views/my-issues";
+import { SkillsPage } from "@metanicator/views/skills";
 import { DesktopRuntimesPage } from "./components/desktop-runtimes-page";
 import { DesktopAgentsPage } from "./components/desktop-agents-page";
 import {
   AiCreateAgentPage,
   ChooseCreateMethodPage,
   ManualCreateAgentPage,
-} from "@multica/views/agents";
-import { SquadsPage, SquadDetailPage as SquadDetailPageView } from "@multica/views/squads/components";
-import { InboxPage } from "@multica/views/inbox";
-import { ChatPage } from "@multica/views/chat";
-import { SettingsPage } from "@multica/views/settings";
-import { useT } from "@multica/views/i18n";
+} from "@metanicator/views/agents";
+import { SquadsPage, SquadDetailPage as SquadDetailPageView } from "@metanicator/views/squads/components";
+import { InboxPage } from "@metanicator/views/inbox";
+import { ChatPage } from "@metanicator/views/chat";
+import { SettingsPage } from "@metanicator/views/settings";
+import { useT } from "@metanicator/views/i18n";
 import { Download, Server } from "lucide-react";
 import { DaemonSettingsTab } from "./components/daemon-settings-tab";
 import { UpdatesSettingsTab } from "./components/updates-settings-tab";

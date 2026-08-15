@@ -12,17 +12,17 @@ import (
 	"time"
 
 	"github.com/jackc/pgx/v5/pgxpool"
-	"github.com/multica-ai/multica/server/internal/analytics"
-	"github.com/multica-ai/multica/server/internal/daemonws"
-	"github.com/multica-ai/multica/server/internal/events"
-	"github.com/multica-ai/multica/server/internal/handler"
-	"github.com/multica-ai/multica/server/internal/logger"
-	obsmetrics "github.com/multica-ai/multica/server/internal/metrics"
-	"github.com/multica-ai/multica/server/internal/realtime"
-	"github.com/multica-ai/multica/server/internal/scheduler"
-	"github.com/multica-ai/multica/server/internal/service"
-	db "github.com/multica-ai/multica/server/pkg/db/generated"
-	"github.com/multica-ai/multica/server/pkg/featureflag"
+	"github.com/metanotech/metanicator/server/internal/analytics"
+	"github.com/metanotech/metanicator/server/internal/daemonws"
+	"github.com/metanotech/metanicator/server/internal/events"
+	"github.com/metanotech/metanicator/server/internal/handler"
+	"github.com/metanotech/metanicator/server/internal/logger"
+	obsmetrics "github.com/metanotech/metanicator/server/internal/metrics"
+	"github.com/metanotech/metanicator/server/internal/realtime"
+	"github.com/metanotech/metanicator/server/internal/scheduler"
+	"github.com/metanotech/metanicator/server/internal/service"
+	db "github.com/metanotech/metanicator/server/pkg/db/generated"
+	"github.com/metanotech/metanicator/server/pkg/featureflag"
 	"github.com/redis/go-redis/v9"
 )
 
@@ -48,7 +48,7 @@ func redisClientName(existing, suffix string) string {
 	if existing != "" {
 		return existing + ":" + suffix
 	}
-	return "multica-api:" + suffix
+	return "metanicator-api:" + suffix
 }
 
 func closeRedisClient(label string, client *redis.Client) {
@@ -186,11 +186,11 @@ func main() {
 	if os.Getenv("RESEND_API_KEY") == "" && strings.TrimSpace(os.Getenv("SMTP_HOST")) == "" {
 		slog.Warn("no email backend configured (RESEND_API_KEY and SMTP_HOST both empty) — verification codes will be printed to the log instead of emailed.")
 	}
-	if os.Getenv("MULTICA_DEV_VERIFICATION_CODE") != "" {
+	if os.Getenv("METANICATOR_DEV_VERIFICATION_CODE") != "" {
 		if strings.EqualFold(strings.TrimSpace(os.Getenv("APP_ENV")), "production") {
-			slog.Warn("MULTICA_DEV_VERIFICATION_CODE is set but ignored because APP_ENV=production.")
+			slog.Warn("METANICATOR_DEV_VERIFICATION_CODE is set but ignored because APP_ENV=production.")
 		} else {
-			slog.Warn("MULTICA_DEV_VERIFICATION_CODE is enabled. Use it only for local development or private test instances.")
+			slog.Warn("METANICATOR_DEV_VERIFICATION_CODE is enabled. Use it only for local development or private test instances.")
 		}
 	}
 
@@ -198,9 +198,9 @@ func main() {
 	if port == "" {
 		port = "8080"
 	}
-	shutdownHoldDuration := envNonNegativeDuration("MULTICA_SHUTDOWN_HOLD_DURATION", 0)
+	shutdownHoldDuration := envNonNegativeDuration("METANICATOR_SHUTDOWN_HOLD_DURATION", 0)
 
-	// Feature flags: loaded once at startup from MULTICA_FEATURE_FLAGS_FILE
+	// Feature flags: loaded once at startup from METANICATOR_FEATURE_FLAGS_FILE
 	// (a YAML rule set) with FF_<KEY> env overrides layered on top.
 	// See server/pkg/featureflag for the schema and lifecycle rules.
 	//
@@ -209,7 +209,7 @@ func main() {
 	// default, so existing code paths are unchanged until someone adds a
 	// rule. A misconfigured (malformed / missing) file surfaces as a hard
 	// error so operators see misconfig the same way they do for any other
-	// MULTICA_*_FILE knob.
+	// METANICATOR_*_FILE knob.
 	flags, err := featureflag.NewServiceFromEnv(featureflag.WithLogger(slog.Default()))
 	if err != nil {
 		slog.Error("feature flag configuration failed to load", "error", err)
@@ -219,7 +219,7 @@ func main() {
 
 	dbURL := os.Getenv("DATABASE_URL")
 	if dbURL == "" {
-		dbURL = "postgres://multica:multica@localhost:5432/multica?sslmode=disable"
+		dbURL = "postgres://metanicator:metanicator@localhost:5432/metanicator?sslmode=disable"
 	}
 
 	// Connect to database

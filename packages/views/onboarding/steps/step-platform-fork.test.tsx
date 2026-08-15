@@ -1,9 +1,9 @@
 import { describe, expect, it, vi, beforeEach } from "vitest";
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import type { AgentRuntime } from "@multica/core/types";
+import type { AgentRuntime } from "@metanicator/core/types";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { I18nProvider } from "@multica/core/i18n/react";
+import { I18nProvider } from "@metanicator/core/i18n/react";
 import enCommon from "../../locales/en/common.json";
 import enOnboarding from "../../locales/en/onboarding.json";
 
@@ -109,7 +109,7 @@ describe("StepPlatformFork", () => {
       screen.queryByRole("button", { name: /^continue$/i }),
     ).not.toBeInTheDocument();
     expect(
-      screen.getByText(/pick a way to connect — or skip and connect a computer later/i),
+      screen.getByText(/pick a way to connect.*skip and connect a computer later/i),
     ).toBeInTheDocument();
   });
 

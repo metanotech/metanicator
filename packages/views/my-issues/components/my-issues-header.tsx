@@ -1,23 +1,23 @@
 "use client";
 
 import { ChevronDown } from "lucide-react";
-import { Button } from "@multica/ui/components/ui/button";
+import { Button } from "@metanicator/ui/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
-} from "@multica/ui/components/ui/dropdown-menu";
-import { Tooltip, TooltipTrigger, TooltipContent } from "@multica/ui/components/ui/tooltip";
+} from "@metanicator/ui/components/ui/dropdown-menu";
+import { Tooltip, TooltipTrigger, TooltipContent } from "@metanicator/ui/components/ui/tooltip";
 import type {
   Issue,
   IssueTableFacetSpec,
   IssueTableFacetsResponse,
   WorkingAgentSummary,
-} from "@multica/core/types";
-import { type MyIssuesScope } from "@multica/core/issues/stores/my-issues-view-store";
-import { useViewStore } from "@multica/core/issues/stores/view-store-context";
+} from "@metanicator/core/types";
+import { type MyIssuesScope } from "@metanicator/core/issues/stores/my-issues-view-store";
+import { useViewStore } from "@metanicator/core/issues/stores/view-store-context";
 import { useT } from "../../i18n";
 import { WorkspaceAgentWorkingChip } from "../../issues/components/workspace-agent-working-chip";
 import {

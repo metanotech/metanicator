@@ -8,8 +8,8 @@ import (
 
 	"github.com/jackc/pgx/v5/pgtype"
 
-	db "github.com/multica-ai/multica/server/pkg/db/generated"
-	"github.com/multica-ai/multica/server/pkg/protocol"
+	db "github.com/metanotech/metanicator/server/pkg/db/generated"
+	"github.com/metanotech/metanicator/server/pkg/protocol"
 )
 
 func TestSelectChatQuickActionsContextExcludesFutureTurnAfterItCompletes(t *testing.T) {

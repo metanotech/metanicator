@@ -7,8 +7,8 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/multica-ai/multica/server/internal/service"
-	"github.com/multica-ai/multica/server/pkg/protocol"
+	"github.com/metanotech/metanicator/server/internal/service"
+	"github.com/metanotech/metanicator/server/pkg/protocol"
 )
 
 // startMikaOnboarding drives the endpoint the way the router does: session id

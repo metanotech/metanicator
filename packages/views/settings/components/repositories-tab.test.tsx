@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { I18nProvider } from "@multica/core/i18n/react";
+import { I18nProvider } from "@metanicator/core/i18n/react";
 import enCommon from "../../locales/en/common.json";
 import enSettings from "../../locales/en/settings.json";
 
@@ -83,27 +83,27 @@ vi.mock("@tanstack/react-query", () => ({
   infiniteQueryOptions: <T,>(options: T) => options,
 }));
 
-vi.mock("@multica/core/hooks", () => ({
+vi.mock("@metanicator/core/hooks", () => ({
   useWorkspaceId: () => "workspace-1",
 }));
 
-vi.mock("@multica/core/paths", () => ({
+vi.mock("@metanicator/core/paths", () => ({
   useCurrentWorkspace: () => workspaceRef.current,
 }));
 
-vi.mock("@multica/core/workspace/queries", () => ({
+vi.mock("@metanicator/core/workspace/queries", () => ({
   memberListOptions: () => ({ queryKey: ["members"], queryFn: vi.fn() }),
   workspaceKeys: { list: () => ["workspaces"] },
 }));
 
-vi.mock("@multica/core/api", () => ({
+vi.mock("@metanicator/core/api", () => ({
   api: {
     updateWorkspace: mockUpdateWorkspace,
     getGitHubConnectURL: mockGetGitHubConnectURL,
   },
 }));
 
-vi.mock("@multica/core/auth", () => {
+vi.mock("@metanicator/core/auth", () => {
   const useAuthStore = Object.assign(
     (selector?: (state: { user: { id: string } }) => unknown) =>
       selector ? selector({ user: { id: "user-1" } }) : { user: { id: "user-1" } },
@@ -198,12 +198,12 @@ describe("RepositoriesTab — automatic updates", () => {
 
     const urlInput = screen.getAllByRole("textbox")[0]!;
     await user.clear(urlInput);
-    await user.type(urlInput, "https://github.com/multica-ai/edited");
+    await user.type(urlInput, "https://github.com/metanotech/edited");
     await user.tab();
 
     await waitFor(() => {
       expect(mockUpdateWorkspace).toHaveBeenCalledWith("workspace-1", {
-        repos: [{ url: "https://github.com/multica-ai/edited" }],
+        repos: [{ url: "https://github.com/metanotech/edited" }],
       });
       expect(mockToastSuccess).toHaveBeenCalledWith("Repositories saved", {
         id: "settings-auto-save",
@@ -233,14 +233,14 @@ describe("RepositoriesTab — automatic updates", () => {
     expect(mockUpdateWorkspace).not.toHaveBeenCalled();
 
     const newUrlInput = screen.getAllByRole("textbox")[2]!;
-    await user.type(newUrlInput, "git@github.com:multica-ai/second.git");
+    await user.type(newUrlInput, "git@github.com:metanicator-ai/second.git");
     await user.tab();
 
     await waitFor(() => {
       expect(mockUpdateWorkspace).toHaveBeenCalledWith("workspace-1", {
         repos: [
           { url: "https://github.com/metanotech/metanicator" },
-          { url: "git@github.com:multica-ai/second.git" },
+          { url: "git@github.com:metanicator-ai/second.git" },
         ],
       });
     });
@@ -318,7 +318,7 @@ describe("RepositoriesTab — automatic updates", () => {
     const user = setupUser();
     mockGetGitHubConnectURL.mockResolvedValue({
       configured: true,
-      url: "https://github.com/apps/multica/installations/new",
+      url: "https://github.com/apps/metanicator/installations/new",
     });
     const open = vi.spyOn(window, "open").mockImplementation(() => null);
     render(<RepositoriesTab />, { wrapper: I18nWrapper });
@@ -331,7 +331,7 @@ describe("RepositoriesTab — automatic updates", () => {
         "repositories",
       );
       expect(open).toHaveBeenCalledWith(
-        "https://github.com/apps/multica/installations/new",
+        "https://github.com/apps/metanicator/installations/new",
         "_blank",
         "noopener",
       );
@@ -362,7 +362,7 @@ describe("RepositoriesTab — automatic updates", () => {
       repos: [{ url: "git@github.com:metanotech/metanicator.git" }],
     };
     githubRef.current = {
-      installations: [{ id: "installation-row-1", account_login: "multica-ai" }],
+      installations: [{ id: "installation-row-1", account_login: "metanicator-ai" }],
       configured: true,
       repository_browse_configured: true,
       can_manage: true,
@@ -380,9 +380,9 @@ describe("RepositoriesTab — automatic updates", () => {
       },
       {
         id: 2,
-        full_name: "multica-ai/console",
-        html_url: "https://github.com/multica-ai/console",
-        clone_url: "https://github.com/multica-ai/console.git",
+        full_name: "metanicator-ai/console",
+        html_url: "https://github.com/metanotech/console",
+        clone_url: "https://github.com/metanotech/console.git",
         description: "Console app",
         private: true,
         archived: false,
@@ -410,7 +410,7 @@ describe("RepositoriesTab — automatic updates", () => {
         repos: [
           { url: "git@github.com:metanotech/metanicator.git" },
           {
-            url: "https://github.com/multica-ai/console.git",
+            url: "https://github.com/metanotech/console.git",
             description: "Console app",
           },
         ],
@@ -429,7 +429,7 @@ describe("RepositoriesTab — automatic updates", () => {
 
   it("opens the picker after returning from a GitHub connection", async () => {
     githubRef.current = {
-      installations: [{ id: "installation-row-1", account_login: "multica-ai" }],
+      installations: [{ id: "installation-row-1", account_login: "metanicator-ai" }],
       configured: true,
       repository_browse_configured: true,
       can_manage: true,

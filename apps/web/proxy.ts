@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { LOCALE_COOKIE } from "@multica/core/i18n";
+import { LOCALE_COOKIE } from "@metanicator/core/i18n";
 import {
   METANICATOR_LOCALE_HEADER,
   resolveLocaleFromSignals,
@@ -32,7 +32,7 @@ function resolveLocale(req: NextRequest): string {
   });
 }
 
-// Forward the resolved locale to RSC layouts via the `x-multica-locale`
+// Forward the resolved locale to RSC layouts via the `x-metanicator-locale`
 // request header. layout.tsx reads it through `await headers()`. The
 // `request: { headers }` form is what makes the header land on the upstream
 // request — without it the value would only sit on the response.
@@ -55,7 +55,7 @@ export function proxy(req: NextRequest) {
     return NextResponse.rewrite(url);
   }
 
-  const hasSession = req.cookies.has("multica_logged_in");
+  const hasSession = req.cookies.has("metanicator_logged_in");
   const lastSlug = req.cookies.get("last_workspace_slug")?.value;
 
   // --- Legacy URL redirect: /issues/... → /{slug}/issues/... ---

@@ -7,15 +7,15 @@ import {
   useRouteError,
 } from "react-router-dom";
 import { AlertTriangle, RotateCw, X } from "lucide-react";
-import { useAuthStore } from "@multica/core/auth";
-import { setCurrentWorkspace } from "@multica/core/platform";
-import { WorkspaceSlugProvider } from "@multica/core/paths";
-import { workspaceBySlugOptions } from "@multica/core/workspace";
-import { Button } from "@multica/ui/components/ui/button";
-import { MetanicatorIcon } from "@multica/ui/components/common/multica-icon";
-import { ModalRegistry } from "@multica/views/modals/registry";
-import { WorkspacePresencePrefetch } from "@multica/views/layout";
-import { DragStrip } from "@multica/views/platform";
+import { useAuthStore } from "@metanicator/core/auth";
+import { setCurrentWorkspace } from "@metanicator/core/platform";
+import { WorkspaceSlugProvider } from "@metanicator/core/paths";
+import { workspaceBySlugOptions } from "@metanicator/core/workspace";
+import { Button } from "@metanicator/ui/components/ui/button";
+import { MetanicatorIcon } from "@metanicator/ui/components/common/metanicator-icon";
+import { ModalRegistry } from "@metanicator/views/modals/registry";
+import { WorkspacePresencePrefetch } from "@metanicator/views/layout";
+import { DragStrip } from "@metanicator/views/platform";
 import type { IssueWindowContext } from "../../../shared/issue-window";
 import { IssueDetailPage } from "../pages/issue-detail-page";
 import { IssueWindowNavigationProvider } from "../platform/issue-window-navigation";

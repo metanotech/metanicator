@@ -2,8 +2,8 @@ import type { ReactNode } from "react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { I18nProvider } from "@multica/core/i18n/react";
-import { useWelcomeStore } from "@multica/core/onboarding";
+import { I18nProvider } from "@metanicator/core/i18n/react";
+import { useWelcomeStore } from "@metanicator/core/onboarding";
 import enCommon from "../locales/en/common.json";
 import enOnboarding from "../locales/en/onboarding.json";
 import {
@@ -15,7 +15,7 @@ import { WelcomeAfterOnboarding } from "./welcome-after-onboarding";
 const mockUser = {
   id: "user-1",
   name: "Test",
-  email: "test@multica.ai",
+  email: "test@metanicator.ai",
   avatar_url: null,
   onboarded_at: "2026-01-01T00:00:00Z",
   onboarding_questionnaire: {},
@@ -26,7 +26,7 @@ const mockUser = {
   updated_at: "",
 };
 
-vi.mock("@multica/core/auth", () => ({
+vi.mock("@metanicator/core/auth", () => ({
   useAuthStore: Object.assign(
     (selector?: (state: { user: typeof mockUser }) => unknown) => {
       const state = { user: mockUser };
@@ -41,9 +41,9 @@ vi.mock("@multica/core/auth", () => ({
 const mockCreateIssue = vi.fn();
 const mockGetWorkspace = vi.fn();
 
-vi.mock("@multica/core/paths", async () => {
-  const actual = await vi.importActual<typeof import("@multica/core/paths")>(
-    "@multica/core/paths",
+vi.mock("@metanicator/core/paths", async () => {
+  const actual = await vi.importActual<typeof import("@metanicator/core/paths")>(
+    "@metanicator/core/paths",
   );
   return {
     ...actual,
@@ -55,7 +55,7 @@ vi.mock("@multica/core/paths", async () => {
   };
 });
 
-vi.mock("@multica/core/api", () => ({
+vi.mock("@metanicator/core/api", () => ({
   api: {
     createIssue: (...args: unknown[]) => mockCreateIssue(...args),
     getWorkspace: (...args: unknown[]) => mockGetWorkspace(...args),

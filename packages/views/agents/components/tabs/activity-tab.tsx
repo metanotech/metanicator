@@ -15,22 +15,22 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@multica/ui/components/ui/tooltip";
-import { NumberFlow } from "@multica/ui/components/ui/number-flow";
-import { Skeleton } from "@multica/ui/components/ui/skeleton";
+} from "@metanicator/ui/components/ui/tooltip";
+import { NumberFlow } from "@metanicator/ui/components/ui/number-flow";
+import { Skeleton } from "@metanicator/ui/components/ui/skeleton";
 import { useQueries, useQuery } from "@tanstack/react-query";
-import type { Agent, AgentTask, Issue } from "@multica/core/types";
+import type { Agent, AgentTask, Issue } from "@metanicator/core/types";
 import {
   type AgentActivity,
   agentTaskSnapshotOptions,
   agentTasksOptions,
   summarizeActivityWindow,
   useWorkspaceActivityMap,
-} from "@multica/core/agents";
-import { api } from "@multica/core/api";
-import { useWorkspaceId } from "@multica/core/hooks";
-import { useWorkspacePaths } from "@multica/core/paths";
-import { issueDetailOptions } from "@multica/core/issues/queries";
+} from "@metanicator/core/agents";
+import { api } from "@metanicator/core/api";
+import { useWorkspaceId } from "@metanicator/core/hooks";
+import { useWorkspacePaths } from "@metanicator/core/paths";
+import { issueDetailOptions } from "@metanicator/core/issues/queries";
 import { AppLink } from "../../../navigation";
 import { TranscriptButton } from "../../../common/task-transcript";
 import { AttributionBadge } from "../../../issues/components/attribution-badge";

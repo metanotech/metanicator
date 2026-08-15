@@ -1,11 +1,11 @@
 ---
 title: Using the CLI
-description: Install and log in to the Multica CLI, and manage workspaces, issues, agents, and runtimes from the terminal.
+description: Install and log in to the Metanicator CLI, and manage workspaces, issues, agents, and runtimes from the terminal.
 ---
 
 import { Callout } from "fumadocs-ui/components/callout";
 
-The Multica CLI both connects local runtimes and manages workspaces, issues, agents, and automations from the terminal. This page covers the common paths; the flags your installed version supports are always defined by each command's own `--help`.
+The Metanicator CLI both connects local runtimes and manages workspaces, issues, agents, and automations from the terminal. This page covers the common paths; the flags your installed version supports are always defined by each command's own `--help`.
 
 ## Installation
 
@@ -18,7 +18,7 @@ curl -fsSL https://raw.githubusercontent.com/metanotech/metanicator/main/scripts
 With Homebrew installed, you can also run:
 
 ```bash
-brew install multica-ai/tap/multica
+brew install metanicator-ai/tap/metanicator
 ```
 
 **Windows PowerShell**
@@ -30,21 +30,21 @@ irm https://raw.githubusercontent.com/metanotech/metanicator/main/scripts/instal
 Confirm the install:
 
 ```bash
-multica version
+metanicator version
 ```
 
 ## First connection
 
-Connect to Multica Cloud:
+Connect to Metanicator Cloud:
 
 ```bash
-multica setup
+metanicator setup
 ```
 
 Connect to a self-hosted instance:
 
 ```bash
-multica setup self-host \
+metanicator setup self-host \
   --server-url https://api.example.com \
   --app-url https://app.example.com
 ```
@@ -52,14 +52,14 @@ multica setup self-host \
 `setup` saves the server address, opens a browser to complete sign-in, and starts the daemon. When it finishes, check:
 
 ```bash
-multica auth status
-multica daemon status
+metanicator auth status
+metanicator daemon status
 ```
 
-If you only need to sign in again without overwriting other configuration, run `multica login`. On a machine without a browser, create a personal access token in the web settings first, then enter it with:
+If you only need to sign in again without overwriting other configuration, run `metanicator login`. On a machine without a browser, create a personal access token in the web settings first, then enter it with:
 
 ```bash
-multica login --token
+metanicator login --token
 ```
 
 The command prompts you to paste the token in the terminal, keeping the full value out of shell history.
@@ -69,72 +69,72 @@ The command prompts you to paste the token in the terminal, keeping the full val
 List workspaces and switch the default:
 
 ```bash
-multica workspace list
-multica workspace switch <slug>
+metanicator workspace list
+metanicator workspace switch <slug>
 ```
 
-Subsequent commands use this workspace. A single command can override it with `--workspace-id`, or you can set `MULTICA_WORKSPACE_ID`.
+Subsequent commands use this workspace. A single command can override it with `--workspace-id`, or you can set `METANICATOR_WORKSPACE_ID`.
 
 Invite members:
 
 ```bash
-multica workspace member invite teammate@example.com
-multica workspace member invite admin@example.com --role admin
+metanicator workspace member invite teammate@example.com
+metanicator workspace member invite admin@example.com --role admin
 ```
 
 ## Common issue operations
 
 ```bash
 # View and search
-multica issue list
-multica issue get MUL-123
-multica issue search "login failure"
+metanicator issue list
+metanicator issue get MUL-123
+metanicator issue search "login failure"
 
 # Create and update
-multica issue create --title "Fix login failure"
-multica issue status MUL-123 in_progress
-multica issue assign MUL-123 --to "Backend Agent"
+metanicator issue create --title "Fix login failure"
+metanicator issue status MUL-123 in_progress
+metanicator issue assign MUL-123 --to "Backend Agent"
 
 # Comments and runs
-multica issue comment list MUL-123
-multica issue comment add MUL-123 --content "Check the regression tests first"
-multica issue runs MUL-123
+metanicator issue comment list MUL-123
+metanicator issue comment add MUL-123 --content "Check the regression tests first"
+metanicator issue runs MUL-123
 ```
 
 Read long descriptions or comments from stdin to avoid dealing with newlines and quoting:
 
 ```bash
-multica issue create --title "Upgrade notes" --description-stdin < notes.md
-multica issue comment add MUL-123 --content-stdin < review.md
+metanicator issue create --title "Upgrade notes" --description-stdin < notes.md
+metanicator issue comment add MUL-123 --content-stdin < review.md
 ```
 
 View the messages of a single run, or stop a task:
 
 ```bash
-multica issue run-messages <task-id> --issue MUL-123
-multica issue cancel-task <task-id> --issue MUL-123
+metanicator issue run-messages <task-id> --issue MUL-123
+metanicator issue cancel-task <task-id> --issue MUL-123
 ```
 
 ## Agents and skills
 
 ```bash
-multica agent list
-multica agent get <agent-id>
-multica agent create --help
-multica agent update <agent-id> --help
+metanicator agent list
+metanicator agent get <agent-id>
+metanicator agent create --help
+metanicator agent update <agent-id> --help
 
-multica skill list
-multica skill get <skill-id>
-multica skill import --url <skill-url>
-multica agent skills add <agent-id> --skill-ids <skill-id>
+metanicator skill list
+metanicator skill get <skill-id>
+metanicator skill import --url <skill-url>
+metanicator agent skills add <agent-id> --skill-ids <skill-id>
 ```
 
 When an import hits a skill with the same name, the default is to stop without modifying existing content. Pick by intent:
 
 ```bash
-multica skill import --url <skill-url> --on-conflict overwrite
-multica skill import --url <skill-url> --on-conflict rename
-multica skill import --url <skill-url> --on-conflict skip
+metanicator skill import --url <skill-url> --on-conflict overwrite
+metanicator skill import --url <skill-url> --on-conflict rename
+metanicator skill import --url <skill-url> --on-conflict skip
 ```
 
 `overwrite` is only allowed for the skill's creator and preserves the original ID and agent bindings.
@@ -142,19 +142,19 @@ multica skill import --url <skill-url> --on-conflict skip
 ## Daemon and runtimes
 
 ```bash
-multica daemon start
-multica daemon stop
-multica daemon restart
-multica daemon status --output json
-multica daemon logs --follow
+metanicator daemon start
+metanicator daemon stop
+metanicator daemon restart
+metanicator daemon status --output json
+metanicator daemon logs --follow
 
-multica runtime list
-multica runtime rename <runtime-id> "Office Mac"
-multica runtime usage <runtime-id>
-multica runtime activity <runtime-id>
+metanicator runtime list
+metanicator runtime rename <runtime-id> "Office Mac"
+metanicator runtime usage <runtime-id>
+metanicator runtime activity <runtime-id>
 ```
 
-Deleting a runtime that still has active agents bound to it is refused by default. `multica runtime delete <id> --cascade` unbinds those agents, preserves their configuration and history, and cancels their active tasks.
+Deleting a runtime that still has active agents bound to it is refused by default. `metanicator runtime delete <id> --cascade` unbinds those agents, preserves their configuration and history, and cancels their active tasks.
 
 See [Daemon and runtimes](/daemon-runtimes) for how it works and for custom profiles.
 
@@ -176,7 +176,7 @@ See [Daemon and runtimes](/daemon-runtimes) for how it works and for custom prof
 | `config` | View or edit the current CLI profile's local configuration |
 | `update`, `version` | Update the CLI or print the version |
 
-`multica chat` reads **the external chat session an agent is currently handling**; it is mainly for agents in chat integrations, not a general command for browsing arbitrary workspace conversations.
+`metanicator chat` reads **the external chat session an agent is currently handling**; it is mainly for agents in chat integrations, not a general command for browsing arbitrary workspace conversations.
 
 ## IDs and output formats
 
@@ -187,38 +187,38 @@ Issues use keys like `MUL-123` or full UUIDs; short UUID prefixes are not accept
 Many commands support structured output:
 
 ```bash
-multica issue list --output json
-multica agent list --output json
+metanicator issue list --output json
+metanicator agent list --output json
 ```
 
-Scripts should use JSON output rather than parsing the terminal-oriented tables. The output formats and pagination flags each command supports are defined by `multica <command> --help`.
+Scripts should use JSON output rather than parsing the terminal-oriented tables. The output formats and pagination flags each command supports are defined by `metanicator <command> --help`.
 
 ## Profiles and configuration
 
-The default configuration lives in `~/.multica/config.json`. Use `--profile <name>` to isolate a separate set of server address, token, default workspace, and daemon state:
+The default configuration lives in `~/.metanicator/config.json`. Use `--profile <name>` to isolate a separate set of server address, token, default workspace, and daemon state:
 
 ```bash
-multica setup self-host --profile staging \
+metanicator setup self-host --profile staging \
   --server-url https://api.staging.example.com \
   --app-url https://app.staging.example.com
 
-multica issue list --profile staging
+metanicator issue list --profile staging
 ```
 
-Named profiles live in `~/.multica/profiles/<name>/config.json`. Inspect the current values:
+Named profiles live in `~/.metanicator/profiles/<name>/config.json`. Inspect the current values:
 
 ```bash
-multica config show
-multica config show --profile staging
+metanicator config show
+metanicator config show --profile staging
 ```
 
 <Callout type="warning">
-CLI configuration files contain tokens that can access Multica as you. Don't commit them to a repository, upload them to logs, or share them with others.
+CLI configuration files contain tokens that can access Metanicator as you. Don't commit them to a repository, upload them to logs, or share them with others.
 </Callout>
 
 ## Command reference
 
-The tables below cover every current top-level command, grouped the way the CLI itself groups them. All commands accept the global flags `--server-url`, `--workspace-id`, `--profile`, and `--debug`. `--output` is registered per command, and the default format varies: `list` commands default to a table, while `get` and `create` commands mostly default to JSON. Full flags are defined by `multica <command> --help`.
+The tables below cover every current top-level command, grouped the way the CLI itself groups them. All commands accept the global flags `--server-url`, `--workspace-id`, `--profile`, and `--debug`. `--output` is registered per command, and the default format varies: `list` commands default to a table, while `get` and `create` commands mostly default to JSON. Full flags are defined by `metanicator <command> --help`.
 
 ### Core
 
@@ -275,7 +275,7 @@ The tables below cover every current top-level command, grouped the way the CLI 
 
 | Command | Subcommand | Purpose | Key flags |
 | --- | --- | --- | --- |
-| `daemon` | `start` | Start the local daemon | `--foreground`, `--device-name`, `--runtime-name`, `--poll-interval`, `--heartbeat-interval`, `--agent-timeout` (`0` means no limit), `--max-concurrent-tasks`, `--no-auto-update`; each has a matching `MULTICA_*` environment variable |
+| `daemon` | `start` | Start the local daemon | `--foreground`, `--device-name`, `--runtime-name`, `--poll-interval`, `--heartbeat-interval`, `--agent-timeout` (`0` means no limit), `--max-concurrent-tasks`, `--no-auto-update`; each has a matching `METANICATOR_*` environment variable |
 | | `stop` / `status` / `restart` | Stop, check status, restart (`restart` takes the same flags as `start`) | |
 | | `logs` | View daemon logs | `--follow`, `--lines` |
 | | `disk-usage` | View local disk usage | `--by-workspace`, `--by-task`, `--top` |

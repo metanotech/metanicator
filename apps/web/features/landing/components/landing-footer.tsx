@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { MetanicatorIcon } from "@multica/ui/components/common/multica-icon";
-import { cn } from "@multica/ui/lib/utils";
-import { useAuthStore } from "@multica/core/auth";
+import { MetanicatorIcon } from "@metanicator/ui/components/common/metanicator-icon";
+import { cn } from "@metanicator/ui/lib/utils";
+import { useAuthStore } from "@metanicator/core/auth";
 import {
   XMark,
   GitHubMark,
@@ -31,7 +31,7 @@ export function LandingFooter() {
             <Link href="#product" className="flex items-center gap-3">
               <MetanicatorIcon className="size-5 text-white" noSpin />
               <span className="text-title font-semibold tracking-[0.04em] lowercase">
-                multica
+                metanicator
               </span>
             </Link>
             <p className="mt-4 max-w-[300px] text-body leading-[1.7] text-white/50 sm:text-body-lg">
@@ -128,7 +128,7 @@ export function LandingFooter() {
               noSpin
             />
             <span className="landing-serif text-[clamp(6rem,22vw,16rem)] font-normal leading-[0.82] tracking-[-0.04em] text-white lowercase">
-              multica
+              metanicator
             </span>
           </div>
         </div>

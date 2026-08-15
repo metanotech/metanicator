@@ -19,26 +19,26 @@ import type {
   Agent,
   AgentRuntime,
   UpdateAgentRequest,
-} from "@multica/core/types";
+} from "@metanicator/core/types";
 import {
   type AgentPresenceDetail,
   isAgentRuntimeBound,
   useWorkspacePresenceMap,
-} from "@multica/core/agents";
-import { api, ApiError } from "@multica/core/api";
-import { useAuthStore } from "@multica/core/auth";
-import { useWorkspaceId } from "@multica/core/hooks";
-import { useModalStore } from "@multica/core/modals";
-import { useWorkspacePaths } from "@multica/core/paths";
+} from "@metanicator/core/agents";
+import { api, ApiError } from "@metanicator/core/api";
+import { useAuthStore } from "@metanicator/core/auth";
+import { useWorkspaceId } from "@metanicator/core/hooks";
+import { useModalStore } from "@metanicator/core/modals";
+import { useWorkspacePaths } from "@metanicator/core/paths";
 import {
   agentListOptions,
   memberListOptions,
   workspaceKeys,
-} from "@multica/core/workspace/queries";
-import { runtimeDisplayLabel, runtimeListOptions } from "@multica/core/runtimes";
-import { useAgentPermissions } from "@multica/core/permissions";
-import { Button } from "@multica/ui/components/ui/button";
-import { CapabilityBanner } from "@multica/ui/components/common/capability-banner";
+} from "@metanicator/core/workspace/queries";
+import { runtimeDisplayLabel, runtimeListOptions } from "@metanicator/core/runtimes";
+import { useAgentPermissions } from "@metanicator/core/permissions";
+import { Button } from "@metanicator/ui/components/ui/button";
+import { CapabilityBanner } from "@metanicator/ui/components/common/capability-banner";
 import {
   Dialog,
   DialogContent,
@@ -46,14 +46,14 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@multica/ui/components/ui/dialog";
+} from "@metanicator/ui/components/ui/dialog";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@multica/ui/components/ui/dropdown-menu";
-import { Skeleton } from "@multica/ui/components/ui/skeleton";
+} from "@metanicator/ui/components/ui/dropdown-menu";
+import { Skeleton } from "@metanicator/ui/components/ui/skeleton";
 import { AppLink, useNavigation } from "../../navigation";
 import { PageHeader } from "../../layout/page-header";
 import { ActorAvatar } from "../../common/actor-avatar";

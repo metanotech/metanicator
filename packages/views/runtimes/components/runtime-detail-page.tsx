@@ -3,19 +3,19 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { AlertCircle, Cloud, Monitor, Pencil, Plus, Server } from "lucide-react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { useAuthStore } from "@multica/core/auth";
-import { useWorkspaceId } from "@multica/core/hooks";
-import { useWorkspacePaths } from "@multica/core/paths";
-import { agentTaskSnapshotOptions } from "@multica/core/agents";
-import { runtimeProfileListOptions } from "@multica/core/runtimes";
-import { runtimeKeys, runtimeListOptions } from "@multica/core/runtimes/queries";
-import { useWSEvent } from "@multica/core/realtime";
+import { useAuthStore } from "@metanicator/core/auth";
+import { useWorkspaceId } from "@metanicator/core/hooks";
+import { useWorkspacePaths } from "@metanicator/core/paths";
+import { agentTaskSnapshotOptions } from "@metanicator/core/agents";
+import { runtimeProfileListOptions } from "@metanicator/core/runtimes";
+import { runtimeKeys, runtimeListOptions } from "@metanicator/core/runtimes/queries";
+import { useWSEvent } from "@metanicator/core/realtime";
 import {
   agentListOptions,
   memberListOptions,
-} from "@multica/core/workspace/queries";
-import { Button } from "@multica/ui/components/ui/button";
-import { Skeleton } from "@multica/ui/components/ui/skeleton";
+} from "@metanicator/core/workspace/queries";
+import { Button } from "@metanicator/ui/components/ui/button";
+import { Skeleton } from "@metanicator/ui/components/ui/skeleton";
 import { AppLink, useNavigation } from "../../navigation";
 import { buildWorkloadIndex, RuntimeList } from "./runtime-list";
 import {

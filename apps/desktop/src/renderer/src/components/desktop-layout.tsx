@@ -1,21 +1,21 @@
 import { useEffect, useRef, useSyncExternalStore } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion } from "motion/react";
-import { cn } from "@multica/ui/lib/utils";
+import { cn } from "@metanicator/ui/lib/utils";
 import { useTabHistory } from "@/hooks/use-tab-history";
 import {
   SidebarProvider,
   SidebarTrigger,
   useSidebar,
-} from "@multica/ui/components/ui/sidebar";
-import { ModalRegistry } from "@multica/views/modals/registry";
-import { AppSidebar, GlobalShortcuts } from "@multica/views/layout";
-import { SearchCommand, SearchTrigger } from "@multica/views/search";
-import { FloatingChat } from "@multica/views/chat";
-import { WorkspaceSlugProvider, paths, useCurrentWorkspace } from "@multica/core/paths";
-import { useNavigation } from "@multica/views/navigation";
-import { getCurrentSlug, subscribeToCurrentSlug } from "@multica/core/platform";
-import { useDesktopUnreadBadge } from "@multica/views/platform";
+} from "@metanicator/ui/components/ui/sidebar";
+import { ModalRegistry } from "@metanicator/views/modals/registry";
+import { AppSidebar, GlobalShortcuts } from "@metanicator/views/layout";
+import { SearchCommand, SearchTrigger } from "@metanicator/views/search";
+import { FloatingChat } from "@metanicator/views/chat";
+import { WorkspaceSlugProvider, paths, useCurrentWorkspace } from "@metanicator/core/paths";
+import { useNavigation } from "@metanicator/views/navigation";
+import { getCurrentSlug, subscribeToCurrentSlug } from "@metanicator/core/platform";
+import { useDesktopUnreadBadge } from "@metanicator/views/platform";
 import {
   DesktopNavigationProvider,
   routeContentLinkPath,
@@ -156,8 +156,8 @@ function useInternalLinkHandler() {
       if (!path) return;
       routeContentLinkPath(path);
     };
-    window.addEventListener("multica:navigate", handler);
-    return () => window.removeEventListener("multica:navigate", handler);
+    window.addEventListener("metanicator:navigate", handler);
+    return () => window.removeEventListener("metanicator:navigate", handler);
   }, []);
 }
 
@@ -177,7 +177,7 @@ function useInternalLinkHandler() {
  *      covers both click-to-select and URL-param-select paths.
  *
  * The click routes through `useNavigation().push` — NOT the
- * `multica:navigate` event, whose handler `openTab`s into the ACTIVE
+ * `metanicator:navigate` event, whose handler `openTab`s into the ACTIVE
  * workspace's tab group. The navigation adapter detects a cross-workspace
  * path and translates it into `switchWorkspace(slug, path)`, so clicking a
  * workspace-A notification while B is active performs a real workspace

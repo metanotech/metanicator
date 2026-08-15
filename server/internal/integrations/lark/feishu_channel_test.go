@@ -10,8 +10,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/multica-ai/multica/server/internal/integrations/channel"
-	"github.com/multica-ai/multica/server/internal/integrations/channel/engine"
+	"github.com/metanotech/metanicator/server/internal/integrations/channel"
+	"github.com/metanotech/metanicator/server/internal/integrations/channel/engine"
 )
 
 // fakeSender embeds the APIClient interface (nil) and overrides only

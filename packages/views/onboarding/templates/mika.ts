@@ -1,4 +1,4 @@
-import type { MikaOnboardingLanguage } from "@multica/core/onboarding";
+import type { MikaOnboardingLanguage } from "@metanicator/core/onboarding";
 
 export type MikaContentLang = MikaOnboardingLanguage;
 

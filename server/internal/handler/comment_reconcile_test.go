@@ -9,8 +9,8 @@ import (
 	"time"
 
 	"github.com/go-chi/chi/v5"
-	"github.com/multica-ai/multica/server/internal/util"
-	db "github.com/multica-ai/multica/server/pkg/db/generated"
+	"github.com/metanotech/metanicator/server/internal/util"
+	db "github.com/metanotech/metanicator/server/pkg/db/generated"
 )
 
 // completeTaskViaHandler drives the daemon CompleteTask endpoint for taskID.
