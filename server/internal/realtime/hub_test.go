@@ -9,6 +9,7 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"net/netip"
+	"reflect"
 	"strings"
 	"sync"
 	"testing"
@@ -461,6 +462,21 @@ func TestCheckOrigin(t *testing.T) {
 				t.Fatalf("checkOrigin(host=%q, origin=%q, X-Forwarded-Host=%q, remoteAddr=%q) = %v, want %v", tc.host, tc.origin, tc.fwdHost, tc.remoteAddr, got, tc.want)
 			}
 		})
+	}
+}
+
+func TestLoadAllowedOriginsCombinesEnvironmentSources(t *testing.T) {
+	t.Setenv("FRONTEND_ORIGIN", "https://automation.mahadsaid.net/")
+	t.Setenv("CORS_ALLOWED_ORIGINS", "https://metanicator.metanotech.com")
+	t.Setenv("ALLOWED_ORIGINS", "https://desktop.example.com, https://AUTOMATION.mahadsaid.net")
+
+	want := []string{
+		"https://automation.mahadsaid.net",
+		"https://metanicator.metanotech.com",
+		"https://desktop.example.com",
+	}
+	if got := loadAllowedOrigins(); !reflect.DeepEqual(got, want) {
+		t.Fatalf("loadAllowedOrigins() = %#v, want %#v", got, want)
 	}
 }
 

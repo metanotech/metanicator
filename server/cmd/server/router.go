@@ -84,24 +84,44 @@ var corsExposedHeaders = []string{
 }
 
 func allowedOrigins() []string {
-	raw := strings.TrimSpace(os.Getenv("CORS_ALLOWED_ORIGINS"))
-	if raw == "" {
-		raw = strings.TrimSpace(os.Getenv("FRONTEND_ORIGIN"))
+	origins := mergeOrigins(
+		nil,
+		os.Getenv("FRONTEND_ORIGIN"),
+		os.Getenv("CORS_ALLOWED_ORIGINS"),
+	)
+	if len(origins) == 0 {
+		return append([]string(nil), defaultOrigins...)
 	}
-	if raw == "" {
-		return defaultOrigins
+	return origins
+}
+
+// websocketAllowedOrigins adds the legacy WebSocket-only allowlist without
+// broadening HTTP CORS. FRONTEND_ORIGIN and CORS_ALLOWED_ORIGINS are already in
+// the base list and always remain trusted during hostname migrations.
+func websocketAllowedOrigins(origins []string) []string {
+	return mergeOrigins(origins, os.Getenv("ALLOWED_ORIGINS"))
+}
+
+func mergeOrigins(base []string, rawValues ...string) []string {
+	origins := append([]string(nil), base...)
+	seen := make(map[string]struct{}, len(origins))
+	for _, origin := range origins {
+		seen[strings.ToLower(origin)] = struct{}{}
 	}
 
-	parts := strings.Split(raw, ",")
-	origins := make([]string, 0, len(parts))
-	for _, part := range parts {
-		origin := strings.TrimSpace(part)
-		if origin != "" {
+	for _, raw := range rawValues {
+		for _, part := range strings.Split(raw, ",") {
+			origin := strings.TrimRight(strings.TrimSpace(part), "/")
+			if origin == "" {
+				continue
+			}
+			key := strings.ToLower(origin)
+			if _, ok := seen[key]; ok {
+				continue
+			}
+			seen[key] = struct{}{}
 			origins = append(origins, origin)
 		}
-	}
-	if len(origins) == 0 {
-		return defaultOrigins
 	}
 	return origins
 }
@@ -758,8 +778,9 @@ func NewRouterWithOptions(pool *pgxpool.Pool, hub *realtime.Hub, bus *events.Bus
 	r.Use(chimw.Recoverer)
 	r.Use(middleware.ContentSecurityPolicy)
 
-	// Share allowed origins with WebSocket origin checker.
-	realtime.SetAllowedOrigins(origins)
+	// Share browser origins with WebSocket origin checking and retain the
+	// optional WebSocket-only ALLOWED_ORIGINS additions.
+	realtime.SetAllowedOrigins(websocketAllowedOrigins(origins))
 
 	// Share the same trusted-proxy CIDRs (METANICATOR_TRUSTED_PROXIES) so the
 	// WebSocket origin check honors X-Forwarded-Host only from trusted proxies,
