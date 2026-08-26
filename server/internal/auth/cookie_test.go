@@ -48,8 +48,33 @@ func TestCookieDomain(t *testing.T) {
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {
 			t.Setenv("COOKIE_DOMAIN", tc.env)
+			t.Setenv("FRONTEND_ORIGIN", "")
 			if got := cookieDomain(); got != tc.want {
 				t.Errorf("cookieDomain() = %q, want %q (COOKIE_DOMAIN=%q)", got, tc.want, tc.env)
+			}
+		})
+	}
+}
+
+func TestCookieDomainMustMatchFrontendOrigin(t *testing.T) {
+	cases := []struct {
+		name           string
+		cookieDomain   string
+		frontendOrigin string
+		want           string
+	}{
+		{"same host", "automation.mahadsaid.net", "https://automation.mahadsaid.net", "automation.mahadsaid.net"},
+		{"matching parent domain", ".mahadsaid.net", "https://automation.mahadsaid.net", ".mahadsaid.net"},
+		{"case insensitive", ".MahadSaid.NET", "https://AUTOMATION.mahadsaid.net", ".MahadSaid.NET"},
+		{"stale deployment domain falls back to host-only", "metanicator.metanotech.com", "https://automation.mahadsaid.net", ""},
+	}
+
+	for _, tc := range cases {
+		t.Run(tc.name, func(t *testing.T) {
+			t.Setenv("COOKIE_DOMAIN", tc.cookieDomain)
+			t.Setenv("FRONTEND_ORIGIN", tc.frontendOrigin)
+			if got := cookieDomain(); got != tc.want {
+				t.Errorf("cookieDomain() = %q, want %q", got, tc.want)
 			}
 		})
 	}
@@ -128,6 +153,25 @@ func TestSetAuthCookies_HTTPSProduction(t *testing.T) {
 		}
 		if c.Domain != "app.example.com" {
 			t.Errorf("cookie %q Domain = %q, want %q", c.Name, c.Domain, "app.example.com")
+		}
+	}
+}
+
+func TestSetAuthCookies_StaleDomainFallsBackToHostOnly(t *testing.T) {
+	t.Setenv("FRONTEND_ORIGIN", "https://automation.mahadsaid.net")
+	t.Setenv("COOKIE_DOMAIN", "metanicator.metanotech.com")
+
+	rec := httptest.NewRecorder()
+	if err := SetAuthCookies(rec, "test-token"); err != nil {
+		t.Fatalf("SetAuthCookies: %v", err)
+	}
+
+	for _, c := range rec.Result().Cookies() {
+		if !c.Secure {
+			t.Errorf("cookie %q missing Secure flag on HTTPS origin", c.Name)
+		}
+		if c.Domain != "" {
+			t.Errorf("cookie %q Domain = %q, want host-only cookie", c.Name, c.Domain)
 		}
 	}
 }

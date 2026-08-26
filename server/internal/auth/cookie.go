@@ -24,9 +24,10 @@ const (
 )
 
 var (
-	ipCookieDomainWarnOnce sync.Once
-	authTokenTTLOnce       sync.Once
-	authTokenTTLCached     time.Duration
+	ipCookieDomainWarnOnce   sync.Once
+	mismatchedDomainWarnOnce sync.Once
+	authTokenTTLOnce         sync.Once
+	authTokenTTLCached       time.Duration
 )
 
 // parseAuthTokenTTL parses a raw AUTH_TOKEN_TTL value into a duration.
@@ -88,10 +89,13 @@ func AuthTokenTTL() time.Duration {
 	return authTokenTTLCached
 }
 
-// cookieDomain returns the trimmed COOKIE_DOMAIN env value, or "" if it looks
-// like an IP address. RFC 6265 §4.1.2.3 forbids IP literals in the cookie
-// Domain attribute, so browsers silently drop Set-Cookie headers that carry
-// one. An IP value here is almost always a misconfiguration.
+// cookieDomain returns the trimmed COOKIE_DOMAIN env value, or "" when the
+// configured value cannot apply to the current FRONTEND_ORIGIN. Browsers
+// silently reject a Set-Cookie whose Domain does not domain-match the public
+// host, which otherwise makes a successful login look like an auth failure
+// after a deployment is moved to a new hostname. Falling back to a host-only
+// cookie keeps same-origin deployments working while split-domain deployments
+// can still opt into an explicitly matching parent domain.
 func cookieDomain() string {
 	raw := strings.TrimSpace(os.Getenv("COOKIE_DOMAIN"))
 	if raw == "" {
@@ -108,7 +112,27 @@ func cookieDomain() string {
 		})
 		return ""
 	}
+
+	frontendOrigin := strings.TrimSpace(os.Getenv("FRONTEND_ORIGIN"))
+	if frontendOrigin != "" {
+		if u, err := url.Parse(frontendOrigin); err == nil && u.Hostname() != "" && !domainMatchesHost(raw, u.Hostname()) {
+			mismatchedDomainWarnOnce.Do(func() {
+				slog.Warn(
+					"COOKIE_DOMAIN does not match FRONTEND_ORIGIN; ignoring it so authentication cookies remain host-only",
+					"cookie_domain", raw,
+					"frontend_host", u.Hostname(),
+				)
+			})
+			return ""
+		}
+	}
 	return raw
+}
+
+func domainMatchesHost(domain, host string) bool {
+	domain = strings.TrimSuffix(strings.ToLower(strings.TrimPrefix(strings.TrimSpace(domain), ".")), ".")
+	host = strings.TrimSuffix(strings.ToLower(strings.TrimSpace(host)), ".")
+	return domain != "" && host != "" && (host == domain || strings.HasSuffix(host, "."+domain))
 }
 
 // isSecureCookie reports whether session cookies should carry the Secure flag.
