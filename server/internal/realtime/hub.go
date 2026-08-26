@@ -51,26 +51,35 @@ func init() {
 }
 
 func loadAllowedOrigins() []string {
-	raw := strings.TrimSpace(os.Getenv("ALLOWED_ORIGINS"))
-	if raw == "" {
-		raw = strings.TrimSpace(os.Getenv("CORS_ALLOWED_ORIGINS"))
-	}
-	if raw == "" {
-		raw = strings.TrimSpace(os.Getenv("FRONTEND_ORIGIN"))
-	}
-	if raw == "" {
+	origins := mergeAllowedOrigins(
+		os.Getenv("FRONTEND_ORIGIN"),
+		os.Getenv("CORS_ALLOWED_ORIGINS"),
+		os.Getenv("ALLOWED_ORIGINS"),
+	)
+	if len(origins) == 0 {
 		return []string{
 			"http://localhost:3000",
 			"http://localhost:5173",
 			"http://localhost:5174",
 		}
 	}
+	return origins
+}
 
-	parts := strings.Split(raw, ",")
-	origins := make([]string, 0, len(parts))
-	for _, part := range parts {
-		origin := strings.TrimSpace(part)
-		if origin != "" {
+func mergeAllowedOrigins(rawValues ...string) []string {
+	var origins []string
+	seen := make(map[string]struct{})
+	for _, raw := range rawValues {
+		for _, part := range strings.Split(raw, ",") {
+			origin := strings.TrimRight(strings.TrimSpace(part), "/")
+			if origin == "" {
+				continue
+			}
+			key := strings.ToLower(origin)
+			if _, ok := seen[key]; ok {
+				continue
+			}
+			seen[key] = struct{}{}
 			origins = append(origins, origin)
 		}
 	}
@@ -183,7 +192,7 @@ func checkOrigin(r *http.Request) bool {
 	}
 	origins := allowedWSOrigins.Load().([]string)
 	for _, allowed := range origins {
-		if origin == allowed {
+		if strings.EqualFold(origin, allowed) {
 			return true
 		}
 	}
